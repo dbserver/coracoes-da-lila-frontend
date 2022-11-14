@@ -1,0 +1,16 @@
+<div class="ranking">
+  <h2 class="titulo">Ranking</h2>
+
+  <table
+    class="jogadores"
+  >
+    <tr>
+      <th>Nome</th>
+      <th>Pontos</th>
+    </tr>
+    <tr *ngFor="let jogador of jogadores">
+      <td>{{ jogador.nome }}</td>
+      <td>{{ jogador.pontos }} Pontos</td>
+    </tr>
+  </table>
+</div>

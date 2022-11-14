@@ -1,0 +1,54 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+  gap: 10px;
+}
+button {
+  margin-top: 20%;
+  color: var(--font-color);
+  background-color: var(--btn-bg);
+  border-radius: 30px;
+  width: var(--btn-width);
+  height: var(--btn-height);
+  margin: 10px;
+  font-size: var(--tamanhoFonte);
+}
+
+h2 {
+  text-align: center;
+}
+
+.frase {
+  color: var(--input-fontColor);
+  font-size: var(--tamanhoFonte);
+}
+li{
+  list-style-type: none;
+}
+ul{
+  padding-inline-start: 0px !important;
+}
+
+@media (max-width: 616px) {
+  .botao-modal {
+      margin-top: 20%;
+      color: var(--font-color);
+      background-color: var(--btn-bg);
+      border-radius: 30px;
+      width: 110px;
+      height: var(--btn-height);
+      margin: 10px;
+      font-size: var(--tamanhoFonte);
+    }
+    li{
+      list-style-type: none;
+      list-style-position: initial;
+    }
+    ul{
+      padding-inline-start: 0px !important;
+    }
+    
+  }

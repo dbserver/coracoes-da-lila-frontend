@@ -1,0 +1,27 @@
+<div class="container">
+
+  <div>
+    <img src="assets/img/logoLilaSozinho.png">
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>
+        Digite a senha
+      </mat-label>
+      <input matInput type="password" matInput [formControl]="senha" required>
+    </mat-form-field>
+  </div>
+  <div>
+    <button mat-raised-button type="submit" (click)="validar()">Entrar</button>
+  </div>
+  <div>
+    <button mat-raised-button [routerLink]="['']" type="submit">Voltar</button>
+  </div>
+</div>
+
+<jw-modal id="mensagemErro" alt="Mensagem de erro">
+  <h2>Senha incorreta</h2>
+  <button mat-raised-button class="botao-modal" (click)="fecharModal('mensagemErro')">
+    Fechar
+  </button>
+</jw-modal>

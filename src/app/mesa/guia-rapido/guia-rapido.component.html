@@ -1,0 +1,34 @@
+<div class="centro">
+    <button mat-raised-button (click)="abrirModal()">Guia rapido</button>
+</div>
+
+<jw-modal id="guia-rapido">
+    <div class="texto">
+        <h1>Guia Rápido </h1>
+        <h2><u>Opções de jogada:</u></h2>
+        <p>Pegar <img class="coracao-grande" src="../../../assets/svg/icone-coracao.svg"
+            alt="imagem de coracao grande"> ou
+        <img class="coracao-pequeno" src="../../../assets/svg/icone-coracao.svg" alt="imagem de coracao pequeno">
+        <img class="coracao-pequeno" src="../../../assets/svg/icone-coracao.svg" alt="imagem de coracao pequeno">
+        <p>Comprar 1 carta
+        <p>Comprar 1 objetivo
+
+        <h2><u>Categorias:</u> </h2>
+        <p>Visual, Auditiva, Intelectual, Física, Transtorno do Espectro Autista (TEA) e Genérica
+        <h2><u>Bônus:</u> </h2>
+        <p><img class="presente" src="../../../assets/img/presente-info.png" alt="">
+        <p>1 a 4 = Nada
+        <p>5 a 6 = <img class="coracao-pequeno" src="../../../assets/svg/icone-coracao.svg"
+            alt="imagem de coracao pequeno">
+        <p><img class="presente" src="../../../assets/img/presente-acao.png" alt="">
+        <p>1 = Perde 1 coração (bônus, se tiver, outro se não, não importa o tamanho)
+        <p>2 a 3 = Nada
+        <p>4 = <img class="coracao-grande" src="../../../assets/svg/icone-coracao.svg" alt="imagem de coracao grande">
+        <p>5 a 6 = <img class="coracao-pequeno" src="../../../assets/svg/icone-coracao.svg"
+            alt="imagem de coracao pequeno">
+        <p></p>
+
+
+        <button mat-raised-button (click)="fecharModal()">Fechar</button>
+    </div>
+</jw-modal>

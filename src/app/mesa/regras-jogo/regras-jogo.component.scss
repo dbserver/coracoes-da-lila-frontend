@@ -1,0 +1,125 @@
+img {
+  width: 400px;
+  height: 550px;
+}
+
+button {
+  color: var(--font-color);
+  background-color: var(--btn-bg);
+  font-size: calc(var(--tamanhoFonte) - 3px);
+  width: 150px;
+  height: 35px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.coracao-grande {
+  width: 30px;
+  height: 30px;
+  margin-left: 3px;
+}
+
+.coracao-pequeno {
+  margin-left: 3px;
+  width: 20px;
+  height: 20px;
+}
+
+.presente {
+  width: 100px;
+  height: 100px;
+}
+
+.dado {
+  width: 110px;
+  height: 100px;
+}
+
+h1 {
+  margin: 2px;
+  padding: 2px;
+  font-size: 30px;
+}
+
+h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 25px;
+}
+
+.texto {
+  font-size: 20px;
+  line-height: 1.8rem;
+}
+
+p {
+  margin: 2.5px;
+  padding: 2.5px;
+}
+
+.centro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.titulo {
+  font-weight: bold;
+  font-size: 50px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.corpo {
+  text-align: justify;
+  text-justify: inter-word;
+  margin: 5% 15% 0% 15%;
+}
+
+.subtitulo {
+  font-weight: bold;
+  font-size: 30px;
+  text-align: center;
+  margin: 25px 0 25px 0;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+.negrito {
+  font-weight: bold;
+}
+
+.alinhar-imagem {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.col2 {
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+
+.tamanho-modal {
+  height: 600px;
+}
+
+.conteudo {
+  height: 100%;
+  overflow: auto;
+  background: #fff;
+}
+
+.layout-mesa{
+  width: 80%;
+  height: 80%;
+}
+
+.centro-imagem{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 15px 0 15px 0;
+}

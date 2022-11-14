@@ -1,0 +1,31 @@
+.titulo {
+  color: var(--font-color);
+  font-size: calc(var(--tamanhoFonte) + 5px);
+  font-weight: bold;
+  text-align: center;
+}
+
+table,
+th,
+td {
+  text-align: center;
+  font-size: var(--tamanhoFonte);
+}
+.jogadores tr:nth-child(even) {
+  background-color: #e6c7e5;
+}
+
+.jogadores tr:hover {
+  background-color: #e5d7e2;
+}
+
+.jogadores {
+  width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+}
+.ranking {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

@@ -1,0 +1,59 @@
+<div class="container">
+    <div>
+        <a [routerLink]="['']">
+            <img src="../../../assets/img/logoLilaSozinho.png" alt="">
+        </a>
+
+    </div>
+    <div>
+        <h2 class="frase">
+            Cadastre a senha para o usuário administrador
+        </h2>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Digite a Senha</mat-label>
+            <input type="password" matInput placeholder="Senha$12" [formControl]="senha" required
+                ng-pattern="/^(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{7,30}$/">
+            <mat-error *ngIf="senha.invalid">{{mensagemDeErro()}}</mat-error>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Confirme a Senha</mat-label>
+            <input type="password" matInput placeholder="Senha$12" [formControl]="confirmaSenha" required
+                ng-pattern="/^(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{7,30}$/">
+            <mat-error *ngIf="confirmaSenha.invalid">{{mensagemDeErro()}}</mat-error>
+        </mat-form-field>
+    </div>
+    <div>
+        <button mat-raised-button (click)="enviar('mensagemErro')">Enviar</button>
+    </div>
+    <div>
+        <button mat-raised-button [routerLink]="['']">Cancelar</button>
+    </div>
+</div>
+
+<jw-modal id="mensagemErro" alt="Mensagem de erro">
+    <h3>A senha deve conter no mínimo:
+        <ul>
+            <li>8 caracteres</li> 
+            <li>1 número</li> 
+            <li>1 letra maiúscula</li> 
+            <li>1 letra minúscula</li> 
+            <li>1 caractere especial.</li> 
+        </ul>
+        </h3>
+    <button (click)="fecharModal('mensagemErro')" mat-raised-button class="botao-modal">
+        Fechar
+    </button>
+</jw-modal>
+
+<jw-modal id="mensagemSucesso" alt="Mensagem de sucesso">
+    <h2>Cadastrado com Sucesso!</h2>
+    <a [routerLink]="['']">
+        <button mat-raised-button class="botao-modal">
+            Fechar
+        </button>
+    </a>
+</jw-modal>

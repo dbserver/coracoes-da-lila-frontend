@@ -1,0 +1,131 @@
+<div class="centro">
+    <button mat-raised-button (click)="abrirModal()">Regras do jogo</button>
+</div>
+
+<jw-modal id="regras-jogo">
+    <div class="texto tamanho-modal">
+        <div class="conteudo">
+            <div class="titulo">
+                Corações da LILA
+            </div>
+            <div class="corpo">
+                <p>
+                    Jogo para ensino de acessibilidade e inclusão de Pessoas com
+                    Deficiência (PCDs).
+                </p>
+                <p>LILA = Ler Interpretar Lembrar Agir.</p>
+                <p>Arquivos para impressão em http://bit.ly/coracoesdalila</p>
+                <p>Desenvolvido por A.C. Hermann, Bruna Descovi, Isadora
+                    Giongo, Larissa Yasin. Disponível sob Creative Commons -
+                    Atribuição-NãoComercial-CompartilhaIgual 4.0 Internacional.
+                </p>
+                <p>
+                    Ícones: https://www.iconfinder.com/paomedia (CC 3.0)
+                </p>
+                <div class="subtitulo">
+                    SETUP para 2 a 6 jogadores:
+                </div>
+                <ol>
+                    <li>Separe os corações por tamanho e bônus.</li>
+                    <li>Distribua 2 corações pequenos e 1 guia rápido para
+                        cada pessoa.</li>
+                    <li>Embaralhe as 54 cartas, abra 6 na área de compras e
+                        coloque as demais voltadas para baixo numa pilha.</li>
+                    <li>Embaralhe as 14 cartas de objetivo e coloque
+                        voltadas para baixo numa pilha.</li>
+                    <li>Embaralhe as 6 cartas de início de jogo e retire uma
+                        para determinar quem inicia. O jogo segue em sentido
+                        horário.</li>
+                </ol>
+                <div class="centro-imagem">
+                    <img class="layout-mesa" src="../../../assets/img/layout-mesa.png"
+                        alt="imagem de um exemplo da mesa com as cartas">
+                    <p>Layout da Área de Compras</p>
+                </div>
+                <p>
+                    <strong>Vitória:</strong> Ganha quem tiver mais pontos ao final.
+                    Pontos são obtidos comprando cartas e objetivos.
+                </p>
+                <p>
+                    <strong>Tipos:</strong> As cartas dividem-se em Definição,
+                    Informação, Pessoa, Filme e Ação. O tipo é dado pelo
+                    título da carta.
+                </p>
+                <p>
+                    <strong>Categorias:</strong> As cartas dividem-se em Visual, Auditiva,
+                    Intelectual, Física, Transtorno do Espectro Autista
+                    (TEA) e Genérica. A categoria é dada pelo texto da
+                    carta.
+                </p>
+                <p>
+                    <strong>Bônus:</strong> Ao comprar uma carta com ícone de bônus,
+                    jogue o dado e veja o resultado na tabela.
+                </p>
+                <p>
+                    <strong>Corações Bônus:</strong> Permanecem com o jogador após
+                    a compra das cartas, sem serem devolvidos.
+                </p>
+                <p>
+                    <strong>Encerramento:</strong> Quando alguém atingir 8 pontos nas
+                    cartas, os jogadores que faltam para completar o
+                    turno jogam mais uma vez. Os pontos dos objetivos
+                    são contados após o encerramento.
+                </p>
+                <p>
+                    <strong>Coringas:</strong> Cartas de categoria Genérica contam
+                    como coringa para contabilizar os objetivos.
+                </p>
+                <div class="subtitulo">
+                    Na sua vez o jogador pode escolher UMA AÇÃO
+                    abaixo:
+                </div>
+                <p>
+                    <u>Pegar corações:</u> Pegue 2 corações pequenos OU 1
+                    coração grande, se não tiver atingido o limite de 5
+                    corações de qualquer tipo.
+                </p>
+                <p>
+                    <u>Comprar carta:</u> Troque 1 carta pelos seus corações
+                    do tamanho indicado e coloque essa carta na sua
+                    área de cartas, com face para cima. Se a carta tiver
+                    um ícone de bônus, jogue o dado (ver tabela abaixo).
+                    Abra uma carta nova na área de compras.
+                </p>
+                <p>
+                    <u>Comprar objetivo:</u> Troque 1 carta de objetivo do alto
+                    da pilha por 1 coração. Coloque a carta na sua área
+                    de cartas voltada para cima.
+                </p>
+                <p class="alinhar-imagem">
+                    <strong class="subtitulo">Bônus:</strong><img class="dado" src="../../../assets/img/dados-bonus.png"
+                        alt="imagem de dois dados">
+                </p>
+                <div class="col2 alinhar-imagem">
+                    <div>
+                        <p><strong>Informação</strong></p>
+                        <p>1 a 4 = Nada</p>
+                        <p class="alinhar-imagem">5 a 6 = <img class="coracao-pequeno "
+                                src="../../../assets/svg/icone-coracao.svg" alt="imagem de coracao pequeno"></p>
+                    </div>
+                    <div><img class="presente" src="../../../assets/img/presente-info.png"
+                            alt="imagem de um presente que representa o bônus"></div>
+                </div>
+                <br>
+                <div class="col2 alinhar-imagem">
+                    <div>
+                        <p><strong>Ação</strong></p>
+                        <p>1 = Perde 1 coração (bônus, se tiver, outro se não, não importa o tamanho)</p>
+                        <p>2 a 3 = Nada</p>
+                        <p class="alinhar-imagem">4 = <img class="coracao-grande"
+                                src="../../../assets/svg/icone-coracao.svg" alt="imagem de coracao grande"></p>
+                        <p class="alinhar-imagem">5 a 6 = <img class="coracao-pequeno"
+                                src="../../../assets/svg/icone-coracao.svg" alt="imagem de coracao pequeno"></p>
+                    </div>
+                    <div><img class="presente" src="../../../assets/img/presente-acao.png"
+                            alt="imagem de um presente que representa o bônus"></div>
+                </div>
+            </div>
+            <button mat-raised-button (click)="fecharModal()">Fechar</button>
+        </div>
+    </div>
+</jw-modal>

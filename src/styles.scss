@@ -1,0 +1,106 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "@angular/material" as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$ProjetoLilaFront-primary: mat.define-palette(mat.$indigo-palette);
+$ProjetoLilaFront-accent: mat.define-palette(
+  mat.$pink-palette,
+  A200,
+  A100,
+  A400
+);
+
+// The warn palette is optional (defaults to red).
+$ProjetoLilaFront-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$ProjetoLilaFront-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $ProjetoLilaFront-primary,
+      accent: $ProjetoLilaFront-accent,
+      warn: $ProjetoLilaFront-warn,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($ProjetoLilaFront-theme);
+
+/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: var(--background);
+}
+
+//variáveis e valores css default
+:root {
+  --background: #f2f2f2;
+  --font-color: #59184f;
+  --font-color-aguarde:#59184f;
+  --tamanhoFonte:20px;
+  --btn-width:300px;
+  --btn-height:auto;
+  --btn-bg:#f4dc6d;
+  --input-fontColor:black;
+  --input-backgroundColor:#e5e4e2;
+}
+
+.contraste:root {
+  --background: black;
+  --font-color: rgb(8, 8, 8);
+  --font-color-aguarde:white;
+  --btn-bg: #d9f009;
+  --input-fontColor: white;
+  --input-backgroundColor:#e5e4e2;
+}
+
+
+.fonteMaior:root {
+  --tamanhoFonte: 25pt;
+  --btn-width: 320px;
+  --btn-height: auto;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+  border-radius: 30px !important;
+  width: var(--btn-width);
+  background-color: var(--input-backgroundColor);
+}
+
+.mat-error {
+  color: #59184f;
+}
+
+.mat-form-field-underline {
+  display: none;
+}
+
+
+
+@media (max-width: 616px) {
+  .mat-form-field-appearance-fill .mat-form-field-flex {
+    border-radius: 30px !important;
+    width: var(--btn-width);
+    background-color: var(--input-backgroundColor);
+  }
+}
+
+
