@@ -6,8 +6,9 @@
 .menu-lila{
   display: grid;
   grid-template-rows: auto auto;
-  margin-left: 2%;
+  margin-left: 16%;
   padding-right: 5%;
+  margin-top: 6%;
 }
 
 .logo-lila-menu{
@@ -16,7 +17,9 @@
 
 .div-btn{
   position: fixed;
-  top: 30%;
+  top: 38%;
+  margin-left: 1%;
+  margin-top: 2%;
 }
 
 .btn {
@@ -31,8 +34,13 @@
 }
 
 .caixa-regras{
-  box-sizing: content-box;
-  max-height: 90%;
+  box-sizing: margin-box;
+  margin: 3% 5% 5%;
+ // max-height: 50%;
+}
+
+.imagemLila {
+  width: 100%;
 }
 
 .coracao-grande {
@@ -60,7 +68,7 @@
   font-weight: bold;
   font-size: 50px;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 5%;
 }
 
 .texto {
@@ -76,7 +84,7 @@ p {
 .corpo {
   text-align: justify;
   text-justify: inter-word;
-  margin: 5% 15% 0% 15%;
+  margin: 5% 5% 3% 5%;
 }
 
 .subtitulo {
@@ -84,6 +92,12 @@ p {
   font-size: 30px;
   text-align: center;
   margin: 25px 0 25px 0;
+}
+
+.alterarSub {
+  display: grid;
+  grid-template-rows: 100% auto;
+  margin-bottom: 7%;
 }
 
 li {
