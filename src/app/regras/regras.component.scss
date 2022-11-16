@@ -1,0 +1,36 @@
+.regras {
+  display: grid;
+  grid-template-columns: auto 70%;
+}
+
+.menu-lila{
+  display: grid;
+  grid-template-rows: auto auto;
+  margin-left: 2%;
+  padding-right: 5%;
+}
+
+.logo-lila-menu{
+  position: fixed;
+}
+
+.div-btn{
+  position: fixed;
+  top: 30%;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 10px;
+  background-color: var(--btn-bg);
+  color: var(--font-color);
+  width: var(--btn-width);
+  height: 3%;
+  border-radius: 30px;
+  font-size: var(--tamanhoFonte);
+}
+
+.caixa-regras{
+  box-sizing: content-box;
+  max-height: 90%;
+}
