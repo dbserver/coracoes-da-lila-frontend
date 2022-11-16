@@ -68,7 +68,7 @@ import { IndicaJogadorComponent } from './mesa/indica-jogador/indica-jogador.com
     HabilitaDadoComponent,
     TelaErroComponent,
     IndicaJogadorComponent,
-    RankingComponent
+    RankingComponent,
   ],
   imports: [
     BrowserModule,
