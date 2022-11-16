@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Admin } from 'src/app/model/admin';
 import { AdminSenha } from 'src/app/model/adminSenha';
@@ -30,7 +30,7 @@ export class TelaSenhaComponent implements OnInit {
     });
   }
   adminSenha: AdminSenha;
-  senha = new FormControl('');
+  senha = new UntypedFormControl('');
   logado: boolean = false;
 
   abrirModal(id: string) {
