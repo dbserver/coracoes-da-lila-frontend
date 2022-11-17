@@ -4,7 +4,7 @@ export interface CartaDoJogo{
     bonus: boolean;
     texto: string;
     valorCoracaoPequeno: number;
-    valorCorGrande: number;
+    valorCoracaoGrande: number;
     fonte: string;
     pontos: number;
 }
