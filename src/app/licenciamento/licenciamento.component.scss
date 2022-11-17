@@ -1,0 +1,23 @@
+.licenciamento {
+    color: var(--input-fontColor);
+    justify-content: center;
+    font-size: calc(var(--tamanhoFonte) * 0.75);
+    margin-left: 500px;
+    margin-right: 500px;
+}
+
+.licenciamento img {
+    float: left;
+    border-width: 0;
+    width: 100px;
+    height: 35px;
+}
+
+.text {
+    padding-top: 20px;
+    line-height: 1;
+}
+
+.text u {
+    color: rgb(25, 158, 235);
+}
