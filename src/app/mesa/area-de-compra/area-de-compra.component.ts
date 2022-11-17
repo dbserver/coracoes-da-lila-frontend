@@ -92,8 +92,8 @@ export class AreaDeCompraComponent implements OnInit {
     let coracaoP = 0;
     let coracaoG = 0;
     this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => {
-      coracaoP = this.jogador.coracaoPeq + this.jogador.bonusCoracaoPeq;
-      coracaoG = this.jogador.coracaoGra + this.jogador.bonusCoracaoGra;
+      coracaoP = this.jogador.coracaoPequeno + this.jogador.bonusCoracaoPequeno;
+      coracaoG = this.jogador.coracaoGrande + this.jogador.bonusCoracaoGrande;
     });
     return valorCoracaoPequeno! <= coracaoP && valorCoracaoGrande! <= coracaoG;
   }
@@ -130,19 +130,19 @@ export class AreaDeCompraComponent implements OnInit {
 
   public verificarCoracoesQualquerTamanho(): Boolean {
     if (
-      this.jogador.coracaoGra +
-        this.jogador.coracaoPeq +
-        this.jogador.bonusCoracaoGra +
-        this.jogador.bonusCoracaoPeq < 5){
+      this.jogador.coracaoGrande +
+        this.jogador.coracaoPequeno +
+        this.jogador.bonusCoracaoGrande +
+        this.jogador.bonusCoracaoPequeno < 5){
       return true;
     }
     return false;
   }
   public desabilitarCoracoesPeq(): Boolean {
-    return this.jogador.coracaoPeq + this.jogador.coracaoGra < 4;
+    return this.jogador.coracaoPequeno + this.jogador.coracaoGrande < 4;
   }
 
   public verificarCoracoesGra(): Boolean {
-    return this.jogador.coracaoGra + this.jogador.coracaoPeq < 5;
+    return this.jogador.coracaoGrande + this.jogador.coracaoPequeno < 5;
   }
 }

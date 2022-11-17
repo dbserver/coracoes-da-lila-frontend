@@ -65,8 +65,8 @@ export class MaoJogadorComponent implements OnInit {
     let coracaoP = 0;
     let coracaoG = 0;
     this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => {
-      coracaoP = jogador.coracaoPeq + jogador.bonusCoracaoPeq;
-      coracaoG = jogador.coracaoGra + jogador.bonusCoracaoGra;
+      coracaoP = jogador.coracaoPequeno + jogador.bonusCoracaoPequeno;
+      coracaoG = jogador.coracaoGrande + jogador.bonusCoracaoGrande;
     });
     return valorCoracaoPequeno! <= coracaoP && valorCoracaoGrande! <= coracaoG;
   }
