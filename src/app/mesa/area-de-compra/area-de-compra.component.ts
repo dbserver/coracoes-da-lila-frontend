@@ -115,13 +115,13 @@ export class AreaDeCompraComponent implements OnInit {
     return false;
   }
 
-  public bloquearCompraCoracaoPequeno(){
+  public bloquearCompraCoracoesPequenos(){
     if (this.jogador.status == 'JOGANDO' && this.verificarCoracoesQualquerTamanho() && this.desabilitarCoracoesPeq()) {
       return false;
     }
     return true;
   }
-  public bloquearCompraCoracaoGrande(){
+  public bloquearCompraCoracoesGrandes(){
     if (this.jogador.status == 'JOGANDO' && this.verificarCoracoesQualquerTamanho()  && this.verificarCoracoesGra()) {
       return false;
     }
