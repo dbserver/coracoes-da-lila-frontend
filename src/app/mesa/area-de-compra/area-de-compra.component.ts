@@ -86,7 +86,7 @@ export class AreaDeCompraComponent implements OnInit {
 
 
   public podeComprar({
-    valorCorPequeno,
+    valorCoracaoPequeno,
     valorCorGrande,
   }: Partial<CartaDoJogo>): boolean {
     let coracaoP = 0;
@@ -95,7 +95,7 @@ export class AreaDeCompraComponent implements OnInit {
       coracaoP = this.jogador.coracaoPeq + this.jogador.bonusCoracaoPeq;
       coracaoG = this.jogador.coracaoGra + this.jogador.bonusCoracaoGra;
     });
-    return valorCorPequeno! <= coracaoP && valorCorGrande! <= coracaoG;
+    return valorCoracaoPequeno! <= coracaoP && valorCorGrande! <= coracaoG;
   }
 
   public verificaBonus() {

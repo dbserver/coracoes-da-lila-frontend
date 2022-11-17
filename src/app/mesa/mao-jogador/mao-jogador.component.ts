@@ -59,7 +59,7 @@ export class MaoJogadorComponent implements OnInit {
   }
 
   public verificaCompra({
-    valorCorPequeno,
+    valorCoracaoPequeno,
     valorCorGrande,
   }: Partial<CartaDoJogo>): boolean {
     let coracaoP = 0;
@@ -68,6 +68,6 @@ export class MaoJogadorComponent implements OnInit {
       coracaoP = jogador.coracaoPeq + jogador.bonusCoracaoPeq;
       coracaoG = jogador.coracaoGra + jogador.bonusCoracaoGra;
     });
-    return valorCorPequeno! <= coracaoP && valorCorGrande! <= coracaoG;
+    return valorCoracaoPequeno! <= coracaoP && valorCorGrande! <= coracaoG;
   }
 }
