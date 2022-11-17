@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { UntypedFormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Admin } from 'src/app/model/admin';
 import { AdminService } from 'src/app/service/admin.service';
@@ -23,14 +23,14 @@ export class PrimeiroAcessoComponent implements OnInit {
 
   admin: Admin;
 
-  senha = new FormControl('', [
+  senha = new UntypedFormControl('', [
     Validators.required,
     Validators.pattern(
       '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{7,30}'
     ),
   ]);
 
-  confirmaSenha = new FormControl('', [
+  confirmaSenha = new UntypedFormControl('', [
     Validators.required,
     Validators.pattern(
       '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{7,30}'
