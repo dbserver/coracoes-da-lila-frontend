@@ -22,4 +22,16 @@ describe('HomePageComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Should have a paragraph with content "PCDs"', () => {
+    let primeiroParagrafo = fixture.nativeElement.querySelector('#paragrafo1');
+
+    expect(primeiroParagrafo.innerHTML).toContain('PCDs');
+  });
+
+  it('Should have a button with content "Criar Partida"', () => {
+    let botaoCriarPartida = fixture.nativeElement.querySelector('#buttonMesa');
+
+    expect(botaoCriarPartida.innerHTML).toContain('Criar Partida');
+  });
 });
