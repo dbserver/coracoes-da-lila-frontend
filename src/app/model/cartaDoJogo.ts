@@ -3,8 +3,8 @@ export interface CartaDoJogo{
     categoria: string;
     bonus: boolean;
     texto: string;
-    valorCorPequeno: number;
-    valorCorGrande: number;
+    valorCoracaoPequeno: number;
+    valorCoracaoGrande: number;
     fonte: string;
     pontos: number;
 }
