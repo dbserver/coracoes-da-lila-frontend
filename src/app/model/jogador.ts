@@ -7,10 +7,10 @@ export interface Jogador {
   cartasDoJogo: CartaDoJogo[];
   cartasObjetivo: CartaObjetivo[];
   pontos: number;
-  coracaoPeq: number;
-  coracaoGra: number;
-  bonusCoracaoPeq: number;
-  bonusCoracaoGra: number;
-  ishost: boolean;
+  coracaoPequeno: number;
+  coracaoGrande: number;
+  bonusCoracaoPequeno: number;
+  bonusCoracaoGrande: number;
+  isHost: boolean;
   status: string;
 }

@@ -41,6 +41,7 @@ import {
 import { myRxStompConfig } from './rx-stomp.config';
 import { TelaErroComponent } from './tela-erro/tela-erro.component';
 import { IndicaJogadorComponent } from './mesa/indica-jogador/indica-jogador.component';
+import { RegrasComponent } from './regras/regras.component';
 
 
 
@@ -69,6 +70,7 @@ import { IndicaJogadorComponent } from './mesa/indica-jogador/indica-jogador.com
     TelaErroComponent,
     IndicaJogadorComponent,
     RankingComponent,
+    RegrasComponent
   ],
   imports: [
     BrowserModule,

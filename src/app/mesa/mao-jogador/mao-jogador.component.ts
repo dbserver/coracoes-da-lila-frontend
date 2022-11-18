@@ -21,7 +21,7 @@ export class MaoJogadorComponent implements OnInit {
   public listaJogador: Jogador[] = [];
   public jogador: Jogador = {} as Jogador;
   public listacartasMao: Array<CartaDoJogo> = [];
-  
+
   constructor(
     private mesaService: MesaService,
     private route: ActivatedRoute,
@@ -59,15 +59,15 @@ export class MaoJogadorComponent implements OnInit {
   }
 
   public verificaCompra({
-    valorCorPequeno,
-    valorCorGrande,
+    valorCoracaoPequeno,
+    valorCoracaoGrande,
   }: Partial<CartaDoJogo>): boolean {
     let coracaoP = 0;
     let coracaoG = 0;
     this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => {
-      coracaoP = jogador.coracaoPeq + jogador.bonusCoracaoPeq;
-      coracaoG = jogador.coracaoGra + jogador.bonusCoracaoGra;
+      coracaoP = jogador.coracaoPequeno + jogador.bonusCoracaoPequeno;
+      coracaoG = jogador.coracaoGrande + jogador.bonusCoracaoGrande;
     });
-    return valorCorPequeno! <= coracaoP && valorCorGrande! <= coracaoG;
+    return valorCoracaoPequeno! <= coracaoP && valorCoracaoGrande! <= coracaoG;
   }
 }

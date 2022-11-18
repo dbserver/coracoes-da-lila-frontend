@@ -26,6 +26,11 @@
   line-height: var(--font-heigth);
 }
 
+.conjunto-btn{
+  display: flex;
+  flex-direction: column;
+}
+
 .btn {
   display: inline-block;
   margin-top: 10px;
