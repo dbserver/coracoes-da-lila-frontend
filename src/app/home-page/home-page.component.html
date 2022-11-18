@@ -3,9 +3,12 @@
     <img src="../../assets/img/logoLilaSemDB.png" alt="LogoTipo" />
   </div>
   <!-- <div><button mat-raised-button class='btn' [routerLink]="['/login']">Login</button></div>-->
-  <div>
+  <div class="conjunto-btn">
     <button mat-raised-button class="btn" [routerLink]="['/mesa']">
       Criar Partida
+    </button>
+    <button mat-raised-button class="btn" (click)="irParaRegras()">
+      Regras do Jogo
     </button>
   </div>
 </div>
