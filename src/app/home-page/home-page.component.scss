@@ -15,6 +15,11 @@ img {
   width: 75%;
 }
 
+.botoes {
+  display: flex;
+  flex-direction: column;
+}
+
 .btn {
   display: inline-block;
   margin-top: 10px;
