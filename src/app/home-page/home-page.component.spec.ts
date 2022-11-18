@@ -5,7 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { HomePageComponent } from './home-page.component';
 
-fdescribe('HomePageComponent', () => {
+describe('HomePageComponent', () => {
   let component: HomePageComponent;
   let fixture: ComponentFixture<HomePageComponent>;
 
@@ -27,6 +27,18 @@ fdescribe('HomePageComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('Verifica se o texto "PCDs" está na pagina home', () => {
+    let primeiroParagrafo = fixture.nativeElement.querySelector('#paragrafo1');
+
+    expect(primeiroParagrafo.innerHTML).toContain('PCDs');
+  });
+
+  it('Verifica se o botão existe e tem o conteudo "Criar Partida"', () => {
+    let botaoCriarPartida = fixture.nativeElement.querySelector('#buttonMesa');
+
+    expect(botaoCriarPartida.innerHTML).toContain('Criar Partida');
+  });
+  
   it('deve redirecionar para a página de regras', inject([Router], (router: Router) => {
     spyOn(router, 'navigate').and.stub();
     component.irParaRegras();
