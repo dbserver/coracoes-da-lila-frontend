@@ -1,3 +1,4 @@
+import { RegrasComponent } from './regras/regras.component';
 import { EntrarMesaComponent } from './entrar-mesa/entrar-mesa.component';
 import { AreaDeCompraComponent } from './mesa/area-de-compra/area-de-compra.component';
 import { TelaSenhaComponent } from './administrador/tela-senha/tela-senha.component';
@@ -71,13 +72,17 @@ const routes: Routes = [
   {
     path: 'historia',
     component: TelaHistoriaComponent,
-  }, 
+  },
+  {
+    path: 'regras',
+    component: RegrasComponent,
+  },
   {
     path:'**',
     component:TelaErroComponent,
   }
 
-  
+
 
 ];
 

@@ -3,17 +3,19 @@
     <img src="../../assets/img/logoLilaSemDB.png" alt="LogoTipo" />
   </div>
   <!-- <div><button mat-raised-button class='btn' [routerLink]="['/login']">Login</button></div>-->
-  <div class="botoes">
+  <div class="conjunto-btn">
     <button mat-raised-button class="btn" [routerLink]="['/mesa']">
       Criar Partida
+    </button>
+    <button mat-raised-button class="btn" (click)="irParaRegras()">
+      Regras do Jogo
     </button>
     <button mat-raised-button class="btn" [routerLink]="['/historia']">
       História do jogo
     </button>
   </div>
-</div>
 
 <div class="patrocinio">
   <p class="texto-patrocinio">Patrocínio:</p>
-  <img src="../../assets/svg/dbformatado.svg" alt="Logo da DB" class="dblogo" />
+  <a href="https://db.tec.br/"><img src="../../assets/svg/dbformatado.svg" alt="Logo da DB" class="dblogo" /></a>
 </div>

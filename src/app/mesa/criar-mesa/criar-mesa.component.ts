@@ -35,11 +35,11 @@ export class CriarMesaComponent implements OnInit {
       cartasDoJogo: [],
       cartasObjetivo: [],
       pontos: 0,
-      coracaoPeq: 2,
-      coracaoGra: 0,
-      ishost: true,
-      bonusCoracaoPeq: 0,
-      bonusCoracaoGra: 0,      
+      coracaoPequeno: 2,
+      coracaoGrande: 0,
+      isHost: true,
+      bonusCoracaoPequeno: 0,
+      bonusCoracaoGrande: 0,
       status: 'JOGANDO'
     };
     if(this.nomeValido()){
