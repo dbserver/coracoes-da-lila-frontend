@@ -5,7 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { RegrasComponent } from './regras.component';
 
-fdescribe('RegrasComponent', () => {
+describe('RegrasComponent', () => {
   let component: RegrasComponent;
   let fixture: ComponentFixture<RegrasComponent>;
 

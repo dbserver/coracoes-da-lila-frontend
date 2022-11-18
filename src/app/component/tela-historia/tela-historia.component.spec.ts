@@ -20,4 +20,11 @@ describe('TelaHistoriaComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  describe('Validar apresentação do conteúdo da página História do Jogo', () => {
+    it('deve conter o ícone de contraste de tela', () => {
+      let conteudoHistoriaDoJogo = fixture.nativeElement;
+      console.log(conteudoHistoriaDoJogo);
+    })
+  })
 });

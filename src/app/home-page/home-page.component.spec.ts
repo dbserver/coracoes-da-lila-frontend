@@ -5,7 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { HomePageComponent } from './home-page.component';
 
-fdescribe('HomePageComponent', () => {
+describe('HomePageComponent', () => {
   let component: HomePageComponent;
   let fixture: ComponentFixture<HomePageComponent>;
 
@@ -26,6 +26,12 @@ fdescribe('HomePageComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('deve conter o botão com o conteúdo "História do jogo" dentro da página home', () => {
+    let botaoHistoriaDoJogo = fixture.nativeElement.querySelector('#botaoHistoria');
+
+    expect(botaoHistoriaDoJogo.innerHTML).toEqual('História do jogo');
+  })
 
   it('deve redirecionar para a página de regras', inject([Router], (router: Router) => {
     spyOn(router, 'navigate').and.stub();
