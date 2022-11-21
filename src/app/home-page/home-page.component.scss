@@ -1,18 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+
 .container {
   display: flex;
+  justify-content: flex-start;
+  margin: 1rem 0 0 10rem;
+}
+
+.img-logo {
+  width: 100%;
+}
+
+.conteudo {
+  width: 450px;
+  display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   height: 90%;
 }
 
-#logo {
-  width: 50%;
-  padding-left: 15%;
-}
-
-img {
-  width: 75%;
+.conteudo p {
+  font-size: var(--tamanhoFonte);
+  color: var(--input-fontColor);
+  line-height: var(--font-heigth);
 }
 
 .conjunto-btn{
@@ -31,15 +43,10 @@ img {
   font-size: var(--tamanhoFonte);
 }
 
-input {
-  background-color: var(--bg-input);
-}
-
-@media (max-width: 600px) {
-  .btn {
-    font-size: calc(var(--tamanhoFonte) - 32%);
-    width: var(--btn-width);
-  }
+.img-lila {
+  width: 30%;
+  height: max-content;
+  margin: 2rem 0;
 }
 
 .patrocinio {
@@ -56,3 +63,12 @@ input {
 .dblogo {
   height: 70px;
 }
+
+@media (max-width: 600px) {
+  .btn {
+    font-size: calc(var(--tamanhoFonte) - 32%);
+    width: var(--btn-width);
+  }
+}
+
+

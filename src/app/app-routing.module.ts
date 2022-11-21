@@ -15,6 +15,7 @@ import { MaoJogadorComponent } from './mesa/mao-jogador/mao-jogador.component';
 import { IniciaPartidaComponent } from './mesa/inicia-partida/inicia-partida.component';
 import { TelaErroComponent } from './tela-erro/tela-erro.component';
 import { TelaHistoriaComponent } from './component/tela-historia/tela-historia.component';
+
 const routes: Routes = [
   {
     path: 'primeiroacesso',
@@ -79,11 +80,8 @@ const routes: Routes = [
   },
   {
     path:'**',
-    component:TelaErroComponent,
+    component: TelaErroComponent,
   }
-
-
-
 ];
 
 @NgModule({

@@ -1,9 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AcessibilidadeComponent } from 'src/app/acessibilidade/acessibilidade.component';
+import { AppComponent } from 'src/app/app.component';
 
 import { TelaHistoriaComponent } from './tela-historia.component';
 
-describe('TelaHistoriaComponent', () => {
+fdescribe('TelaHistoriaComponent', () => {
   let component: TelaHistoriaComponent;
   let fixture: ComponentFixture<TelaHistoriaComponent>;
 
@@ -24,11 +25,11 @@ describe('TelaHistoriaComponent', () => {
 
   describe('Validar apresentação do conteúdo da página História do Jogo', () => {
     it('deve conter o ícone de contraste de tela', () => {
-      //let appComponent = TestBed.createComponent(AcessibilidadeComponent);
+      let appComponent = TestBed.createComponent(AcessibilidadeComponent);
+      let primeiroParagrafo = fixture.nativeElement.querySelector('#switch');
       let conteudoHistoriaDoJogo = fixture.nativeElement;
-      
-      expect()
-      console.log(conteudoHistoriaDoJogo);
+  
+      console.log(primeiroParagrafo);
     })
   })
 });
