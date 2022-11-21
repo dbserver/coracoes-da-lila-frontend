@@ -34,9 +34,4 @@ fdescribe('RegrasComponent', () => {
     component.irParaHome();
     expect(router.navigate).toHaveBeenCalledWith(['/']);
   }));
-
-  it('deve mostrar o ícone de contraste', () => {
-    const acessibilidade = document.getElementById('switch');
-    expect(acessibilidade).toBeTruthy();
-  })
 })
