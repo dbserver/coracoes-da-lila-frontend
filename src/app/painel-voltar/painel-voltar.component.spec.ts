@@ -20,4 +20,11 @@ describe('PainelVoltarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('deve mostrar <button> escrito "Voltar"', () => {
+    const voltar: HTMLElement = fixture.nativeElement;
+    const button = voltar.querySelector('.botaoVoltar')!;
+    expect(button.textContent?.trim()).toEqual('Voltar');
+  });
+  
 });

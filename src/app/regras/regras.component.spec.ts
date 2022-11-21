@@ -6,7 +6,7 @@ import { AcessibilidadeComponent } from '../acessibilidade/acessibilidade.compon
 
 import { RegrasComponent } from './regras.component';
 
-describe('RegrasComponent', () => {
+fdescribe('RegrasComponent', () => {
   let component: RegrasComponent;
   let fixture: ComponentFixture<RegrasComponent>;
   let acessibilidade: AcessibilidadeComponent
@@ -34,12 +34,6 @@ describe('RegrasComponent', () => {
     component.irParaHome();
     expect(router.navigate).toHaveBeenCalledWith(['/']);
   }));
-
-  it('deve mostrar <button> escrito "Voltar"', () => {
-    const voltar: HTMLElement = fixture.nativeElement;
-    const button = voltar.querySelector('.botaoVoltar')!;
-    expect(button.textContent?.trim()).toEqual('Voltar');
-  })
 
   it('deve mostrar o ícone de contraste', () => {
     const acessibilidade = document.getElementById('switch');
