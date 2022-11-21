@@ -43,6 +43,7 @@ import { TelaErroComponent } from './tela-erro/tela-erro.component';
 import { IndicaJogadorComponent } from './mesa/indica-jogador/indica-jogador.component';
 import { TelaHistoriaComponent } from './component/tela-historia/tela-historia.component';
 import { RegrasComponent } from './regras/regras.component';
+import { PainelVoltarComponent } from './painel-voltar/painel-voltar.component';
 
 
 
@@ -72,7 +73,8 @@ import { RegrasComponent } from './regras/regras.component';
     IndicaJogadorComponent,
     RankingComponent,
     TelaHistoriaComponent,
-    RegrasComponent
+    RegrasComponent,
+    PainelVoltarComponent
   ],
   imports: [
     BrowserModule,

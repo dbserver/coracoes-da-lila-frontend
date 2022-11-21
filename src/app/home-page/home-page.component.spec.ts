@@ -30,7 +30,7 @@ describe('HomePageComponent', () => {
   it('deve conter o botão com o conteúdo "História do jogo" dentro da página home', () => {
     let botaoHistoriaDoJogo = fixture.nativeElement.querySelector('#botaoHistoria');
 
-    expect(botaoHistoriaDoJogo.innerHTML).toEqual('História do jogo');
+    expect(botaoHistoriaDoJogo.innerHTML.trim()).toEqual('História do jogo');
   })
 
   it('deve redirecionar para a página de regras', inject([Router], (router: Router) => {
