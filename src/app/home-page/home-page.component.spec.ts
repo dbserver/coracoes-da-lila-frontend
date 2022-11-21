@@ -32,4 +32,10 @@ fdescribe('HomePageComponent', () => {
     component.irParaRegras();
     expect(router.navigate).toHaveBeenCalledWith(['/regras']);
   }));
+
+  it('deve mostrar <button> escrito "Regras do Jogo"', () => {
+    const regrasDoJogo: HTMLElement = fixture.nativeElement;
+    const button = regrasDoJogo.querySelector('.botaoRegras')!;
+    expect(button.textContent?.trim()).toEqual('Regras do Jogo');
+  })
 });

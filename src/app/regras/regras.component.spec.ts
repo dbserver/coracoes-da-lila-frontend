@@ -2,12 +2,14 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { AcessibilidadeComponent } from '../acessibilidade/acessibilidade.component';
 
 import { RegrasComponent } from './regras.component';
 
 fdescribe('RegrasComponent', () => {
   let component: RegrasComponent;
   let fixture: ComponentFixture<RegrasComponent>;
+  let acessibilidade: AcessibilidadeComponent
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -33,4 +35,14 @@ fdescribe('RegrasComponent', () => {
     expect(router.navigate).toHaveBeenCalledWith(['/']);
   }));
 
+  it('deve mostrar <button> escrito "Voltar"', () => {
+    const voltar: HTMLElement = fixture.nativeElement;
+    const button = voltar.querySelector('.botaoVoltar')!;
+    expect(button.textContent?.trim()).toEqual('Voltar');
+  })
+
+  it('deve mostrar o ícone de contraste', () => {
+    const acessibilidade = document.getElementById('switch');
+    expect(acessibilidade).toBeTruthy();
+  })
 })
