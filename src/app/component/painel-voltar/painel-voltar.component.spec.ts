@@ -1,4 +1,5 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
 
 import { PainelVoltarComponent } from './painel-voltar.component';
 
@@ -21,10 +22,9 @@ describe('PainelVoltarComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('deve mostrar <button> escrito "Voltar"', () => {
-    const voltar: HTMLElement = fixture.nativeElement;
-    const button = voltar.querySelector('.botaoVoltar')!;
-    expect(button.textContent?.trim()).toEqual('Voltar');
-  });
-  
+  it('deve redirecionar para a home ao clicar', inject([Router], (router: Router) => {
+    spyOn(router, 'navigate').and.stub();
+    component.irParaHome();
+    expect(router.navigate).toHaveBeenCalledWith(['/']);
+  }));
 });

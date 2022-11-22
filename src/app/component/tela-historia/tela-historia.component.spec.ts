@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TelaHistoriaComponent } from './tela-historia.component';
 
-fdescribe('TelaHistoriaComponent', () => {
+describe('TelaHistoriaComponent', () => {
   let component: TelaHistoriaComponent;
   let fixture: ComponentFixture<TelaHistoriaComponent>;
 
