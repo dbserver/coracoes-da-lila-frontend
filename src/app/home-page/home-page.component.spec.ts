@@ -1,18 +1,12 @@
-<<<<<<< HEAD
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { LicenciamentoComponent } from '../licenciamento/licenciamento.component';
-=======
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
->>>>>>> desenvolvimento
+import { LicenciamentoComponent } from '../licenciamento/licenciamento.component';
 
 import { HomePageComponent } from './home-page.component';
-import { By } from '@angular/platform-browser';
-import { environment } from 'src/environments/environment';
 
-fdescribe('HomePageComponent', () => {
+describe('HomePageComponent', () => {
   let component: HomePageComponent;
   let fixture: ComponentFixture<HomePageComponent>;
 
@@ -34,14 +28,6 @@ fdescribe('HomePageComponent', () => {
     expect(component).toBeTruthy();
   });
 
-<<<<<<< HEAD
-  it('deve renderizar o componente licenciamento', () => {
-    const licenciamentoCom = TestBed.createComponent(LicenciamentoComponent);
-    const licenciamentoComInstance = licenciamentoCom.nativeElement;
-
-    expect(licenciamentoComInstance.innerHTML).toContain('Creative Commons'); 
-  });
-=======
 
   it('deve testar se url do link é do site do patrocinador', () =>{
     const tagLink = fixture.debugElement.nativeElement.querySelector('#link-patrocinador');
@@ -66,5 +52,11 @@ fdescribe('HomePageComponent', () => {
     expect(router.navigate).toHaveBeenCalledWith(['/regras']);
   }));
 
->>>>>>> desenvolvimento
+
+  it('deve renderizar o componente licenciamento', () => {
+    const licenciamentoCom = TestBed.createComponent(LicenciamentoComponent);
+    const licenciamentoComInstance = licenciamentoCom.nativeElement;
+
+    expect(licenciamentoComInstance.innerHTML).toContain('Creative Commons'); 
+  });
 });
