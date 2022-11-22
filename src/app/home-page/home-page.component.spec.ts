@@ -5,7 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { HomePageComponent } from './home-page.component';
 
-describe('HomePageComponent', () => {
+fdescribe('HomePageComponent', () => {
   let component: HomePageComponent;
   let fixture: ComponentFixture<HomePageComponent>;
 
@@ -44,10 +44,16 @@ describe('HomePageComponent', () => {
 
     expect(botaoCriarPartida.innerHTML).toContain('Criar Partida');
   });
-  
+
   it('deve redirecionar para a página de regras', inject([Router], (router: Router) => {
     spyOn(router, 'navigate').and.stub();
     component.irParaRegras();
     expect(router.navigate).toHaveBeenCalledWith(['/regras']);
   }));
+
+  it('deve mostrar <button> escrito "Regras do Jogo"', () => {
+    const regrasDoJogo: HTMLElement = fixture.nativeElement;
+    const button = regrasDoJogo.querySelector('.botaoRegras')!;
+    expect(button.textContent?.trim()).toEqual('Regras do Jogo');
+  })
 });
