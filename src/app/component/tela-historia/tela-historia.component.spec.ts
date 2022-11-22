@@ -1,12 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { By } from '@angular/platform-browser';
-import { AcessibilidadeComponent } from 'src/app/acessibilidade/acessibilidade.component';
+import { AcessibilidadeComponent } from 'src/app/component/acessibilidade/acessibilidade.component';
 import { AppComponent } from 'src/app/app.component';
-import { PainelVoltarComponent } from 'src/app/painel-voltar/painel-voltar.component';
+import { PainelVoltarComponent } from 'src/app/component/painel-voltar/painel-voltar.component';
 import { TelaHistoriaComponent } from './tela-historia.component';
 
-fdescribe('TelaHistoriaComponent', () => {
+describe('TelaHistoriaComponent', () => {
   let component: TelaHistoriaComponent;
   let fixture: ComponentFixture<TelaHistoriaComponent>;
 

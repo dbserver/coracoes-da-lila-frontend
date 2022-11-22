@@ -1,0 +1,25 @@
+div{
+    
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+    height: auto;
+    
+    background-color: var(--btn-bg);
+    border-radius: 30px;
+    
+    
+}
+
+//menu para alteração de fonte e contraste
+
+label{
+    padding: 2px;
+    display: inline-block;
+    font-size:15pt;
+    margin-right: 10px;
+    color: var(--font-color);
+    
+      
+    
+  }
