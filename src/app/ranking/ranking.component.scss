@@ -38,7 +38,6 @@ td {
 }
 
 .btn {
-  display: flex;
   justify-content: center;
   margin-top: 5%;
   background-color: var(--btn-bg);
@@ -47,4 +46,11 @@ td {
   height: var(--btn-height);
   border-radius: 30px;
   font-size: var(--tamanhoFonte);
+}
+
+@media (max-width: 600px) {
+  .btn {
+    font-size: calc(var(--tamanhoFonte) - 32%);
+    width: var(--btn-width);
+  }
 }
