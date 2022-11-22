@@ -6,6 +6,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import {MatCardModule} from '@angular/material/card';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -42,6 +43,7 @@ import { myRxStompConfig } from './rx-stomp.config';
 import { TelaErroComponent } from './tela-erro/tela-erro.component';
 import { IndicaJogadorComponent } from './mesa/indica-jogador/indica-jogador.component';
 import { RegrasComponent } from './regras/regras.component';
+import { CartaInicioComponent } from './mesa/carta-inicio/carta-inicio.component';
 
 
 
@@ -70,7 +72,8 @@ import { RegrasComponent } from './regras/regras.component';
     TelaErroComponent,
     IndicaJogadorComponent,
     RankingComponent,
-    RegrasComponent
+    RegrasComponent,
+    CartaInicioComponent
   ],
   imports: [
     BrowserModule,
@@ -89,7 +92,7 @@ import { RegrasComponent } from './regras/regras.component';
     MatIconModule,
     HttpClientModule,
     ClipboardModule,
-    
+    MatCardModule
   ],
   providers: [
     {
