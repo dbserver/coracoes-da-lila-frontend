@@ -1,17 +1,12 @@
-import { AppComponent } from './../../app.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-<<<<<<< HEAD
+
 import { By } from '@angular/platform-browser';
 import { AcessibilidadeComponent } from 'src/app/acessibilidade/acessibilidade.component';
 import { AppComponent } from 'src/app/app.component';
 import { PainelVoltarComponent } from 'src/app/painel-voltar/painel-voltar.component';
-=======
-import { AcessibilidadeComponent } from './../../acessibilidade/acessibilidade.component';
->>>>>>> 99977fc7c7ddf2cfc92636a64963465b9860bb93
-
 import { TelaHistoriaComponent } from './tela-historia.component';
 
-describe('TelaHistoriaComponent', () => {
+fdescribe('TelaHistoriaComponent', () => {
   let component: TelaHistoriaComponent;
   let fixture: ComponentFixture<TelaHistoriaComponent>;
 
@@ -30,7 +25,6 @@ describe('TelaHistoriaComponent', () => {
     expect(component).toBeTruthy();
   });
 
-<<<<<<< HEAD
   describe('Validar apresentação do conteúdo da página História do Jogo', () => {
     it('deve conter o ícone de contraste de tela', () => {
       let acessibilidadeComponent = TestBed.createComponent(AcessibilidadeComponent);
@@ -76,12 +70,13 @@ describe('TelaHistoriaComponent', () => {
     contrasteBotao.click();
     appComponent.detectChanges();
 
-    let corpoDoTexto = fixture.debugElement.query(By.css('body'));
-    console.log(corpoDoTexto);
-    console.log(fixture.nativeElement);
+    let corpoDoTexto = fixture.debugElement.query(By.css('.body')).nativeElement;
+    let body = component
+
+    
+    console.log(body);
+    console.log(fixture.nativeElement.styles);
     console.log(contrasteBotao.checked);
   })
 
-=======
->>>>>>> 99977fc7c7ddf2cfc92636a64963465b9860bb93
 });
