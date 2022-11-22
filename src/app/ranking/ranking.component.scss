@@ -29,3 +29,22 @@ td {
   flex-direction: column;
   justify-content: center;
 }
+
+.div-btn{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  background-color: var(--btn-bg);
+  color: var(--font-color);
+  width: var(--btn-width);
+  height: 3%;
+  border-radius: 30px;
+  font-size: var(--tamanhoFonte);
+}
