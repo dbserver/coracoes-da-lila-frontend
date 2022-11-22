@@ -42,8 +42,8 @@ td {
   margin-top: 5%;
   background-color: var(--btn-bg);
   color: var(--font-color);
-  width: var(--btn-width);
-  height: var(--btn-height);
+  width: fit-content;
+  height: fit-content;
   border-radius: 30px;
   font-size: var(--tamanhoFonte);
 }
