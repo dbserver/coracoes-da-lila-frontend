@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PainelVoltarComponent } from './painel-voltar.component';
 
-describe('PainelVoltarComponent', () => {
+fdescribe('PainelVoltarComponent', () => {
   let component: PainelVoltarComponent;
   let fixture: ComponentFixture<PainelVoltarComponent>;
 
@@ -26,5 +26,10 @@ describe('PainelVoltarComponent', () => {
     const button = voltar.querySelector('.botaoVoltar')!;
     expect(button.textContent?.trim()).toEqual('Voltar');
   });
-  
+
+  it('deve mostrar imagem do logo', () => {
+    const imagem = fixture.nativeElement.querySelector('img');
+    expect(imagem['src']).toContain('LogoLilaCor.png');
+  });
+
 });
