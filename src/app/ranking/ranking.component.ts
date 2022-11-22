@@ -12,7 +12,8 @@ export class RankingComponent implements OnInit {
 
   constructor(private mesa : MesaJogoService ) {
     this.jogadores = [];
-   }
+
+  }
 
   ngOnInit(): void {
     this.mesa.getemitSalaObservable().subscribe(sala =>{
@@ -21,5 +22,6 @@ export class RankingComponent implements OnInit {
           return JogadorB.pontos - JogadorA.pontos;
         });
       });
+
     }
 }
