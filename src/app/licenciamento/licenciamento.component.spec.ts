@@ -3,7 +3,7 @@ import { HomePageComponent } from '../home-page/home-page.component';
 
 import { LicenciamentoComponent } from './licenciamento.component';
 
-fdescribe('LicenciamentoComponent', () => {
+describe('LicenciamentoComponent', () => {
   let component: LicenciamentoComponent;
   let fixture: ComponentFixture<LicenciamentoComponent>;
 
