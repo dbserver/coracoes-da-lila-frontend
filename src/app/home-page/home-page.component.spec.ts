@@ -1,8 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { LicenciamentoComponent } from '../licenciamento/licenciamento.component';
 
 import { HomePageComponent } from './home-page.component';
 
-describe('HomePageComponent', () => {
+fdescribe('HomePageComponent', () => {
   let component: HomePageComponent;
   let fixture: ComponentFixture<HomePageComponent>;
 
@@ -21,5 +22,12 @@ describe('HomePageComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('deve renderizar o componente licenciamento', () => {
+    const licenciamentoCom = TestBed.createComponent(LicenciamentoComponent);
+    const licenciamentoComInstance = licenciamentoCom.nativeElement;
+
+    expect(licenciamentoComInstance.innerHTML).toContain('Creative Commons'); 
   });
 });
