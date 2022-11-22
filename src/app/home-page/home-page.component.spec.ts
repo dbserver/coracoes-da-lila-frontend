@@ -7,7 +7,7 @@ import { HomePageComponent } from './home-page.component';
 import { By } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 
-fdescribe('HomePageComponent', () => {
+describe('HomePageComponent', () => {
   let component: HomePageComponent;
   let fixture: ComponentFixture<HomePageComponent>;
 
@@ -46,11 +46,11 @@ fdescribe('HomePageComponent', () => {
 
     expect(botaoCriarPartida.innerHTML).toContain('Criar Partida');
   });
-  
+
   it('deve redirecionar para a página de regras', inject([Router], (router: Router) => {
     spyOn(router, 'navigate').and.stub();
     component.irParaRegras();
     expect(router.navigate).toHaveBeenCalledWith(['/regras']);
   }));
-  
+
 });
