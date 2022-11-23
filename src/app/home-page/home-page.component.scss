@@ -18,11 +18,12 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  height: 90%;
 }
 
 .conteudo p {
   font-size: var(--tamanhoFonte);
-  color: var(--font-color-aguarde);
+  color: var(--input-fontColor);
   line-height: var(--font-heigth);
 }
 
@@ -35,7 +36,7 @@
   display: inline-block;
   margin-top: 10px;
   background-color: var(--btn-bg);
-  // color: var(--font-color);
+  color: var(--font-color);
   width: var(--btn-width);
   height: var(--btn-height);
   border-radius: 30px;

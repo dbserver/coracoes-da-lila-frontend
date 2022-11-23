@@ -28,6 +28,11 @@ describe('HomePageComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('deve conter o botão com o conteúdo "História do jogo" dentro da página home', () => {
+    let botaoHistoriaDoJogo = fixture.nativeElement.querySelector('#botaoHistoria');
+
+    expect(botaoHistoriaDoJogo.innerHTML.trim()).toEqual('História do jogo');
+  })
 
   it('deve testar se url do link é do site do patrocinador', () =>{
     const tagLink = fixture.debugElement.nativeElement.querySelector('#link-patrocinador');
@@ -52,11 +57,16 @@ describe('HomePageComponent', () => {
     expect(router.navigate).toHaveBeenCalledWith(['/regras']);
   }));
 
-
   it('deve renderizar o componente licenciamento', () => {
     const licenciamentoCom = TestBed.createComponent(LicenciamentoComponent);
     const licenciamentoComInstance = licenciamentoCom.nativeElement;
 
     expect(licenciamentoComInstance.innerHTML).toContain('Creative Commons'); 
   });
+  
+  it('deve mostrar <button> escrito "Regras do Jogo"', () => {
+    const regrasDoJogo: HTMLElement = fixture.nativeElement;
+    const button = regrasDoJogo.querySelector('.botaoRegras')!;
+    expect(button.textContent?.trim()).toEqual('Regras do Jogo');
+  })
 });

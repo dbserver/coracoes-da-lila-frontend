@@ -1,40 +1,51 @@
 <div class="container">
     <div class="conteudo">
       <h1>
-        <img 
-          class="img-logo" 
-          src="../../assets/img/logoLilaSozinho.png" 
-          alt="Corações da lila logotipo" 
+        <img
+          class="img-logo"
+          src="../../assets/LogoLilaCor.png"
+
+          alt="Corações da lila logotipo"
           />
       </h1>
       <p tabindex="1" id="paragrafo1">
-        É um jogo de cartas de 30 minutos para 2 a 6 jogadores que facilita a 
-        conversa e dissemina informações sobre acessibilidade e inclusão de pessoas 
+        É um jogo de cartas de 30 minutos para 2 a 6 jogadores que facilita a
+        conversa e dissemina informações sobre acessibilidade e inclusão de pessoas
         com deficiência (PCDs).
       </p>
       <p tabindex="2" id="paragrafo2">
-        LILA é a sigla de Ler Interpretar (durante o jogo) Lembrar Agir 
+        LILA é a sigla de Ler Interpretar (durante o jogo) Lembrar Agir
         (nas situações reais).
       </p>
-      <button 
-        tabindex="3" 
+      <button
+        tabindex="3"
         class="btn"
         [routerLink]="['/mesa']"
         id="buttonMesa"
         mat-raised-button>
         Criar Partida
       </button>
-      <button 
+      <button
         tabindex="4"
-        class="btn" 
-        mat-raised-button 
+
+        class="btn botaoRegras"
+
+        mat-raised-button
         (click)="irParaRegras()">
         Regras do Jogo
       </button>
+      <button
+        tabindex="5"
+        class="btn"
+        mat-raised-button
+        [routerLink]="['/historia']"
+        id="botaoHistoria">
+        História do jogo
+      </button>
     </div>
-    <img 
-      class="img-lila" 
-      src="../../assets/img/lilaSozinha.png" 
+    <img
+      class="img-lila"
+      src="../../assets/img/lilaSozinha.png"
       alt=""
       />
 </div>

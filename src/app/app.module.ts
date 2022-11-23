@@ -14,7 +14,7 @@ import { AppComponent } from './app.component';
 import { ModalComponent } from './modal/modal.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { PrimeiroAcessoComponent } from './administrador/primeiro-acesso/primeiro-acesso.component';
-import { AcessibilidadeComponent } from './acessibilidade/acessibilidade.component';
+import { AcessibilidadeComponent } from './component/acessibilidade/acessibilidade.component';
 import { TelaSenhaComponent } from './administrador/tela-senha/tela-senha.component';
 import { MenuDoAdminComponent } from './administrador/menu-do-admin/menu-do-admin.component';
 import { MontarCartasComponent } from './montar-cartas/montar-cartas.component';
@@ -30,7 +30,7 @@ import { IniciaPartidaComponent } from './mesa/inicia-partida/inicia-partida.com
 import { MesaJogoComponent } from './mesa/mesa-jogo/mesa-jogo.component';
 import { AreaJogadoresComponent } from './mesa/area-jogadores/area-jogadores.component';
 import { MesaJogoService } from './service/mesa-jogo.service';
-import { RankingComponent } from './ranking/ranking.component';
+import { RankingComponent } from './component/ranking/ranking.component';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import {
   InjectableRxStompConfig,
@@ -41,8 +41,13 @@ import {
 import { myRxStompConfig } from './rx-stomp.config';
 import { TelaErroComponent } from './tela-erro/tela-erro.component';
 import { IndicaJogadorComponent } from './mesa/indica-jogador/indica-jogador.component';
+<<<<<<< HEAD
 import { LicenciamentoComponent } from './licenciamento/licenciamento.component';
+=======
+import { TelaHistoriaComponent } from './component/tela-historia/tela-historia.component';
+>>>>>>> desenvolvimento
 import { RegrasComponent } from './regras/regras.component';
+import { PainelVoltarComponent } from './component/painel-voltar/painel-voltar.component';
 
 
 
@@ -71,8 +76,14 @@ import { RegrasComponent } from './regras/regras.component';
     TelaErroComponent,
     IndicaJogadorComponent,
     RankingComponent,
+<<<<<<< HEAD
     LicenciamentoComponent,
     RegrasComponent
+=======
+    TelaHistoriaComponent,
+    RegrasComponent,
+    PainelVoltarComponent
+>>>>>>> desenvolvimento
   ],
   imports: [
     BrowserModule,
@@ -91,7 +102,7 @@ import { RegrasComponent } from './regras/regras.component';
     MatIconModule,
     HttpClientModule,
     ClipboardModule,
-    
+
   ],
   providers: [
     {
