@@ -30,7 +30,7 @@ import { IniciaPartidaComponent } from './mesa/inicia-partida/inicia-partida.com
 import { MesaJogoComponent } from './mesa/mesa-jogo/mesa-jogo.component';
 import { AreaJogadoresComponent } from './mesa/area-jogadores/area-jogadores.component';
 import { MesaJogoService } from './service/mesa-jogo.service';
-import { RankingComponent } from './ranking/ranking.component';
+import { RankingComponent } from './component/ranking/ranking.component';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import {
   InjectableRxStompConfig,
