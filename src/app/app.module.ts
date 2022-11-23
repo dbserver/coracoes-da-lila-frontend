@@ -45,6 +45,7 @@ import { LicenciamentoComponent } from './licenciamento/licenciamento.component'
 import { TelaHistoriaComponent } from './component/tela-historia/tela-historia.component';
 import { RegrasComponent } from './regras/regras.component';
 import { PainelVoltarComponent } from './component/painel-voltar/painel-voltar.component';
+import { TelaDownloadComponent } from './component/tela-download/tela-download.component';
 
 
 
@@ -76,7 +77,8 @@ import { PainelVoltarComponent } from './component/painel-voltar/painel-voltar.c
     LicenciamentoComponent,
     TelaHistoriaComponent,
     RegrasComponent,
-    PainelVoltarComponent
+    PainelVoltarComponent,
+    TelaDownloadComponent
   ],
   imports: [
     BrowserModule,
