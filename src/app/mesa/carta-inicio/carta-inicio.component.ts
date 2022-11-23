@@ -1,3 +1,5 @@
+import { CartaService } from './../../service/cartas.service';
+import { CartaInicio } from './../../model/cartaInicio';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,15 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartaInicioComponent implements OnInit {
 
-  cartaInicio = {
-    id:'1',
-    nome: 'carta1',
-    descricao: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis nisi egestas, porttitor metus vitae, sollicitudin nunc. In euismod felis sit amet lacinia lacinia.'
-  }
+  public listarCartaInicio :CartaInicio | undefined;
 
-  constructor() { }
+  constructor(private cartaService:CartaService) {
+   }
 
   ngOnInit(): void {
+    this.getCartaInicio();
+  }
+
+   private getCartaInicio(): void{
+    this.cartaService
+    .getCartaInicio()
+    .subscribe((cartaInicio : CartaInicio) =>{
+      console.table()
+      this.listarCartaInicio = cartaInicio;
+    } , error => console.log(error));
   }
 
 }
