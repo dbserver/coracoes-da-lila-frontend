@@ -14,6 +14,7 @@ import { MesaJogoComponent } from './mesa/mesa-jogo/mesa-jogo.component';
 import { MaoJogadorComponent } from './mesa/mao-jogador/mao-jogador.component';
 import { IniciaPartidaComponent } from './mesa/inicia-partida/inicia-partida.component';
 import { TelaErroComponent } from './tela-erro/tela-erro.component';
+import { TelaHistoriaComponent } from './component/tela-historia/tela-historia.component';
 
 const routes: Routes = [
   {
@@ -68,6 +69,10 @@ const routes: Routes = [
   },  {
     path: 'iniciaPartida',
     component: IniciaPartidaComponent,
+  },
+  {
+    path: 'historia',
+    component: TelaHistoriaComponent,
   },
   {
     path: 'regras',
