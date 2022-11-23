@@ -69,4 +69,5 @@ describe('HomePageComponent', () => {
     const button = regrasDoJogo.querySelector('.botaoRegras')!;
     expect(button.textContent?.trim()).toEqual('Regras do Jogo');
   })
+
 });
