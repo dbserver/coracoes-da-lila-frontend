@@ -6,7 +6,7 @@ import { AcessibilidadeComponent } from '../acessibilidade/acessibilidade.compon
 
 import { RegrasComponent } from './regras.component';
 
-fdescribe('RegrasComponent', () => {
+describe('RegrasComponent', () => {
   let component: RegrasComponent;
   let fixture: ComponentFixture<RegrasComponent>;
   let acessibilidade: AcessibilidadeComponent

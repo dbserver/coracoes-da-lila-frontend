@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { HomePageComponent } from './home-page.component';
+import { By } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
 
 fdescribe('HomePageComponent', () => {
   let component: HomePageComponent;
@@ -33,6 +35,11 @@ fdescribe('HomePageComponent', () => {
     expect(botaoHistoriaDoJogo.innerHTML.trim()).toEqual('História do jogo');
   })
 
+  it('deve testar se url do link é do site do patrocinador', () =>{
+    const tagLink = fixture.debugElement.nativeElement.querySelector('#link-patrocinador');
+    expect(tagLink.href).toEqual('https://db.tec.br/');
+  });
+
   it('Verifica se o texto "PCDs" está na pagina home', () => {
     let primeiroParagrafo = fixture.nativeElement.querySelector('#paragrafo1');
 
@@ -56,4 +63,5 @@ fdescribe('HomePageComponent', () => {
     const button = regrasDoJogo.querySelector('.botaoRegras')!;
     expect(button.textContent?.trim()).toEqual('Regras do Jogo');
   })
+
 });

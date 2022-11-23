@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PainelVoltarComponent } from './painel-voltar.component';
 
-fdescribe('PainelVoltarComponent', () => {
+describe('PainelVoltarComponent', () => {
   let component: PainelVoltarComponent;
   let fixture: ComponentFixture<PainelVoltarComponent>;
 
