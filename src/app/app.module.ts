@@ -41,6 +41,7 @@ import {
 import { myRxStompConfig } from './rx-stomp.config';
 import { TelaErroComponent } from './tela-erro/tela-erro.component';
 import { IndicaJogadorComponent } from './mesa/indica-jogador/indica-jogador.component';
+import { LicenciamentoComponent } from './licenciamento/licenciamento.component';
 import { TelaHistoriaComponent } from './component/tela-historia/tela-historia.component';
 import { RegrasComponent } from './regras/regras.component';
 import { PainelVoltarComponent } from './component/painel-voltar/painel-voltar.component';
@@ -73,6 +74,7 @@ import { TelaDownloadComponent } from './component/tela-download/tela-download.c
     TelaErroComponent,
     IndicaJogadorComponent,
     RankingComponent,
+    LicenciamentoComponent,
     TelaHistoriaComponent,
     RegrasComponent,
     PainelVoltarComponent,

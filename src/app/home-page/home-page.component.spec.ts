@@ -2,6 +2,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { LicenciamentoComponent } from '../licenciamento/licenciamento.component';
 
 import { HomePageComponent } from './home-page.component';
 
@@ -47,6 +48,13 @@ fdescribe('HomePageComponent', () => {
     expect(router.navigate).toHaveBeenCalledWith(['/regras']);
   }));
 
+  it('deve renderizar o componente licenciamento', () => {
+    const licenciamentoCom = TestBed.createComponent(LicenciamentoComponent);
+    const licenciamentoComInstance = licenciamentoCom.nativeElement;
+
+    expect(licenciamentoComInstance.innerHTML).toContain('Creative Commons'); 
+  });
+  
   it('deve mostrar <button> escrito "Regras do Jogo"', () => {
     const regrasDoJogo: HTMLElement = fixture.nativeElement;
     const button = regrasDoJogo.querySelector('.botaoRegras')!;
