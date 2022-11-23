@@ -5,7 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { HomePageComponent } from './home-page.component';
 
-describe('HomePageComponent', () => {
+fdescribe('HomePageComponent', () => {
   let component: HomePageComponent;
   let fixture: ComponentFixture<HomePageComponent>;
 
@@ -27,22 +27,13 @@ describe('HomePageComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('deve conter o botão com o conteúdo "História do jogo" dentro da página home', () => {
-    let botaoHistoriaDoJogo = fixture.nativeElement.querySelector('#botaoHistoria');
-
-    expect(botaoHistoriaDoJogo.innerHTML.trim()).toEqual('História do jogo');
-  })
-
-  it('deve testar se url do link é do site do patrocinador', () =>{
-    const tagLink = fixture.debugElement.nativeElement.querySelector('#link-patrocinador');
-    expect(tagLink.href).toEqual('https://db.tec.br/');
-  });
-
+  
   it('Verifica se o texto "PCDs" está na pagina home', () => {
     let primeiroParagrafo = fixture.nativeElement.querySelector('#paragrafo1');
 
     expect(primeiroParagrafo.innerHTML).toContain('PCDs');
   });
+
 
   it('Verifica se o botão existe e tem o conteudo "Criar Partida"', () => {
     let botaoCriarPartida = fixture.nativeElement.querySelector('#buttonMesa');
@@ -61,4 +52,22 @@ describe('HomePageComponent', () => {
     const button = regrasDoJogo.querySelector('.botaoRegras')!;
     expect(button.textContent?.trim()).toEqual('Regras do Jogo');
   })
+
+  it('deve conter o botão com o conteúdo "Download para Impressão" dentro da página home', () => {
+    let botaoHistoriaDoJogo = fixture.nativeElement.querySelector('#botaoDownload');
+
+    expect(botaoHistoriaDoJogo.innerHTML.trim()).toEqual('Download para impressão');
+  })
+
+  it('deve conter o botão com o conteúdo "História do jogo" dentro da página home', () => {
+    let botaoHistoriaDoJogo = fixture.nativeElement.querySelector('#botaoHistoria');
+
+    expect(botaoHistoriaDoJogo.innerHTML.trim()).toEqual('História do jogo');
+  })
+
+  it('deve testar se url do link é do site do patrocinador', () =>{
+    const tagLink = fixture.debugElement.nativeElement.querySelector('#link-patrocinador');
+    expect(tagLink.href).toEqual('https://db.tec.br/');
+  });
+
 });
