@@ -41,7 +41,11 @@ import {
 import { myRxStompConfig } from './rx-stomp.config';
 import { TelaErroComponent } from './tela-erro/tela-erro.component';
 import { IndicaJogadorComponent } from './mesa/indica-jogador/indica-jogador.component';
+<<<<<<< HEAD
+import { LicenciamentoComponent } from './licenciamento/licenciamento.component';
+=======
 import { TelaHistoriaComponent } from './component/tela-historia/tela-historia.component';
+>>>>>>> desenvolvimento
 import { RegrasComponent } from './regras/regras.component';
 import { PainelVoltarComponent } from './component/painel-voltar/painel-voltar.component';
 
@@ -72,9 +76,14 @@ import { PainelVoltarComponent } from './component/painel-voltar/painel-voltar.c
     TelaErroComponent,
     IndicaJogadorComponent,
     RankingComponent,
+<<<<<<< HEAD
+    LicenciamentoComponent,
+    RegrasComponent
+=======
     TelaHistoriaComponent,
     RegrasComponent,
     PainelVoltarComponent
+>>>>>>> desenvolvimento
   ],
   imports: [
     BrowserModule,
