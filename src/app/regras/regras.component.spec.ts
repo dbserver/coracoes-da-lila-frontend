@@ -2,12 +2,14 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { AcessibilidadeComponent } from '../component/acessibilidade/acessibilidade.component';
 
 import { RegrasComponent } from './regras.component';
 
 describe('RegrasComponent', () => {
   let component: RegrasComponent;
   let fixture: ComponentFixture<RegrasComponent>;
+  let acessibilidade: AcessibilidadeComponent
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -32,5 +34,4 @@ describe('RegrasComponent', () => {
     component.irParaHome();
     expect(router.navigate).toHaveBeenCalledWith(['/']);
   }));
-
 })

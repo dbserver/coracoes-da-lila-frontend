@@ -4,8 +4,6 @@ import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { HomePageComponent } from './home-page.component';
-import { By } from '@angular/platform-browser';
-import { environment } from 'src/environments/environment';
 
 describe('HomePageComponent', () => {
   let component: HomePageComponent;
@@ -29,6 +27,11 @@ describe('HomePageComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('deve conter o botão com o conteúdo "História do jogo" dentro da página home', () => {
+    let botaoHistoriaDoJogo = fixture.nativeElement.querySelector('#botaoHistoria');
+
+    expect(botaoHistoriaDoJogo.innerHTML.trim()).toEqual('História do jogo');
+  })
 
   it('deve testar se url do link é do site do patrocinador', () =>{
     const tagLink = fixture.debugElement.nativeElement.querySelector('#link-patrocinador');
@@ -53,4 +56,9 @@ describe('HomePageComponent', () => {
     expect(router.navigate).toHaveBeenCalledWith(['/regras']);
   }));
 
+  it('deve mostrar <button> escrito "Regras do Jogo"', () => {
+    const regrasDoJogo: HTMLElement = fixture.nativeElement;
+    const button = regrasDoJogo.querySelector('.botaoRegras')!;
+    expect(button.textContent?.trim()).toEqual('Regras do Jogo');
+  })
 });

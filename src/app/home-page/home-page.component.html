@@ -3,7 +3,8 @@
       <h1>
         <img
           class="img-logo"
-          src="../../assets/img/logoLilaSozinho.png"
+          src="../../assets/LogoLilaCor.png"
+
           alt="Corações da lila logotipo"
           />
       </h1>
@@ -26,10 +27,20 @@
       </button>
       <button
         tabindex="4"
-        class="btn"
+
+        class="btn botaoRegras"
+
         mat-raised-button
         (click)="irParaRegras()">
         Regras do Jogo
+      </button>
+      <button
+        tabindex="5"
+        class="btn"
+        mat-raised-button
+        [routerLink]="['/historia']"
+        id="botaoHistoria">
+        História do jogo
       </button>
     </div>
     <img
