@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Jogador } from '../model/jogador';
-import { MesaJogoService } from '../service/mesa-jogo.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Jogador } from '../../model/jogador';
+import { MesaJogoService } from '../../service/mesa-jogo.service';
 
 @Component({
   selector: 'app-ranking',

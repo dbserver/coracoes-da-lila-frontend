@@ -1,25 +1,23 @@
-
 .body{
-    margin: 20px 50px 0 0;
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: auto 80%;
 }
 
 .titulo {
-    margin-right: 60px;
+    margin: 0 60px 20px 0;
     color: var(--input-fontColor);
-    font-size: calc(var(--tamanhoFonte) * 1.2);
+    font-size: calc(var(--tamanhoFonte)*2);
 }
 
 .conteudo{
-    margin: 0px 50px 0 0;
+    margin: 3% 8% 5% ;
     color: var(--input-fontColor);
-    font-size: calc(var(--tamanhoFonte) * 0.75);
+    font-size: var(--tamanhoFonte);
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: left;
-    line-height: var(--font-heigth);
+    line-height: calc(var(--font-heigth)*1.3);
 }
 
 ul {
@@ -33,10 +31,4 @@ figure{
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-
-
-.caption {
-    font-size: calc(var(--tamanhoFonte) - 5px);
 }
