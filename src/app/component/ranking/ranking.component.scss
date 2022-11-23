@@ -29,3 +29,28 @@ td {
   flex-direction: column;
   justify-content: center;
 }
+
+.div-btn{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  justify-content: center;
+  margin-top: 5%;
+  background-color: var(--btn-bg);
+  color: var(--font-color);
+  width: fit-content;
+  height: fit-content;
+  border-radius: 30px;
+  font-size: var(--tamanhoFonte);
+}
+
+@media (max-width: 600px) {
+  .btn {
+    font-size: calc(var(--tamanhoFonte) - 32%);
+    width: var(--btn-width);
+  }
+}

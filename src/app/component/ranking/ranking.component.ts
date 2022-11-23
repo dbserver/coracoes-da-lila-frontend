@@ -10,10 +10,9 @@ import { MesaJogoService } from '../../service/mesa-jogo.service';
 export class RankingComponent implements OnInit {
   public jogadores : Jogador [];
 
-  constructor(private mesa : MesaJogoService ) {
+  constructor(private router: Router, private mesa : MesaJogoService ) {
     this.jogadores = [];
-
-  }
+   }
 
   ngOnInit(): void {
     this.mesa.getemitSalaObservable().subscribe(sala =>{
@@ -22,6 +21,9 @@ export class RankingComponent implements OnInit {
           return JogadorB.pontos - JogadorA.pontos;
         });
       });
+    }
 
+    irParaHome() {
+      this.router.navigate([''])
     }
 }
