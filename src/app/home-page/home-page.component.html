@@ -16,28 +16,17 @@
         LILA é a sigla de Ler Interpretar (durante o jogo) Lembrar Agir
         (nas situações reais).
       </p>
-      <button
-        tabindex="3"
-        class="btn"
-        [routerLink]="['/mesa']"
-        id="buttonMesa"
-        mat-raised-button>
+      <button tabindex="3" class="btn" [routerLink]="['/mesa']" id="buttonMesa" mat-raised-button>
         Criar Partida
       </button>
-      <button
-        tabindex="4"
-        class="btn botaoRegras"
-        mat-raised-button
-        (click)="irParaRegras()">
+      <button tabindex="4" class="btn botaoRegras" mat-raised-button (click)="irParaRegras()">
         Regras do Jogo
       </button>
-      <button
-        tabindex="5"
-        class="btn"
-        mat-raised-button
-        [routerLink]="['/historia']"
-        id="botaoHistoria">
+      <button tabindex="5" class="btn" mat-raised-button [routerLink]="['/historia']" id="botaoHistoria">
         História do jogo
+      </button>
+      <button tabindex="5" class="btn" mat-raised-button [routerLink]="['/download']" id="botaoDonwload">
+        Download para impressão
       </button>
     </div>
     <img

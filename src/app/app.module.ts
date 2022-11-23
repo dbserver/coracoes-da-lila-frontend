@@ -44,6 +44,7 @@ import { IndicaJogadorComponent } from './mesa/indica-jogador/indica-jogador.com
 import { TelaHistoriaComponent } from './component/tela-historia/tela-historia.component';
 import { RegrasComponent } from './regras/regras.component';
 import { PainelVoltarComponent } from './component/painel-voltar/painel-voltar.component';
+import { TelaDownloadComponent } from './component/tela-download/tela-download.component';
 
 
 
@@ -74,7 +75,8 @@ import { PainelVoltarComponent } from './component/painel-voltar/painel-voltar.c
     RankingComponent,
     TelaHistoriaComponent,
     RegrasComponent,
-    PainelVoltarComponent
+    PainelVoltarComponent,
+    TelaDownloadComponent
   ],
   imports: [
     BrowserModule,
