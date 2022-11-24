@@ -15,7 +15,7 @@
     top: 1rem;
 }
 .logo{
-    width: 15vw;
+    width: calc(var(--widthImagem)*0.45);
 }
 
 .btn {
