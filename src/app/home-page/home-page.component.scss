@@ -1,75 +1,73 @@
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .container {
-  display: flex;
-  justify-content: flex-start;
-  margin: 1rem 0 0 10rem;
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
 }
 
 .img-logo {
-  width: 100%;
+    width: 100%;
 }
 
 .conteudo {
-  width: 450px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  height: 90%;
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 90%;
 }
 
 .conteudo p {
-  font-size: var(--tamanhoFonte);
-  color: var(--input-fontColor);
-  line-height: var(--font-heigth);
+    font-size: var(--tamanhoFonte);
+    color: var(--input-fontColor);
+    line-height: var(--font-heigth);
 }
 
-.conjunto-btn{
-  display: flex;
-  flex-direction: column;
+.conjunto-btn {
+    display: flex;
+    flex-direction: column;
 }
 
 .btn {
-  display: inline-block;
-  padding: 0.2rem 1rem;
-  margin-top: 10px;
-  background-color: var(--btn-bg);
-  color: var(--font-color);
-  min-width: var(--btn-width);
-  height: var(--btn-height);
-  border-radius: 30px;
-  font-size: var(--tamanhoFonte);
+    display: inline-block;
+    padding: 0.2rem 1rem;
+    margin-top: 10px;
+    background-color: var(--btn-bg);
+    color: var(--font-color);
+    min-width: var(--btn-width);
+    height: var(--btn-height);
+    border-radius: 30px;
+    font-size: var(--tamanhoFonte);
 }
 
 .img-lila {
-  width: 30%;
-  height: max-content;
-  margin: 2rem 0;
+    width: 375px;
+    height: max-content;
+    margin: 2rem 0;
 }
 
 .patrocinio {
-  float: right;
-  text-align: center;
-  margin: 2rem 0 0 0;
+    float: right;
+    text-align: center;
+    margin: 2rem 0 0 0;
 }
+
 .texto-patrocinio {
-  font-weight: lighter;
-  margin: 0;
-  font-size: calc(var(--tamanhoFonte) * 0.75);
+    font-weight: lighter;
+    margin: 0;
+    font-size: calc(var(--tamanhoFonte) * 0.75);
 }
 
 .dblogo {
-  height: 70px;
+    height: 70px;
 }
 
 @media (max-width: 600px) {
-  .btn {
-    font-size: calc(var(--tamanhoFonte) - 32%);
-    width: var(--btn-width);
-  }
+    .btn {
+        font-size: calc(var(--tamanhoFonte) - 32%);
+        width: var(--btn-width);
+    }
 }
-
-
