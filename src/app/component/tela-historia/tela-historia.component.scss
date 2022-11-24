@@ -24,7 +24,7 @@ ul {
     list-style: none;
 }
 .image{
-    width: 50%;
+    width: var(--widthImagem);
 }
 
 figure{
