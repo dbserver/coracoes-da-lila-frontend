@@ -29,7 +29,8 @@ export class CartaService {
     return this.httpClient.get<CartaObjetivo[]>(`${environment.API_URL}${this.URLCartaObjetivo}`);
   }
 
-  getCartaInicio(): Observable<CartaInicio>{
-    return this.httpClient.get<CartaInicio>(`${environment.API_URL}${this.URLCartaInicio}/cartasorteada`)
+  getCartaInicio(uuid: String): Observable<CartaInicio>{
+    console.log(uuid);
+    return this.httpClient.get<CartaInicio>(`${environment.API_URL}${this.URLCartaInicio}/${uuid}`)
   }
 }

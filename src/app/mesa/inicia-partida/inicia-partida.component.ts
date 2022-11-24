@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Baralho } from 'src/app/model/baralho';
+import { CartaInicio } from 'src/app/model/cartaInicio';
 import { Jogador } from 'src/app/model/jogador';
 import { Sala } from 'src/app/model/sala';
+import { CartaService } from 'src/app/service/cartas.service';
 import { IniciaPartidaService } from 'src/app/service/inicia-partida.service';
 import { MesaJogoService } from 'src/app/service/mesa-jogo.service';
 
@@ -15,13 +18,16 @@ export class IniciaPartidaComponent implements OnInit {
   sala: Sala;
   jogadorPrincipal: Jogador;
   hash = '';
+  enviaCartaInicio: CartaInicio;
 
   constructor(
     private iniciaPartidaService: IniciaPartidaService,
-    private mesaJogoService: MesaJogoService
+    private mesaJogoService: MesaJogoService,
+    private cartaService: CartaService
   ) {
     this.sala = {} as Sala;
     this.jogadorPrincipal = {} as Jogador;
+    this.enviaCartaInicio = {} as CartaInicio;
   }
 
   verificaQuantidadeJogadores() {
@@ -45,5 +51,15 @@ export class IniciaPartidaComponent implements OnInit {
     this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => {
       this.jogadorPrincipal = jogador;
     });
+
+    this.getCartaInicio();
+  }
+
+  private getCartaInicio(){
+    let uuid = this.sala.baralho.idCartaInicio;
+    this.cartaService.getCartaInicio(uuid).subscribe((cartaInicio: CartaInicio)=>{
+      console.table()
+      this.enviaCartaInicio = cartaInicio;
+    }, error => console.log(error));
   }
 }

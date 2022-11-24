@@ -1,6 +1,8 @@
 import { CartaService } from './../../service/cartas.service';
 import { CartaInicio } from './../../model/cartaInicio';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Sala } from 'src/app/model/sala';
+import { Baralho } from 'src/app/model/baralho';
 
 @Component({
   selector: 'app-carta-inicio',
@@ -9,22 +11,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartaInicioComponent implements OnInit {
 
-  public listarCartaInicio :CartaInicio | undefined;
+  @Input() recebeCartaInicio: CartaInicio;
 
-  constructor(private cartaService:CartaService) {
-   }
+  constructor(private cartaSevice : CartaService) {
+    this.recebeCartaInicio = {} as CartaInicio;
+  }
 
   ngOnInit(): void {
-    this.getCartaInicio();
-  }
 
-   private getCartaInicio(): void{
-    this.cartaService
-    .getCartaInicio()
-    .subscribe((cartaInicio : CartaInicio) =>{
-      console.table()
-      this.listarCartaInicio = cartaInicio;
-    } , error => console.log(error));
   }
-
 }
