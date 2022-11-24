@@ -62,7 +62,7 @@ body {
   --btn-bg:#f4dc6d;
   --input-fontColor:black;
   --input-backgroundColor:#e5e4e2;
-  --tamanhoImagem: 50%;
+  --widthImagem: 50%;
 }
 
 .contraste:root {
@@ -77,7 +77,7 @@ body {
 
 .fonteMaior:root {
   --tamanhoFonte: 25pt;
-  --tamanhoImagem: 70%;
+  --widthImagem: 70%;
   --font-heigth: 2rem;
   --btn-width: 420px;
   --btn-height: auto;
