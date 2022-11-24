@@ -1,42 +1,12 @@
 .regras {
   display: grid;
-  grid-template-columns: auto 70%;
-}
-
-.menu-lila{
-  display: grid;
-  grid-template-rows: auto auto;
-  margin-left: 16%;
-  padding-right: 5%;
-  margin-top: 6%;
-}
-
-.logo-lila-menu{
-  position: fixed;
-}
-
-.div-btn{
-  position: fixed;
-  top: 38%;
-  margin-left: 1%;
-  margin-top: 2%;
-}
-
-.btn {
-  display: inline-block;
-  margin-top: 10px;
-  background-color: var(--btn-bg);
-  color: var(--font-color);
-  width: var(--btn-width);
-  height: 3%;
-  border-radius: 30px;
-  font-size: var(--tamanhoFonte);
+  grid-template-columns: auto 80%;
 }
 
 .caixa-regras{
+  background-color: var(--background);
   box-sizing: margin-box;
   margin: 3% 5% 5%;
- // max-height: 50%;
 }
 
 .imagemLila {
@@ -66,9 +36,11 @@
 }
 .titulo {
   font-weight: bold;
-  font-size: 50px;
+  font-size: calc(var(--tamanhoFonte)*2);
+  color: var(--input-fontColor);
   text-align: center;
   margin-top: 5%;
+  line-height: 1.5;
 }
 
 .texto {
@@ -77,8 +49,11 @@
 }
 
 p {
+  font-size: var(--tamanhoFonte);
   margin: 2.5px;
   padding: 2.5px;
+  color: var(--input-fontColor);
+  line-height: 1.5;
 }
 
 .corpo {
@@ -88,19 +63,18 @@ p {
 }
 
 .subtitulo {
+  font-size: calc(var(--tamanhoFonte)*1.5);
+  color: var(--input-fontColor);
   font-weight: bold;
-  font-size: 30px;
   text-align: center;
   margin: 25px 0 25px 0;
-}
-
-.alterarSub {
-  display: grid;
-  grid-template-rows: 100% auto;
-  margin-bottom: 7%;
+  line-height: 1.5;
 }
 
 li {
+  font-size: var(--tamanhoFonte);
+  color: var(--input-fontColor);
+  line-height: 1.5;
   margin-bottom: 5px;
 }
 
@@ -122,10 +96,9 @@ li {
 .conteudo {
   height: 100%;
   overflow: auto;
-  background: #fff;
 }
 
-.layout-mesa{
+.layout-mesa {
   width: 80%;
   height: 80%;
 }

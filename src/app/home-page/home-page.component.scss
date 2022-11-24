@@ -18,11 +18,12 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  height: 90%;
 }
 
 .conteudo p {
   font-size: var(--tamanhoFonte);
-  color: var(--font-color-aguarde);
+  color: var(--input-fontColor);
   line-height: var(--font-heigth);
 }
 
@@ -33,10 +34,11 @@
 
 .btn {
   display: inline-block;
+  padding: 0.2rem 1rem;
   margin-top: 10px;
   background-color: var(--btn-bg);
-  // color: var(--font-color);
-  width: var(--btn-width);
+  color: var(--font-color);
+  min-width: var(--btn-width);
   height: var(--btn-height);
   border-radius: 30px;
   font-size: var(--tamanhoFonte);

@@ -1,0 +1,44 @@
+import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
+
+import { PainelVoltarComponent } from './painel-voltar.component';
+
+describe('PainelVoltarComponent', () => {
+  let component: PainelVoltarComponent;
+  let fixture: ComponentFixture<PainelVoltarComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ PainelVoltarComponent ]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(PainelVoltarComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+<<<<<<< HEAD:src/app/painel-voltar/painel-voltar.component.spec.ts
+  it('deve mostrar <button> escrito "Voltar"', () => {
+    const voltar: HTMLElement = fixture.nativeElement;
+    const button = voltar.querySelector('.botaoVoltar')!;
+    expect(button.textContent?.trim()).toEqual('Voltar');
+  });
+
+  it('deve mostrar imagem do logo', () => {
+    const imagem = fixture.nativeElement.querySelector('img');
+    expect(imagem['src']).toContain('LogoLilaCor.png');
+  });
+
+=======
+  it('deve redirecionar para a home ao clicar', inject([Router], (router: Router) => {
+    spyOn(router, 'navigate').and.stub();
+    component.irParaHome();
+    expect(router.navigate).toHaveBeenCalledWith(['/']);
+  }));
+>>>>>>> 71af98eab59978a8e6b9db91b07377dd7672f671:src/app/component/painel-voltar/painel-voltar.component.spec.ts
+});

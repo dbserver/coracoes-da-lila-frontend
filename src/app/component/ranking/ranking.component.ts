@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Jogador } from '../model/jogador';
-import { MesaJogoService } from '../service/mesa-jogo.service';
+import { Router } from '@angular/router';
+import { Jogador } from '../../model/jogador';
+import { MesaJogoService } from '../../service/mesa-jogo.service';
 
 @Component({
   selector: 'app-ranking',
@@ -10,7 +11,7 @@ import { MesaJogoService } from '../service/mesa-jogo.service';
 export class RankingComponent implements OnInit {
   public jogadores : Jogador [];
 
-  constructor(private mesa : MesaJogoService ) {
+  constructor(private router: Router, private mesa : MesaJogoService ) {
     this.jogadores = [];
    }
 
@@ -21,5 +22,9 @@ export class RankingComponent implements OnInit {
           return JogadorB.pontos - JogadorA.pontos;
         });
       });
+    }
+
+    irParaHome() {
+      this.router.navigate([''])
     }
 }

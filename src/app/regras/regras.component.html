@@ -1,12 +1,5 @@
 <div class="regras">
-  <div class="menu-lila">
-    <div id="logo" class="logo-lila-menu">
-      <img class="imagemLila" src="../../assets/img/logoLilaSozinho.png" alt="LogoTipo" />
-    </div>
-    <div class="div-btn">
-      <button mat-raised-button class="btn" (click)="irParaHome()">Voltar</button>
-    </div>
-  </div>
+  <app-painel-voltar></app-painel-voltar>
   <div class="caixa-regras">
     <div class="conteudo">
       <div class="titulo">Corações da LILA</div>
@@ -23,7 +16,7 @@
           Atribuição-NãoComercial-CompartilhaIgual 4.0 Internacional.
         </p>
         <p>Ícones: https://www.iconfinder.com/paomedia (CC 3.0)</p>
-        <div class="subtitulo">SETUP para 2 a 6 jogadores:</div>
+        <div class="subtitulo subtitulo1">SETUP para 2 a 6 jogadores:</div>
         <ol>
           <li>Separe os corações por tamanho e bônus.</li>
           <li>
@@ -77,9 +70,8 @@
           <strong>Coringas:</strong> Cartas de categoria Genérica contam como
           coringa para contabilizar os objetivos.
         </p>
-        <div class="subtitulo alterarSub">
-          <div> Na sua vez o jogador pode escolher </div>
-          <div> UMA AÇÃO abaixo: </div>
+        <div class="subtitulo subtitulo2">
+          <div> Na sua vez o jogador pode escolher UMA AÇÃO abaixo: </div>
         </div>
         <p>
           <u>Pegar corações:</u> Pegue 2 corações pequenos OU 1 coração grande,
@@ -97,7 +89,7 @@
           cima.
         </p>
         <p class="alinhar-imagem">
-          <strong class="subtitulo">Bônus:</strong><img class="dado" src="../../../assets/img/dados-bonus.png"
+          <strong class="subtitulo subtitulo3">Bônus:</strong><img class="dado" src="../../../assets/img/dados-bonus.png"
             alt="imagem de dois dados" />
         </p>
         <div class="col2 alinhar-imagem">
@@ -135,7 +127,7 @@
             </p>
           </div>
           <div>
-            <img class="presente" src="../../../assets/img/presente-acao.png"
+            <img class="presente presente-acao" src="../../../assets/img/presente-acao.png"
               alt="imagem de um presente que representa o bônus" />
           </div>
         </div>
