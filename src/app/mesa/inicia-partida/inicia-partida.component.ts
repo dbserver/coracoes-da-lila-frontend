@@ -58,8 +58,7 @@ export class IniciaPartidaComponent implements OnInit {
   private getCartaInicio(){
     let uuid = this.sala.baralho.idCartaInicio;
     this.cartaService.getCartaInicio(uuid).subscribe((cartaInicio: CartaInicio)=>{
-      console.table()
       this.enviaCartaInicio = cartaInicio;
-    }, error => console.log(error));
+    });
   }
 }
