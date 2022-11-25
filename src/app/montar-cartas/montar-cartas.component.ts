@@ -16,8 +16,8 @@ export class MontarCartasComponent implements OnInit {
   public listaCartasObjetivo: Array<CartaObjetivo> = [];
   public listaRandomicaCartas: Array<CartaDoJogo> = [];
 
-   
- 
+
+
   constructor(private cartaService: CartaService) {}
 
   ngOnInit() {
@@ -27,7 +27,7 @@ export class MontarCartasComponent implements OnInit {
   }
 
   public setmaocartas(): void{
-    
+
 
   }
 

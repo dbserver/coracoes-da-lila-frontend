@@ -1,6 +1,11 @@
+<app-carta-inicio [recebeCartaInicio]="enviaCartaInicio"></app-carta-inicio>
+
 <div class="div-aguarde">
-    <p  class="mensagem-aguarde">Aguardando início da partida</p>
-    <div class='div-btn-aguarde' *ngIf="jogadorPrincipal.isHost === true">
+
+  <p *ngIf="jogadorPrincipal.isHost === false" class="mensagem-aguarde">Aguardando início da partida</p>
+
+  <div class='div-btn-aguarde' *ngIf="jogadorPrincipal.isHost === true">
      <button mat-raised-button class="btn-aguarde btn" [disabled]="desabilitaBtn" (click)="enviaStatus()">Iniciar partida</button>
-    </div>
+  </div>
+
 </div>

@@ -7,7 +7,7 @@
     width: auto;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    
+
 }
 
 .div-btn-aguarde{
@@ -20,12 +20,12 @@ p{
     padding: 10px;
     margin: auto;
     margin-bottom: 10px;
-    
+
 }
 .mensagem-aguarde:after {
     content: ' .';
     animation: dots 2s steps(5, end) infinite;}
-  
+
   @keyframes dots {
     0%, 20% {
       color: var(--font-color-aguarde);
@@ -47,8 +47,8 @@ p{
       text-shadow:
         .25em 0 0 black,
         .5em 0 0 black;}}
-        
-        
+
+
 .btn {
         display: inline-block;
         margin-top: 10px;
@@ -58,9 +58,15 @@ p{
         height: var(--btn-height);
         border-radius: 30px;
         font-size: var(--tamanhoFonte);
-        
+
     }
 .btn[disabled]{
   background-color: rgb(167, 163, 163);
   color:black;
-}        
+}
+
+app-carta-inicio{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

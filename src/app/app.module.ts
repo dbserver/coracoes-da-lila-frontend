@@ -6,6 +6,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import {MatCardModule} from '@angular/material/card';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -44,8 +45,10 @@ import { IndicaJogadorComponent } from './mesa/indica-jogador/indica-jogador.com
 import { LicenciamentoComponent } from './licenciamento/licenciamento.component';
 import { TelaHistoriaComponent } from './component/tela-historia/tela-historia.component';
 import { RegrasComponent } from './regras/regras.component';
+import { CartaInicioComponent } from './mesa/carta-inicio/carta-inicio.component';
 import { PainelVoltarComponent } from './component/painel-voltar/painel-voltar.component';
 import { TelaDownloadComponent } from './component/tela-download/tela-download.component';
+
 
 
 
@@ -74,11 +77,14 @@ import { TelaDownloadComponent } from './component/tela-download/tela-download.c
     TelaErroComponent,
     IndicaJogadorComponent,
     RankingComponent,
+    RegrasComponent,
+    CartaInicioComponent,
     LicenciamentoComponent,
     TelaHistoriaComponent,
     RegrasComponent,
     PainelVoltarComponent,
     TelaDownloadComponent
+
   ],
   imports: [
     BrowserModule,
@@ -97,7 +103,7 @@ import { TelaDownloadComponent } from './component/tela-download/tela-download.c
     MatIconModule,
     HttpClientModule,
     ClipboardModule,
-
+    MatCardModule
   ],
   providers: [
     {
