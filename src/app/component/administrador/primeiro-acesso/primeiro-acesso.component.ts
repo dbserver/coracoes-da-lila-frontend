@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Admin } from 'src/app/model/admin';
-import { AdminService } from 'src/app/service/admin.service';
-import { ModalService } from 'src/app/service/modal.service';
+import { AdminService } from 'src/app/service/admin-service/admin.service';
+import { ModalService } from 'src/app/service/modal-service/modal.service';
 
 @Component({
   selector: 'app-primeiro-acesso',

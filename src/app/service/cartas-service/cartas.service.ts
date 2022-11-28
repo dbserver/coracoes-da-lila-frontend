@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { CartaDoJogo } from '../model/cartaDoJogo';
-import { CartaInicio } from '../model/cartaInicio';
-import { CartaObjetivo } from '../model/cartaObjetivo';
+import { CartaDoJogo } from '../../model/cartaDoJogo';
+import { CartaInicio } from '../../model/cartaInicio';
+import { CartaObjetivo } from '../../model/cartaObjetivo';
 
 @Injectable({
   providedIn: 'root',

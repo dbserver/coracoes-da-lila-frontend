@@ -6,8 +6,8 @@ import { CartaDoJogo } from '../../../model/cartaDoJogo';
 import { CartaObjetivo } from '../../../model/cartaObjetivo';
 import { Jogador } from '../../../model/jogador';
 import { Sala } from '../../../model/sala';
-import { AreaDeCompraService } from '../../../service/area-de-compra.service';
-import { MesaJogoService } from '../../../service/mesa-jogo.service';
+import { AreaDeCompraService } from '../../../service/area-de-compra-service/area-de-compra.service';
+import { MesaJogoService } from '../../../service/mesa-jogo-service/mesa-jogo.service';
 @Component({
   selector: 'app-area-de-compra',
   templateUrl: './area-de-compra.component.html',

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalService } from 'src/app/service/modal.service';
+import { ModalService } from 'src/app/service/modal-service/modal.service';
 
 @Component({
   selector: 'app-regras-jogo',

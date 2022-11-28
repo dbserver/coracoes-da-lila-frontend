@@ -1,12 +1,12 @@
-import { SalaRequest } from './../model/salaRequest';
+import { SalaRequest } from './../../model/salaRequest';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { Sala } from 'src/app/model/sala';
-import { Jogador } from '../model/jogador';
+import { Jogador } from '../../model/jogador';
 import { Observable } from 'rxjs';
-import { SalaResponse } from '../model/salaResponse';
+import { SalaResponse } from '../../model/salaResponse';
 
 @Injectable({
   providedIn: 'root',

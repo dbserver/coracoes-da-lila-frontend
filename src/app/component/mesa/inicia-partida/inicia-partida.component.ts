@@ -3,9 +3,9 @@ import { Baralho } from 'src/app/model/baralho';
 import { CartaInicio } from 'src/app/model/cartaInicio';
 import { Jogador } from 'src/app/model/jogador';
 import { Sala } from 'src/app/model/sala';
-import { CartaService } from 'src/app/service/cartas.service';
-import { IniciaPartidaService } from 'src/app/service/inicia-partida.service';
-import { MesaJogoService } from 'src/app/service/mesa-jogo.service';
+import { CartaService } from 'src/app/service/cartas-service/cartas.service';
+import { IniciaPartidaService } from 'src/app/service/inicia-partida-service/inicia-partida.service';
+import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.service';
 
 @Component({
   selector: 'app-inicia-partida',

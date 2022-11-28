@@ -30,7 +30,7 @@ import { RegrasJogoComponent } from './component/mesa/regras-jogo/regras-jogo.co
 import { IniciaPartidaComponent } from './component/mesa/inicia-partida/inicia-partida.component';
 import { MesaJogoComponent } from './component/mesa/mesa-jogo/mesa-jogo.component';
 import { AreaJogadoresComponent } from './component/mesa/area-jogadores/area-jogadores.component';
-import { MesaJogoService } from './service/mesa-jogo.service';
+import { MesaJogoService } from './service/mesa-jogo-service/mesa-jogo.service';
 import { RankingComponent } from './component/ranking/ranking.component';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import {

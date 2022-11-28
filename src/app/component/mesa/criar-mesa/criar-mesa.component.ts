@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Jogador } from 'src/app/model/jogador';
 import { Sala } from 'src/app/model/sala';
-import { MesaJogoService } from 'src/app/service/mesa-jogo.service';
-import { MesaService } from 'src/app/service/mesa.service';
+import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.service';
+import { MesaService } from 'src/app/service/mesa-service/mesa.service';
 
 @Component({
   selector: 'app-criar-mesa',

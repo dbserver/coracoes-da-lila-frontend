@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartaDoJogo } from '../../model/cartaDoJogo';
 import { CartaInicio } from '../../model/cartaInicio';
 import { CartaObjetivo } from '../../model/cartaObjetivo';
-import { CartaService } from '../../service/cartas.service';
+import { CartaService } from '../../service/cartas-service/cartas.service';
 
 
 @Component({

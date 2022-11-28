@@ -3,9 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { CartaDoJogo } from 'src/app/model/cartaDoJogo';
 import { Jogador } from 'src/app/model/jogador';
 import { Sala } from 'src/app/model/sala';
-import { AreaDeCompraService } from 'src/app/service/area-de-compra.service';
-import { MesaJogoService } from 'src/app/service/mesa-jogo.service';
-import { MesaService } from 'src/app/service/mesa.service';
+import { AreaDeCompraService } from 'src/app/service/area-de-compra-service/area-de-compra.service';
+import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.service';
+import { MesaService } from 'src/app/service/mesa-service/mesa.service';
 
 @Injectable({
   providedIn: 'root',

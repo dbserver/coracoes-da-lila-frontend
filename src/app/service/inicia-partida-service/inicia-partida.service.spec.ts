@@ -5,9 +5,9 @@ import { environment } from 'src/environments/environment';
 
 
 
-import { Sala } from '../model/sala';
+import { Sala } from '../../model/sala';
 import { IniciaPartidaService } from "./inicia-partida.service";
-import { JogadorService } from './jogador.service';
+import { JogadorService } from './../jogador.service';
 
 describe(`#${IniciaPartidaService.name}`,()=>{
 

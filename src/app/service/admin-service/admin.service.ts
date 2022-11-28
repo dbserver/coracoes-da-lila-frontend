@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AdminSenha } from '../model/adminSenha';
-import { Admin } from '../model/admin';
+import { AdminSenha } from '../../model/adminSenha';
+import { Admin } from '../../model/admin';
 import { Observable } from 'rxjs';
-import { Autenticacao } from '../model/autenticacao';
+import { Autenticacao } from '../../model/autenticacao';
 import { environment } from 'src/environments/environment';
 
 @Injectable({

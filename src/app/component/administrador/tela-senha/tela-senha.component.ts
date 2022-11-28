@@ -3,8 +3,8 @@ import { UntypedFormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Admin } from 'src/app/model/admin';
 import { AdminSenha } from 'src/app/model/adminSenha';
-import { AdminService } from 'src/app/service/admin.service';
-import { ModalService } from 'src/app/service/modal.service';
+import { AdminService } from 'src/app/service/admin-service/admin.service';
+import { ModalService } from 'src/app/service/modal-service/modal.service';
 
 @Component({
   selector: 'app-tela-senha',

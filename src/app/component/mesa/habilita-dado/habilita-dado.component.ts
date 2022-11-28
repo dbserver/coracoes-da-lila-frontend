@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Sala } from 'src/app/model/sala';
-import { MesaJogoService } from 'src/app/service/mesa-jogo.service';
+import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.service';
 
 @Component({
   selector: 'app-habilita-dado',

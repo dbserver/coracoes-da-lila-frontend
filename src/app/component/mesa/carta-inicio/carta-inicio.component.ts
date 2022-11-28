@@ -1,4 +1,4 @@
-import { CartaService } from './../../../service/cartas.service';
+import { CartaService } from './../../../service/cartas-service/cartas.service';
 import { CartaInicio } from './../../../model/cartaInicio';
 import { Component, Input, OnInit } from '@angular/core';
 import { Sala } from 'src/app/model/sala';

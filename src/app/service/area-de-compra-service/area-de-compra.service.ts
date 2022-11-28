@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { CartaDoJogo } from '../model/cartaDoJogo';
+import { CartaDoJogo } from '../../model/cartaDoJogo';
 
 
 
