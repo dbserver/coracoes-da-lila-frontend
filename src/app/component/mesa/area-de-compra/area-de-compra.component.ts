@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MaoJogadorComponent } from '../mao-jogador/mao-jogador.component';
-import { Baralho } from '../../model/baralho';
-import { CartaDoJogo } from '../../model/cartaDoJogo';
-import { CartaObjetivo } from '../../model/cartaObjetivo';
-import { Jogador } from '../../model/jogador';
-import { Sala } from '../../model/sala';
-import { AreaDeCompraService } from '../../service/area-de-compra.service';
-import { MesaJogoService } from '../../service/mesa-jogo.service';
+import { Baralho } from '../../../model/baralho';
+import { CartaDoJogo } from '../../../model/cartaDoJogo';
+import { CartaObjetivo } from '../../../model/cartaObjetivo';
+import { Jogador } from '../../../model/jogador';
+import { Sala } from '../../../model/sala';
+import { AreaDeCompraService } from '../../../service/area-de-compra.service';
+import { MesaJogoService } from '../../../service/mesa-jogo.service';
 @Component({
   selector: 'app-area-de-compra',
   templateUrl: './area-de-compra.component.html',

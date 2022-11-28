@@ -1,12 +1,12 @@
-import { SalaRequest } from './../model/salaRequest';
-import { JogadorService } from './../service/jogador.service';
-import { MesaService } from './../service/mesa.service';
+import { SalaRequest } from './../../model/salaRequest';
+import { JogadorService } from './../../service/jogador.service';
+import { MesaService } from './../../service/mesa.service';
 import { Sala } from 'src/app/model/sala';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Jogador } from '../model/jogador';
-import { MesaJogoService } from '../service/mesa-jogo.service';
-import { IniciaPartidaService } from '../service/inicia-partida.service';
+import { Jogador } from '../../model/jogador';
+import { MesaJogoService } from '../../service/mesa-jogo.service';
+import { IniciaPartidaService } from '../../service/inicia-partida.service';
 
 @Component({
   selector: 'app-entrar-mesa',

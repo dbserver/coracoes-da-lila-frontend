@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CartaDoJogo } from '../model/cartaDoJogo';
-import { CartaInicio } from '../model/cartaInicio';
-import { CartaObjetivo } from '../model/cartaObjetivo';
-import { CartaService } from '../service/cartas.service';
+import { CartaDoJogo } from '../../model/cartaDoJogo';
+import { CartaInicio } from '../../model/cartaInicio';
+import { CartaObjetivo } from '../../model/cartaObjetivo';
+import { CartaService } from '../../service/cartas.service';
 
 
 @Component({
