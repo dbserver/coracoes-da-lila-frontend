@@ -1,14 +1,16 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CriarMesaComponent } from './criar-mesa.component';
 
-describe('CriarMesaComponent', () => {
+fdescribe('CriarMesaComponent', () => {
   let component: CriarMesaComponent;
   let fixture: ComponentFixture<CriarMesaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CriarMesaComponent ]
+      declarations: [ CriarMesaComponent ],
+      imports:[HttpClientTestingModule]
     })
     .compileComponents();
   });
