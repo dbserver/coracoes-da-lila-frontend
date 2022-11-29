@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MontarCartasComponent } from './montar-cartas.component';
 
-fdescribe('MontarCartasComponent', () => {
+describe('MontarCartasComponent', () => {
   let component: MontarCartasComponent;
   let fixture: ComponentFixture<MontarCartasComponent>;
 
