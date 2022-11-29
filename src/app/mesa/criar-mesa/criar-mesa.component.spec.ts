@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CriarMesaComponent } from './criar-mesa.component';
 
-fdescribe('CriarMesaComponent', () => {
+describe('CriarMesaComponent', () => {
   let component: CriarMesaComponent;
   let fixture: ComponentFixture<CriarMesaComponent>;
 
