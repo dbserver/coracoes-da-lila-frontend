@@ -1,14 +1,16 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { IniciaPartidaComponent } from './inicia-partida.component';
 
-describe('IniciaPartidaComponent', () => {
+fdescribe('IniciaPartidaComponent', () => {
   let component: IniciaPartidaComponent;
   let fixture: ComponentFixture<IniciaPartidaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ IniciaPartidaComponent ]
+      declarations: [ IniciaPartidaComponent ],
+      imports: [HttpClientTestingModule]
     })
     .compileComponents();
   });

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Baralho } from 'src/app/model/baralho';
 import { CartaInicio } from 'src/app/model/cartaInicio';
 import { Jogador } from 'src/app/model/jogador';
 import { Sala } from 'src/app/model/sala';
@@ -56,7 +55,7 @@ export class IniciaPartidaComponent implements OnInit {
   }
 
   private getCartaInicio(){
-    let uuid = this.sala.baralho.idCartaInicio;
+    let uuid = this.sala.baralho?.idCartaInicio;
     this.cartaService.getCartaInicio(uuid).subscribe((cartaInicio: CartaInicio)=>{
       this.enviaCartaInicio = cartaInicio;
     });
