@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 
 import { PainelVoltarComponent } from './painel-voltar.component';
 
-fdescribe('PainelVoltarComponent', () => {
+describe('PainelVoltarComponent', () => {
   let component: PainelVoltarComponent;
   let fixture: ComponentFixture<PainelVoltarComponent>;
 
