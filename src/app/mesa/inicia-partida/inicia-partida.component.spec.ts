@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { IniciaPartidaComponent } from './inicia-partida.component';
 
-fdescribe('IniciaPartidaComponent', () => {
+describe('IniciaPartidaComponent', () => {
   let component: IniciaPartidaComponent;
   let fixture: ComponentFixture<IniciaPartidaComponent>;
 
