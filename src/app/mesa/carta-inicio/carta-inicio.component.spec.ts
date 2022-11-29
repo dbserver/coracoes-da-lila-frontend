@@ -1,14 +1,16 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CartaInicioComponent } from './carta-inicio.component';
 
-describe('CartaInicioComponent', () => {
+fdescribe('CartaInicioComponent', () => {
   let component: CartaInicioComponent;
   let fixture: ComponentFixture<CartaInicioComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CartaInicioComponent ]
+      declarations: [ CartaInicioComponent ],
+      imports: [HttpClientTestingModule]
     })
     .compileComponents();
 
