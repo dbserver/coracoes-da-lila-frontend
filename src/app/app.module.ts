@@ -48,6 +48,7 @@ import { RegrasComponent } from './regras/regras.component';
 import { CartaInicioComponent } from './mesa/carta-inicio/carta-inicio.component';
 import { PainelVoltarComponent } from './component/painel-voltar/painel-voltar.component';
 import { TelaDownloadComponent } from './component/tela-download/tela-download.component';
+import { PrimeiroJogadorComponent } from './primeiro-jogador/primeiro-jogador.component';
 
 
 
@@ -83,7 +84,8 @@ import { TelaDownloadComponent } from './component/tela-download/tela-download.c
     TelaHistoriaComponent,
     RegrasComponent,
     PainelVoltarComponent,
-    TelaDownloadComponent
+    TelaDownloadComponent,
+    PrimeiroJogadorComponent
 
   ],
   imports: [
