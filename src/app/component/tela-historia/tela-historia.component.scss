@@ -1,0 +1,34 @@
+.body{
+    display: grid;
+    grid-template-columns: auto 80%;
+}
+
+.titulo {
+    margin: 0 60px 20px 0;
+    color: var(--input-fontColor);
+    font-size: calc(var(--tamanhoFonte)*2);
+}
+
+.conteudo{
+    margin: 3% 8% 5% ;
+    color: var(--input-fontColor);
+    font-size: var(--tamanhoFonte);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    line-height: calc(var(--font-heigth)*1.3);
+}
+
+ul {
+    list-style: none;
+}
+.image{
+    width: var(--widthImagem);
+}
+
+figure{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

@@ -18,7 +18,7 @@ export class CartaService {
 
   getListarCarta(): Observable<CartaDoJogo[]> {
     return this.httpClient.get<CartaDoJogo[]>(`${environment.API_URL}${this.URLCarta}`);
-    
+
   }
 
   getListarCartaInicio(): Observable<CartaInicio[]> {
@@ -27,5 +27,10 @@ export class CartaService {
 
   getListarCartaObjetivo(): Observable<CartaObjetivo[]> {
     return this.httpClient.get<CartaObjetivo[]>(`${environment.API_URL}${this.URLCartaObjetivo}`);
+  }
+
+  getCartaInicio(uuid: String): Observable<CartaInicio>{
+    console.log(uuid);
+    return this.httpClient.get<CartaInicio>(`${environment.API_URL}${this.URLCartaInicio}/${uuid}`)
   }
 }

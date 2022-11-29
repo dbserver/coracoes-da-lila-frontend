@@ -1,20 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RankingComponent } from './ranking.component';
+import { CartaInicioComponent } from './carta-inicio.component';
 
-describe('RankingComponent', () => {
-  let component: RankingComponent;
-  let fixture: ComponentFixture<RankingComponent>;
+describe('CartaInicioComponent', () => {
+  let component: CartaInicioComponent;
+  let fixture: ComponentFixture<CartaInicioComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RankingComponent ]
+      declarations: [ CartaInicioComponent ]
     })
     .compileComponents();
-  });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(RankingComponent);
+    fixture = TestBed.createComponent(CartaInicioComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

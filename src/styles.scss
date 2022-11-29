@@ -56,11 +56,13 @@ body {
   --font-color: #59184f;
   --font-color-aguarde:#59184f;
   --tamanhoFonte:20px;
+  --font-heigth: 1.5rem;
   --btn-width:300px;
   --btn-height:auto;
   --btn-bg:#f4dc6d;
   --input-fontColor:black;
   --input-backgroundColor:#e5e4e2;
+  --widthImagem: 550px;
 }
 
 .contraste:root {
@@ -75,8 +77,11 @@ body {
 
 .fonteMaior:root {
   --tamanhoFonte: 25pt;
-  --btn-width: 320px;
+  --widthImagem: 700px;
+  --font-heigth: 2rem;
+  --btn-width: 420px;
   --btn-height: auto;
+  --widthImagem: 700px
 }
 
 .mat-form-field-appearance-fill .mat-form-field-flex {
