@@ -11,17 +11,16 @@
     </button>
   </div>
   <div>
-    <button mat-raised-button class="btn btn-inicio" (click)="roteamento()">
+    <button mat-raised-button class="btn btn-inicio" (click)="roteamento()" [disabled]="carregando">
       Iniciar Jogo
     </button>
   </div>
   <div>
     <button mat-raised-button class="btn-inicio" type="submit" [routerLink]="['']">Voltar</button>
   </div>
-
-  <div class="aguardando">
-    <mat-spinner diameter="50" aria-role="círculo giratório de aguardando"></mat-spinner>
-  </div>
-
   <div class="area-da-mesa"></div>
+</div>
+
+<div class="aguardando" *ngIf="carregando">
+  <mat-spinner diameter="50" aria-role="círculo giratório de aguardando"></mat-spinner>
 </div>

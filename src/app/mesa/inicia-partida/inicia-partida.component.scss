@@ -12,13 +12,9 @@
   margin: auto;
 }
 
-p {
-  color: var(--font-color-aguarde);
-  font-size: calc(var(--tamanhoFonte)*1.5);
-  padding: 10px;
-  margin: auto;
-  margin-bottom: 10px;
-
+.btn:disabled {
+  background-color: var(--btn-bg);
+  color: var(--btn-bg);
 }
 
 .mensagem-aguarde:after {
@@ -69,7 +65,7 @@ p {
   height: var(--btn-height);
   border-radius: 30px;
   font-size: var(--tamanhoFonte);
-
+  border: none;
 }
 
 .btn[disabled] {

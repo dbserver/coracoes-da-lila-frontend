@@ -6,7 +6,13 @@
     background: var(--background);
     justify-content: center;
     align-items: center;
-    margin-top: 7%;
+    margin-top: 3%;
+    position: fixed;
+}
+
+.titulo {
+    font-size: var(--tamanhoFonte);
+    color: var(--input-fontColor)
 }
 
 .texto {
@@ -38,10 +44,12 @@
 }
 
 .aguardando {
-    padding-top: 2%;
+    display: flex;
+    justify-content: center;
+    margin-top: 18%;
 }
 
-.btn:disabled {
-    background-color: var(--btn-bg);
-    color: var(--btn-bg);
-}
+.btn[disabled] {
+    background-color: rgb(167, 163, 163);
+    color: var(--input-fontColor);
+  }
