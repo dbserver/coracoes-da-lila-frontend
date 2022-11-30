@@ -20,6 +20,6 @@ export class HomePageComponent implements OnInit {
 
   loadingCriarPartida():void {
     this.loading = true;
-    setTimeout(()=>{ this.router.navigate(['/mesa']) }, 4000)
+    this.router.navigate(['/mesa']);
   }
 }
