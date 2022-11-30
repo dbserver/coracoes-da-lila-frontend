@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MatRadioModule } from '@angular/material/radio';
 
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -105,7 +106,8 @@ import { PrimeiroJogadorComponent } from './primeiro-jogador/primeiro-jogador.co
     MatIconModule,
     HttpClientModule,
     ClipboardModule,
-    MatCardModule
+    MatCardModule,
+    MatRadioModule
   ],
   providers: [
     {

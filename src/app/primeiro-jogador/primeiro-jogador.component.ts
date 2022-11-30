@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Jogador } from 'src/app/model/jogador';
 import { Sala } from 'src/app/model/sala';
-import { MesaJogoService } from 'src/app/service/mesa-jogo.service';
+import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.service';
 
 @Component({
   selector: 'app-primeiro-jogador',
@@ -29,5 +29,27 @@ export class PrimeiroJogadorComponent implements OnInit {
       });
     });
   }
+  visibilidade(id:number){
+    var x = document.getElementById(`icone-coracao-${id}`);
+    var y = document.getElementsByClassName("icone-coracao");
 
+    // for (let index = 0; index < y.length; index++) {
+    //   const element = y[index];
+    //   y.style.visibility ="hidden";
+
+    // }
+
+    console.log(y[0]);
+    console.log(x);
+    if(x == null){
+      x = null;
+    }else{
+      if(x.style.visibility == "visible"){
+        x.style.visibility ="hidden";
+    }else {
+        x.style.visibility ="visible";
+    }
+
+  }
+}
 }
