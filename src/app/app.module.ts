@@ -49,7 +49,7 @@ import { RegrasComponent } from './component/regras/regras.component';
 import { CartaInicioComponent } from './component/mesa/carta-inicio/carta-inicio.component';
 import { PainelVoltarComponent } from './component/painel-voltar/painel-voltar.component';
 import { TelaDownloadComponent } from './component/tela-download/tela-download.component';
-import { PrimeiroJogadorComponent } from './primeiro-jogador/primeiro-jogador.component';
+import { PrimeiroJogadorComponent } from './component/primeiro-jogador/primeiro-jogador.component';
 
 
 
