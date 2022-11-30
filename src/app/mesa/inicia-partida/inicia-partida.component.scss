@@ -1,73 +1,94 @@
-
-
 /* loading dots */
-.div-aguarde{
-    position:relative;
-    top:50%;
-    width: auto;
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
+.div-aguarde {
+  position: relative;
+  top: 40%;
+  width: auto;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
 
 }
 
-.div-btn-aguarde{
-    margin:auto;
+.div-btn-aguarde {
+  margin: auto;
 }
 
-p{
-    color:var(--font-color-aguarde);
-    font-size:calc(var(--tamanhoFonte)*1.5);
-    padding: 10px;
-    margin: auto;
-    margin-bottom: 10px;
+p {
+  color: var(--font-color-aguarde);
+  font-size: calc(var(--tamanhoFonte)*1.5);
+  padding: 10px;
+  margin: auto;
+  margin-bottom: 10px;
 
 }
+
 .mensagem-aguarde:after {
-    content: ' .';
-    animation: dots 2s steps(5, end) infinite;}
+  content: ' .';
+  animation: dots 2s steps(5, end) infinite;
+}
 
-  @keyframes dots {
-    0%, 20% {
-      color: var(--font-color-aguarde);
-      text-shadow:
-        .25em 0 0 var(--font-color-aguarde),
-        .5em 0 0 var(--font-color-aguarde);}
-    40% {
-      color: var(--font-color-aguarde);
-      text-shadow:
-        .25em 0 0 rgba(0,0,0,0),
-        .5em 0 0 rgba(0,0,0,0);}
-    60% {
-      color:var(--font-color-aguarde);
-      text-shadow:
-        .25em 0 0 black,
-        .5em 0 0 rgba(0,0,0,0);}
-    80%, 100% {
-      color:var(--font-color-aguarde);
-      text-shadow:
-        .25em 0 0 black,
-        .5em 0 0 black;}}
+@keyframes dots {
+
+  0%,
+  20% {
+    color: var(--font-color-aguarde);
+    text-shadow:
+      .25em 0 0 var(--font-color-aguarde),
+      .5em 0 0 var(--font-color-aguarde);
+  }
+
+  40% {
+    color: var(--font-color-aguarde);
+    text-shadow:
+      .25em 0 0 rgba(0, 0, 0, 0),
+      .5em 0 0 rgba(0, 0, 0, 0);
+  }
+
+  60% {
+    color: var(--font-color-aguarde);
+    text-shadow:
+      .25em 0 0 black,
+      .5em 0 0 rgba(0, 0, 0, 0);
+  }
+
+  80%,
+  100% {
+    color: var(--font-color-aguarde);
+    text-shadow:
+      .25em 0 0 black,
+      .5em 0 0 black;
+  }
+}
 
 
 .btn {
-        display: inline-block;
-        margin-top: 10px;
-        background-color: var(--btn-bg);
-        color: var(--font-color);
-        width: var(--btn-width);
-        height: var(--btn-height);
-        border-radius: 30px;
-        font-size: var(--tamanhoFonte);
+  display: inline-block;
+  margin-top: 10px;
+  background-color: var(--btn-bg);
+  color: var(--font-color);
+  width: var(--btn-width);
+  height: var(--btn-height);
+  border-radius: 30px;
+  font-size: var(--tamanhoFonte);
 
-    }
- .btn[disabled]{
-   background-color: rgb(167, 163, 163);
-   color:black;
-  }
+}
+
+.btn[disabled] {
+  background-color: rgb(167, 163, 163);
+  color: black;
+}
 
 
-app-carta-inicio{
+app-carta-inicio {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+:host ::ng-deep .mat-spinner circle {
+  stroke: var(--font-color-aguarde);
+}
+
+.aguardando {
+  display: flex;
+  justify-content: center;
 }

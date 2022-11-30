@@ -2,7 +2,10 @@
 
 <div class="div-aguarde">
 
-  <p *ngIf="jogadorPrincipal.isHost === false" class="mensagem-aguarde">Aguardando início da partida</p>
+  <button *ngIf="jogadorPrincipal.isHost === false" class="mensagem-aguarde">Aguardando início da partida</button>
+  <div class="aguardando">
+    <mat-spinner diameter="40"></mat-spinner>
+  </div>
 
   <div class='div-btn-aguarde' *ngIf="jogadorPrincipal.isHost === true">
      <button mat-raised-button class="btn-aguarde btn" [disabled]="desabilitaBtn" (click)="enviaStatus()">Iniciar partida</button>
