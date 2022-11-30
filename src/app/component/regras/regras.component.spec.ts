@@ -2,7 +2,9 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { AcessibilidadeComponent } from '../component/acessibilidade/acessibilidade.component';
+import { AcessibilidadeComponent } from '../acessibilidade/acessibilidade.component';
+
+
 
 import { RegrasComponent } from './regras.component';
 
