@@ -66,8 +66,8 @@ input{
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    border: 3px solid var(--btn-bg) ;
-    border-top-color: var(--font-color);
+    border: 3px solid var(--font-color);
+    border-top-color: rgb(167, 163, 163);
     animation: spinner .8s linear infinite;
 
     @media (max-width: 800px) {
@@ -77,7 +77,7 @@ input{
 
   }
   
-  .btn:disabled {
-   background-color: var(--btn-bg);
-   color: var(--btn-bg);
+  .btn[disabled] {
+    background-color: rgb(167, 163, 163);
+    color: rgb(167, 163, 163);
   }
