@@ -17,6 +17,7 @@ export class CriarMesaComponent implements OnInit {
   nick: string;
 
   isvalid = true;
+  loading = false;
 
   constructor(
     private mesaService: MesaService,
@@ -45,6 +46,7 @@ export class CriarMesaComponent implements OnInit {
     if(this.nomeValido()){
       this.isvalid = true;
       this.criarMesa();
+      this.loading = true;
     }else{
       this.isvalid = false;
     }

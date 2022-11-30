@@ -16,7 +16,7 @@
       </button>
     </div>
     <div>
-      <button mat-raised-button class="btn-inicio" color="primary" (click)="roteamento()">
+      <button mat-raised-button class="btn btn-inicio" [class.spinner]="loading" [disabled]="loading" (click)="roteamento()">
         Iniciar Jogo
       </button>
     </div>

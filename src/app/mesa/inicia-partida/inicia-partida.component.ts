@@ -20,6 +20,8 @@ export class IniciaPartidaComponent implements OnInit {
   hash = '';
   enviaCartaInicio: CartaInicio;
 
+  loading = false;
+
   constructor(
     private iniciaPartidaService: IniciaPartidaService,
     private mesaJogoService: MesaJogoService,
@@ -37,9 +39,10 @@ export class IniciaPartidaComponent implements OnInit {
   }
 
   enviaStatus(): void {
+    this.loading = true;
     let sendSala: Sala = this.sala;
-    sendSala.status = 'JOGANDO';
-    this.iniciaPartidaService.iniciaPartida(sendSala).subscribe(sala => this.sala = sala);
+    // sendSala.status = 'JOGANDO';
+    // this.iniciaPartidaService.iniciaPartida(sendSala).subscribe(sala => this.sala = sala);
   }
 
   ngOnInit(): void {

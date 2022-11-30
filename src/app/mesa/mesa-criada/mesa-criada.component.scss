@@ -31,3 +31,35 @@
     border-radius: 30px;
     font-size: var(--tamanhoFonte);
 }
+
+@keyframes spinner {
+    to {transform: rotate(360deg);}
+  }
+  
+  .spinner:before {
+    content: '';
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    margin-top: 4px;
+    margin-left: 140px;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 4px solid var(--btn-bg) ;
+    border-top-color: var(--font-color);
+    animation: spinner .8s linear infinite;
+
+    @media (max-width: 800px) {
+        margin-left: 140px;
+        
+    }
+
+  }
+
+  .btn:disabled {
+   background-color: var(--btn-bg);
+   color: var(--btn-bg);
+  }
