@@ -1,11 +1,15 @@
 .container {
     width: 100%;
-    height: 20%;  
+    height: 20%;
     display: flex;
     flex-direction: column;
-    background: var(--background); 
+    background: var(--background);
     justify-content: center;
-    align-items: center; 
+    align-items: center;
+}
+
+.titulo {
+    margin-top: 80%;
 }
 
 .texto {
@@ -32,34 +36,15 @@
     font-size: var(--tamanhoFonte);
 }
 
-@keyframes spinner {
-    to {transform: rotate(360deg);}
-  }
-  
-  .spinner:before {
-    content: '';
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    align-items: center;
-    margin-top: 4px;
-    margin-left: 140px;
-    top: 0;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    border: 4px solid var(--btn-bg) ;
-    border-top-color: var(--font-color);
-    animation: spinner .8s linear infinite;
+:host ::ng-deep .mat-spinner circle {
+    stroke: var(--font-color-aguarde);
+}
 
-    @media (max-width: 800px) {
-        margin-left: 140px;
-        
-    }
+.aguardando {
+    padding-top: 2%;
+}
 
-  }
-
-  .btn:disabled {
-   background-color: var(--btn-bg);
-   color: var(--btn-bg);
-  }
+.btn:disabled {
+    background-color: var(--btn-bg);
+    color: var(--btn-bg);
+}

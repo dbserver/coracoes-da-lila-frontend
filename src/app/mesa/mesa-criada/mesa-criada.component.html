@@ -2,27 +2,26 @@
   <div class="texto">
     <h1 class="titulo">Mesa criada:</h1>
   </div>
-    <div>
-      <p class="link-da-mesa">{{ link }}</p>
-    
-      <button
-        class="btn-copiar"
-        mat-icon-button
-        color="primary"
-        aria-label="Copiar link para a área de transferência"
-        [cdkCopyToClipboard]="link"
-      >
-        <mat-icon>content_copy</mat-icon>
-      </button>
-    </div>
-    <div>
-      <button mat-raised-button class="btn btn-inicio" [class.spinner]="loading" [disabled]="loading" (click)="roteamento()">
-        Iniciar Jogo
-      </button>
-    </div>
-    <div>
-      <button mat-raised-button class="btn-inicio" type="submit" [routerLink]="['']">Voltar</button>
-    </div>
+  <div>
+    <p class="link-da-mesa">{{ link }}</p>
+
+    <button class="btn-copiar" mat-icon-button color="primary" aria-label="Copiar link para a área de transferência"
+      [cdkCopyToClipboard]="link">
+      <mat-icon>content_copy</mat-icon>
+    </button>
+  </div>
+  <div>
+    <button mat-raised-button class="btn btn-inicio" (click)="roteamento()">
+      Iniciar Jogo
+    </button>
+  </div>
+  <div>
+    <button mat-raised-button class="btn-inicio" type="submit" [routerLink]="['']">Voltar</button>
+  </div>
+
+  <div class="aguardando">
+    <mat-spinner diameter="50" aria-role="círculo giratório de aguardando"></mat-spinner>
+  </div>
 
   <div class="area-da-mesa"></div>
 </div>
