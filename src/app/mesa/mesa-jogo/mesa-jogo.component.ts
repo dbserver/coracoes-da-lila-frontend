@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { RxStompService } from '@stomp/ng2-stompjs';
 import { Message } from '@stomp/stompjs';
 import { Subscription } from 'rxjs';
+import { CartaObjetivo } from 'src/app/model/cartaObjetivo';
 import { Sala } from 'src/app/model/sala';
 import { MesaJogoService } from 'src/app/service/mesa-jogo.service';
 
@@ -16,6 +17,7 @@ export class MesaJogoComponent implements OnInit {
   sala: Sala;
   private hash = '';
   private topicSubscription: Subscription = Subscription.EMPTY;
+  enviaCartasObjetivo: CartaObjetivo [];
 
   constructor(
     private rxStompService: RxStompService,
@@ -23,6 +25,7 @@ export class MesaJogoComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.sala = {} as Sala;
+    this.enviaCartasObjetivo = {} as CartaObjetivo [];
   }
 
   ngOnInit(): void {
@@ -44,6 +47,8 @@ export class MesaJogoComponent implements OnInit {
         //recebe uma sala pelo websocket e envia para o mesa-jogo service..
         this.mesaJogoService.getemitSalaSubject().next(JSON.parse(msg.body));
       });
+
+    this.enviaCartasObjetivo = this.sala.baralho.cartasObjetivo;
   }
 
   ngOnDestroy(): void {
@@ -65,4 +70,5 @@ export class MesaJogoComponent implements OnInit {
   fecharModal() {
     this.isShow = !this.isShow;
   }
+
 }

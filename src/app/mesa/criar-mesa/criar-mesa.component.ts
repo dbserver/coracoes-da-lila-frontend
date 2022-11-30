@@ -80,4 +80,5 @@ export class CriarMesaComponent implements OnInit {
     this.mesaJogoService.getemitSalaSubject().next(this.sala);
     this.mesaJogoService.getemitJogadorSubject().next(this.jogadorPrincipal);
   }
+
 }
