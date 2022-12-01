@@ -28,6 +28,11 @@
   color: var(--input-fontColor);
 }
 
+.centraliza h4{
+
+  font-size: var(--tamanhoFonte);
+}
+
 .linha-3 {
   display: grid;
   grid-template-rows: 20% 60% 20%;
