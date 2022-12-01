@@ -8,9 +8,9 @@ describe('MesaCriadaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MesaCriadaComponent ]
+      declarations: [MesaCriadaComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -22,4 +22,16 @@ describe('MesaCriadaComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('deve alterar a variável "carregando" para true ao clicar', async () => {
+    fixture.detectChanges();
+    const carregando = component.carregando;
+    const botao = fixture.nativeElement.querySelector('.btn');
+    expect(carregando.valueOf).toBeFalsy();
+    spyOn(component, 'roteamento');
+    botao.click();
+    fixture.whenStable().then(() => {
+      expect(component.carregando).toBeTruthy();
+    });
+  })
 });

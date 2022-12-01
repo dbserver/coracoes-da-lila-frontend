@@ -43,7 +43,7 @@ fdescribe('HomePageComponent', () => {
   });
 
   it('deve redirecionar para a página de regras', inject([Router], (router: Router) => {
-    spyOn(router, 'navigate').and.stub();
+    spyOn(router, 'navigate').and.stub(); 
     component.irParaRegras();
     expect(router.navigate).toHaveBeenCalledWith(['/regras']);
   }));

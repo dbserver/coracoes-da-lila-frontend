@@ -39,8 +39,8 @@ export class IniciaPartidaComponent implements OnInit {
   enviaStatus(): void {
     this.desabilitaBtn = true;
     let sendSala: Sala = this.sala;
-    // sendSala.status = 'JOGANDO';
-    // this.iniciaPartidaService.iniciaPartida(sendSala).subscribe(sala => this.sala = sala);
+    sendSala.status = 'JOGANDO';
+    this.iniciaPartidaService.iniciaPartida(sendSala).subscribe(sala => this.sala = sala);
   }
 
   ngOnInit(): void {

@@ -15,7 +15,7 @@ export class MesaCriadaComponent implements OnInit {
   hash: string;
   link: string;
 
-  carregando = false;
+  carregando: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
