@@ -1,24 +1,25 @@
-div{
+main{
+    margin-bottom: 50px;
+}
 
-    margin-left: auto;
-    margin-right: auto;
-    width: fit-content;
-    height: auto;
-    padding: .5rem 1rem;
-
-    background-color: var(--btn-bg);
-    border-radius: 30px;
-
-
+div {
+  top: 0px;
+  left: 50%;
+  margin-left: -100px;
+  width: fit-content;
+  height: auto;
+  padding: 0.5rem 1rem;
+  position: fixed;
+  background-color: var(--btn-bg);
+  border-radius: 30px;
 }
 
 //menu para alteração de fonte e contraste
 
-label{
-    padding: 2px;
-    display: inline-block;
-    margin-right: 10px;
-    color: var(--font-color);
-    font-size: var(--tamanhoFonte);
+label {
+  padding: 2px;
+  display: inline-block;
+  margin-right: 10px;
+  color: var(--font-color);
+  font-size: var(--tamanhoFonte);
 }
-
