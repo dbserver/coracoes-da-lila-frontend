@@ -22,7 +22,6 @@ describe('PainelVoltarComponent', () => {
     expect(component).toBeTruthy();
   });
 
-<<<<<<< HEAD:src/app/painel-voltar/painel-voltar.component.spec.ts
   it('deve mostrar <button> escrito "Voltar"', () => {
     const voltar: HTMLElement = fixture.nativeElement;
     const button = voltar.querySelector('.botaoVoltar')!;
@@ -34,11 +33,9 @@ describe('PainelVoltarComponent', () => {
     expect(imagem['src']).toContain('LogoLilaCor.png');
   });
 
-=======
   it('deve redirecionar para a home ao clicar', inject([Router], (router: Router) => {
     spyOn(router, 'navigate').and.stub();
     component.irParaHome();
     expect(router.navigate).toHaveBeenCalledWith(['/']);
   }));
->>>>>>> 71af98eab59978a8e6b9db91b07377dd7672f671:src/app/component/painel-voltar/painel-voltar.component.spec.ts
 });

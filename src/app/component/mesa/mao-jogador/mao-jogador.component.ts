@@ -52,8 +52,8 @@ export class MaoJogadorComponent implements OnInit {
         (this.jogador.cartasDoJogo = listacartasMao)
     );
     this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
-      this.jogador = this.sala.jogadores.find(
-        (jogador) => jogador.id == this.jogador.id
+      this.jogador = this.sala.jogadores?.find(
+        (jogador) => jogador.id == this.jogador?.id
       ) as Jogador;
     });
   }
