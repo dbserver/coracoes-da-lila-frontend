@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { TelaSenhaComponent } from './tela-senha.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('TelaSenhaComponent', () => {
   let component: TelaSenhaComponent;
@@ -11,7 +12,8 @@ describe('TelaSenhaComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TelaSenhaComponent ]
+      declarations: [ TelaSenhaComponent ],
+      imports:[HttpClientTestingModule ]
     })
     .compileComponents();
   }));

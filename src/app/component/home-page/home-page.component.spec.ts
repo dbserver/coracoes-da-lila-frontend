@@ -6,7 +6,7 @@ import { LicenciamentoComponent } from '../licenciamento/licenciamento.component
 
 import { HomePageComponent } from './home-page.component';
 
-fdescribe('HomePageComponent', () => {
+describe('HomePageComponent', () => {
   let component: HomePageComponent;
   let fixture: ComponentFixture<HomePageComponent>;
 
@@ -28,7 +28,7 @@ fdescribe('HomePageComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  
+
   it('Verifica se o texto "PCDs" está na pagina home', () => {
     let primeiroParagrafo = fixture.nativeElement.querySelector('#paragrafo1');
 
@@ -52,9 +52,9 @@ fdescribe('HomePageComponent', () => {
     const licenciamentoCom = TestBed.createComponent(LicenciamentoComponent);
     const licenciamentoComInstance = licenciamentoCom.nativeElement;
 
-    expect(licenciamentoComInstance.innerHTML).toContain('Creative Commons'); 
+    expect(licenciamentoComInstance.innerHTML).toContain('Creative Commons');
   });
-  
+
   it('deve mostrar <button> escrito "Regras do Jogo"', () => {
     const regrasDoJogo: HTMLElement = fixture.nativeElement;
     const button = regrasDoJogo.querySelector('.botaoRegras')!;

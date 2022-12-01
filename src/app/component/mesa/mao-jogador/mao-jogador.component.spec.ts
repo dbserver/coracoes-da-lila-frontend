@@ -1,4 +1,6 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { MaoJogadorComponent } from './mao-jogador.component';
 
@@ -8,7 +10,8 @@ describe('MaoJogadorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MaoJogadorComponent ]
+      declarations: [ MaoJogadorComponent ],
+      imports:[HttpClientTestingModule, RouterTestingModule]
     })
     .compileComponents();
   });
