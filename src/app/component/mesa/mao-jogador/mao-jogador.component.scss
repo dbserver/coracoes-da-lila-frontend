@@ -5,7 +5,7 @@
   grid-gap: 5px;
   align-items: center;
   max-width: 100%;
-  border: 2px solid black;
+  border: 2px solid var(--input-fontColor);
   margin: 15px;
 }
 
@@ -25,6 +25,7 @@
 
 .centraliza {
   text-align: center;
+  color: var(--input-fontColor);
 }
 
 .linha-3 {
@@ -236,7 +237,7 @@
   .carta-coracao {
     width: 40%;
     height: 50px;
-    border: 2px solid black;
+    border: 2px solid var(--input-fontColor);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -255,7 +256,7 @@
   .carta-coracao-bonus{
     width: 40%;
     height: 50px;
-    border: 2px solid black;
+    border: 2px solid var(--input-fontColor);
     display: flex;
     align-items: center;
     justify-content: center;
