@@ -1,10 +1,12 @@
-main{
-    margin-bottom: 50px;
+main {
+  margin-bottom: 50px;
+
 }
 
 div {
   top: 0px;
   left: 50%;
+  z-index: 1;
   margin-left: -100px;
   width: fit-content;
   height: auto;
