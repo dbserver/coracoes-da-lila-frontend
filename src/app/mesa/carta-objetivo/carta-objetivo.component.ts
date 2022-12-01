@@ -17,7 +17,6 @@ export class CartaObjetivoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //Array de cartas recebidas do backend já embaralhadas
-    //console.log(this.recebeCartasObjetivo)
+
   }
 }
