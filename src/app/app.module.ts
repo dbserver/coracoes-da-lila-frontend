@@ -48,7 +48,6 @@ import { RegrasComponent } from './regras/regras.component';
 import { CartaInicioComponent } from './mesa/carta-inicio/carta-inicio.component';
 import { PainelVoltarComponent } from './component/painel-voltar/painel-voltar.component';
 import { TelaDownloadComponent } from './component/tela-download/tela-download.component';
-import { CartaObjetivoComponent } from './mesa/carta-objetivo/carta-objetivo.component';
 
 
 
@@ -84,8 +83,7 @@ import { CartaObjetivoComponent } from './mesa/carta-objetivo/carta-objetivo.com
     TelaHistoriaComponent,
     RegrasComponent,
     PainelVoltarComponent,
-    TelaDownloadComponent,
-    CartaObjetivoComponent
+    TelaDownloadComponent
   ],
   imports: [
     BrowserModule,

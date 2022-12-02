@@ -66,6 +66,7 @@ export class CriarMesaComponent implements OnInit {
       this.sala = salaResp.sala;
       this.jogadorPrincipal = salaResp.jogador;
       this.roteamento();
+      console.log(this.sala)
     });
   }
 
