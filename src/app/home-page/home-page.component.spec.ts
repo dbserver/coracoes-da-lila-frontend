@@ -38,7 +38,9 @@ fdescribe('HomePageComponent', () => {
 
   it('Verifica se o botão existe e tem o conteudo "Criar Partida"', () => {
     let botaoCriarPartida = fixture.nativeElement.querySelector('#buttonMesa');
-
+    component.loadingCriarPartida();
+ 
+    expect(component.loading).toBeTrue();
     expect(botaoCriarPartida.innerHTML).toContain('Criar Partida');
   });
 
