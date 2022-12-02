@@ -42,7 +42,7 @@ export class AreaDeCompraComponent implements OnInit {
       this.listaCartasDisponiveisObjetivo = sala.cartasObjetivo;
       this.jogador = this.mesaJogoService.getJogadorAtualNaMesa();
       this.bonus = this.podeJogar();
-      console.log(this.listaCartasDisponiveisObjetivo)
+      //console.log(this.listaCartasDisponiveisObjetivo)
     });
   }
 
