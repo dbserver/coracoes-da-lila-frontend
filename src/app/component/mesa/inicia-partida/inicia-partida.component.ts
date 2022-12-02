@@ -14,14 +14,13 @@ import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.ser
 })
 export class IniciaPartidaComponent implements OnInit {
   jogadores: number = 0;
-  desabilitaBtn = false;
   sala: Sala;
   jogadorPrincipal: Jogador;
   hash = '';
   enviaCartaInicio: CartaInicio;
 
   constructor(
-    private iniciaPartidaService: IniciaPartidaService,
+
     private mesaJogoService: MesaJogoService,
     private cartaService: CartaService
   ) {
@@ -30,22 +29,13 @@ export class IniciaPartidaComponent implements OnInit {
     this.enviaCartaInicio = {} as CartaInicio;
   }
 
-  verificaQuantidadeJogadores() {
-    if (this.sala.jogadores.length >= 2) {
-      this.desabilitaBtn = false;
-    }
-  }
 
-  enviaStatus(): void {
-    let sendSala: Sala = this.sala;
-    sendSala.status = 'JOGANDO';
-    this.iniciaPartidaService.iniciaPartida(sendSala).subscribe(sala => this.sala = sala);
-  }
+
 
   ngOnInit(): void {
     this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
       this.sala = sala;
-      this.verificaQuantidadeJogadores();
+    
     });
 
     this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => {

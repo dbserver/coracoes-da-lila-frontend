@@ -40,7 +40,7 @@ export class CriarMesaComponent implements OnInit {
       isHost: true,
       bonusCoracaoPequeno: 0,
       bonusCoracaoGrande: 0,
-      status: 'JOGANDO'
+      status: 'ESPERANDO'
     };
     if(this.nomeValido()){
       this.isvalid = true;

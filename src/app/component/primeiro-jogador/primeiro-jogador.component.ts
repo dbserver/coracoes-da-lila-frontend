@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Jogador } from 'src/app/model/jogador';
 import { Sala } from 'src/app/model/sala';
+import { IniciaPartidaService } from 'src/app/service/inicia-partida-service/inicia-partida.service';
 import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.service';
 
 @Component({
@@ -11,27 +12,45 @@ import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.ser
 export class PrimeiroJogadorComponent implements OnInit {
   jogadores: Jogador[] = new Array();
   sala: Sala = {} as Sala;
-  jogadorPrincipal: Jogador = {} as Jogador;
+  primeiroJogador: Jogador = {} as Jogador;
+  jogador: Jogador;
   public jogadorModal: Jogador = {} as Jogador;
-
+  isHost: boolean = true;
+  desabilitaBtn = false;
 
   constructor(
-    private mesaJogoService: MesaJogoService
-  ) { }
+    private mesaJogoService: MesaJogoService,
+    private iniciaPartidaService: IniciaPartidaService
+  ) {
+    this.jogador = {} as Jogador;
+   }
 
   ngOnInit(): void {
     this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
       this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => {
-        this.jogadorPrincipal = jogador;
-
+        this.primeiroJogador = jogador;
+        this.verificaQuantidadeJogadores();
         this.sala = sala;
         this.jogadores = sala.jogadores;
       });
     });
   }
+
+
+  enviaStatus(): void {
+    let sendSala: Sala = this.sala;
+    sendSala.status = 'JOGANDO';
+    this.iniciaPartidaService.iniciaPartida(sendSala).subscribe(sala => this.sala = sala);
+  }
+
+  verificaQuantidadeJogadores() {
+    if (this.sala.jogadores.length >= 2) {
+      this.desabilitaBtn = false;
+    }
+  }
+
   visibilidade(id:number){
     var x = document.getElementById(`icone-coracao-${id}`);
-    var y = document.getElementsByClassName("icone-coracao");
 
     // for (let index = 0; index < y.length; index++) {
     //   const element = y[index];
@@ -39,10 +58,10 @@ export class PrimeiroJogadorComponent implements OnInit {
 
     // }
 
-    console.log(y[0]);
-    console.log(x);
+    // console.log(y[0]);
+    // console.log(x);
     if(x == null){
-      x = null;
+      return;
     }else{
       if(x.style.visibility == "visible"){
         x.style.visibility ="hidden";

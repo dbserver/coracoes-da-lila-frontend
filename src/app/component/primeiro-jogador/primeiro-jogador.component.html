@@ -1,4 +1,26 @@
-<section aria-label="Selecione um jogador" *ngFor="let jogador of jogadores; let i=index;">
-  <input [(ngModel)]="jogadores" id="{{jogador.nome}}" type="radio" (click)="visibilidade(i)" [value]="jogador.nome">
-  <label for="{{jogador.nome}}" class="nome-jogador"><img class="icone-coracao" id="icone-coracao-{{i}}" src="../../../assets/svg/icone-coracao.svg" alt="Ícone coração"> {{jogador.nome}}</label>
+<section
+  aria-label="Selecione um jogador"
+  *ngFor="let jogador of jogadores; let i = index"
+>
+  <input
+    [(ngModel)]="jogadores"
+    id="{{ jogador.nome }}"
+    type="radio"
+    (click)="visibilidade(i)"
+    [value]="jogador.nome"
+  />
+  <label for="{{ jogador.nome }}" class="nome-jogador">
+    <img
+      class="icone-coracao"
+      id="icone-coracao-{{ i }}"
+      src="../../../assets/svg/icone-coracao.svg"
+      alt="Ícone coração"
+    />
+    {{ jogador.nome }}</label
+  >
 </section>
+
+<div class='div-btn-aguarde'>
+  <button mat-raised-button class="btn-aguarde btn" [disabled]="desabilitaBtn" (click)="enviaStatus()">Iniciar partida</button>
+</div>
+
