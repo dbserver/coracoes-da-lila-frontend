@@ -1,4 +1,7 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { RxStompService } from '@stomp/ng2-stompjs';
 
 import { MesaJogoComponent } from './mesa-jogo.component';
 
@@ -8,7 +11,10 @@ describe('MesaJogoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MesaJogoComponent ]
+      declarations: [ MesaJogoComponent ],
+      imports: [HttpClientTestingModule, RouterTestingModule],
+      providers: [RxStompService]
+
     })
     .compileComponents();
   });

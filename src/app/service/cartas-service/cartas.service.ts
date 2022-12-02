@@ -30,7 +30,6 @@ export class CartaService {
   }
 
   getCartaInicio(uuid: String): Observable<CartaInicio>{
-    console.log(uuid);
     return this.httpClient.get<CartaInicio>(`${environment.API_URL}${this.URLCartaInicio}/${uuid}`)
   }
 }
