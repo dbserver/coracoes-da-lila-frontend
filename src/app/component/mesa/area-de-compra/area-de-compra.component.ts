@@ -39,9 +39,10 @@ export class AreaDeCompraComponent implements OnInit {
     this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
       this.sala = sala;
       this.listaCartasDisponiveis = sala.baralho.cartasDoJogo;
-      this.listaCartasDisponiveisObjetivo = sala.baralho.cartasObjetivo;
+      this.listaCartasDisponiveisObjetivo = sala.cartasObjetivo;
       this.jogador = this.mesaJogoService.getJogadorAtualNaMesa();
       this.bonus = this.podeJogar();
+      //console.log(this.listaCartasDisponiveisObjetivo)
     });
   }
 

@@ -65,4 +65,5 @@ export class MesaJogoComponent implements OnInit {
   fecharModal() {
     this.isShow = !this.isShow;
   }
+
 }

@@ -84,7 +84,6 @@ import { TelaDownloadComponent } from './component/tela-download/tela-download.c
     RegrasComponent,
     PainelVoltarComponent,
     TelaDownloadComponent
-
   ],
   imports: [
     BrowserModule,
