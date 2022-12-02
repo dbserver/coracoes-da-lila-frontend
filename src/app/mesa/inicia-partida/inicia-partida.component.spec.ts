@@ -33,7 +33,7 @@ fdescribe('IniciaPartidaComponent', () => {
   });
 
   it('deve verificar se o botão iniciar partida contém a mensagem "Iniciar Jogo"', () => {
-    const botaoIniciarJogo = obterValorPorId('#iniciar');
+    const botaoIniciarJogo = fixture.nativeElement.querySelector('#iniciar');
     expect(component.desabilitaBtn).toBeFalse();
     expect(botaoIniciarJogo.trim()).toContain('Iniciar Jogo')
   })
@@ -41,7 +41,7 @@ fdescribe('IniciaPartidaComponent', () => {
   it('deve alterar a variável "desabilitaBtn" para true ao clicar', () => {
     const desabilitaBtn = component.desabilitaBtn;
     expect(component.desabilitaBtn).toBeFalsy();
-    const botao = fixture.debugElement.query(By.css('.btn-aguarde')).nativeElement.innerHTML;
+    const botao = fixture.nativeElement.querySelector('#iniciar');
     botao.click();
     expect(desabilitaBtn.valueOf).toBeTruthy();
   })
