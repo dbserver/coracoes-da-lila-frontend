@@ -47,7 +47,8 @@ export class MesaJogoComponent implements OnInit {
         //recebe uma sala pelo websocket e envia para o mesa-jogo service..
         this.mesaJogoService.getemitSalaSubject().next(JSON.parse(msg.body));
       });
-
+    
+    
     this.enviaCartasObjetivo = this.sala.baralho.cartasObjetivo;
   }
 

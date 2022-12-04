@@ -65,6 +65,15 @@ export class AreaDeCompraComponent implements OnInit {
   }
   }
 
+  public comprarCartaObjetivo(): void {
+    if (this.jogador.status == 'JOGANDO'){
+      //TODO: Pensar em como avisar ao backend que a carta foi comprada
+      
+      //this.jogador.comprouCarta = true;
+      this.mesaJogoService.comprarCartaObjetivo(this.sala).subscribe((sala) => (this.sala = sala))
+    }
+  }
+
   public comprarCoracaoP() {
     if(this.jogador.status == 'JOGANDO'){
       this.sala.dado = 0;
