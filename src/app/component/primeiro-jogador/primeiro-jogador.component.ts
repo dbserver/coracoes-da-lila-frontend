@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Jogador } from 'src/app/model/jogador';
 import { Sala } from 'src/app/model/sala';
 import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.service';
-import { checkServerIdentity } from 'tls';
 
 @Component({
   selector: 'app-primeiro-jogador',
@@ -36,12 +35,13 @@ export class PrimeiroJogadorComponent implements OnInit {
   }
 
   visibilidade(id:number){
-    console.log(id);
     var botaoJogador = document.getElementById(`${id}`);
     var x = document.getElementById(`icone-coracao-${id}`);
-    const selecionado = document.querySelector('input[name=primeiroJogador]:checked').value;
-    if (botaoJogador == null){
-      return;
+    const selecionado = botaoJogador?.querySelector('input[name=primeiroJogador]:checked');
+    //selecionado.innerText
+
+    if (botaoJogador != null){
+      console.log(selecionado)
     }
 
     // for (let index = 0; index < y.length; index++) {
