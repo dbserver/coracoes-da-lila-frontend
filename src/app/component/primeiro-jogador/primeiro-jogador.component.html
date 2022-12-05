@@ -1,6 +1,8 @@
 <label> Escolha o primeiro jogador: </label>
 
 <mat-radio-group aria-label="Selecione um jogador" [(ngModel)]="primeiroJogador">
-   <mat-radio-button [value]="jogador.nome" *ngFor="let jogador of jogadores; let i = index">
+   <mat-radio-button [value]="jogador" *ngFor="let jogador of jogadores;">
     {{jogador.nome}}</mat-radio-button>
 </mat-radio-group>
+
+<div>O primeiro jogador é: {{primeiroJogador.nome}}</div>

@@ -1,3 +1,4 @@
+import { PrimeiroJogadorComponent } from './../../primeiro-jogador/primeiro-jogador.component';
 import { Component, OnInit } from '@angular/core';
 import { CartaInicio } from 'src/app/model/cartaInicio';
 import { Jogador } from 'src/app/model/jogador';
@@ -22,7 +23,8 @@ export class IniciaPartidaComponent implements OnInit {
   constructor(
     private iniciaPartidaService: IniciaPartidaService,
     private mesaJogoService: MesaJogoService,
-    private cartaService: CartaService
+    private cartaService: CartaService,
+    private primeiroJogadorComponent: PrimeiroJogadorComponent
   ) {
     this.sala = {} as Sala;
     this.jogadorPrincipal = {} as Jogador;
@@ -39,6 +41,10 @@ export class IniciaPartidaComponent implements OnInit {
     let sendSala: Sala = this.sala;
     sendSala.status = 'JOGANDO';
     this.iniciaPartidaService.iniciaPartida(sendSala).subscribe(sala => this.sala = sala);
+  }
+
+  recebePrimeiroJogador():void{
+    //this.primeiroJogadorComponent.enviaPrimeiroJogador().subscribe(jogadorEscolhido => this.jogadorEscolhido = jogadorEscolhido);
   }
 
   ngOnInit(): void {
