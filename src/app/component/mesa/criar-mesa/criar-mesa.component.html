@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="logo">
+    <a [routerLink]="['']">
+      <img src="../../../assets/LogoLilaCor.png" alt="" />
+    </a>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Nick:</mat-label>
+      <input matInput type="text" [(ngModel)]="nick"/>
+    </mat-form-field>
+  </div>
+
+  <div *ngIf="!isvalid">
+    <p class="aviso">
+    Nome deve ter pelo menos 2 caracteres
+    </p>
+  </div>
+
+  <div>
+    <button mat-raised-button class="btn"  [class.spinner]="loading" [disabled]="loading" (click)="click()">Criar Mesa</button>
+  </div>
+  
+  <div>
+    <button  mat-raised-button class="btn" type="submit" [routerLink]="['']">Voltar</button>
+  </div>
+</div>

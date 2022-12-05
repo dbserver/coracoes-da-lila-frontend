@@ -1,9 +1,11 @@
 import { Baralho } from './baralho';
+import { CartaObjetivo } from './cartaObjetivo';
 import { Jogador } from './jogador';
 
 export interface Sala {
   id: string;
   hash: string;
+  cartasObjetivo: CartaObjetivo[];
   baralho: Baralho;
   jogadores: Jogador[];
   dado: number;
