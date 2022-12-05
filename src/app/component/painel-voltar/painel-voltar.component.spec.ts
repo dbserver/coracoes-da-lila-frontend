@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 
@@ -9,7 +10,8 @@ describe('PainelVoltarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PainelVoltarComponent ]
+      declarations: [ PainelVoltarComponent ],
+      imports: [HttpClientTestingModule]
     })
     .compileComponents();
 
@@ -25,7 +27,7 @@ describe('PainelVoltarComponent', () => {
   it('deve mostrar <button> escrito "Voltar"', () => {
     const voltar: HTMLElement = fixture.nativeElement;
     const button = voltar.querySelector('.botaoVoltar')!;
-    expect(button.textContent?.trim()).toEqual('Voltar');
+    expect(fixture.nativeElement.innerHTML).toContain('Voltar');
   });
 
   it('deve mostrar imagem do logo', () => {
