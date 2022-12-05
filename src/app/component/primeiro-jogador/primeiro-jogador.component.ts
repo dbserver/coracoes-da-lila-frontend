@@ -19,8 +19,7 @@ export class PrimeiroJogadorComponent implements OnInit {
   desabilitaBtn = false;
 
   constructor(
-    private mesaJogoService: MesaJogoService,
-    private iniciaPartidaService: IniciaPartidaService
+    private mesaJogoService: MesaJogoService
   ) {
     this.jogador = {} as Jogador;
    }
@@ -29,24 +28,10 @@ export class PrimeiroJogadorComponent implements OnInit {
     this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
       this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => {
         this.primeiroJogador = jogador;
-        this.verificaQuantidadeJogadores();
         this.sala = sala;
         this.jogadores = sala.jogadores;
       });
     });
-  }
-
-
-  enviaStatus(): void {
-    let sendSala: Sala = this.sala;
-    sendSala.status = 'JOGANDO';
-    this.iniciaPartidaService.iniciaPartida(sendSala).subscribe(sala => this.sala = sala);
-  }
-
-  verificaQuantidadeJogadores() {
-    if (this.sala.jogadores.length >= 2) {
-      this.desabilitaBtn = false;
-    }
   }
 
   visibilidade(id:number){
