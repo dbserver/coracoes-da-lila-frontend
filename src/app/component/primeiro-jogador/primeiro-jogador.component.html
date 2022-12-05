@@ -4,12 +4,13 @@
 >
   <input
     [(ngModel)]="jogadores"
-    id="{{ jogador.nome }}"
+    id="{{ i }}"
     type="radio"
     (click)="visibilidade(i)"
     [value]="jogador.nome"
+    name="primeiroJogador"
   />
-  <label for="{{ jogador.nome }}" class="nome-jogador">
+  <label for="{{ i }}" class="nome-jogador">
     <img
       class="icone-coracao"
       id="icone-coracao-{{ i }}"

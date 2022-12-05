@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Jogador } from 'src/app/model/jogador';
 import { Sala } from 'src/app/model/sala';
-import { IniciaPartidaService } from 'src/app/service/inicia-partida-service/inicia-partida.service';
 import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.service';
+import { checkServerIdentity } from 'tls';
 
 @Component({
   selector: 'app-primeiro-jogador',
   templateUrl: './primeiro-jogador.component.html',
   styleUrls: ['./primeiro-jogador.component.scss']
 })
+
 export class PrimeiroJogadorComponent implements OnInit {
   jogadores: Jogador[] = new Array();
   sala: Sala = {} as Sala;
@@ -35,7 +36,13 @@ export class PrimeiroJogadorComponent implements OnInit {
   }
 
   visibilidade(id:number){
+    console.log(id);
+    var botaoJogador = document.getElementById(`${id}`);
     var x = document.getElementById(`icone-coracao-${id}`);
+    const selecionado = document.querySelector('input[name=primeiroJogador]:checked').value;
+    if (botaoJogador == null){
+      return;
+    }
 
     // for (let index = 0; index < y.length; index++) {
     //   const element = y[index];
