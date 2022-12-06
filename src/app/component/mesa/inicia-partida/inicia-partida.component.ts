@@ -23,8 +23,7 @@ export class IniciaPartidaComponent implements OnInit {
   constructor(
     private iniciaPartidaService: IniciaPartidaService,
     private mesaJogoService: MesaJogoService,
-    private cartaService: CartaService,
-    private primeiroJogadorComponent: PrimeiroJogadorComponent
+    private cartaService: CartaService
   ) {
     this.sala = {} as Sala;
     this.jogadorPrincipal = {} as Jogador;
@@ -37,14 +36,17 @@ export class IniciaPartidaComponent implements OnInit {
     }
   }
 
+  //teste para enviar primeiro jogador com status jogando...
+  recebePrimeiroJogador():void{
+    this.iniciaPartidaService.definePrimeiroJogador(this.jogadorPrincipal).subscribe(jogadorEscolhido => this.jogadorPrincipal = jogadorEscolhido);
+  };
+
   enviaStatus(): void {
+    //teste, apagar console depois de testar
+    console.log(this.recebePrimeiroJogador);
     let sendSala: Sala = this.sala;
     sendSala.status = 'JOGANDO';
     this.iniciaPartidaService.iniciaPartida(sendSala).subscribe(sala => this.sala = sala);
-  }
-
-  recebePrimeiroJogador():void{
-    //this.primeiroJogadorComponent.enviaPrimeiroJogador().subscribe(jogadorEscolhido => this.jogadorEscolhido = jogadorEscolhido);
   }
 
   ngOnInit(): void {
@@ -52,6 +54,7 @@ export class IniciaPartidaComponent implements OnInit {
       this.sala = sala;
       this.verificaQuantidadeJogadores();
     });
+
 
     this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => {
       this.jogadorPrincipal = jogador;

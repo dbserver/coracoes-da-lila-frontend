@@ -28,7 +28,9 @@ export class PrimeiroJogadorComponent implements OnInit {
     });
   }
 
+  //teste para primeiro jogador
   enviaPrimeiroJogador() {
+    console.log(this.primeiroJogador);
     return this.primeiroJogador;
   }
 

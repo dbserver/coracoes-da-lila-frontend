@@ -17,9 +17,9 @@ export class MesaJogoService {
   setJogadorAtualNaMesa(jogador : Jogador){
     this.emitJogadorAtual = jogador
   }
-  
+
   getJogadorAtualNaMesa():Jogador{
-    return this.emitJogadorAtual 
+    return this.emitJogadorAtual
   }
 
   getemitSalaObservable(): Observable<Sala> {
@@ -39,7 +39,7 @@ export class MesaJogoService {
   }
 
   comprarCartas(sala: Sala){
-    return this.http.put<Sala>(environment.API_URL+'api/jogada/comprarcarta',sala)
+    return this.http.put<Sala>(environment.API_URL+'api/jogada/comprarcarta',sala);
   }
   comprarCoracaoP(sala: Sala){
     return this.http.put<Sala>(environment.API_URL+'api/jogada/comprarcoracaopequeno',sala);
