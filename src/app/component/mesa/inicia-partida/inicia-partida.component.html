@@ -1,12 +1,14 @@
 <app-carta-inicio [recebeCartaInicio]="enviaCartaInicio"></app-carta-inicio>
-<app-primeiro-jogador *ngIf="jogadorPrincipal.isHost === true"></app-primeiro-jogador>
+<app-primeiro-jogador (transmitirPrimeiroJogador)="enviaPrimeiroJogador()" *ngIf="jogadorHost.isHost === true"></app-primeiro-jogador>
 
 
 <div class="div-aguarde">
 
-  <p *ngIf="jogadorPrincipal.isHost === false" class="mensagem-aguarde">Aguardando início da partida</p>
+  <p *ngIf="jogadorHost.isHost === false" class="mensagem-aguarde">Aguardando início da partida</p>
 
-  <div class='div-btn-aguarde' *ngIf="jogadorPrincipal.isHost === true">
+  <div>O primeiro jogador é: {{ primeiroJogador.nome }}</div>
+
+  <div class='div-btn-aguarde' *ngIf="jogadorHost.isHost === true">
     <button mat-raised-button class="btn-aguarde btn" [disabled]="desabilitaBtn" (click)="enviaStatus()">Iniciar partida</button>
   </div>
 

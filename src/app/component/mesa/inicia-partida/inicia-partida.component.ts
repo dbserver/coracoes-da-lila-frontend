@@ -1,5 +1,4 @@
-import { PrimeiroJogadorComponent } from './../../primeiro-jogador/primeiro-jogador.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CartaInicio } from 'src/app/model/cartaInicio';
 import { Jogador } from 'src/app/model/jogador';
 import { Sala } from 'src/app/model/sala';
@@ -13,10 +12,11 @@ import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.ser
   styleUrls: ['./inicia-partida.component.scss'],
 })
 export class IniciaPartidaComponent implements OnInit {
+  primeiroJogador: Jogador = {} as Jogador; //
   jogadores: number = 0;
   desabilitaBtn = false;
   sala: Sala;
-  jogadorPrincipal: Jogador;
+  jogadorHost: Jogador;
   hash = '';
   enviaCartaInicio: CartaInicio;
 
@@ -26,8 +26,9 @@ export class IniciaPartidaComponent implements OnInit {
     private cartaService: CartaService
   ) {
     this.sala = {} as Sala;
-    this.jogadorPrincipal = {} as Jogador;
+    this.primeiroJogador = {} as Jogador; //
     this.enviaCartaInicio = {} as CartaInicio;
+    this.jogadorHost = {} as Jogador;
   }
 
   verificaQuantidadeJogadores() {
@@ -36,37 +37,53 @@ export class IniciaPartidaComponent implements OnInit {
     }
   }
 
+  enviaPrimeiroJogador() {
+    this.primeiroJogador = this.iniciaPartidaService.getPrimeiroJogador();
+    console.log(this.primeiroJogador)
+  }
+
   //teste para enviar primeiro jogador com status jogando...
-  recebePrimeiroJogador():void{
-    this.iniciaPartidaService.definePrimeiroJogador(this.jogadorPrincipal).subscribe(jogadorEscolhido => this.jogadorPrincipal = jogadorEscolhido);
-  };
+  // recebePrimeiroJogador():void{
+  //   this.iniciaPartidaService.definePrimeiroJogador(this.primeiroJogador)
+  //   .subscribe(primeiroJogador => this.primeiroJogador = primeiroJogador);
+  // };
+
+  enviarPrimeiroJogador() {
+    this.iniciaPartidaService
+      .definePrimeiroJogador(this.primeiroJogador)
+      .subscribe(primeiroJogador => this.primeiroJogador = primeiroJogador);
+    console.log(this.primeiroJogador);
+  }
 
   enviaStatus(): void {
-    //teste, apagar console depois de testar
-    console.log(this.recebePrimeiroJogador);
     let sendSala: Sala = this.sala;
     sendSala.status = 'JOGANDO';
-    this.iniciaPartidaService.iniciaPartida(sendSala).subscribe(sala => this.sala = sala);
+    this.iniciaPartidaService
+      .iniciaPartida(sendSala)
+      .subscribe(sala => this.sala = sala);
+    console.log(this.primeiroJogador);
   }
 
   ngOnInit(): void {
     this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
       this.sala = sala;
       this.verificaQuantidadeJogadores();
+      this.iniciaPartidaService.getPrimeiroJogador();
     });
 
-
-    this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => {
-      this.jogadorPrincipal = jogador;
+    this.mesaJogoService.getemitJogadorObservable().subscribe(jogador => {
+      this.jogadorHost = jogador;
     });
 
     this.getCartaInicio();
   }
 
-  private getCartaInicio(){
+  private getCartaInicio() {
     let uuid = this.sala.baralho?.idCartaInicio;
-    this.cartaService.getCartaInicio(uuid).subscribe((cartaInicio: CartaInicio)=>{
-      this.enviaCartaInicio = cartaInicio;
-    });
+    this.cartaService
+      .getCartaInicio(uuid)
+      .subscribe((cartaInicio: CartaInicio) => {
+        this.enviaCartaInicio = cartaInicio;
+      });
   }
 }
