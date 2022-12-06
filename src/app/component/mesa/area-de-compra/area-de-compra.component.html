@@ -65,34 +65,28 @@
       </div>
     </div>
     <div class="informacoes-gerais">
+
       <div class="carta carta-objetivo">
         <div class="carta-logotexto">
           <img class="imagem-logo" src="../../../assets/img/logoLilaSozinho.png" alt="logo">
 
           <div class="dropdown">
             <button class="dropbtn texto">Objetivo</button>
-            <div class="dropdown-content">
-              <a href="#">Opção 1</a>
-              <a href="#">Opção 2</a>
+            <div class="dropdown-content" *ngIf="verificaJogadorTemCoracoes()==true && verificaStatusJogador() == true">
+              <a (click)="compraUmaCarta()" *ngIf="verificaJogadorTemCoracaoPequeno()==true">
+                <img src="../../../assets/img/cartacoracaopequeno.png" alt="">
+              </a>
+              <a (click)="escolheCompraUmaCarta()" *ngIf="verificaJogadorTemCoracaoGrande()==true">
+                <img src="../../../assets/img/cartacoracaogrande.png" alt="">
+              </a>
             </div>
           </div>
 
-
-          <!-- <p >Objetivo</p> -->
-          <!-- <div> -->
-            <!-- <button class="texto" mat-button [matMenuTriggerFor]="menu">Objetivo</button>
-            <mat-menu #menu="matMenu">
-              <button mat-menu-item>Item 1</button>
-              <button mat-menu-item>Item 2</button>
-            </mat-menu> -->
-            <!-- <mat-action-list>
-              <button class="opcoes-compra" mat-list-item (click)="opcao1()">Lorem</button>
-              <button class="opcoes-compra" mat-list-item (click)="opcao2()">Lorem</button>
-            </mat-action-list> -->
-          <!-- </div> -->
         </div>
         <img class="imagem-lila" src="../../../assets/img/lilaSozinha.png" alt="lila">
       </div>
+
+
       <div class="coracoes">
         <div class="grupo-coracoes">
           <div [ngClass]="{'desabilitar-coracao': bloquearCompraCoracoesGrandes()}" class="coracao grande"
