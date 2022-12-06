@@ -15,7 +15,7 @@
   display: grid;
   position: absolute;
   left: 30%;
-  grid-template-columns: 10% 10% 10% 10% 10%;
+  grid-template-columns: 10% 10% 10% 10%;
   grid-gap: 1em;
   justify-items: center;
   align-items: center;
@@ -29,7 +29,7 @@
 .mao {
   display: grid;
   height: 200px;
-  grid-template-columns: 15% 10% 45% 21% 8%;
+  grid-template-columns: 15% 10% 66% 8%;
   grid-gap: 5px;
   align-items: center;
   max-width: 100%;
@@ -70,10 +70,11 @@
 }
 
 .cartas-container {
+  display: flex;
   padding-bottom: 10px;
   &-scroll {
     display: flex;
-    max-width: 800px;
+    max-width: 1400px;
     overflow-x: auto;
     padding-bottom: 8px;
 
@@ -203,6 +204,7 @@
       &-horizontal {
         width: 190px;
         height: 110px;
+        margin-top: 28px;
 
         &.carta-sem-titulo {
           display: flex;
