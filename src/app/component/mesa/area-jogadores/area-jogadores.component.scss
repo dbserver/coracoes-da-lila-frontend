@@ -1,29 +1,31 @@
-.container {
-  height: 100%;
-  display: grid;
-  position: relative;
-  grid-template-rows: 15% auto 30%;
-  grid-gap: 10px;
-}
-
-.lista-jogadores {
-  list-style-type: none;
-  margin-top: 1rem;
-}
-
 .area-jogadores {
-  display: grid;
-  position: absolute;
-  left: 30%;
-  grid-template-columns: 10% 10% 10% 10% 10%;
-  grid-gap: 1em;
-  justify-items: center;
+  display: flex;
+  justify-content: center;
   align-items: center;
+  gap: 12px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
-.avatar {
-  height: 60%;
-  width: 60%;
+.box-jogador {
+  width: 48rem;
+  height: 6rem;
+  display: inline-flex;
+  gap: inherit;
+  justify-content: center;
+}
+
+.jogador{
+  width: fit-content;
+}
+
+.nome-jogador{
+  word-break: break-all;
+  font-size: 20px;
+}
+
+.avatar{
+  width: 40%;
 }
 
 .mao {
