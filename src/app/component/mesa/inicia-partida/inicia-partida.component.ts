@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CartaInicio } from 'src/app/model/cartaInicio';
 import { Jogador } from 'src/app/model/jogador';
 import { Sala } from 'src/app/model/sala';
@@ -14,7 +14,7 @@ import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.ser
 export class IniciaPartidaComponent implements OnInit {
   primeiroJogador: Jogador = {} as Jogador;
   jogadores: number = 0;
-  desabilitaBtn = false;
+  desabilitaBtn = true;
   sala: Sala;
   jogadorHost: Jogador;
   hash = '';
@@ -31,15 +31,23 @@ export class IniciaPartidaComponent implements OnInit {
     this.jogadorHost = {} as Jogador;
   }
 
-  verificaQuantidadeJogadores() {
-    if (this.sala.jogadores.length >= 2) {
-      this.desabilitaBtn = false;
-    }
-  }
+  // verificaQuantidadeJogadores() {
+  //   if (this.sala.jogadores.length >= 2) {
+  //     this.desabilitaBtn = false;
+  //   }
+  // }
 
   transmitePrimeiroJogadorEscolhido() {
     this.primeiroJogador = this.iniciaPartidaService.getPrimeiroJogador();
-    console.log(this.primeiroJogador)
+  }
+  
+  habilitaBtn(){
+    if (this.sala.jogadores.length >= 2){
+      console.log(this.primeiroJogador);
+      if (this.primeiroJogador == null){
+        this.desabilitaBtn = true;
+      }
+    }
   }
 
   enviarPrimeiroJogador() {
@@ -60,7 +68,7 @@ export class IniciaPartidaComponent implements OnInit {
   ngOnInit(): void {
     this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
       this.sala = sala;
-      this.verificaQuantidadeJogadores();
+      this.habilitaBtn();
       this.iniciaPartidaService.getPrimeiroJogador();
     });
 

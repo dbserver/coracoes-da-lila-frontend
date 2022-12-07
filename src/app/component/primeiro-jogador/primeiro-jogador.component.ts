@@ -10,7 +10,8 @@ import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.ser
   styleUrls: ['./primeiro-jogador.component.scss'],
 })
 export class PrimeiroJogadorComponent implements OnInit {
-  @Output() transmitirPrimeiroJogador = new EventEmitter();
+  @Output('ngModelChange') transmitirPrimeiroJogador = new EventEmitter();
+  //@Output('ngModelChange') update = new EventEmitter();
   primeiroJogador: Jogador = {} as Jogador;
   sala: Sala = {} as Sala;
   jogadores: Jogador[] = new Array();
