@@ -48,3 +48,36 @@ input{
         width: var(--btn-width);
     }
 }
+
+@keyframes spinner {
+    to {transform: rotate(360deg);}
+  }
+  
+  .spinner:before {
+    content: '';
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    justify-items: center;
+    margin-top: 8px;
+    margin-left: 47%;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 3px solid var(--font-color);
+    border-top-color: rgb(167, 163, 163);
+    animation: spinner .8s linear infinite;
+
+    @media (max-width: 800px) {
+        margin-left: 140px;
+        
+    }
+
+  }
+  
+  .btn[disabled] {
+    background-color: rgb(167, 163, 163);
+    color: rgb(167, 163, 163);
+  }

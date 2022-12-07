@@ -36,6 +36,7 @@ export class IniciaPartidaComponent implements OnInit {
   }
 
   enviaStatus(): void {
+    this.desabilitaBtn = true;
     let sendSala: Sala = this.sala;
     sendSala.status = 'JOGANDO';
     this.iniciaPartidaService.iniciaPartida(sendSala).subscribe(sala => this.sala = sala);
@@ -58,6 +59,6 @@ export class IniciaPartidaComponent implements OnInit {
     let uuid = this.sala.baralho?.idCartaInicio;
     this.cartaService.getCartaInicio(uuid).subscribe((cartaInicio: CartaInicio)=>{
       this.enviaCartaInicio = cartaInicio;
-    });
-  }
+     });
+   }
 }

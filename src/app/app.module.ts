@@ -6,7 +6,8 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -102,7 +103,8 @@ import { TelaDownloadComponent } from './component/tela-download/tela-download.c
     MatIconModule,
     HttpClientModule,
     ClipboardModule,
-    MatCardModule
+    MatCardModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
     {
@@ -118,4 +120,4 @@ import { TelaDownloadComponent } from './component/tela-download/tela-download.c
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

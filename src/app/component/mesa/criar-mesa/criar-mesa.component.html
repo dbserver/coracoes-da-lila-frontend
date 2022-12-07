@@ -18,9 +18,10 @@
   </div>
 
   <div>
-    <button mat-raised-button class="btn" (click)="click()">Criar Mesa</button>
+    <button mat-raised-button class="btn"  [class.spinner]="loading" [disabled]="loading" (click)="click()">Criar Mesa</button>
   </div>
+  
   <div>
-    <button mat-raised-button class="btn" type="submit" [routerLink]="['']">Voltar</button>
+    <button  mat-raised-button class="btn" type="submit" [routerLink]="['']">Voltar</button>
   </div>
 </div>

@@ -5,8 +5,9 @@ import { Router } from '@angular/router';
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss']
-})
+}) 
 export class HomePageComponent implements OnInit {
+  loading = false;
 
   constructor( private router: Router ) { }
 
@@ -17,4 +18,8 @@ export class HomePageComponent implements OnInit {
     this.router.navigate(['/regras'])
   }
 
+  loadingCriarPartida():void {
+    this.loading = true;
+    this.router.navigate(['/mesa']);
+  }
 }

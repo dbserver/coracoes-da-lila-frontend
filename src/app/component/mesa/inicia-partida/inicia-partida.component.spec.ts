@@ -10,7 +10,9 @@ describe('IniciaPartidaComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ IniciaPartidaComponent ],
-      imports: [HttpClientTestingModule]
+      imports: [
+        HttpClientTestingModule
+      ]
     })
     .compileComponents();
   });
