@@ -3,6 +3,7 @@ import { Jogador } from './../../model/jogador';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Sala } from 'src/app/model/sala';
 import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.service';
+import { MatRadioChange } from '@angular/material/radio'
 
 @Component({
   selector: 'app-primeiro-jogador',
@@ -15,7 +16,7 @@ export class PrimeiroJogadorComponent implements OnInit {
   sala: Sala = {} as Sala;
   jogadores: Jogador[] = new Array();
   jogador: Jogador = {} as Jogador;
-
+ 
   constructor(
     private mesaJogoService: MesaJogoService,
     private iniciaPartidaService: IniciaPartidaService
@@ -32,7 +33,6 @@ export class PrimeiroJogadorComponent implements OnInit {
     });
   }
 
-  //teste para primeiro jogador
   transmitePrimeiroJogadorEscolhido(primeiroJogador: Jogador) {
     this.primeiroJogador = primeiroJogador;
     this.iniciaPartidaService.setPrimeiroJogador(this.primeiroJogador);

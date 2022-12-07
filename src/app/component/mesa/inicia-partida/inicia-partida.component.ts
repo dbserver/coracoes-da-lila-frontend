@@ -12,13 +12,17 @@ import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.ser
   styleUrls: ['./inicia-partida.component.scss'],
 })
 export class IniciaPartidaComponent implements OnInit {
-  primeiroJogador: Jogador = {} as Jogador;
+  primeiroJogador: Jogador;
   jogadores: number = 0;
-  desabilitaBtn = false;
+  desabilitaBtn = true;
+  desabilitaBtn2 = true;
+  desabilitaBtn3 = true;
+
   sala: Sala;
   jogadorHost: Jogador;
   hash = '';
   enviaCartaInicio: CartaInicio;
+  mudanca$: boolean = false;
 
   constructor(
     private iniciaPartidaService: IniciaPartidaService,
@@ -31,15 +35,11 @@ export class IniciaPartidaComponent implements OnInit {
     this.jogadorHost = {} as Jogador;
   }
 
-  verificaQuantidadeJogadores() {
-    if (this.sala.jogadores.length >= 2) {
-      this.desabilitaBtn = false;
-    }
-  }
-
   transmitePrimeiroJogadorEscolhido() {
     this.primeiroJogador = this.iniciaPartidaService.getPrimeiroJogador();
-    console.log(this.primeiroJogador)
+    if (this.sala.jogadores.length >= 2) {     
+      this.desabilitaBtn = false
+    }
   }
 
   enviarPrimeiroJogador() {
@@ -60,7 +60,6 @@ export class IniciaPartidaComponent implements OnInit {
   ngOnInit(): void {
     this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
       this.sala = sala;
-      this.verificaQuantidadeJogadores();
       this.iniciaPartidaService.getPrimeiroJogador();
     });
 
