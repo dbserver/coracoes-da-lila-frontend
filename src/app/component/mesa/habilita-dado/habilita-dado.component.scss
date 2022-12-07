@@ -170,4 +170,6 @@ body {
   color: var(--font-color);
   background-color: var(--btn-bg);
   font-size: calc(var(--tamanhoFonte) - 3px);
+  width: fit-content;
+  padding: 0px 15px;
 }

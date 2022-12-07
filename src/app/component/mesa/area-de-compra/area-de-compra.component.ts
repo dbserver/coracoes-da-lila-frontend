@@ -117,13 +117,13 @@ export class AreaDeCompraComponent implements OnInit {
   }
 
   public bloquearCompraCoracoesPequenos(){
-    if (this.jogador.status == 'JOGANDO' && this.verificarCoracoesQualquerTamanho() && this.desabilitarCoracoesPeq()) {
+    if (this.jogador.status == 'JOGANDO' && this.verificarCoracoesQualquerTamanho() && this.desabilitarCoracoesPequenos()) {
       return false;
     }
     return true;
   }
   public bloquearCompraCoracoesGrandes(){
-    if (this.jogador.status == 'JOGANDO' && this.verificarCoracoesQualquerTamanho()  && this.verificarCoracoesGra()) {
+    if (this.jogador.status == 'JOGANDO' && this.verificarCoracoesQualquerTamanho()  && this.verificarCoracoesGrandes()) {
       return false;
     }
     return true;
@@ -139,11 +139,46 @@ export class AreaDeCompraComponent implements OnInit {
     }
     return false;
   }
-  public desabilitarCoracoesPeq(): Boolean {
+  public desabilitarCoracoesPequenos(): Boolean {
     return this.jogador.coracaoPequeno + this.jogador.coracaoGrande < 4;
   }
 
-  public verificarCoracoesGra(): Boolean {
+  public verificarCoracoesGrandes(): Boolean {
     return this.jogador.coracaoGrande + this.jogador.coracaoPequeno < 5;
   }
+
+  public verificaJogadorTemCoracoes(){
+
+
+    if(this.jogador.coracaoGrande == 0 && this.jogador.coracaoPequeno == 0 && this.jogador.bonusCoracaoGrande == 0 && this.jogador.bonusCoracaoPequeno == 0)
+      return false;
+    return true;
+  }
+
+  public verificaJogadorTemCoracaoGrande(){
+    if(this.jogador.coracaoGrande > 0 || this.jogador.bonusCoracaoGrande > 0)
+      return true;
+    return false;
+  }
+
+  public verificaJogadorTemCoracaoPequeno(){
+    if(this.jogador.coracaoPequeno > 0 || this.jogador.bonusCoracaoPequeno > 0)
+      return true;
+    return false;
+  }
+
+
+  public verificaStatusJogador(){
+    if(this.jogador.status == "JOGANDO")
+      return true;
+    return false;
+  }
+
+
+
+  public compraUmaCarta(){
+  }
+
+
+  public escolheCompraUmaCarta(){}
 }

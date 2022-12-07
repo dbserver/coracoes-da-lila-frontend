@@ -65,13 +65,28 @@
       </div>
     </div>
     <div class="informacoes-gerais">
+
       <div class="carta carta-objetivo">
         <div class="carta-logotexto">
           <img class="imagem-logo" src="../../../assets/img/logoLilaSozinho.png" alt="logo">
-          <p class="texto">Objetivo</p>
+
+          <div class="dropdown">
+            <button class="dropbtn texto">Objetivo</button>
+            <div class="dropdown-content" *ngIf="verificaJogadorTemCoracoes()==true && verificaStatusJogador() == true">
+              <a (click)="compraUmaCarta()" *ngIf="verificaJogadorTemCoracaoPequeno()==true">
+                <img src="../../../assets/img/cartacoracaopequeno.png" alt="">
+              </a>
+              <a (click)="escolheCompraUmaCarta()" *ngIf="verificaJogadorTemCoracaoGrande()==true">
+                <img src="../../../assets/img/cartacoracaogrande.png" alt="">
+              </a>
+            </div>
+          </div>
+
         </div>
         <img class="imagem-lila" src="../../../assets/img/lilaSozinha.png" alt="lila">
       </div>
+
+
       <div class="coracoes">
         <div class="grupo-coracoes">
           <div [ngClass]="{'desabilitar-coracao': bloquearCompraCoracoesGrandes()}" class="coracao grande"
