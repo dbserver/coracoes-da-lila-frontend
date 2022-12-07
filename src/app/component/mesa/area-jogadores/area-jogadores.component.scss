@@ -210,7 +210,7 @@
       &-horizontal {
         width: 190px;
         height: 110px;
-        margin-top: 28px;
+        margin-top: 20px;
 
         &.carta-sem-titulo {
           display: flex;
@@ -227,7 +227,7 @@
           .titulo {
             color: #38761d;
             font-size: calc(var(--tamanhoFonte) - 6pt);
-            line-height: 20px;
+            line-height: 15px;
           }
         }
 
