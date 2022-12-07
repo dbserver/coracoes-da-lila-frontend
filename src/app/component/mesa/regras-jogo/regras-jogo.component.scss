@@ -7,7 +7,7 @@ button {
   color: var(--font-color);
   background-color: var(--btn-bg);
   font-size: calc(var(--tamanhoFonte) - 3px);
-  width: 150px;
+  width: fit-content;
   height: 35px;
   margin-top: 10px;
   margin-left: 10px;

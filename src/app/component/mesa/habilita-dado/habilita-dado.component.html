@@ -34,20 +34,10 @@
       <span class="dot"></span>
     </li>
   </ol>
-  <button
-    *ngIf="this.numero == 0"
-    class="botao"
-    mat-raised-button
-    (click)="compraCarta()"
-  >
+  <button *ngIf="this.numero == 0" class="botao" mat-raised-button (click)="compraCarta()">
     Rolar o dado
   </button>
-  <button
-    *ngIf="this.numero != 0"
-    class="botao"
-    mat-raised-button
-    (click)="resetarDado()"
-  >
+  <button *ngIf="this.numero != 0" class="botao" mat-raised-button (click)="resetarDado()">
     Resetar o dado
   </button>
 </div>
