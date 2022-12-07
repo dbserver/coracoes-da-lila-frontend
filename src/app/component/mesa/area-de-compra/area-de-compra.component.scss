@@ -322,8 +322,6 @@
 
 .dropbtn {
   border: none;
-  background-color: #e5e4e2;
-
 }
 
 .dropdown {
@@ -332,6 +330,8 @@
 }
 
 .dropdown-content {
+  top: -30px;
+  left: -30px;
   display: none;
   position: absolute;
   min-width: 80px;
