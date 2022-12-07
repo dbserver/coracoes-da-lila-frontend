@@ -73,7 +73,7 @@
           <div class="dropdown">
             <button class="dropbtn texto">Objetivo</button>
             <div class="dropdown-content" *ngIf="verificaJogadorTemCoracoes()==true && verificaStatusJogador() == true">
-              <a (click)="compraUmaCartaObjetivo()" *ngIf="verificaJogadorTemCoracaoPequeno()==true">
+              <a (click)="compraUmaCarta()" *ngIf="verificaJogadorTemCoracaoPequeno()==true">
                 <img src="../../../assets/img/cartacoracaopequeno.png" alt="">
               </a>
               <a (click)="escolheCompraUmaCarta()" *ngIf="verificaJogadorTemCoracaoGrande()==true">

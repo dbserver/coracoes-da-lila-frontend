@@ -1,10 +1,6 @@
 .area-jogadores {
-  display: grid;
-  position: absolute;
-  left: 30%;
-  grid-template-columns: 10% 10% 10% 10%;
-  grid-gap: 1em;
-  justify-items: center;
+  display: flex;
+  justify-content: center;
   align-items: center;
   gap: 12px;
   margin-top: 15px;
@@ -35,7 +31,7 @@
 .mao {
   display: grid;
   height: 200px;
-  grid-template-columns: 15% 10% 66% 8%;
+  grid-template-columns: 15% 10% 45% 21% 8%;
   grid-gap: 5px;
   align-items: center;
   max-width: 100%;
@@ -76,11 +72,10 @@
 }
 
 .cartas-container {
-  display: flex;
   padding-bottom: 10px;
   &-scroll {
     display: flex;
-    max-width: 1400px;
+    max-width: 800px;
     overflow-x: auto;
     padding-bottom: 8px;
 
@@ -210,7 +205,6 @@
       &-horizontal {
         width: 190px;
         height: 110px;
-        margin-top: 20px;
 
         &.carta-sem-titulo {
           display: flex;
@@ -227,7 +221,7 @@
           .titulo {
             color: #38761d;
             font-size: calc(var(--tamanhoFonte) - 6pt);
-            line-height: 15px;
+            line-height: 20px;
           }
         }
 
