@@ -1,7 +1,7 @@
 import { Jogador } from './../../model/jogador';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Sala } from '../../model/sala';
 
@@ -9,8 +9,8 @@ import { Sala } from '../../model/sala';
   providedIn: 'root',
 })
 export class IniciaPartidaService {
-  private emitPrimeiroJogador$ = new BehaviorSubject<Jogador>({} as Jogador);
-  private primeiroJogador: Jogador = {} as Jogador;
+  // private emitPrimeiroJogador$ = new BehaviorSubject<Jogador>({} as Jogador);
+  // private primeiroJogador: Jogador = {} as Jogador;
   private emitPrimeiroJogador: Jogador = {} as Jogador;
 
   constructor(private http: HttpClient) {}
@@ -29,7 +29,6 @@ export class IniciaPartidaService {
     return this.emitPrimeiroJogador;
   }
 
-  //testar rota
   definePrimeiroJogador(primeiroJogador: Jogador){
     return this.http.put<Jogador>(`${environment.API_URL}api/primeirojogador`, primeiroJogador);
   }

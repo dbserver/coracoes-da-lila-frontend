@@ -12,7 +12,7 @@ import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.ser
   styleUrls: ['./inicia-partida.component.scss'],
 })
 export class IniciaPartidaComponent implements OnInit {
-  primeiroJogador: Jogador = {} as Jogador; //
+  primeiroJogador: Jogador = {} as Jogador;
   jogadores: number = 0;
   desabilitaBtn = false;
   sala: Sala;
@@ -26,7 +26,7 @@ export class IniciaPartidaComponent implements OnInit {
     private cartaService: CartaService
   ) {
     this.sala = {} as Sala;
-    this.primeiroJogador = {} as Jogador; //
+    this.primeiroJogador = {} as Jogador;
     this.enviaCartaInicio = {} as CartaInicio;
     this.jogadorHost = {} as Jogador;
   }
@@ -37,22 +37,16 @@ export class IniciaPartidaComponent implements OnInit {
     }
   }
 
-  enviaPrimeiroJogador() {
+  transmitePrimeiroJogadorEscolhido() {
     this.primeiroJogador = this.iniciaPartidaService.getPrimeiroJogador();
     console.log(this.primeiroJogador)
   }
-
-  //teste para enviar primeiro jogador com status jogando...
-  // recebePrimeiroJogador():void{
-  //   this.iniciaPartidaService.definePrimeiroJogador(this.primeiroJogador)
-  //   .subscribe(primeiroJogador => this.primeiroJogador = primeiroJogador);
-  // };
 
   enviarPrimeiroJogador() {
     this.iniciaPartidaService
       .definePrimeiroJogador(this.primeiroJogador)
       .subscribe(primeiroJogador => this.primeiroJogador = primeiroJogador);
-    console.log(this.primeiroJogador);
+      console.log(this.primeiroJogador)
   }
 
   enviaStatus(): void {
@@ -61,7 +55,6 @@ export class IniciaPartidaComponent implements OnInit {
     this.iniciaPartidaService
       .iniciaPartida(sendSala)
       .subscribe(sala => this.sala = sala);
-    console.log(this.primeiroJogador);
   }
 
   ngOnInit(): void {

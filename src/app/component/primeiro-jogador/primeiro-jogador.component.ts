@@ -33,7 +33,7 @@ export class PrimeiroJogadorComponent implements OnInit {
   }
 
   //teste para primeiro jogador
-  enviaPrimeiroJogador(primeiroJogador: Jogador) {
+  transmitePrimeiroJogadorEscolhido(primeiroJogador: Jogador) {
     this.primeiroJogador = primeiroJogador;
     this.iniciaPartidaService.setPrimeiroJogador(this.primeiroJogador);
     this.transmitirPrimeiroJogador.emit();

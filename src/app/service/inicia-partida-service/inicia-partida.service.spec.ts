@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
 
 import { Sala } from '../../model/sala';
 import { IniciaPartidaService } from "./inicia-partida.service";
-import { JogadorService } from './../jogador.service';
+import { JogadorService } from './../jogador-service/jogador.service';
 
 describe(`#${IniciaPartidaService.name}`,()=>{
 
@@ -15,7 +15,7 @@ describe(`#${IniciaPartidaService.name}`,()=>{
   let httpMock: HttpTestingController;
 
   const MockItem = {
-    
+
     jogadores: ['andre', 'gabriel'],
   }
 
@@ -37,14 +37,14 @@ describe(`#${IniciaPartidaService.name}`,()=>{
         expect(response.toFixed(2)).toEqual('2');
     });
    const httpRequest = httpMock.expectOne('http://localhost:8080/sala/numeroJogadores/q1w2e3r4t5');
-    
+
    expect(httpRequest.request.method).toEqual('GET');
    expect(httpRequest.request.responseType).toEqual('json');
 
    httpRequest.flush([MockItem]);
   });
 
-          
+
       })
 
 
