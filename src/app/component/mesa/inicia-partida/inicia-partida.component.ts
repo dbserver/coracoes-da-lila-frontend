@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CartaInicio } from 'src/app/model/cartaInicio';
 import { Jogador } from 'src/app/model/jogador';
 import { Sala } from 'src/app/model/sala';
@@ -12,7 +12,7 @@ import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.ser
   styleUrls: ['./inicia-partida.component.scss'],
 })
 export class IniciaPartidaComponent implements OnInit {
-  primeiroJogador: Jogador = {} as Jogador;
+  primeiroJogador: Jogador;
   jogadores: number = 0;
   desabilitaBtn = true;
   sala: Sala;
@@ -39,14 +39,8 @@ export class IniciaPartidaComponent implements OnInit {
 
   transmitePrimeiroJogadorEscolhido() {
     this.primeiroJogador = this.iniciaPartidaService.getPrimeiroJogador();
-  }
-  
-  habilitaBtn(){
-    if (this.sala.jogadores.length >= 2){
-      console.log(this.primeiroJogador);
-      if (this.primeiroJogador == null){
-        this.desabilitaBtn = true;
-      }
+    if (this.sala.jogadores.length >= 2) {
+      this.desabilitaBtn = false
     }
   }
 
@@ -68,7 +62,6 @@ export class IniciaPartidaComponent implements OnInit {
   ngOnInit(): void {
     this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
       this.sala = sala;
-      this.habilitaBtn();
       this.iniciaPartidaService.getPrimeiroJogador();
     });
 
