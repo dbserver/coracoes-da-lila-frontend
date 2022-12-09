@@ -119,6 +119,7 @@ import { ModalCartasObjetivoComponent } from './component/mesa/modal-cartas-obje
       deps: [InjectableRxStompConfig],
     },
     MesaJogoService,
+    ModalCartasObjetivoComponent
   ],
   bootstrap: [AppComponent],
 })
