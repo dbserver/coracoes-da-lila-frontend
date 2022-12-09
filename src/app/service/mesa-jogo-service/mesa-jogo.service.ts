@@ -46,6 +46,10 @@ export class MesaJogoService {
     return this.http.put<Sala>(environment.API_URL+'api/jogada/comprarcartaobjetivo',sala)
   }
 
+  escolheEntreDuasCartasObjetivo(sala: Sala){
+    return this.http.put<Sala>(environment.API_URL+'api/jogada/escolheentreduascartasobjetivo',sala)
+  }
+
   comprarCoracaoP(sala: Sala){
     return this.http.put<Sala>(environment.API_URL+'api/jogada/comprarcoracaopequeno',sala);
   }

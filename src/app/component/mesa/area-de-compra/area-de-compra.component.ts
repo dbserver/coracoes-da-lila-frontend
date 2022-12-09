@@ -8,6 +8,7 @@ import { Jogador } from '../../../model/jogador';
 import { Sala } from '../../../model/sala';
 import { AreaDeCompraService } from '../../../service/area-de-compra-service/area-de-compra.service';
 import { MesaJogoService } from '../../../service/mesa-jogo-service/mesa-jogo.service';
+import { ModalCartasObjetivoComponent } from '../modal-cartas-objetivo/modal-cartas-objetivo.component';
 @Component({
   selector: 'app-area-de-compra',
   templateUrl: './area-de-compra.component.html',
@@ -31,7 +32,8 @@ export class AreaDeCompraComponent implements OnInit {
     private mesaJogoService: MesaJogoService,
     private maoJogador: MaoJogadorComponent,
     private route: ActivatedRoute,
-    private areaCompraService: AreaDeCompraService
+    private areaCompraService: AreaDeCompraService,
+    public modalCartasObjetivo: ModalCartasObjetivoComponent
   ) {}
 
   ngOnInit() {
@@ -42,7 +44,6 @@ export class AreaDeCompraComponent implements OnInit {
       this.listaCartasDisponiveisObjetivo = sala.cartasObjetivo;
       this.jogador = this.mesaJogoService.getJogadorAtualNaMesa();
       this.bonus = this.podeJogar();
-      //console.log(this.listaCartasDisponiveisObjetivo)
     });
   }
 
@@ -180,18 +181,12 @@ export class AreaDeCompraComponent implements OnInit {
   }
 
   public escolheCompraUmaCarta(){
+    this.mesaJogoService.escolheEntreDuasCartasObjetivo(this.sala).subscribe((sala) => (this.sala = sala,
+      this.modalCartasObjetivo.buscaCartasObjetivo(this.sala.opcoesCartaObjetivo)));
+
     const modal = document.getElementById("modal");
     if (modal != null){
       modal.style.display = 'flex';
     }
-    console.log(modal);
-  }
-
-  public fecharModal(){
-    const modal = document.getElementById("modal");
-    if (modal != null){
-      modal.style.display = 'none';
-    }
-    console.log(modal);
   }
 }
