@@ -28,13 +28,18 @@ export class AreaDeCompraComponent implements OnInit {
   public jogador: Jogador = {} as Jogador;
   public bonus = false;
 
+  opcoesCartaObjetivo: CartaObjetivo[];
+
   constructor(
     private mesaJogoService: MesaJogoService,
     private maoJogador: MaoJogadorComponent,
     private route: ActivatedRoute,
     private areaCompraService: AreaDeCompraService,
     public modalCartasObjetivo: ModalCartasObjetivoComponent
-  ) {}
+  ) {
+
+    this.opcoesCartaObjetivo = {} as CartaObjetivo[];
+  }
 
   ngOnInit() {
     this.hash = String(this.route.snapshot.paramMap.get('hash'));
@@ -180,13 +185,26 @@ export class AreaDeCompraComponent implements OnInit {
       this.mesaJogoService.comprarCartaObjetivo(this.sala).subscribe((sala) => (this.sala = sala));
   }
 
-  public escolheCompraUmaCarta(){
-    this.mesaJogoService.escolheEntreDuasCartasObjetivo(this.sala).subscribe((sala) => (this.sala = sala,
-      this.modalCartasObjetivo.buscaCartasObjetivo(this.sala.opcoesCartaObjetivo)));
+  public escolherEntreDuasCartasObjetivo(){
+
+    this.buscaCartasObjetivo()
 
     const modal = document.getElementById("modal");
     if (modal != null){
       modal.style.display = 'flex';
     }
+  }
+
+  private buscaCartasObjetivo(){
+    this.mesaJogoService.escolheEntreDuasCartasObjetivo(this.sala).subscribe(
+      (sala) => (
+        /**
+         * O ideal seria que o controller retorne a lista
+         * com as duas cartas objetivos e não a sala inteira.
+         *
+         */
+        this.opcoesCartaObjetivo = sala.opcoesCartaObjetivo
+      )
+    );
   }
 }

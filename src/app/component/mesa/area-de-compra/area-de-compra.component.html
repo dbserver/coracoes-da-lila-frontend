@@ -86,7 +86,7 @@
                 <a (click)="compraUmaCartaObjetivo()" *ngIf="verificaJogadorTemCoracaoPequeno()==true">
                   <img src="../../../assets/img/cartacoracaopequeno.png" alt="" />
                 </a>
-                <a (click)="escolheCompraUmaCarta()" *ngIf="verificaJogadorTemCoracaoGrande() == true">
+                <a (click)="escolherEntreDuasCartasObjetivo()" *ngIf="verificaJogadorTemCoracaoGrande() == true">
                   <img src="../../../assets/img/cartacoracaogrande.png" alt="" />
                 </a>
               </div>
@@ -113,3 +113,4 @@
     </div>
   </div>
 </div>
+<app-modal-cartas-objetivo [cartasObjetivo]="opcoesCartaObjetivo"></app-modal-cartas-objetivo>

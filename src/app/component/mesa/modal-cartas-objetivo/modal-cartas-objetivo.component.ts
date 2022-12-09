@@ -10,16 +10,14 @@ import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.ser
 })
 export class ModalCartasObjetivoComponent implements OnInit {
 
-  @Input() sala: Sala;
-  public cartasObjetivo: CartaObjetivo[] = [];
+  @Input() cartasObjetivo: CartaObjetivo[] = [];
 
-  constructor(private mesaJogoService: MesaJogoService) { 
-    this.sala = {} as Sala;
+  constructor(private mesaJogoService: MesaJogoService) {
+
   }
 
   ngOnInit(): void {
-    console.log("-------- aqui eh o modal---------")
-    console.log(this.sala.opcoesCartaObjetivo)
+
   }
 
   public comprarCarta(){
@@ -28,11 +26,7 @@ export class ModalCartasObjetivoComponent implements OnInit {
 
   public fecharModal(){
     const modal = document.getElementById("modal");
-    if (modal != null) 
+    if (modal != null)
       modal.style.display = 'none';
-  }
-
-  public buscaCartasObjetivo(opcoesCartaObjetivo: CartaObjetivo[]){
-    this.cartasObjetivo = opcoesCartaObjetivo;
   }
 }
