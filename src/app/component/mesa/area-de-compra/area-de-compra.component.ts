@@ -196,7 +196,7 @@ export class AreaDeCompraComponent implements OnInit {
   }
 
   private buscaCartasObjetivo(){
-    this.mesaJogoService.escolheEntreDuasCartasObjetivo(this.sala).subscribe(
+    this.mesaJogoService.buscarDuasCartasObjetivo(this.sala).subscribe(
       (sala) => (
         /**
          * O ideal seria que o controller retorne a lista
