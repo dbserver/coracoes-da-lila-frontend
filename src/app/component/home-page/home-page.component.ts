@@ -22,4 +22,5 @@ export class HomePageComponent implements OnInit {
     this.loading = true;
     this.router.navigate(['/mesa']);
   }
+
 }

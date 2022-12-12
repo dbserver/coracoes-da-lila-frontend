@@ -41,7 +41,7 @@
     </div>
   </div>
 </ng-template>
-
+<app-modal-cartas-objetivo [cartasObjetivo]="opcoesCartaObjetivo" [sala]="sala"></app-modal-cartas-objetivo>
 <div class="container">
   <div class="compra-container">
     <div class="linha2">
@@ -82,12 +82,11 @@
             <div class="dropbtn">
               <div class="dropdown-content" *ngIf="
                   verificaJogadorTemCoracoes() == true &&
-                  verificaStatusJogador() == true
-                ">
+                  verificaStatusJogador() == true">
                 <a (click)="compraUmaCartaObjetivo()" *ngIf="verificaJogadorTemCoracaoPequeno()==true">
                   <img src="../../../assets/img/cartacoracaopequeno.png" alt="" />
                 </a>
-                <a (click)="escolheCompraUmaCarta()" *ngIf="verificaJogadorTemCoracaoGrande() == true">
+                <a (click)="escolherEntreDuasCartasObjetivo()" *ngIf="verificaJogadorTemCoracaoGrande() == true">
                   <img src="../../../assets/img/cartacoracaogrande.png" alt="" />
                 </a>
               </div>
