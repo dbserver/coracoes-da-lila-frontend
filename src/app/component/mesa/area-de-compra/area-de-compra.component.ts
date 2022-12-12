@@ -198,12 +198,8 @@ export class AreaDeCompraComponent implements OnInit {
   private buscaCartasObjetivo(){
     this.mesaJogoService.escolheEntreDuasCartasObjetivo(this.sala).subscribe(
       (sala) => (
-        /**
-         * O ideal seria que o controller retorne a lista
-         * com as duas cartas objetivos e não a sala inteira.
-         *
-         */
-        this.opcoesCartaObjetivo = sala.opcoesCartaObjetivo
+        this.opcoesCartaObjetivo = sala.opcoesCartaObjetivo,
+        this.sala = sala
       )
     );
   }

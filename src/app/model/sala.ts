@@ -7,6 +7,7 @@ export interface Sala {
   hash: string;
   cartasObjetivo: CartaObjetivo[];
   opcoesCartaObjetivo: CartaObjetivo[];
+  cartaObjetivoEscolhida: CartaObjetivo;
   baralho: Baralho;
   jogadores: Jogador[];
   dado: number;

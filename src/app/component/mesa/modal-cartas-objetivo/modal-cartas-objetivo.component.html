@@ -3,7 +3,7 @@
         <p>Selecione uma das cartas</p>
         <div class="container-card">
             <div class="cartas-container-scroll">
-                <div class="carta carta-horizontal" *ngFor="let cartaObjetivo of this.cartasObjetivo" (click)="comprarCarta()">
+                <div class="carta carta-horizontal" *ngFor="let cartaObjetivo of this.cartasObjetivo" (click)="escolherCartaObjetivo(cartaObjetivo)">
                     <div class="cabecalho">
                         <h2 class="titulo">{{cartaObjetivo.descricao}}</h2>
                     </div>
