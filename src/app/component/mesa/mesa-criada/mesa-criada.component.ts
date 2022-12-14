@@ -32,8 +32,8 @@ export class MesaCriadaComponent implements OnInit {
     //link é: url do site + rota do componente da US030 + hash
     this.link = `${environment.CLIENT_URL}entrarmesa/${this.hash}`;
     this.mesaService
-      .findByHash(this.hash)
-      .subscribe((sala) => (this.sala = sala));
+       .findByHash(this.hash)
+       .subscribe((sala) => (this.sala = sala));
   }
 
   roteamento() {
