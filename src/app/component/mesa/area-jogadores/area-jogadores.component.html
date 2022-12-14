@@ -9,6 +9,10 @@
           </app-indica-jogador>
           <app-indica-jogador *ngIf="sala.status == 'ULTIMA_RODADA' && jogador.status=='ESPERANDO'" mensagem="Aguardando">
           </app-indica-jogador>
+          <app-indica-jogador *ngIf="sala.status == 'ULTIMA_RODADA' && jogador.status=='DEFININDO'" mensagem="Definindo">
+          </app-indica-jogador>
+          <app-indica-jogador *ngIf="sala.status == 'ULTIMA_RODADA' && jogador.status=='FINALIZADO'" mensagem="Finalizado">
+          </app-indica-jogador>
           <img class="avatar" src="assets/blank-profile-picture-gb56d1b702_1280.png">
           <p class="nome-jogador">{{jogador.nome}}</p>
       </button>

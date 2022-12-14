@@ -77,6 +77,10 @@
                 <div class="rodape">
                     <span class="fonte y-scroll">Fonte: {{cartas.fonte}}</span>
                 </div>
+                <select *ngIf="cartas.categoria == 'Genérica'">
+                    <option value="Informação">Informação</option>
+                    <option value="Ação">Ação</option>
+                </select>
             </div>
 
             <div class="carta carta-horizontal" *ngFor="let cartaObjetivo of jogador?.cartasObjetivo">
