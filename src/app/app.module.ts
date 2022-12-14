@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MatRadioModule } from '@angular/material/radio';
 
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -50,10 +51,7 @@ import { CartaInicioComponent } from './component/mesa/carta-inicio/carta-inicio
 import { PainelVoltarComponent } from './component/painel-voltar/painel-voltar.component';
 import { TelaDownloadComponent } from './component/tela-download/tela-download.component';
 import { ModalCartasObjetivoComponent } from './component/mesa/modal-cartas-objetivo/modal-cartas-objetivo.component';
-
-
-
-
+import { PrimeiroJogadorComponent } from './component/primeiro-jogador/primeiro-jogador.component';
 
 @NgModule({
   declarations: [
@@ -87,6 +85,7 @@ import { ModalCartasObjetivoComponent } from './component/mesa/modal-cartas-obje
     PainelVoltarComponent,
     TelaDownloadComponent,
     ModalCartasObjetivoComponent
+    PrimeiroJogadorComponent
   ],
   imports: [
     BrowserModule,
@@ -107,6 +106,7 @@ import { ModalCartasObjetivoComponent } from './component/mesa/modal-cartas-obje
     ClipboardModule,
     MatCardModule,
     MatProgressSpinnerModule,
+    MatRadioModule
   ],
   providers: [
     {
