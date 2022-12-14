@@ -42,7 +42,6 @@ export class IniciaPartidaComponent implements OnInit {
     this.iniciaPartidaService
       .definePrimeiroJogador(this.primeiroJogador)
       .subscribe(primeiroJogador => this.primeiroJogador = primeiroJogador);
-      console.log(this.primeiroJogador)
   }
 
   enviaStatus(): void {
