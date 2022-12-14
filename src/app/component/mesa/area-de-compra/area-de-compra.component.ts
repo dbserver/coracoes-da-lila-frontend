@@ -8,6 +8,7 @@ import { Jogador } from '../../../model/jogador';
 import { Sala } from '../../../model/sala';
 import { AreaDeCompraService } from '../../../service/area-de-compra-service/area-de-compra.service';
 import { MesaJogoService } from '../../../service/mesa-jogo-service/mesa-jogo.service';
+import { ModalCartasObjetivoComponent } from '../modal-cartas-objetivo/modal-cartas-objetivo.component';
 @Component({
   selector: 'app-area-de-compra',
   templateUrl: './area-de-compra.component.html',
@@ -27,12 +28,18 @@ export class AreaDeCompraComponent implements OnInit {
   public jogador: Jogador = {} as Jogador;
   public bonus = false;
 
+  opcoesCartaObjetivo: CartaObjetivo[];
+
   constructor(
     private mesaJogoService: MesaJogoService,
     private maoJogador: MaoJogadorComponent,
     private route: ActivatedRoute,
-    private areaCompraService: AreaDeCompraService
-  ) {}
+    private areaCompraService: AreaDeCompraService,
+    public modalCartasObjetivo: ModalCartasObjetivoComponent
+  ) {
+
+    this.opcoesCartaObjetivo = {} as CartaObjetivo[];
+  }
 
   ngOnInit() {
     this.hash = String(this.route.snapshot.paramMap.get('hash'));
@@ -42,7 +49,6 @@ export class AreaDeCompraComponent implements OnInit {
       this.listaCartasDisponiveisObjetivo = sala.cartasObjetivo;
       this.jogador = this.mesaJogoService.getJogadorAtualNaMesa();
       this.bonus = this.podeJogar();
-      //console.log(this.listaCartasDisponiveisObjetivo)
     });
   }
 
@@ -174,11 +180,27 @@ export class AreaDeCompraComponent implements OnInit {
     return false;
   }
 
-
   public compraUmaCartaObjetivo(){
     if (this.jogador.status == 'JOGANDO')
       this.mesaJogoService.comprarCartaObjetivo(this.sala).subscribe((sala) => (this.sala = sala));
   }
 
-  public escolheCompraUmaCarta(){}
+  public escolherEntreDuasCartasObjetivo(){
+
+    this.buscaCartasObjetivo()
+
+    const modal = document.getElementById("modal");
+    if (modal != null){
+      modal.style.display = 'flex';
+    }
+  }
+
+  private buscaCartasObjetivo(){
+    this.mesaJogoService.buscarDuasCartasObjetivo(this.sala).subscribe(
+      (sala) => (
+        this.opcoesCartaObjetivo = sala.opcoesCartaObjetivo,
+        this.sala = sala
+      )
+    );
+  }
 }
