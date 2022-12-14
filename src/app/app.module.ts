@@ -84,7 +84,7 @@ import { PrimeiroJogadorComponent } from './component/primeiro-jogador/primeiro-
     RegrasComponent,
     PainelVoltarComponent,
     TelaDownloadComponent,
-    ModalCartasObjetivoComponent
+    ModalCartasObjetivoComponent,
     PrimeiroJogadorComponent
   ],
   imports: [

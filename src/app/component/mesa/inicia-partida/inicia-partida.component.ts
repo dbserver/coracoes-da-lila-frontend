@@ -31,12 +31,6 @@ export class IniciaPartidaComponent implements OnInit {
     this.jogadorHost = {} as Jogador;
   }
 
-  // verificaQuantidadeJogadores() {
-  //   if (this.sala.jogadores.length >= 2) {
-  //     this.desabilitaBtn = false;
-  //   }
-  // }
-
   transmitePrimeiroJogadorEscolhido() {
     this.primeiroJogador = this.iniciaPartidaService.getPrimeiroJogador();
     if (this.sala.jogadores.length >= 2) {
