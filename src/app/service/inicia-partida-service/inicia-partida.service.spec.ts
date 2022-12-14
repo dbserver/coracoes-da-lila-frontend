@@ -1,28 +1,25 @@
-import{HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
-import { TestBed, tick } from '@angular/core/testing';
-
-import { environment } from 'src/environments/environment';
-
-
-
+import {
+  HttpClientTestingModule,
+  HttpTestingController,
+} from '@angular/common/http/testing';
+import { TestBed } from '@angular/core/testing';
 import { Sala } from '../../model/sala';
-import { IniciaPartidaService } from "./inicia-partida.service";
+import { IniciaPartidaService } from './inicia-partida.service';
 import { JogadorService } from './../jogador-service/jogador.service';
 
-describe(`#${IniciaPartidaService.name}`,()=>{
+describe(`#${IniciaPartidaService.name}`, () => {
 
-  let iniciaPartidaService:IniciaPartidaService;
+  let iniciaPartidaService: IniciaPartidaService;
   let httpMock: HttpTestingController;
 
   const MockItem = {
-
     jogadores: ['andre', 'gabriel'],
-  }
+  };
 
-  beforeEach(()=> {
+  beforeEach(() => {
     TestBed.configureTestingModule({
-      imports:[HttpClientTestingModule],
-      providers:[IniciaPartidaService]
+      imports: [HttpClientTestingModule],
+      providers: [IniciaPartidaService],
     });
 
     iniciaPartidaService = TestBed.get(IniciaPartidaService);
@@ -30,7 +27,7 @@ describe(`#${IniciaPartidaService.name}`,()=>{
   });
 
   it(`#${IniciaPartidaService.prototype.getQuantidadeJogadores.name}
-  deve retorna quantidade de jogadores`,()=>{
+  deve retorna quantidade de jogadores`, () => {
     iniciaPartidaService
     .getQuantidadeJogadores('q1w2e3r4t5')
     .subscribe((response:number)=>{
@@ -43,11 +40,4 @@ describe(`#${IniciaPartidaService.name}`,()=>{
 
    httpRequest.flush([MockItem]);
   });
-
-
-      })
-
-
-
-
-
+})

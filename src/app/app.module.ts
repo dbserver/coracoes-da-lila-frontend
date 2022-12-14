@@ -6,7 +6,8 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
 
@@ -49,11 +50,8 @@ import { RegrasComponent } from './component/regras/regras.component';
 import { CartaInicioComponent } from './component/mesa/carta-inicio/carta-inicio.component';
 import { PainelVoltarComponent } from './component/painel-voltar/painel-voltar.component';
 import { TelaDownloadComponent } from './component/tela-download/tela-download.component';
+import { ModalCartasObjetivoComponent } from './component/mesa/modal-cartas-objetivo/modal-cartas-objetivo.component';
 import { PrimeiroJogadorComponent } from './component/primeiro-jogador/primeiro-jogador.component';
-
-
-
-
 
 @NgModule({
   declarations: [
@@ -86,8 +84,8 @@ import { PrimeiroJogadorComponent } from './component/primeiro-jogador/primeiro-
     RegrasComponent,
     PainelVoltarComponent,
     TelaDownloadComponent,
+    ModalCartasObjetivoComponent
     PrimeiroJogadorComponent
-
   ],
   imports: [
     BrowserModule,
@@ -107,6 +105,7 @@ import { PrimeiroJogadorComponent } from './component/primeiro-jogador/primeiro-
     HttpClientModule,
     ClipboardModule,
     MatCardModule,
+    MatProgressSpinnerModule,
     MatRadioModule
   ],
   providers: [
@@ -120,7 +119,8 @@ import { PrimeiroJogadorComponent } from './component/primeiro-jogador/primeiro-
       deps: [InjectableRxStompConfig],
     },
     MesaJogoService,
+    ModalCartasObjetivoComponent
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

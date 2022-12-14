@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PrimeiroAcessoComponent } from './primeiro-acesso.component';
@@ -8,7 +9,8 @@ describe('PrimeiroAcessoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PrimeiroAcessoComponent ]
+      declarations: [ PrimeiroAcessoComponent ],
+      imports: [HttpClientTestingModule]
     })
     .compileComponents();
   });
@@ -19,8 +21,7 @@ describe('PrimeiroAcessoComponent', () => {
     fixture.detectChanges();
   });
 
-  it('Teste de Criação do Componente', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
-
 });

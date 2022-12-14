@@ -8,6 +8,7 @@ import { Jogador } from '../../../model/jogador';
 import { Sala } from '../../../model/sala';
 import { AreaDeCompraService } from '../../../service/area-de-compra-service/area-de-compra.service';
 import { MesaJogoService } from '../../../service/mesa-jogo-service/mesa-jogo.service';
+import { ModalCartasObjetivoComponent } from '../modal-cartas-objetivo/modal-cartas-objetivo.component';
 @Component({
   selector: 'app-area-de-compra',
   templateUrl: './area-de-compra.component.html',
@@ -27,19 +28,25 @@ export class AreaDeCompraComponent implements OnInit {
   public jogador: Jogador = {} as Jogador;
   public bonus = false;
 
+  opcoesCartaObjetivo: CartaObjetivo[];
+
   constructor(
     private mesaJogoService: MesaJogoService,
     private maoJogador: MaoJogadorComponent,
     private route: ActivatedRoute,
-    private areaCompraService: AreaDeCompraService
-  ) {}
+    private areaCompraService: AreaDeCompraService,
+    public modalCartasObjetivo: ModalCartasObjetivoComponent
+  ) {
+
+    this.opcoesCartaObjetivo = {} as CartaObjetivo[];
+  }
 
   ngOnInit() {
     this.hash = String(this.route.snapshot.paramMap.get('hash'));
     this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
       this.sala = sala;
       this.listaCartasDisponiveis = sala.baralho.cartasDoJogo;
-      this.listaCartasDisponiveisObjetivo = sala.baralho.cartasObjetivo;
+      this.listaCartasDisponiveisObjetivo = sala.cartasObjetivo;
       this.jogador = this.mesaJogoService.getJogadorAtualNaMesa();
       this.bonus = this.podeJogar();
     });
@@ -116,13 +123,13 @@ export class AreaDeCompraComponent implements OnInit {
   }
 
   public bloquearCompraCoracoesPequenos(){
-    if (this.jogador.status == 'JOGANDO' && this.verificarCoracoesQualquerTamanho() && this.desabilitarCoracoesPeq()) {
+    if (this.jogador.status == 'JOGANDO' && this.verificarCoracoesQualquerTamanho() && this.desabilitarCoracoesPequenos()) {
       return false;
     }
     return true;
   }
   public bloquearCompraCoracoesGrandes(){
-    if (this.jogador.status == 'JOGANDO' && this.verificarCoracoesQualquerTamanho()  && this.verificarCoracoesGra()) {
+    if (this.jogador.status == 'JOGANDO' && this.verificarCoracoesQualquerTamanho()  && this.verificarCoracoesGrandes()) {
       return false;
     }
     return true;
@@ -138,11 +145,62 @@ export class AreaDeCompraComponent implements OnInit {
     }
     return false;
   }
-  public desabilitarCoracoesPeq(): Boolean {
+  public desabilitarCoracoesPequenos(): Boolean {
     return this.jogador.coracaoPequeno + this.jogador.coracaoGrande < 4;
   }
 
-  public verificarCoracoesGra(): Boolean {
+  public verificarCoracoesGrandes(): Boolean {
     return this.jogador.coracaoGrande + this.jogador.coracaoPequeno < 5;
+  }
+
+  public verificaJogadorTemCoracoes(){
+
+
+    if(this.jogador.coracaoGrande == 0 && this.jogador.coracaoPequeno == 0 && this.jogador.bonusCoracaoGrande == 0 && this.jogador.bonusCoracaoPequeno == 0)
+      return false;
+    return true;
+  }
+
+  public verificaJogadorTemCoracaoGrande(){
+    if(this.jogador.coracaoGrande > 0 || this.jogador.bonusCoracaoGrande > 0)
+      return true;
+    return false;
+  }
+
+  public verificaJogadorTemCoracaoPequeno(){
+    if(this.jogador.coracaoPequeno > 0 || this.jogador.bonusCoracaoPequeno > 0)
+      return true;
+    return false;
+  }
+
+
+  public verificaStatusJogador(){
+    if(this.jogador.status == "JOGANDO")
+      return true;
+    return false;
+  }
+
+  public compraUmaCartaObjetivo(){
+    if (this.jogador.status == 'JOGANDO')
+      this.mesaJogoService.comprarCartaObjetivo(this.sala).subscribe((sala) => (this.sala = sala));
+  }
+
+  public escolherEntreDuasCartasObjetivo(){
+
+    this.buscaCartasObjetivo()
+
+    const modal = document.getElementById("modal");
+    if (modal != null){
+      modal.style.display = 'flex';
+    }
+  }
+
+  private buscaCartasObjetivo(){
+    this.mesaJogoService.buscarDuasCartasObjetivo(this.sala).subscribe(
+      (sala) => (
+        this.opcoesCartaObjetivo = sala.opcoesCartaObjetivo,
+        this.sala = sala
+      )
+    );
   }
 }

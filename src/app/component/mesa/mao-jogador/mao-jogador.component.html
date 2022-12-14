@@ -3,16 +3,16 @@
 
         <div>
 
-            <app-indica-jogador *ngIf="sala.status == 'JOGANDO' && jogador.status=='JOGANDO'" mensagem="Jogando">
+            <app-indica-jogador *ngIf="sala.status == 'JOGANDO' && jogador?.status=='JOGANDO'" mensagem="Jogando">
             </app-indica-jogador>
 
-            <app-indica-jogador *ngIf="sala.status == 'ULTIMA_RODADA' && jogador.status=='JOGANDO'" mensagem="Jogando">
+            <app-indica-jogador *ngIf="sala.status == 'ULTIMA_RODADA' && jogador?.status=='JOGANDO'" mensagem="Jogando">
             </app-indica-jogador>
 
-            <app-indica-jogador *ngIf="sala.status == 'JOGANDO' && jogador.status=='ESPERANDO'"
+            <app-indica-jogador *ngIf="sala.status == 'JOGANDO' && jogador?.status=='ESPERANDO'"
                 mensagem="Aguarde sua vez"></app-indica-jogador>
 
-            <app-indica-jogador *ngIf="sala.status == 'ULTIMA_RODADA' && jogador.status=='JOGANDO'"
+            <app-indica-jogador *ngIf="sala.status == 'ULTIMA_RODADA' && jogador?.status=='JOGANDO'"
                 mensagem="ULTIMA_JOGADA"></app-indica-jogador>
 
         </div>
@@ -20,29 +20,27 @@
             <button class="botao-sair" mat-raised-button [routerLink]="['/']">Sair</button>
         </div> -->
         <div class="centro"><img class="avatar" src="../../../assets/avatar" alt=""></div>
-        <div class="centro nome">{{jogador.nome}}
-
-        </div>
+        <div *ngIf="jogador" class="centro nome">{{jogador.nome}}</div>
     </div>
 
     <div class="carta-coracoes">
-        <div class="carta-coracao" *ngFor="let i of [].constructor(jogador.coracaoGrande)">
+        <div class="carta-coracao" *ngFor="let i of [].constructor(jogador?.coracaoGrande)">
             <img class="carta-coracao-grande" src="../../../assets/svg/icone-coracao.svg" alt="Ícone coração">
         </div>
-        <div class="carta-coracao" *ngFor="let i of [].constructor(jogador.bonusCoracaoGrande)">
+        <div class="carta-coracao" *ngFor="let i of [].constructor(jogador?.bonusCoracaoGrande)">
             <img class="carta-coracao-bonus-grande" src="../../../assets/svg/coracaoBonus.svg" alt="Ícone coração">
         </div>
-        <div class="carta-coracao" *ngFor="let i of [].constructor(jogador.bonusCoracaoPequeno)">
+        <div class="carta-coracao" *ngFor="let i of [].constructor(jogador?.bonusCoracaoPequeno)">
             <img class="carta-coracao-bonus-pequeno" src="../../../assets/svg/coracaoBonus.svg" alt="Ícone coração">
         </div>
-        <div class="carta-coracao" *ngFor="let i of [].constructor(jogador.coracaoPequeno)">
+        <div class="carta-coracao" *ngFor="let i of [].constructor(jogador?.coracaoPequeno)">
             <img class="carta-coracao-pequeno" src="../../../assets/svg/icone-coracao.svg" alt="Ícone coração">
         </div>
     </div>
 
     <div class="cartas-container">
         <div class="cartas-container-scroll">
-            <div *ngFor="let cartas of jogador.cartasDoJogo" class="carta carta-vertical">
+            <div *ngFor="let cartas of jogador?.cartasDoJogo" class="carta carta-vertical">
                 <div class="cabecalho">
                     <h2 class="titulo">{{ cartas.tipo }}</h2>
                     <div class="pontos">
@@ -80,12 +78,8 @@
                     <span class="fonte y-scroll">Fonte: {{cartas.fonte}}</span>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <div>
-        <div class="cartas-container-scroll">
-            <div class="carta carta-horizontal" *ngFor="let cartaObjetivo of jogador.cartasObjetivo">
+            <div class="carta carta-horizontal" *ngFor="let cartaObjetivo of jogador?.cartasObjetivo">
                 <div class="cabecalho">
                     <h2 class="titulo">{{cartaObjetivo.descricao}}</h2>
                 </div>
@@ -95,7 +89,7 @@
             </div>
         </div>
     </div>
-    <div class="centraliza">
+    <div *ngIf="jogador" class="centraliza">
         <h4>Pontos:
             <br>
             {{jogador.pontos}}

@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MontarCartasComponent } from './montar-cartas.component';
@@ -8,7 +9,8 @@ describe('MontarCartasComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MontarCartasComponent ]
+      declarations: [ MontarCartasComponent ],
+      imports: [HttpClientTestingModule]
     })
     .compileComponents();
   });

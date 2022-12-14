@@ -7,7 +7,7 @@
   <div>
     <mat-form-field appearance="fill">
       <mat-label>Nick:</mat-label>
-      <input matInput type="text" [(ngModel)]="nick" #ctrl="ngModel" />
+      <input matInput type="text" [(ngModel)]="nick"/>
     </mat-form-field>
   </div>
 
@@ -18,9 +18,10 @@
   </div>
 
   <div>
-    <button mat-raised-button class="btn" (click)="click()">Criar Mesa</button>
+    <button mat-raised-button class="btn"  [class.spinner]="loading" [disabled]="loading" (click)="click()">Criar Mesa</button>
   </div>
+  
   <div>
-    <button mat-raised-button class="btn" type="submit" [routerLink]="['']">Voltar</button>
+    <button  mat-raised-button class="btn" type="submit" [routerLink]="['']">Voltar</button>
   </div>
 </div>

@@ -15,6 +15,8 @@ export class MesaCriadaComponent implements OnInit {
   hash: string;
   link: string;
 
+  carregando: boolean = false;
+
   constructor(
     private route: ActivatedRoute,
     private mesaService: MesaService,
@@ -35,6 +37,7 @@ export class MesaCriadaComponent implements OnInit {
   }
 
   roteamento() {
-    this.router.navigate(['/jogo', this.sala.hash]);
+    this.carregando = true;
+    this.router.navigate(['/jogo', this.sala.hash])
   }
 }

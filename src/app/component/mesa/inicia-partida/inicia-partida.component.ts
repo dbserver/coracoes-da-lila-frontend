@@ -52,6 +52,7 @@ export class IniciaPartidaComponent implements OnInit {
   }
 
   enviaStatus(): void {
+    this.desabilitaBtn = true;
     let sendSala: Sala = this.sala;
     sendSala.status = 'JOGANDO';
     this.iniciaPartidaService
