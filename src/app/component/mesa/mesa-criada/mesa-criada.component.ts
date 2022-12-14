@@ -38,6 +38,6 @@ export class MesaCriadaComponent implements OnInit {
 
   roteamento() {
     this.carregando = true;
-    this.router.navigate(['/jogo', this.sala.hash])
+    setTimeout(()=>{ this.router.navigate(['/jogo', this.sala.hash]) }, 8000)
   }
 }
