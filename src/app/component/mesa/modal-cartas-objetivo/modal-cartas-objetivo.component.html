@@ -1,0 +1,17 @@
+<div id="modal" class="modal">
+    <mat-card class="container">
+        <p>Selecione uma das cartas</p>
+        <div class="container-card">
+            <div class="cartas-container-scroll">
+                <div class="carta carta-horizontal" *ngFor="let cartaObjetivo of this.cartasObjetivo" (click)="escolherCartaObjetivo(cartaObjetivo)">
+                    <div class="cabecalho">
+                        <h2 class="titulo">{{cartaObjetivo.descricao}}</h2>
+                    </div>
+                    <div class="corpo">
+                        <p class="definicao y-scroll">{{cartaObjetivo.classificacao}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+</div>

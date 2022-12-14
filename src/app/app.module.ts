@@ -6,31 +6,33 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MatRadioModule } from '@angular/material/radio';
 
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ModalComponent } from './modal/modal.component';
-import { HomePageComponent } from './home-page/home-page.component';
-import { PrimeiroAcessoComponent } from './administrador/primeiro-acesso/primeiro-acesso.component';
+import { HomePageComponent } from './component/home-page/home-page.component';
+import { PrimeiroAcessoComponent } from './component/administrador/primeiro-acesso/primeiro-acesso.component';
 import { AcessibilidadeComponent } from './component/acessibilidade/acessibilidade.component';
-import { TelaSenhaComponent } from './administrador/tela-senha/tela-senha.component';
-import { MenuDoAdminComponent } from './administrador/menu-do-admin/menu-do-admin.component';
-import { MontarCartasComponent } from './montar-cartas/montar-cartas.component';
-import { EntrarMesaComponent } from './entrar-mesa/entrar-mesa.component';
-import { MaoJogadorComponent } from './mesa/mao-jogador/mao-jogador.component';
-import { CriarMesaComponent } from './mesa/criar-mesa/criar-mesa.component';
-import { MesaCriadaComponent } from './mesa/mesa-criada/mesa-criada.component';
-import { AreaDeCompraComponent } from './mesa/area-de-compra/area-de-compra.component';
-import { HabilitaDadoComponent } from './mesa/habilita-dado/habilita-dado.component';
-import { GuiaRapidoComponent } from './mesa/guia-rapido/guia-rapido.component';
-import { RegrasJogoComponent } from './mesa/regras-jogo/regras-jogo.component';
-import { IniciaPartidaComponent } from './mesa/inicia-partida/inicia-partida.component';
-import { MesaJogoComponent } from './mesa/mesa-jogo/mesa-jogo.component';
-import { AreaJogadoresComponent } from './mesa/area-jogadores/area-jogadores.component';
-import { MesaJogoService } from './service/mesa-jogo.service';
+import { TelaSenhaComponent } from './component/administrador/tela-senha/tela-senha.component';
+import { MenuDoAdminComponent } from './component/administrador/menu-do-admin/menu-do-admin.component';
+import { MontarCartasComponent } from './component/montar-cartas/montar-cartas.component';
+import { EntrarMesaComponent } from './component/entrar-mesa/entrar-mesa.component';
+import { MaoJogadorComponent } from './component/mesa/mao-jogador/mao-jogador.component';
+import { CriarMesaComponent } from './component/mesa/criar-mesa/criar-mesa.component';
+import { MesaCriadaComponent } from './component/mesa/mesa-criada/mesa-criada.component';
+import { AreaDeCompraComponent } from './component/mesa/area-de-compra/area-de-compra.component';
+import { HabilitaDadoComponent } from './component/mesa/habilita-dado/habilita-dado.component';
+import { GuiaRapidoComponent } from './component/mesa/guia-rapido/guia-rapido.component';
+import { RegrasJogoComponent } from './component/mesa/regras-jogo/regras-jogo.component';
+import { IniciaPartidaComponent } from './component/mesa/inicia-partida/inicia-partida.component';
+import { MesaJogoComponent } from './component/mesa/mesa-jogo/mesa-jogo.component';
+import { AreaJogadoresComponent } from './component/mesa/area-jogadores/area-jogadores.component';
+import { MesaJogoService } from './service/mesa-jogo-service/mesa-jogo.service';
 import { RankingComponent } from './component/ranking/ranking.component';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import {
@@ -40,18 +42,16 @@ import {
 } from '@stomp/ng2-stompjs';
 
 import { myRxStompConfig } from './rx-stomp.config';
-import { TelaErroComponent } from './tela-erro/tela-erro.component';
-import { IndicaJogadorComponent } from './mesa/indica-jogador/indica-jogador.component';
-import { LicenciamentoComponent } from './licenciamento/licenciamento.component';
+import { TelaErroComponent } from './component/tela-erro/tela-erro.component';
+import { IndicaJogadorComponent } from './component/mesa/indica-jogador/indica-jogador.component';
+import { LicenciamentoComponent } from './component/licenciamento/licenciamento.component';
 import { TelaHistoriaComponent } from './component/tela-historia/tela-historia.component';
-import { RegrasComponent } from './regras/regras.component';
-import { CartaInicioComponent } from './mesa/carta-inicio/carta-inicio.component';
+import { RegrasComponent } from './component/regras/regras.component';
+import { CartaInicioComponent } from './component/mesa/carta-inicio/carta-inicio.component';
 import { PainelVoltarComponent } from './component/painel-voltar/painel-voltar.component';
 import { TelaDownloadComponent } from './component/tela-download/tela-download.component';
-
-
-
-
+import { ModalCartasObjetivoComponent } from './component/mesa/modal-cartas-objetivo/modal-cartas-objetivo.component';
+import { PrimeiroJogadorComponent } from './component/primeiro-jogador/primeiro-jogador.component';
 
 @NgModule({
   declarations: [
@@ -83,8 +83,9 @@ import { TelaDownloadComponent } from './component/tela-download/tela-download.c
     TelaHistoriaComponent,
     RegrasComponent,
     PainelVoltarComponent,
-    TelaDownloadComponent
-
+    TelaDownloadComponent,
+    ModalCartasObjetivoComponent
+    PrimeiroJogadorComponent
   ],
   imports: [
     BrowserModule,
@@ -103,7 +104,9 @@ import { TelaDownloadComponent } from './component/tela-download/tela-download.c
     MatIconModule,
     HttpClientModule,
     ClipboardModule,
-    MatCardModule
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatRadioModule
   ],
   providers: [
     {
@@ -116,7 +119,8 @@ import { TelaDownloadComponent } from './component/tela-download/tela-download.c
       deps: [InjectableRxStompConfig],
     },
     MesaJogoService,
+    ModalCartasObjetivoComponent
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

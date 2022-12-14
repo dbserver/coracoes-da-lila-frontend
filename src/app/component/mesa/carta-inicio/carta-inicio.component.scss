@@ -1,0 +1,18 @@
+.carta-inicio {
+  box-sizing: border-box;
+  border: 2px solid black;
+  width: 36%;
+  max-width: 20rem;
+  min-height: 13rem;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carta-inicio mat-card-content {
+  color: darkgoldenrod;
+  font-size: var(--tamanhoFonte);
+  line-height: var(--font-heigth);
+  text-align: center;
+}

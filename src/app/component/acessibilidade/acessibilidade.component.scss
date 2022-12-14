@@ -1,25 +1,25 @@
-div{
-    
-    margin-left: auto;
-    margin-right: auto;
-    width: 250px;
-    height: auto;
-    
-    background-color: var(--btn-bg);
-    border-radius: 30px;
-    
-    
+.main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+div {
+  top: 0px;
+  z-index: 1;
+  position: fixed;
+  // border: 1px solid red;
+  width: fit-content;
+  // padding: 0.5rem 1rem;
+  background-color: var(--btn-bg);
+  border-radius: 30px;
 }
 
 //menu para alteração de fonte e contraste
-
-label{
-    padding: 2px;
-    display: inline-block;
-    font-size:15pt;
-    margin-right: 10px;
-    color: var(--font-color);
-    
-      
-    
-  }
+label {
+  padding: 2px;
+  display: inline-block;
+  // margin-right: 10px;
+  color: var(--font-color);
+  font-size: var(--tamanhoFonte);
+}
