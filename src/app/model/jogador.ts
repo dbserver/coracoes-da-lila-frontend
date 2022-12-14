@@ -13,5 +13,4 @@ export interface Jogador {
   bonusCoracaoGrande: number;
   isHost: boolean;
   status: string;
-  posicao?: number;
 }
