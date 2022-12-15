@@ -4,7 +4,7 @@
 
 <div class="div-aguarde">
 
-  <p *ngIf="jogadorHost.isHost === false" class="mensagem-aguarde">Aguardando início da partida</p>
+  <p *ngIf="jogadorPrincipal.isHost === false" class="mensagem-aguarde">Aguardando início da partida</p>
   
   <div class="aguardando" *ngIf="jogadorHost.isHost === false">
     <mat-spinner diameter="40"></mat-spinner>
@@ -13,6 +13,7 @@
   <div class="div-btn-aguarde" *ngIf="jogadorHost.isHost === true">
     <button mat-raised-button class="btn-aguarde btn" id="iniciar" [disabled]="desabilitaBtn" (click)="enviaStatus()" 
     (click)="enviarPrimeiroJogador()">Iniciar partida</button>
+
   </div>
 
 </div>
