@@ -27,6 +27,7 @@ export class AreaDeCompraComponent implements OnInit {
   public coracoes: Array<any> = [];
   public jogador: Jogador = {} as Jogador;
   public bonus = false;
+  public embaralharCartas: boolean;
 
   opcoesCartaObjetivo: CartaObjetivo[];
 
@@ -39,6 +40,7 @@ export class AreaDeCompraComponent implements OnInit {
   ) {
 
     this.opcoesCartaObjetivo = {} as CartaObjetivo[];
+    this.embaralharCartas = false;
   }
 
   ngOnInit() {
@@ -195,12 +197,17 @@ export class AreaDeCompraComponent implements OnInit {
     }
   }
 
+  public embaralhar(resposta: boolean){
+    this.embaralharCartas = resposta;
+    console.log(resposta)
+  }
+
   private buscaCartasObjetivo(){
     this.mesaJogoService.buscarDuasCartasObjetivo(this.sala).subscribe(
       (sala) => (
         this.opcoesCartaObjetivo = sala.opcoesCartaObjetivo,
         this.sala = sala
       )
-    );
+    )
   }
 }

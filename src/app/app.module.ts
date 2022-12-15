@@ -50,6 +50,7 @@ import { CartaInicioComponent } from './component/mesa/carta-inicio/carta-inicio
 import { PainelVoltarComponent } from './component/painel-voltar/painel-voltar.component';
 import { TelaDownloadComponent } from './component/tela-download/tela-download.component';
 import { ModalCartasObjetivoComponent } from './component/mesa/modal-cartas-objetivo/modal-cartas-objetivo.component';
+import { AnimacaoCartaComponent } from './component/mesa/animacao-carta/animacao-carta.component';
 
 
 
@@ -86,7 +87,8 @@ import { ModalCartasObjetivoComponent } from './component/mesa/modal-cartas-obje
     RegrasComponent,
     PainelVoltarComponent,
     TelaDownloadComponent,
-    ModalCartasObjetivoComponent
+    ModalCartasObjetivoComponent,
+    AnimacaoCartaComponent
   ],
   imports: [
     BrowserModule,

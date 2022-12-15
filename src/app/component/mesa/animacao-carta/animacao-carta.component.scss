@@ -1,0 +1,106 @@
+.informacoes-gerais{
+    display: flex;
+    //justify-content: center;
+}
+
+.carta {
+    border: 1.5px solid black;
+    padding: 8px;
+    background: var(--input-backgroundColor);
+    word-wrap: break-word;
+    position: absolute;
+    z-index: 5;
+    text-align: center;
+
+    &-objetivo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 160px;
+        height: 100px;
+  
+        &-logotexto {
+          display: flex;
+          flex-direction: column;
+        }
+  
+        .imagem {
+          &-logo {
+            height: 50px;
+          }
+  
+          &-lila {
+            height: 90px;
+            margin-top: 10px;
+          }
+        }
+  
+        .texto {
+          font-size: 10px;
+          color: #351c75;
+        }
+      }
+    }
+
+#carta-1{
+    animation: carta-1 8s infinite;
+}
+ 
+#carta-2{
+    animation: carta-2 1.5s 1;
+}
+
+#carta-3{
+    animation: carta-3 1.5s 2;
+}
+
+@keyframes carta-3 {
+    0% {
+        left: 0;
+    }
+    24% {
+        z-index: 5;
+    }
+    25% {
+        left: calc(160px + 2rem);
+        z-index: 0;
+    }
+    50% {
+        left: 0;
+        z-index: 4;
+    }
+    100% {
+        left: 0;
+        z-index: 4;
+    }
+}
+
+@keyframes carta-2 {
+    0%{
+        left: 0;
+    }
+    50% {
+        left: 0;
+    }
+    74% {
+        z-index: 5;
+    }
+    75% {
+        left: calc(-160px - 2rem);
+        z-index: 4;
+    }
+    100% {
+        left: 0;
+        z-index: 4;
+    }
+}
+
+// @keyframes carta-2 {
+//     0% {
+//         left: 0;
+//     }
+//     100% {
+//         left: 100px;
+//         z-index: 4;
+//     }
+// }
