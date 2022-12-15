@@ -33,17 +33,35 @@
     font-size: var(--tamanhoFonte);
 }
 
-:host ::ng-deep .mat-spinner circle {
-    stroke: var(--font-color-aguarde);
-}
+@keyframes spinner {
+    to {transform: rotate(360deg);}
+  } 
 
-.aguardando {
+.spinner:before {
+    content: '';
     display: flex;
-    justify-content: center;
-    margin-top: 18%;
-}
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    margin-top: 8px;
+    //centralizar spinner horizontalmente - dividir width botao por 2, menos metade do tamanho e borda do spinner
+    margin-left:calc(var(--btn-width) / 2 - 11px); 
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--font-color-aguarde);
+    border-top-color: rgb(167, 163, 163);
+    animation: spinner .8s linear infinite;
 
-.btn[disabled] {
+    @media (max-width: 800px) {
+        margin-left: 180px;
+        
+    }
+
+  }
+
+  .btn[disabled] {
     background-color: rgb(167, 163, 163);
-    color: var(--input-fontColor);
+    color: rgb(167, 163, 163);
   }
