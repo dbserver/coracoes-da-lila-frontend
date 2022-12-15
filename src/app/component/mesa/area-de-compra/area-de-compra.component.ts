@@ -105,6 +105,17 @@ export class AreaDeCompraComponent implements OnInit {
     return valorCoracaoPequeno! <= coracaoP && valorCoracaoGrande! <= coracaoG;
   }
 
+  public podeComprarObjetivo(){
+    let coracaoP = 0;
+    let coracaoG = 0;
+    this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => {
+      coracaoP = this.jogador.coracaoPequeno + this.jogador.bonusCoracaoPequeno;
+      coracaoG = this.jogador.coracaoGrande + this.jogador.bonusCoracaoGrande;
+    });
+
+    return (coracaoP+coracaoG) > 0;
+  }
+
   public verificaBonus() {
     if (this.jogador?.cartasDoJogo.length > 0) {
       let ultimaCarta = (this.jogador?.cartasDoJogo.length - 1) as number;
