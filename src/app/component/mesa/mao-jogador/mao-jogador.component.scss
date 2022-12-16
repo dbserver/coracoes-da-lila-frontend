@@ -278,3 +278,24 @@
     }
   }
 }
+
+.grid-zoom {
+  display: grid;
+  grid-template-columns: 5% 95%;
+}
+
+.zoom {
+  border: none;
+  background: local;
+  cursor: pointer;
+  padding-left: 0;
+  padding-right: 0;
+  
+  .mat-icon {
+    font-weight: bolder;
+  }
+
+  .icone-zoom {
+    margin-top: 1rem;
+  }
+}
