@@ -7,6 +7,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Jogador } from '../../model/jogador';
 import { MesaJogoService } from '../../service/mesa-jogo-service/mesa-jogo.service';
 import { IniciaPartidaService } from '../../service/inicia-partida-service/inicia-partida.service';
+import { catchError, Observable, tap, throwError } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-entrar-mesa',
@@ -34,6 +36,9 @@ export class EntrarMesaComponent implements OnInit {
 
     this.mesaService
       .findByHash(this.hash)
+      .pipe(
+        tap(console.log),
+        catchError(this.tratarErro))
       .subscribe((sala) => (this.sala = sala));
 
     this.verificaSalaCheia(this.hash);
@@ -102,5 +107,10 @@ export class EntrarMesaComponent implements OnInit {
       return false;
     }
     return this.jogador.nome.length >= 2;
+  }
+
+  private tratarErro(error: HttpErrorResponse): Observable<never> {
+    this.router.navigate(['/erro/sala'])
+    return throwError(`Ocorreu um erro - codigo do erro: ${error.status}`);
   }
 }

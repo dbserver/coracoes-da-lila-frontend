@@ -1,5 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { catchError, Observable, pipe, tap, throwError } from 'rxjs';
 import { Sala } from 'src/app/model/sala';
 import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.service';
 import { MesaService } from 'src/app/service/mesa-service/mesa.service';
@@ -33,11 +35,20 @@ export class MesaCriadaComponent implements OnInit {
     this.link = `${environment.CLIENT_URL}entrarmesa/${this.hash}`;
     this.mesaService
       .findByHash(this.hash)
+      .pipe(
+        tap(console.log),
+        catchError(this.tratarErro))
       .subscribe((sala) => (this.sala = sala));
   }
 
   roteamento() {
     this.carregando = true;
     this.router.navigate(['/jogo', this.sala.hash])
+  }
+
+  
+  private tratarErro(error: HttpErrorResponse): Observable<never> {
+    this.router.navigate(['/erro/sala'])
+    return throwError(`Ocorreu um erro - codigo do erro: ${error.status}`);
   }
 }

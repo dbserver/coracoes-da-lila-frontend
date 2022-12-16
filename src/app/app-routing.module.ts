@@ -16,6 +16,8 @@ import { IniciaPartidaComponent } from './component/mesa/inicia-partida/inicia-p
 import { TelaErroComponent } from './component/tela-erro/tela-erro.component';
 import { TelaHistoriaComponent } from './component/tela-historia/tela-historia.component';
 import { TelaDownloadComponent } from './component/tela-download/tela-download.component';
+import { TelaErroJogoEmAndamentoComponent } from './component/tela-erro-jogo-em-andamento/tela-erro-jogo-em-andamento.component';
+import { TelaErroSalaInexistenteComponent } from './component/tela-erro-sala-inexistente/tela-erro-sala-inexistente.component';
 
 const routes: Routes = [
   {
@@ -82,6 +84,14 @@ const routes: Routes = [
   {
     path: 'download',
     component: TelaDownloadComponent,
+  },
+  {
+    path:'erro/jogo',
+    component: TelaErroJogoEmAndamentoComponent,
+  },
+  {
+    path:'erro/sala',
+    component: TelaErroSalaInexistenteComponent,
   },
   {
     path:'**',
