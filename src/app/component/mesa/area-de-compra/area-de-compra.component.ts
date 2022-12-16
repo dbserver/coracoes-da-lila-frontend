@@ -191,6 +191,9 @@ export class AreaDeCompraComponent implements OnInit {
 
     this.buscaCartasObjetivo()
 
+    document.getElementById('carta-2')?.classList.remove('carta-2')
+    document.getElementById('carta-3')?.classList.remove('carta-3')
+
     const modal = document.getElementById("modal");
     if (modal != null){
       modal.style.display = 'flex';
@@ -199,6 +202,8 @@ export class AreaDeCompraComponent implements OnInit {
 
   public embaralhar(resposta: boolean){
     this.embaralharCartas = resposta;
+    document.getElementById('carta-2')?.classList.add('carta-2')
+    document.getElementById('carta-3')?.classList.add('carta-3')
     console.log(resposta)
   }
 

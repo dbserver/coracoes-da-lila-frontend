@@ -1,6 +1,7 @@
 .informacoes-gerais{
     display: flex;
-    //justify-content: center;
+    position: relative;
+    z-index: -1;
 }
 
 .carta {
@@ -9,8 +10,6 @@
     background: var(--input-backgroundColor);
     word-wrap: break-word;
     position: absolute;
-    z-index: 5;
-    text-align: center;
 
     &-objetivo {
         display: flex;
@@ -42,21 +41,22 @@
       }
     }
 
-#carta-1{
+.carta-1{
     animation: carta-1 8s infinite;
 }
  
-#carta-2{
+.carta-2{
     animation: carta-2 1.5s 1;
 }
 
-#carta-3{
+.carta-3{
     animation: carta-3 1.5s 2;
 }
 
 @keyframes carta-3 {
     0% {
         left: 0;
+        display: block;
     }
     24% {
         z-index: 5;
@@ -78,6 +78,7 @@
 @keyframes carta-2 {
     0%{
         left: 0;
+        display: block;
     }
     50% {
         left: 0;
@@ -94,13 +95,3 @@
         z-index: 4;
     }
 }
-
-// @keyframes carta-2 {
-//     0% {
-//         left: 0;
-//     }
-//     100% {
-//         left: 100px;
-//         z-index: 4;
-//     }
-// }
