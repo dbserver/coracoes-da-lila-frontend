@@ -29,19 +29,10 @@ export class IniciaPartidaComponent implements OnInit {
     this.enviaCartaInicio = {} as CartaInicio;
   }
 
-  transmitePrimeiroJogadorEscolhido() {
-    this.primeiroJogador = this.iniciaPartidaService.getPrimeiroJogador();
-
   verificaQuantidadeJogadores() {
     if (this.sala.jogadores.length >= 2) {
       this.desabilitaBtn = false;
     }
-  }
-
-  enviarPrimeiroJogador() {
-    this.iniciaPartidaService
-      .definePrimeiroJogador(this.primeiroJogador)
-      .subscribe(primeiroJogador => this.primeiroJogador = primeiroJogador);
   }
 
   enviaStatus(): void {
