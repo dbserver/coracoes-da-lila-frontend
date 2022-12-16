@@ -20,7 +20,12 @@
             <button class="botao-sair" mat-raised-button [routerLink]="['/']">Sair</button>
         </div> -->
         <div class="centro"><img class="avatar" src="../../../assets/avatar" alt=""></div>
+        
+        <div class="nome-jogador">
+            <img *ngIf="jogador.nome == sala.escolhido.nome" class="coracao-pequeno" src="assets/svg/icone-coracao.svg" alt="Ícone coração">
         <div *ngIf="jogador" class="centro nome">{{jogador.nome}}</div>
+        </div>
+  
     </div>
 
     <div class="carta-coracoes">

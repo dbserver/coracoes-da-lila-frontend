@@ -12,6 +12,7 @@ import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.ser
   styleUrls: ['./inicia-partida.component.scss'],
 })
 export class IniciaPartidaComponent implements OnInit {
+  primeiroJogador: Jogador;
   jogadores: number = 0;
   desabilitaBtn = false;
   sala: Sala;
@@ -26,6 +27,7 @@ export class IniciaPartidaComponent implements OnInit {
   ) {
     this.sala = {} as Sala;
     this.jogadorPrincipal = {} as Jogador;
+    this.primeiroJogador = {} as Jogador;
     this.enviaCartaInicio = {} as CartaInicio;
   }
 
