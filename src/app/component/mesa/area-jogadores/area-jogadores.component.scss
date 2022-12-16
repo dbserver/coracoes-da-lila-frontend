@@ -74,6 +74,16 @@
   height: 50%;
   width: 50%;
 }
+.nome-jogador {
+  display: flex;
+  gap: 0.3rem;
+  justify-content: center;
+  align-items: center;
+}
+.coracao-pequeno-selecionado {
+  width: 0.9em;
+  height: 0.9em;
+}
 
 .cartas-container {
 

@@ -11,7 +11,7 @@ import { Sala } from '../../model/sala';
 export class IniciaPartidaService {
 
   private emitePrimeiroJogador: Jogador = {} as Jogador;
-  
+
   constructor(private http: HttpClient) {}
 
   getQuantidadeJogadores(hash: string): Observable<number> {
@@ -32,9 +32,9 @@ export class IniciaPartidaService {
     return this.emitePrimeiroJogador;
   }
 
-  definePrimeiroJogador(primeiroJogador: Jogador){
+  /* definePrimeiroJogador(primeiroJogador: Jogador){
     return this.http.put<Jogador>(`${environment.API_URL}api/primeirojogador`, primeiroJogador);
-  }
+  } */
 
 
 }
