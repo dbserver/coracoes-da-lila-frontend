@@ -17,7 +17,7 @@ export class CriarMesaComponent implements OnInit {
   nick: string;
 
   isvalid = true;
-  loading = false;
+  carregando = false;
 
   constructor(
     private mesaService: MesaService,
@@ -41,12 +41,12 @@ export class CriarMesaComponent implements OnInit {
       isHost: true,
       bonusCoracaoPequeno: 0,
       bonusCoracaoGrande: 0,
-      status: 'ESPERANDO'
+      status: 'JOGANDO'
     };
     if(this.nomeValido()){
       this.isvalid = true;
       this.criarMesa();
-      this.loading = true;
+      this.carregando = true;
     }else{
       this.isvalid = false;
     }

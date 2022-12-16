@@ -3,7 +3,7 @@
 
 <div class="div-aguarde">
 
-  <p *ngIf="jogadorHost.isHost === false" class="mensagem-aguarde">Aguardando início da partida</p>
+  <p *ngIf="jogadorPrincipal.isHost === false" class="mensagem-aguarde">Aguardando início da partida</p>
   
   <div class="aguardando" *ngIf="jogadorHost.isHost === false">
     <mat-spinner diameter="40"></mat-spinner>
