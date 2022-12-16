@@ -14,7 +14,7 @@ import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.ser
 export class IniciaPartidaComponent implements OnInit {
   primeiroJogador: Jogador;
   jogadores: number = 0;
-  desabilitaBtn = false;
+  desabilitaBtn = true;
   sala: Sala;
   jogadorPrincipal: Jogador;
   hash = '';
@@ -31,24 +31,12 @@ export class IniciaPartidaComponent implements OnInit {
     this.enviaCartaInicio = {} as CartaInicio;
   }
 
-  verificaQuantidadeJogadores() {
-     if (this.sala.jogadores.length >= 2) {
-       this.desabilitaBtn = false;
-     }
-   }
-
   transmiteJogadorEscolhido() {
     this.sala.escolhido = this.iniciaPartidaService.getPrimeiroJogador();
     if (this.sala.jogadores.length >= 2) {
       this.desabilitaBtn = false;
     }
   }
-
-  /* enviarPrimeiroJogador() {
-    this.iniciaPartidaService
-      .definePrimeiroJogador(this.primeiroJogador)
-      .subscribe(primeiroJogador => this.primeiroJogador = primeiroJogador);
-  } */
 
   enviaStatus(): void {
     this.desabilitaBtn = true;
@@ -60,7 +48,6 @@ export class IniciaPartidaComponent implements OnInit {
   ngOnInit(): void {
     this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
       this.sala = sala;
-      this.verificaQuantidadeJogadores();
     });
 
     this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => {
