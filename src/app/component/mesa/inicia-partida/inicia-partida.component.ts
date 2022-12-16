@@ -37,8 +37,8 @@ export class IniciaPartidaComponent implements OnInit {
   //   }
   // }
 
-  transmitePrimeiroJogadorEscolhido() {
-    this.primeiroJogador = this.iniciaPartidaService.getPrimeiroJogador();
+  transmiteJogadorEscolhido() {
+    this.sala.escolhido = this.iniciaPartidaService.getPrimeiroJogador();
     if (this.sala.jogadores.length >= 2) {
       this.desabilitaBtn = false
     }
@@ -48,7 +48,7 @@ export class IniciaPartidaComponent implements OnInit {
     this.iniciaPartidaService
       .definePrimeiroJogador(this.primeiroJogador)
       .subscribe(primeiroJogador => this.primeiroJogador = primeiroJogador);
-      console.log(this.primeiroJogador)
+      //console.log(this.primeiroJogador)
   }
 
   enviaStatus(): void {

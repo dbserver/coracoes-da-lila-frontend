@@ -12,4 +12,5 @@ export interface Sala {
   jogadores: Jogador[];
   dado: number;
   status: string;
+  escolhido: Jogador;
 }

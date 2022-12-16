@@ -1,5 +1,5 @@
 <app-carta-inicio [recebeCartaInicio]="enviaCartaInicio"></app-carta-inicio>
-<app-primeiro-jogador (transmitirPrimeiroJogador)="transmitePrimeiroJogadorEscolhido()" *ngIf="jogadorHost.isHost === true"></app-primeiro-jogador>
+<app-primeiro-jogador (transmitirPrimeiroJogador)="transmiteJogadorEscolhido()" *ngIf="jogadorHost.isHost === true"></app-primeiro-jogador>
 
 <div class="div-aguarde">
 
@@ -10,7 +10,7 @@
   </div>
 
   <div class="div-btn-aguarde" *ngIf="jogadorHost.isHost === true">
-    <button mat-raised-button class="btn-aguarde btn" id="iniciar" [disabled]="desabilitaBtn" (click)="enviaStatus()" (click)="enviarPrimeiroJogador()">Iniciar partida</button>
+    <button mat-raised-button class="btn-aguarde btn" id="iniciar" [disabled]="desabilitaBtn" (click)="enviaStatus()">Iniciar partida</button>
   </div>
 
   <div class="aguardando" *ngIf="desabilitaBtn">
