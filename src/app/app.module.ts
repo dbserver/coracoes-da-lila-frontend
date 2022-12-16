@@ -86,7 +86,9 @@ import { ModalCartasObjetivoComponent } from './component/mesa/modal-cartas-obje
     RegrasComponent,
     PainelVoltarComponent,
     TelaDownloadComponent,
-    ModalCartasObjetivoComponent
+    ModalCartasObjetivoComponent,
+    PrimeiroJogadorComponent
+    
   ],
   imports: [
     BrowserModule,
