@@ -11,6 +11,7 @@ export class ModalZoomComponent implements OnInit {
 
   public baralho: Baralho = {} as Baralho;
   public listaCartas: Array<CartaDoJogo> = [];
+  public carta: CartaDoJogo = {} as CartaDoJogo;
   
   constructor() { }
 

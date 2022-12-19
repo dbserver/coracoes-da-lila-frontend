@@ -209,7 +209,8 @@ export class AreaDeCompraComponent implements OnInit {
   openDialog() {
     this.zoomCarta.open(ModalZoomComponent, {
       height: '95%',
-      width: '50%'
+      width: '35%',
+      panelClass: 'css-carta'
     });
   }
 }
