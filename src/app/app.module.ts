@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -50,9 +51,7 @@ import { CartaInicioComponent } from './component/mesa/carta-inicio/carta-inicio
 import { PainelVoltarComponent } from './component/painel-voltar/painel-voltar.component';
 import { TelaDownloadComponent } from './component/tela-download/tela-download.component';
 import { ModalCartasObjetivoComponent } from './component/mesa/modal-cartas-objetivo/modal-cartas-objetivo.component';
-
-
-
+import { ModalZoomComponent } from './component/mesa/modal-zoom/modal-zoom.component';
 
 
 @NgModule({
@@ -86,7 +85,8 @@ import { ModalCartasObjetivoComponent } from './component/mesa/modal-cartas-obje
     RegrasComponent,
     PainelVoltarComponent,
     TelaDownloadComponent,
-    ModalCartasObjetivoComponent
+    ModalCartasObjetivoComponent,
+    ModalZoomComponent,
   ],
   imports: [
     BrowserModule,
@@ -101,12 +101,12 @@ import { ModalCartasObjetivoComponent } from './component/mesa/modal-cartas-obje
     FormsModule,
     MatButtonModule,
     MatInputModule,
-    MatButtonModule,
     MatIconModule,
     HttpClientModule,
     ClipboardModule,
     MatCardModule,
     MatProgressSpinnerModule,
+    MatDialogModule,
   ],
   providers: [
     {

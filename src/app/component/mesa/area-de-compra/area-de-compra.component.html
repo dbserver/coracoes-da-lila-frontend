@@ -14,7 +14,7 @@
         {{ carta.texto }}
       </p>
       <div class="icones">
-        <button class="zoom">
+        <button class="zoom" (click)="openDialog()">
           <mat-icon class="mat-icon" alt="Ícone de zoom">search</mat-icon>
         </button>
         <div class="coracoes">
@@ -75,7 +75,7 @@
         </ng-container>
       </div>
     </div>
-    
+
     <div class="informacoes-gerais">
       <div class="carta carta-objetivo dropdown">
         <div class="carta-logotexto">
