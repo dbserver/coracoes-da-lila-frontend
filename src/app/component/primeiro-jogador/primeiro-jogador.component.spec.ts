@@ -42,7 +42,6 @@ describe('PrimeiroJogadorComponent', () => {
   it('deve testar o método transmitePrimeiroJogadorEscolhido', () => {
     const jogador = {} as Jogador;
     const sala = {} as Sala;
-    const jogadores = [] as Jogador[];
     const spy = spyOn(iniciaPartidaService, 'setPrimeiroJogador');
     spyOn(mesaJogoService, 'getemitSalaObservable').and.returnValue(of(sala));
     spyOn(mesaJogoService, 'getemitJogadorObservable').and.returnValue(of(jogador));
