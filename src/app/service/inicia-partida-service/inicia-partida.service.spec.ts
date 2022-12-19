@@ -1,3 +1,4 @@
+import { of } from 'rxjs';
 import { Jogador } from 'src/app/model/jogador';
 import {
   HttpClientTestingModule,
@@ -7,7 +8,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { IniciaPartidaService } from './inicia-partida.service';
 
-fdescribe(`#${IniciaPartidaService.name}`, () => {
+describe(`#${IniciaPartidaService.name}`, () => {
   let iniciaPartidaService: IniciaPartidaService;
   let httpMock: HttpTestingController;
 
@@ -43,10 +44,15 @@ fdescribe(`#${IniciaPartidaService.name}`, () => {
   });
 
   it('deve retornar undefined quando for buscar o nome do primeiro jogador escolhido', () =>{
-    expect(iniciaPartidaService.getPrimeiroJogador().nome).toBeUndefined()
+    expect(iniciaPartidaService.getPrimeiroJogador().nome).toBeUndefined();
   });
 
   it('deve retornar o nome do jogador após ele for escolhido', () =>{
-
-  })
+    const jogador = {
+      "nome": 'Pedro'
+    } as Jogador;
+    iniciaPartidaService.setPrimeiroJogador(jogador);
+    expect(jogador.nome).toEqual(iniciaPartidaService.getPrimeiroJogador().nome);
+    expect(iniciaPartidaService.getPrimeiroJogador().nome).toEqual("Pedro")
+  });
 });
