@@ -189,23 +189,9 @@ export class AreaDeCompraComponent implements OnInit {
 
   public escolherEntreDuasCartasObjetivo(){
 
-    this.buscaCartasObjetivo()
-
-    document.getElementById('carta-2')?.classList.remove('carta-2')
-    document.getElementById('carta-3')?.classList.remove('carta-3')
-    document.getElementById('animacao')?.classList.remove('embaralhar-animacao')
-
-    const modal = document.getElementById("modal");
-    if (modal != null){
-      modal.style.display = 'flex';
-    }
-  }
-
-  public embaralhar(resposta: boolean){
-    this.embaralharCartas = resposta;
-    document.getElementById('carta-2')?.classList.add('carta-2')
-    document.getElementById('carta-3')?.classList.add('carta-3')
-    document.getElementById('animacao')?.classList.add('embaralhar-animacao')
+    this.buscaCartasObjetivo();
+    this.abrirModal();
+    this.desabilitaAnimacaoEmbaralhar();
   }
 
   private buscaCartasObjetivo(){
@@ -216,4 +202,27 @@ export class AreaDeCompraComponent implements OnInit {
       )
     )
   }
+
+  public abrirModal(){
+    const modal = document.getElementById("modal");
+    if (modal != null){
+      modal.style.display = 'flex';
+    }
+  }
+
+  public desabilitaAnimacaoEmbaralhar(){
+    document.getElementById('carta-1')?.classList.remove('carta-1')
+    document.getElementById('carta-2')?.classList.remove('carta-2')
+    document.getElementById('container-cartas')?.classList.remove('embaralhar-animacao')
+  }
+
+
+  public habilitaAnimacaoEmbaralhar(resposta: boolean){
+    this.embaralharCartas = resposta;
+    document.getElementById('carta-1')?.classList.add('carta-1')
+    document.getElementById('carta-2')?.classList.add('carta-2')
+    document.getElementById('container-cartas')?.classList.add('embaralhar-animacao')
+  }
+
+
 }
