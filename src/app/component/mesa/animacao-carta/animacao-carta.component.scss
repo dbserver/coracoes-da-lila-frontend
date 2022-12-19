@@ -1,7 +1,6 @@
 .informacoes-gerais{
     display: flex;
     position: relative;
-    z-index: -1;
 }
 
 .carta {
@@ -14,13 +13,14 @@
     &-objetivo {
         display: flex;
         justify-content: center;
-        align-items: center;
         width: 160px;
         height: 100px;
   
         &-logotexto {
           display: flex;
           flex-direction: column;
+          position: relative;
+          top: -4px;
         }
   
         .imagem {
@@ -41,16 +41,19 @@
       }
     }
 
-.carta-1{
-    animation: carta-1 8s infinite;
+.embaralhar-animacao{
+    animation: embaralhar 2s 1;
+    z-index: -1;
 }
  
 .carta-2{
     animation: carta-2 1.5s 1;
+    
 }
 
 .carta-3{
     animation: carta-3 1.5s 2;
+    z-index: 5;
 }
 
 @keyframes carta-3 {
@@ -93,5 +96,14 @@
     100% {
         left: 0;
         z-index: 4;
+    }
+}
+
+@keyframes embaralhar {
+    0%{
+        z-index: 10;
+    }
+    100%{
+        z-index: 10;
     }
 }

@@ -40,6 +40,7 @@ export class AreaDeCompraComponent implements OnInit {
   ) {
 
     this.opcoesCartaObjetivo = [] as CartaObjetivo[];
+    this.embaralharCartas = false;
   }
 
   ngOnInit() {
@@ -192,6 +193,7 @@ export class AreaDeCompraComponent implements OnInit {
 
     document.getElementById('carta-2')?.classList.remove('carta-2')
     document.getElementById('carta-3')?.classList.remove('carta-3')
+    document.getElementById('animacao')?.classList.remove('embaralhar-animacao')
 
     const modal = document.getElementById("modal");
     if (modal != null){
@@ -203,7 +205,7 @@ export class AreaDeCompraComponent implements OnInit {
     this.embaralharCartas = resposta;
     document.getElementById('carta-2')?.classList.add('carta-2')
     document.getElementById('carta-3')?.classList.add('carta-3')
-    console.log(resposta)
+    document.getElementById('animacao')?.classList.add('embaralhar-animacao')
   }
 
   private buscaCartasObjetivo(){

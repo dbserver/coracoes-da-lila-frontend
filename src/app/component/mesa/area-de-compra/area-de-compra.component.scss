@@ -13,13 +13,11 @@
     .cartas-disponiveis {
       display: flex;
       flex-direction: column;
+      gap: 1.5rem;
 
       .grupo-cartas {
         display: flex;
-
-        &:not(:first-child) {
-          margin-top: 24px;
-        }
+        gap: 1.5rem;
       }
     }
 
@@ -94,10 +92,6 @@
     &.desabilitar-acao {
       cursor: not-allowed;
       opacity: 0.5;
-    }
-
-    &:not(:first-child) {
-      margin-left: 24px;
     }
 
     &-baralho {
