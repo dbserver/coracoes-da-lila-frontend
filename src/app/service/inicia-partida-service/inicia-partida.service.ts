@@ -32,10 +32,5 @@ export class IniciaPartidaService {
     return this.emitePrimeiroJogador;
   }
 
-  /* definePrimeiroJogador(primeiroJogador: Jogador){
-    return this.http.put<Jogador>(`${environment.API_URL}api/primeirojogador`, primeiroJogador);
-  } */
-
-
 }
 
