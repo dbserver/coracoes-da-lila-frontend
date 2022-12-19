@@ -1,6 +1,5 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 import { IniciaPartidaComponent } from './inicia-partida.component';
 
@@ -11,7 +10,9 @@ describe('IniciaPartidaComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ IniciaPartidaComponent ],
-      imports: [HttpClientTestingModule]
+      imports: [
+        HttpClientTestingModule
+      ]
     })
     .compileComponents();
   });
@@ -29,5 +30,4 @@ describe('IniciaPartidaComponent', () => {
   it('botão de iniciar partida deve estar desabilitado', () => {
     expect(component.desabilitaBtn).toBeTrue();
   });
-
 });
