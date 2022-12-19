@@ -24,9 +24,9 @@ export class PrimeiroJogadorComponent implements OnInit {
 
   ngOnInit(): void {
     this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
-      this.mesaJogoService.getemitJogadorObservable().subscribe(escolhido => {
-          this.jogador = escolhido;
-          this.iniciaPartidaService.setPrimeiroJogador(escolhido);
+      this.mesaJogoService.getemitJogadorObservable().subscribe(jogadorEscolhido => {
+          this.jogador = jogadorEscolhido;
+          this.iniciaPartidaService.setPrimeiroJogador(jogadorEscolhido);
           this.sala = sala;
           this.jogadores = sala.jogadores;
         });

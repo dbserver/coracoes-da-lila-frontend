@@ -32,7 +32,7 @@ export class IniciaPartidaComponent implements OnInit {
   }
 
   transmiteJogadorEscolhido() {
-    this.sala.escolhido = this.iniciaPartidaService.getPrimeiroJogador();
+    this.sala.jogadorEscolhido = this.iniciaPartidaService.getPrimeiroJogador();
     if (this.sala.jogadores.length >= 2) {
       this.desabilitaBtn = false;
     }

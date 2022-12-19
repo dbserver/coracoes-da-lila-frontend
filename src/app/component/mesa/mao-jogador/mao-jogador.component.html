@@ -22,7 +22,7 @@
         <div class="centro"><img class="avatar" src="../../../assets/avatar" alt=""></div>
 
         <div class="nome-jogador">
-            <img *ngIf="jogador.nome == sala.escolhido.nome && sala.status === 'JOGANDO'" class="coracao-pequeno" src="assets/svg/icone-coracao.svg" alt="Ícone coração">
+            <img *ngIf="jogador.nome == sala.jogadorEscolhido.nome && sala.status === 'JOGANDO'" class="coracao-pequeno" src="assets/svg/icone-coracao.svg" alt="Ícone coração">
         <div *ngIf="jogador" class="centro nome">{{jogador.nome}}</div>
         </div>
 
