@@ -9,12 +9,8 @@
   </div>
 
   <div class="div-btn-aguarde" *ngIf="jogadorPrincipal.isHost === true">
-    <button mat-raised-button class="btn-aguarde btn" id="iniciar" [disabled]="desabilitaBtn" (click)="enviaStatus()">Iniciar
-      partida</button>
-  </div>
+    <button mat-raised-button class="btn-aguarde btn" id="iniciar" [disabled]="desabilitaBtn" (click)="enviaStatus()">Iniciar partida</button>
 
-  <div class="aguardando" *ngIf="desabilitaBtn">
-    <mat-spinner diameter="40"></mat-spinner>
   </div>
 
 </div>

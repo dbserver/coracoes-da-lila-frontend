@@ -1,11 +1,12 @@
 import { Baralho } from "./baralho";
 
 export interface CartaObjetivo {
-    id: number;
-    baralho: Baralho[];
-    classificacao: string;
-    pontos: number;
-    categoria: string;
-    descricao:string;
-    
+  id:number;
+  tipo:string;
+  tipo_contagem:number;
+  categoria:string;
+  texto_regra:string;
+  texto_tematico:string;
+  pontos:number;
+  baralho:Baralho[];
 }
