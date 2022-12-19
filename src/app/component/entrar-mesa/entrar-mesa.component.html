@@ -14,7 +14,7 @@
       Nome deve ter pelo menos 2 caracteres
       </p>
     </div>
-  <div *ngIf="!salaCheia">
+  <div *ngIf="!salaCheia" >
     <button mat-raised-button (click)='conectar()' >Entrar na mesa</button>
   </div>
   <div *ngIf="salaCheia">

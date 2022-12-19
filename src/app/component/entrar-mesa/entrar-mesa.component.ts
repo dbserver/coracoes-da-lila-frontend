@@ -27,6 +27,7 @@ export class EntrarMesaComponent implements OnInit {
     this.sala = {} as Sala;
     this.jogador = {} as Jogador;
     this.jogadorPrincipal = {} as Jogador;
+    
   }
 
   isvalid = true;
@@ -42,6 +43,7 @@ export class EntrarMesaComponent implements OnInit {
       .subscribe((sala) => (this.sala = sala));
 
     this.verificaSalaCheia(this.hash);
+    this.verificaJogoIniciado();
   }
 
   hash = '';
@@ -50,6 +52,7 @@ export class EntrarMesaComponent implements OnInit {
   jogador: Jogador;
   jogadorPrincipal: Jogador;
   salaCheia: boolean = false;
+  statusSala: string = '';
 
   conectar() {
     this.jogador.nome = this.nick;
@@ -96,6 +99,13 @@ export class EntrarMesaComponent implements OnInit {
           this.salaCheia = true;
         }
       });
+  }
+
+  verificaJogoIniciado() {
+    this.sala 
+         if (this.sala.status != 'NOVO' || 'AGUARDANDO' || '') {
+           this.router.navigate(['/erro/jogo']) 
+         }
   }
 
   getNomeJogador() {
