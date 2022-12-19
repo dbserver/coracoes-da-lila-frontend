@@ -123,7 +123,8 @@ import { MatRadioModule } from '@angular/material/radio';
       deps: [InjectableRxStompConfig],
     },
     MesaJogoService,
-    ModalCartasObjetivoComponent
+    ModalCartasObjetivoComponent,
+    HttpClientModule
   ],
   bootstrap: [AppComponent],
 })
