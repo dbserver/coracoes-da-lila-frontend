@@ -38,7 +38,7 @@ export class AreaDeCompraComponent implements OnInit {
     public modalCartasObjetivo: ModalCartasObjetivoComponent
   ) {
 
-    this.opcoesCartaObjetivo = {} as CartaObjetivo[];
+    this.opcoesCartaObjetivo = [] as CartaObjetivo[];
   }
 
   ngOnInit() {
