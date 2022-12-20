@@ -39,10 +39,11 @@ export class EntrarMesaComponent implements OnInit {
       .findByHash(this.hash)
       .subscribe((sala) => (this.sala = sala));
 
-      
-    this.verificarSeSalaCheia(this.hash);
-    this.verificarSeJogoFinalizado(this.hash);
-    this.verificaJogoIniciado();
+    if(this.salaExiste){
+      this.verificarSeSalaCheia(this.hash);
+      this.verificarSeJogoIniciado();
+      this.verificarSeJogoFinalizado();
+    }
   }
 
   hash = '';
@@ -51,7 +52,7 @@ export class EntrarMesaComponent implements OnInit {
   jogador: Jogador;
   jogadorPrincipal: Jogador;
   salaCheia: boolean = false;
-  salaInexistente: boolean = false;
+  salaExiste: boolean = false;
   jogoIniciado: boolean = false;
   jogoFinalizado: boolean = false;
 
@@ -112,30 +113,29 @@ export class EntrarMesaComponent implements OnInit {
       });
   }
 
-  verificaJogoIniciado() {
-    if (this.sala.status == 'NOVO') {
+  verificarSeJogoIniciado() {
+    if  (this.sala.status != 'NOVO' && 'AGUARDANDO') {
       this.jogoIniciado = true;
-    }
-        
+        }
   }
 
-  verificarSeJogoFinalizado(hash: string){
-      this.mesaService
-      .findByHash(hash)
-      .subscribe((sala) => {
-        if (sala.status != 'FINALIZADO') {
+  verificarSeJogoFinalizado(){
+      if (this.sala.status == 'FINALIZADO') {
           this.jogoFinalizado = true;
         }
-      })
   }
 
-  verificarSeSalaExiste(){
-    
+  verificarSeSalaExiste(hash: string){
+    this.mesaService
+      .findByHash(hash)
+      .pipe(
+        tap(console.log),
+        catchError(this.tratarErro))
   }
 
 
   private tratarErro(error: HttpErrorResponse): Observable<never> {
-    this.router.navigate(['/erro/sala/inexistente'])
+    this.salaExiste = true
     return throwError(`Ocorreu um erro - codigo do erro: ${error.status}`);
   }
 }

@@ -8,7 +8,7 @@
   <p class="aviso">Jogo já finalizado, não será possível entrar.</p>
 </div>
 
-<div *ngIf="salaInexistente">
+<div *ngIf="!salaExiste">
   <app-painel-voltar></app-painel-voltar>
   <p class="aviso">Sala informada não existe.</p>
 </div>
@@ -17,7 +17,7 @@
   <p class="aviso">Sala já está cheia.</p>
 </div>
 
-<div class="container" *ngIf="(!jogoIniciado) && (!jogoFinalizado) && (!salaCheia) && (!salaInexistente)">
+<div class="container" *ngIf="(!jogoIniciado) && (!jogoFinalizado) && (!salaCheia) && (salaExiste)">
   <div class="logo">
     <img src="assets/img/logoLilaSozinho.png">
   </div>
