@@ -6,4 +6,106 @@ button {
     border: none;
     cursor: pointer;
     background: local;
+    float: right;
+    margin: -5% -5% 0 0;
+}
+
+.cabecalho {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+
+    .titulo {
+        margin-bottom: 0;
+        line-height: 24px;
+        font-size: calc(var(--tamanhoFonte) + 1vw);
+    }
+
+    .pontos {
+        background-color: black;
+        min-width: 1.7em;
+        min-height: 1.7em;
+        max-width: 1.7em;
+        max-height: 1.7em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 20px;
+        border-radius: 50%;
+
+        .pt {
+            margin-top: 15px;
+            font-size: calc(var(--tamanhoFonte) - 3pt);
+            font-weight: bold;
+        }
+    }
+}
+
+.corpo {
+    margin-top: 16px;
+
+    .definicao {
+        margin-bottom: 0;
+        padding-right: 8px;
+        min-height: 130px;
+        max-height: 130px;
+        overflow-y: auto;
+        font-size: calc(var(--tamanhoFonte) - 4pt);
+    }
+
+    .icones {
+        min-height: 35px;
+        margin-top: 16px;
+        font-size: var(--tamanhoFonte);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .coracoes {
+            display: flex;
+            align-items: center;
+
+            .coracao:not(:first-child) {
+                margin-left: 8px;
+            }
+
+            .coracao-pequeno {
+                width: 0.9em;
+                height: 0.9em;
+            }
+
+            .coracao-grande {
+                width: 1.25em;
+                height: 1.25em;
+            }
+        }
+
+        .presentes {
+            position: relative;
+
+            .presente {
+                width: 1.75em;
+                height: 1.75em;
+            }
+
+            .presenteInfoAcoes {
+                width: 1em;
+                position: absolute;
+                bottom: 0px;
+                right: -5px;
+            }
+        }
+    }
+}
+
+.rodape {
+    margin-top: 32px;
+
+    .fonte {
+        max-height: 40px;
+        overflow-y: auto;
+        display: block;
+        font-size: calc(var(--tamanhoFonte) - 6pt);
+    }
 }

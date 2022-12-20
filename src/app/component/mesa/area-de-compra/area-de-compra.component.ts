@@ -207,8 +207,10 @@ export class AreaDeCompraComponent implements OnInit {
     );
   }
 
-  public abrirZoom() {
+  public abrirZoom(event: Event, carta: CartaDoJogo) {
+    event.stopPropagation();
     this.zoomCarta.open(ModalZoomComponent, {
+      data: carta,
       height: '95%',
       width: '35%',
       panelClass: 'css-carta'

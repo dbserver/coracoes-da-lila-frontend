@@ -52,6 +52,7 @@ import { PainelVoltarComponent } from './component/painel-voltar/painel-voltar.c
 import { TelaDownloadComponent } from './component/tela-download/tela-download.component';
 import { ModalCartasObjetivoComponent } from './component/mesa/modal-cartas-objetivo/modal-cartas-objetivo.component';
 import { ModalZoomComponent } from './component/mesa/modal-zoom/modal-zoom.component';
+import { ModalZoomObjetivoComponent } from './component/mesa/modal-zoom-objetivo/modal-zoom-objetivo.component';
 
 
 @NgModule({
@@ -87,6 +88,7 @@ import { ModalZoomComponent } from './component/mesa/modal-zoom/modal-zoom.compo
     TelaDownloadComponent,
     ModalCartasObjetivoComponent,
     ModalZoomComponent,
+    ModalZoomObjetivoComponent,
   ],
   imports: [
     BrowserModule,
