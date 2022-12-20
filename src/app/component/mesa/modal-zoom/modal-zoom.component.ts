@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Baralho } from 'src/app/model/baralho';
 import { CartaDoJogo } from 'src/app/model/cartaDoJogo';
 
@@ -13,9 +14,15 @@ export class ModalZoomComponent implements OnInit {
   public listaCartas: Array<CartaDoJogo> = [];
   public carta: CartaDoJogo = {} as CartaDoJogo;
   
-  constructor() { }
+  constructor(
+    public dialogRef: MatDialogRef<ModalZoomComponent>
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  closeDialog() {
+    this.dialogRef.close();
   }
 
 }
