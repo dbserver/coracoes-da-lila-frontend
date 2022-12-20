@@ -52,8 +52,8 @@
                         {{cartas.texto}}
                     </p>
                     <div class="icones">
-                        <button class="zoom" alt="Ícone de zoom">
-                            <mat-icon class="mat-icon">search</mat-icon>
+                        <button class="zoom" (click)="abrirZoom()">
+                            <mat-icon class="mat-icon" alt="Ícone de zoom">search</mat-icon>
                         </button>
                         <div class="coracoes">
                             <div class="coracao" *ngFor="let i of [].constructor(cartas.valorCoracaoGrande)">
@@ -84,8 +84,8 @@
 
             <div class="carta carta-horizontal" *ngFor="let cartaObjetivo of jogador?.cartasObjetivo">
                 <div class="grid-zoom">
-                    <button class="zoom" alt="Ícone de zoom">
-                        <mat-icon class="mat-icon icone-zoom">search</mat-icon>
+                    <button class="zoom" (click)="zoomObjetivo()">
+                        <mat-icon class="mat-icon icone-zoom" alt="Ícone de zoom">search</mat-icon>
                     </button>
                     <div class="cabecalho">
                         <h2 class="titulo">{{cartaObjetivo.descricao}}</h2>

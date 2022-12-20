@@ -1,4 +1,5 @@
 import { Component, Injectable, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { CartaDoJogo } from 'src/app/model/cartaDoJogo';
 import { Jogador } from 'src/app/model/jogador';
@@ -6,6 +7,8 @@ import { Sala } from 'src/app/model/sala';
 import { AreaDeCompraService } from 'src/app/service/area-de-compra-service/area-de-compra.service';
 import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.service';
 import { MesaService } from 'src/app/service/mesa-service/mesa.service';
+import { ModalZoomObjetivoComponent } from '../modal-zoom-objetivo/modal-zoom-objetivo.component';
+import { ModalZoomComponent } from '../modal-zoom/modal-zoom.component';
 
 @Injectable({
   providedIn: 'root',
@@ -26,7 +29,8 @@ export class MaoJogadorComponent implements OnInit {
     private mesaService: MesaService,
     private route: ActivatedRoute,
     private mesaJogoService: MesaJogoService,
-    private areaCompraService: AreaDeCompraService
+    private areaCompraService: AreaDeCompraService,
+    public zoomCarta: MatDialog,
   ) {}
 
   ngOnInit(): void {
@@ -69,5 +73,21 @@ export class MaoJogadorComponent implements OnInit {
       coracaoG = jogador.coracaoGrande + jogador.bonusCoracaoGrande;
     });
     return valorCoracaoPequeno! <= coracaoP && valorCoracaoGrande! <= coracaoG;
+  }
+
+  public abrirZoom() {
+    this.zoomCarta.open(ModalZoomComponent, {
+      height: '95%',
+      width: '35%',
+      panelClass: 'css-carta'
+    });
+  }
+
+  public zoomObjetivo() {
+    this.zoomCarta.open(ModalZoomObjetivoComponent, {
+      height: '60%',
+      width: '80%',
+      panelClass: 'css-carta'
+    });
   }
 }

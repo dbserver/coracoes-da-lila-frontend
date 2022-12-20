@@ -11,6 +11,7 @@ import { MesaJogoService } from '../../../service/mesa-jogo-service/mesa-jogo.se
 import { ModalCartasObjetivoComponent } from '../modal-cartas-objetivo/modal-cartas-objetivo.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalZoomComponent } from '../modal-zoom/modal-zoom.component';
+import { ModalZoomObjetivoComponent } from '../modal-zoom-objetivo/modal-zoom-objetivo.component';
 
 @Component({
   selector: 'app-area-de-compra',
@@ -206,10 +207,18 @@ export class AreaDeCompraComponent implements OnInit {
     );
   }
 
-  openDialog() {
+  public abrirZoom() {
     this.zoomCarta.open(ModalZoomComponent, {
       height: '95%',
       width: '35%',
+      panelClass: 'css-carta'
+    });
+  }
+
+  public zoomObjetivo() {
+    this.zoomCarta.open(ModalZoomObjetivoComponent, {
+      height: '60%',
+      width: '80%',
       panelClass: 'css-carta'
     });
   }
