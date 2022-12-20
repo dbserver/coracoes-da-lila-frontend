@@ -17,7 +17,7 @@
   <p class="aviso">Sala já está cheia.</p>
 </div>
 
-<div class="container" *ngIf="!jogoIniciado || !jogoFinalizado || !salaCheia ||  !salaInexistente">
+<div class="container" *ngIf="(!jogoIniciado) && (!jogoFinalizado) && (!salaCheia) && (!salaInexistente)">
   <div class="logo">
     <img src="assets/img/logoLilaSozinho.png">
   </div>

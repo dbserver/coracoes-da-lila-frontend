@@ -85,11 +85,21 @@ export class EntrarMesaComponent implements OnInit {
     this.router.navigate(['/jogo', this.sala.hash]);
     }
   }
-  
 
   emit() {
     this.mesaJogoService.getemitSalaSubject().next(this.sala);
     this.mesaJogoService.getemitJogadorSubject().next(this.jogadorPrincipal);
+  }
+
+  getNomeJogador() {
+    return this.jogador.nome;
+  }
+
+  nomeValido(): boolean {
+    if (this.jogador.nome == null) {
+      return false;
+    }
+    return this.jogador.nome.length >= 2;
   }
 
   verificarSeSalaCheia(hash: string) {
@@ -103,21 +113,10 @@ export class EntrarMesaComponent implements OnInit {
   }
 
   verificaJogoIniciado() {
-    this.sala 
-         if (this.sala.status != 'NOVO' || 'AGUARDANDO' || '') {
-           this.router.navigate(['/erro/jogo']) 
-         }
-  }
-
-  getNomeJogador() {
-    return this.jogador.nome;
-  }
-
-  nomeValido(): boolean {
-    if (this.jogador.nome == null) {
-      return false;
+    if (this.sala.status == 'NOVO') {
+      this.jogoIniciado = true;
     }
-    return this.jogador.nome.length >= 2;
+        
   }
 
   verificarSeJogoFinalizado(hash: string){
