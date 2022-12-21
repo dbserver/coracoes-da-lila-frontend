@@ -1,1 +1,7 @@
-<p>opcoes-jogada works!</p>
+<p>opcoes-jogada works! {{jogador.nome}}</p>
+
+<div *ngFor="let cartas of jogador?.cartasDoJogo">
+    <p>{{ cartas.tipo }}</p>
+    <p>{{ cartas.pontos }}</p>
+</div>
+
