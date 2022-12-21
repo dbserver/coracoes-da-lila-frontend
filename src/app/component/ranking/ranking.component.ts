@@ -18,13 +18,21 @@ export class RankingComponent implements OnInit {
   ngOnInit(): void {
     this.mesa.getemitSalaObservable().subscribe(sala =>{
        this.jogadores = sala.jogadores;
+       this.pontosObjetivo();
         this.jogadores.sort((JogadorA, JogadorB) => {
-          return JogadorB.pontos - JogadorA.pontos;
+          return (JogadorB.pontos + JogadorB.pontosObjetivo) - (JogadorA.pontos + JogadorA.pontosObjetivo);
         });
-      });
-    }
+        
+    });
+  }
 
-    irParaHome() {
-      this.router.navigate([''])
+  pontosObjetivo(){
+    for (let i = 0; 0 < this.jogadores.length; i++){
+      this.jogadores[i].pontosObjetivo = 2;
     }
+  }
+
+  irParaHome() {
+    this.router.navigate([''])
+  }
 }

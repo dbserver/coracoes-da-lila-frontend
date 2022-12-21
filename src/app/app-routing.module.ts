@@ -16,6 +16,7 @@ import { IniciaPartidaComponent } from './component/mesa/inicia-partida/inicia-p
 import { TelaErroComponent } from './component/tela-erro/tela-erro.component';
 import { TelaHistoriaComponent } from './component/tela-historia/tela-historia.component';
 import { TelaDownloadComponent } from './component/tela-download/tela-download.component';
+import { RankingComponent } from './component/ranking/ranking.component';
 
 const routes: Routes = [
   {
@@ -82,6 +83,10 @@ const routes: Routes = [
   {
     path: 'download',
     component: TelaDownloadComponent,
+  },
+  {
+    path:'ranking',
+    component: RankingComponent,
   },
   {
     path:'**',
