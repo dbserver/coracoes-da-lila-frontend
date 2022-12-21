@@ -41,13 +41,13 @@
     <div class="cartas-container">
         <div class="cartas-container-scroll">
             <div *ngFor="let cartas of jogador?.cartasDoJogo">
-                <div class="select">
-                    <select *ngIf="cartas.categoria == 'Genérica'" name="categoria">
-                        <option selected> Categoria </option>
-                        <option value="Auditiva">Auditiva</option>
-                        <option value="Física">Física</option>
+                <div class="select" [formGroup]="novaCategoria">
+                    <select *ngIf="cartas.categoria == 'Genérica'" (change)="atualizarCategorias()" formControlName="categoria">
+                        <option selected>Categoria</option>
                         <option value="Intelectual">Intelectual</option>
+                        <option value="Física">Física</option>
                         <option value="TEA">TEA</option>
+                        <option value="Auditiva">Auditiva</option>
                         <option value="Visual">Visual</option>
                     </select>
                 </div>
@@ -107,5 +107,8 @@
             <br>
             {{jogador.pontos}}
         </h4>
+        <div *ngIf="sala.status == 'AGUARDANDO_DEFINICAO'" class="botao-confirmar">
+            <button mat-raised-button (click)="enviarCategorias()">Confirmar Categorias</button>
+        </div>
     </div>
 </div>

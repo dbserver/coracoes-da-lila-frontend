@@ -1,7 +1,7 @@
 .mao {
   display: grid;
   height: 100%;
-  grid-template-columns: 15% 10% 66% 8%;
+  grid-template-columns: 15% 10% 55% 19%;
   grid-gap: 5px;
   align-items: center;
   max-width: 100%;
@@ -282,4 +282,18 @@
       width: 60%;
     }
   }
+}
+
+.botao-confirmar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  color: var(--font-color);
+  background-color: var(--btn-bg);
+  font-size: calc(var(--tamanhoFonte) - 3px);
+  width: fit-content;
+  height: 35px;
 }

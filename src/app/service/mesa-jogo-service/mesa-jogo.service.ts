@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { CartaDoJogo } from 'src/app/model/cartaDoJogo';
 import { environment } from 'src/environments/environment';
 import { Jogador } from '../../model/jogador';
 import { Sala } from '../../model/sala';
@@ -60,5 +61,9 @@ export class MesaJogoService {
 
   comprarCoracaoG(sala: Sala){
     return this.http.put<Sala>(environment.API_URL+'api/jogada/comprarcoracaogrande',sala);
+  }
+
+  atualizarCategoria(cartaDoJogo : CartaDoJogo){
+    return this.http.put<CartaDoJogo>(environment.API_URL+'api/jogada/atualizarcategoria',cartaDoJogo);
   }
 }
