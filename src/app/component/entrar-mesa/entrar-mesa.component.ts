@@ -63,7 +63,7 @@ export class EntrarMesaComponent implements OnInit {
   jogadorPrincipal: Jogador;
   statusJogo: string = '';
   salaCheia: boolean = false;
-  salaExiste: boolean = false;
+  salaExiste: boolean = true;
   jogoIniciado: boolean = false;
   jogoFinalizado: boolean = false;
 
@@ -115,10 +115,15 @@ export class EntrarMesaComponent implements OnInit {
   }
 
   verificarSeSalaCheia(hash: string) {
+    this.mesaService
+    .findByHash(hash)
+    .subscribe((sala) => {(this.statusJogo = sala.status); })
+
+
     this.iniciaPartidaService
       .getQuantidadeJogadores(hash)
       .subscribe((jogadores) => {
-        if (jogadores >= 6) {
+        if (jogadores >= 6 || this.statusJogo === 'NOVO' && 'AGUARDANDO') {
           this.salaCheia = true;
           this.router.navigate(['/salacheia']);
         }
@@ -127,14 +132,12 @@ export class EntrarMesaComponent implements OnInit {
 
   verificarSeJogoIniciado(hash: string) {
     this.mesaService
-      .findByHash(hash)
-      .subscribe((sala) => {
-        (this.statusJogo = sala.status);
-        if (this.statusJogo === 'JOGANDO') {
-          this.jogoIniciado = true
-          this.router.navigate(['/jogoiniciado']);
-        }
-      })
+    .findByHash(hash)
+    .subscribe((sala) => {(this.statusJogo = sala.status); 
+      if(this.statusJogo === 'JOGANDO' && 'ULTIMA_RODADA'){
+      this.jogoIniciado = true
+      this.router.navigate(['/jogoiniciado']);
+    }})
 
   }
 
