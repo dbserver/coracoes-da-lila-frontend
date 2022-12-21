@@ -43,4 +43,12 @@ export class OpcoesJogadaComponent implements OnInit {
       ) as Jogador;
     });
   }
+
+  public somaCoracoes(){
+    const total = this.jogador.coracaoGrande + this.jogador.coracaoPequeno + this.jogador.bonusCoracaoGrande + this.jogador.bonusCoracaoPequeno;
+    return total;
+  }
+
+
+
 }

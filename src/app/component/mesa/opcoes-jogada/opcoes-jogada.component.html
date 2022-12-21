@@ -1,9 +1,17 @@
 <section class="opcoes-container">
-<p>Opções de jogada:</p>
+<h3 class="titulo">Opções de jogada:</h3>
 
-<ul>
-  <li *ngIf="jogador.coracaoGrande + jogador.coracaoPequeno < 5">Pegar 2 corações pequenos</li>
-  <li *ngIf="jogador.coracaoGrande + jogador.coracaoPequeno < 5">Pegar um coração grande</li>
+<ul *ngIf="sala.status == 'JOGANDO'">
+  <li *ngIf="somaCoracoes() < 5">Pegar 2 corações pequenos</li>
+  <li *ngIf="somaCoracoes() < 5">Pegar um coração grande</li>
+  <li *ngIf="">Comprar uma carta</li>
+  <li *ngIf="somaCoracoes() > 0">Comprar uma carta de objetivo</li>
+  <li></li>
+
+</ul>
+
+<ul *ngIf="sala.status == 'ULTIMA_RODADA'">
+  <li>Trocar a categoria das cartas genéricas.</li>
 </ul>
 
 <!-- <div *ngFor="let cartas of jogador?.cartasDoJogo">
