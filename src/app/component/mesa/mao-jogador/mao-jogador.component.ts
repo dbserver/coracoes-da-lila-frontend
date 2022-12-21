@@ -85,21 +85,24 @@ export class MaoJogadorComponent implements OnInit {
     //this.mesaJogoService.atualizarCategoria(this.nov.value.categoria);
   }
 
-  public atualizarCategorias(): void {
-    for(let i = 0; i < this.jogador.cartasDoJogo.length; i++){
-      if(this.jogador.cartasDoJogo[i].categoria == "Genérica" && this.jogador.cartasDoJogo[i].novaCategoria == null){
-        this.jogador.cartasDoJogo[i].novaCategoria = this.novaCategoria.value.categoria;
-        this.cartasParaEnviar.push(this.jogador.cartasDoJogo[i]);
-        break;
-      }
+  public atualizarCategorias(cartaGenerica: CartaDoJogo): void {
+    let dadoRecebido:string = this.novaCategoria.value.categoria;
+    let modificaCategoria:boolean = true;
+    if(cartaGenerica.novaCategoria == null){
+      cartaGenerica.novaCategoria = dadoRecebido;
+      this.cartasParaEnviar.push(cartaGenerica);
+    }
 
-      if(this.jogador.cartasDoJogo[i].categoria == "Genérica" && this.jogador.cartasDoJogo[i].novaCategoria != null){
-        this.jogador.cartasDoJogo[i].novaCategoria = this.novaCategoria.value.categoria;
-        this.cartasParaEnviar.push(this.jogador.cartasDoJogo[i]);
-        break;
+    if(cartaGenerica.novaCategoria != dadoRecebido){
+      for(let i = 0; i < this.cartasParaEnviar.length; i++){
+        if(this.cartasParaEnviar[i] == cartaGenerica){
+          cartaGenerica.novaCategoria = dadoRecebido;
+          this.cartasParaEnviar[i] = cartaGenerica;
+        }
       }
     }
 
+    console.log("Carta do jogo: ", cartaGenerica);
     console.log(this.cartasParaEnviar);
     console.log(this.jogador.cartasDoJogo);
   }

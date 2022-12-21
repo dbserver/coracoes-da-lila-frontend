@@ -9,11 +9,9 @@
             <app-indica-jogador *ngIf="sala.status == 'ULTIMA_RODADA' && jogador?.status=='JOGANDO'" mensagem="Jogando">
             </app-indica-jogador>
 
-            <app-indica-jogador *ngIf="sala.status == 'JOGANDO' && jogador?.status=='ESPERANDO'"
-                mensagem="Aguarde sua vez"></app-indica-jogador>
+            <app-indica-jogador *ngIf="sala.status == 'JOGANDO' && jogador?.status=='ESPERANDO'" mensagem="Aguarde sua vez"></app-indica-jogador>
 
-            <app-indica-jogador *ngIf="sala.status == 'ULTIMA_RODADA' && jogador?.status=='JOGANDO'"
-                mensagem="ULTIMA_JOGADA"></app-indica-jogador>
+            <app-indica-jogador *ngIf="sala.status == 'ULTIMA_RODADA' && jogador?.status=='JOGANDO'" mensagem="ULTIMA_JOGADA"></app-indica-jogador>
 
         </div>
         <!-- <div class="centro">
@@ -42,7 +40,7 @@
         <div class="cartas-container-scroll">
             <div *ngFor="let cartas of jogador?.cartasDoJogo">
                 <div class="select" [formGroup]="novaCategoria">
-                    <select *ngIf="cartas.categoria == 'Genérica'" (change)="atualizarCategorias()" formControlName="categoria">
+                    <select *ngIf="cartas.categoria == 'Genérica'" (change)="atualizarCategorias(cartas)" formControlName="categoria">
                         <option selected>Categoria</option>
                         <option value="Intelectual">Intelectual</option>
                         <option value="Física">Física</option>
@@ -73,8 +71,7 @@
                             </div>
                             <div class="presentes">
                                 <div class="presente-acao">
-                                    <div class="presente-acao"
-                                        *ngIf="cartas.tipo === 'Informação' && cartas.bonus == true">
+                                    <div class="presente-acao" *ngIf="cartas.tipo === 'Informação' && cartas.bonus == true">
                                         <img class="presente" src="assets/svg/icone-presente.svg" alt="presente">
                                         <img class="presenteInfoAcoes" src="assets/svg/icone-usuario.svg" alt="acao">
                                     </div>
@@ -104,8 +101,7 @@
     </div>
     <div *ngIf="jogador" class="centraliza">
         <h4>Pontos:
-            <br>
-            {{jogador.pontos}}
+            <br> {{jogador.pontos}}
         </h4>
         <div *ngIf="sala.status == 'AGUARDANDO_DEFINICAO'" class="botao-confirmar">
             <button mat-raised-button (click)="enviarCategorias()">Confirmar Categorias</button>
