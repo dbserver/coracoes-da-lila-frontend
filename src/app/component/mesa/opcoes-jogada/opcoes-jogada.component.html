@@ -1,7 +1,14 @@
-<p>opcoes-jogada works! {{jogador.nome}}</p>
+<section class="opcoes-container">
+<p>Opções de jogada:</p>
 
-<div *ngFor="let cartas of jogador?.cartasDoJogo">
+<ul>
+  <li *ngIf="jogador.coracaoGrande + jogador.coracaoPequeno < 5">Pegar 2 corações pequenos</li>
+  <li *ngIf="jogador.coracaoGrande + jogador.coracaoPequeno < 5">Pegar um coração grande</li>
+</ul>
+
+<!-- <div *ngFor="let cartas of jogador?.cartasDoJogo">
     <p>{{ cartas.tipo }}</p>
     <p>{{ cartas.pontos }}</p>
-</div>
+</div> -->
+</section>
 
