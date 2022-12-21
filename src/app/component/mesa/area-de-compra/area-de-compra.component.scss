@@ -235,6 +235,16 @@
       width: 160px;
       height: 100px;
 
+      &.desabilitar-carta {
+        cursor: not-allowed;
+        opacity: 0.2;
+      }
+
+      &.desabilitar-acao {
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
+
       &-logotexto {
         display: flex;
         flex-direction: column;
@@ -253,7 +263,7 @@
       }
 
       .texto {
-        font-size: 10px;
+        font-size: calc(var(--tamanhoFonte) - 5px);
         color: #351c75;
       }
     }

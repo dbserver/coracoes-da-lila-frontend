@@ -73,6 +73,13 @@
         </ng-container>
       </div>
     </div>
+    <div class="informacoes-gerais">
+      <div [ngClass]="{
+        'desabilitar-carta': !podeComprarObjetivo(),
+        'desabilitar-acao': !podeJogar()
+      }" class="carta carta-objetivo dropdown">
+        <div class="carta-logotexto">
+          <img class="imagem-logo" src="../../../assets/img/logoLilaSozinho.png" alt="logo" />
 
     <div class="informacoes-gerais">
       <div class="container-cartas">
