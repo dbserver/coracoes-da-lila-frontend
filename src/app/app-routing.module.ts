@@ -16,6 +16,9 @@ import { IniciaPartidaComponent } from './component/mesa/inicia-partida/inicia-p
 import { TelaErroComponent } from './component/tela-erro/tela-erro.component';
 import { TelaHistoriaComponent } from './component/tela-historia/tela-historia.component';
 import { TelaDownloadComponent } from './component/tela-download/tela-download.component';
+import { TelaErroJogoInciadoComponent } from './component/tela-erro-jogo-inciado/tela-erro-jogo-inciado.component';
+import { TelaErroSalaCheiaComponent } from './component/tela-erro-sala-cheia/tela-erro-sala-cheia.component';
+import { TelaErroJogoFinalizadoComponent } from './component/tela-erro-jogo-finalizado/tela-erro-jogo-finalizado.component';
 
 const routes: Routes = [
   {
@@ -84,9 +87,22 @@ const routes: Routes = [
     component: TelaDownloadComponent,
   },
   {
+    path:'jogoiniciado',
+    component: TelaErroJogoInciadoComponent,
+  },
+  {
+    path:'salacheia',
+    component: TelaErroSalaCheiaComponent,
+  },
+  {
+    path:'jogofinalizado',
+    component: TelaErroJogoFinalizadoComponent,
+  },
+  {
     path:'**',
     component: TelaErroComponent,
-  }
+  },
+
 ];
 
 @NgModule({

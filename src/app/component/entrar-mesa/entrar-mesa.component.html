@@ -1,40 +1,23 @@
-<div *ngIf="jogoIniciado">
-  <app-painel-voltar></app-painel-voltar>
-  <p class="aviso">Jogo já iniciado, não será possivel entrar.</p>
-</div>
-
-<div *ngIf="jogoFinalizado">
-  <app-painel-voltar></app-painel-voltar>
-  <p class="aviso">Jogo já finalizado, não será possível entrar.</p>
-</div>
-
-<div *ngIf="!salaExiste">
-  <app-painel-voltar></app-painel-voltar>
-  <p class="aviso">Sala informada não existe.</p>
-</div>
-<div *ngIf="salaCheia">
-  <app-painel-voltar></app-painel-voltar>
-  <p class="aviso">Sala já está cheia.</p>
-</div>
-
-<div class="container" *ngIf="(!jogoIniciado) && (!jogoFinalizado) && (!salaCheia) && (salaExiste)">
+<div class="container">
   <div class="logo">
     <img src="assets/img/logoLilaSozinho.png">
   </div>
-
+   
   <mat-form-field appearance="fill">
     <mat-label>Nick:</mat-label>
     <input [(ngModel)]='nick' matInput type="text">
     </mat-form-field>
+
 
     <div *ngIf="!isvalid">
       <p class="aviso">
       Nome deve ter pelo menos 2 caracteres
       </p>
     </div>
-  <div>
-    <button mat-raised-button (click)='conectar()' >Entrar na mesa</button>
-  </div>
+    <div *ngIf="!salaCheia || !jogoIniciado || !jogoFinalizado" >
+      <button class="btn" mat-raised-button (click)='conectar()'> Entrar na mesa</button>
+    </div>   
+    
   <div>
     <button mat-raised-button type="submit" [routerLink]="['']">Voltar</button>
   </div>

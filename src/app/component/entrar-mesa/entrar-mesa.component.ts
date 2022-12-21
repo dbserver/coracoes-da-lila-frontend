@@ -36,14 +36,16 @@ export class EntrarMesaComponent implements OnInit {
     this.hash = String(this.route.snapshot.paramMap.get('hash'));
 
     this.mesaService
-      .findByHash(this.hash)
-      .subscribe((sala) => (this.sala = sala));
-
-    if(this.salaExiste){
+     .findByHash(this.hash)
+     .pipe(
+           tap(console.log),
+           catchError(this.tratarErro))
+     .subscribe((sala) => (this.sala = sala));
+    
       this.verificarSeSalaCheia(this.hash);
-      this.verificarSeJogoIniciado();
-      this.verificarSeJogoFinalizado();
-    }
+      this.verificarSeJogoIniciado(this.hash);
+      this.verificarSeJogoFinalizado(this.hash);
+
   }
 
   hash = '';
@@ -51,6 +53,7 @@ export class EntrarMesaComponent implements OnInit {
   nick = '';
   jogador: Jogador;
   jogadorPrincipal: Jogador;
+  statusJogo: string = '';
   salaCheia: boolean = false;
   salaExiste: boolean = false;
   jogoIniciado: boolean = false;
@@ -109,30 +112,31 @@ export class EntrarMesaComponent implements OnInit {
       .subscribe((jogadores) => {
         if (jogadores >= 6) {
           this.salaCheia = true;
+          this.router.navigate(['/salacheia']);
         }
       });
   }
 
-  verificarSeJogoIniciado() {
-    if  (this.sala.status != 'NOVO' && 'AGUARDANDO') {
-      this.jogoIniciado = true;
-        }
-  }
-
-  verificarSeJogoFinalizado(){
-      if (this.sala.status == 'FINALIZADO') {
-          this.jogoFinalizado = true;
-        }
-  }
-
-  verificarSeSalaExiste(hash: string){
+  verificarSeJogoIniciado(hash: string) {
     this.mesaService
-      .findByHash(hash)
-      .pipe(
-        tap(console.log),
-        catchError(this.tratarErro))
+    .findByHash(hash)
+    .subscribe((sala) => {(this.statusJogo = sala.status); 
+      if(this.statusJogo === 'JOGANDO'){
+      this.jogoIniciado = true
+      this.router.navigate(['/jogoiniciado']);
+    }})
+
   }
 
+   verificarSeJogoFinalizado(hash: string){
+    this.mesaService
+    .findByHash(hash)
+    .subscribe((sala) => {(this.statusJogo = sala.status); if(this.statusJogo === 'FINALIZADO'){
+      this.jogoIniciado = true
+      this.router.navigate(['/jogofinalizado']);
+    }})
+
+   }
 
   private tratarErro(error: HttpErrorResponse): Observable<never> {
     this.salaExiste = true

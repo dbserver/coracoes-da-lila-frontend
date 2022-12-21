@@ -50,6 +50,9 @@ import { CartaInicioComponent } from './component/mesa/carta-inicio/carta-inicio
 import { PainelVoltarComponent } from './component/painel-voltar/painel-voltar.component';
 import { TelaDownloadComponent } from './component/tela-download/tela-download.component';
 import { ModalCartasObjetivoComponent } from './component/mesa/modal-cartas-objetivo/modal-cartas-objetivo.component';
+import { TelaErroJogoInciadoComponent } from './component/tela-erro-jogo-inciado/tela-erro-jogo-inciado.component';
+import { TelaErroSalaCheiaComponent } from './component/tela-erro-sala-cheia/tela-erro-sala-cheia.component';
+import { TelaErroJogoFinalizadoComponent } from './component/tela-erro-jogo-finalizado/tela-erro-jogo-finalizado.component';
 
 
 
@@ -86,7 +89,10 @@ import { ModalCartasObjetivoComponent } from './component/mesa/modal-cartas-obje
     RegrasComponent,
     PainelVoltarComponent,
     TelaDownloadComponent,
-    ModalCartasObjetivoComponent
+    ModalCartasObjetivoComponent,
+    TelaErroJogoInciadoComponent,
+    TelaErroSalaCheiaComponent,
+    TelaErroJogoFinalizadoComponent
   ],
   imports: [
     BrowserModule,
