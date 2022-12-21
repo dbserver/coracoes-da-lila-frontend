@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Jogador } from '../../model/jogador';
 import { MesaJogoService } from '../../service/mesa-jogo-service/mesa-jogo.service';
 import { IniciaPartidaService } from '../../service/inicia-partida-service/inicia-partida.service';
-import { catchError, Observable, tap, throwError } from 'rxjs';
+import { catchError, Observable, of, tap, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
@@ -27,25 +27,33 @@ export class EntrarMesaComponent implements OnInit {
     this.sala = {} as Sala;
     this.jogador = {} as Jogador;
     this.jogadorPrincipal = {} as Jogador;
-    
+
   }
 
   isvalid = true;
 
   ngOnInit(): void {
     this.hash = String(this.route.snapshot.paramMap.get('hash'));
-
     this.mesaService
-     .findByHash(this.hash)
-     .pipe(
-           tap(console.log),
-           catchError(this.tratarErro))
-     .subscribe((sala) => (this.sala = sala));
-    
-      this.verificarSeSalaCheia(this.hash);
-      this.verificarSeJogoIniciado(this.hash);
-      this.verificarSeJogoFinalizado(this.hash);
-
+      .findByHash(this.hash)
+      .pipe(
+        tap(console.log),
+        catchError(errorHandler)
+      )
+      .subscribe({
+        next: (sala) => {
+          console.log(sala);
+          this.sala = sala;
+          this.salaExiste = true;
+          this.verificarSeSalaCheia(this.hash);
+          this.verificarSeJogoIniciado(this.hash);
+          this.verificarSeJogoFinalizado(this.hash);
+        },
+        error: (e) => {
+          console.log(e);
+          this.salaExiste = false;
+        }
+      });
   }
 
   hash = '';
@@ -77,16 +85,16 @@ export class EntrarMesaComponent implements OnInit {
           this.emit();
         });
       this.roteamento();
-    }else{
+    } else {
       this.isvalid = false;
     }
   }
 
   roteamento() {
-    if(this.hash!= this.sala.hash){
+    if (this.hash != this.sala.hash) {
       this.router.navigate(['**']);
-    }else{
-    this.router.navigate(['/jogo', this.sala.hash]);
+    } else {
+      this.router.navigate(['/jogo', this.sala.hash]);
     }
   }
 
@@ -119,27 +127,40 @@ export class EntrarMesaComponent implements OnInit {
 
   verificarSeJogoIniciado(hash: string) {
     this.mesaService
-    .findByHash(hash)
-    .subscribe((sala) => {(this.statusJogo = sala.status); 
-      if(this.statusJogo === 'JOGANDO'){
-      this.jogoIniciado = true
-      this.router.navigate(['/jogoiniciado']);
-    }})
+      .findByHash(hash)
+      .subscribe((sala) => {
+        (this.statusJogo = sala.status);
+        if (this.statusJogo === 'JOGANDO') {
+          this.jogoIniciado = true
+          this.router.navigate(['/jogoiniciado']);
+        }
+      })
 
   }
 
-   verificarSeJogoFinalizado(hash: string){
+  verificarSeJogoFinalizado(hash: string) {
     this.mesaService
-    .findByHash(hash)
-    .subscribe((sala) => {(this.statusJogo = sala.status); if(this.statusJogo === 'FINALIZADO'){
-      this.jogoIniciado = true
-      this.router.navigate(['/jogofinalizado']);
-    }})
+      .findByHash(hash)
+      .subscribe((sala) => {
+        (this.statusJogo = sala.status); if (this.statusJogo === 'FINALIZADO') {
+          this.jogoIniciado = true
+          this.router.navigate(['/jogofinalizado']);
+        }
+      })
 
-   }
-
-  private tratarErro(error: HttpErrorResponse): Observable<never> {
-    this.salaExiste = true
-    return throwError(`Ocorreu um erro - codigo do erro: ${error.status}`);
   }
+}
+
+function errorHandler(err: HttpErrorResponse) {
+  let msg = '';
+  if (err.error instanceof ErrorEvent) {
+    msg = `Client Error Occured: ${err.error.message}`;
+  } else {
+    msg = `Server Error Occured: ${err.status} ${err.statusText}`;
+  }
+  return throwError(() => ({
+    error: err.error,
+    message: msg,
+    messageDesc: err.message,
+  }));
 }
