@@ -75,8 +75,10 @@ export class MaoJogadorComponent implements OnInit {
     return valorCoracaoPequeno! <= coracaoP && valorCoracaoGrande! <= coracaoG;
   }
 
-  public abrirZoom() {
+  public abrirZoom(event: Event, cartas: CartaDoJogo) {
+    event.stopPropagation();
     this.zoomCarta.open(ModalZoomComponent, {
+      data: cartas,
       height: '95%',
       width: '35%',
       panelClass: 'css-carta'
