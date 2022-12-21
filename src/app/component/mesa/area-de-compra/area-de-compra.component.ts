@@ -211,8 +211,8 @@ export class AreaDeCompraComponent implements OnInit {
     event.stopPropagation();
     this.zoomCarta.open(ModalZoomComponent, {
       data: carta,
-      height: '95%',
-      width: '35%',
+      height: '90%',
+      width: '33%',
       panelClass: 'css-carta'
     });
   }
