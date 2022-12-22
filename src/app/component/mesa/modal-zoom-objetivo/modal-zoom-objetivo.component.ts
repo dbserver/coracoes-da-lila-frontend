@@ -21,7 +21,6 @@ export class ModalZoomObjetivoComponent implements OnInit {
     public data: CartaObjetivo
     ) { }
   ngOnInit(): void {
-    console.log(this.data)
   }
   
   fecharZoom() {
