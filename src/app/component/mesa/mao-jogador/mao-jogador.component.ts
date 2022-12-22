@@ -81,13 +81,19 @@ export class MaoJogadorComponent implements OnInit {
   }
 
   public enviarCategorias(): void {
-    console.log(this.jogador.cartasDoJogo);
-    //this.mesaJogoService.atualizarCategoria(this.nov.value.categoria);
+    for(let i = 0; i < this.cartasParaEnviar.length; i++){
+      for(let j = 0; j < this.jogador.cartasDoJogo.length; j++){
+        if(this.jogador.cartasDoJogo[j].categoria == "Genérica" && this.jogador.cartasDoJogo[j] == this.cartasParaEnviar[i]){
+          this.jogador.cartasDoJogo[j].novaCategoria = this.cartasParaEnviar[i].novaCategoria;
+        }
+      }
+    }
+
+    this.mesaJogoService.enviarNovasCategorias(this.sala).subscribe((sala) => (this.sala = sala));
   }
 
   public atualizarCategorias(cartaGenerica: CartaDoJogo): void {
     let dadoRecebido:string = this.novaCategoria.value.categoria;
-    let modificaCategoria:boolean = true;
     if(cartaGenerica.novaCategoria == null){
       cartaGenerica.novaCategoria = dadoRecebido;
       this.cartasParaEnviar.push(cartaGenerica);
@@ -101,10 +107,6 @@ export class MaoJogadorComponent implements OnInit {
         }
       }
     }
-
-    console.log("Carta do jogo: ", cartaGenerica);
-    console.log(this.cartasParaEnviar);
-    console.log(this.jogador.cartasDoJogo);
   }
 
 }

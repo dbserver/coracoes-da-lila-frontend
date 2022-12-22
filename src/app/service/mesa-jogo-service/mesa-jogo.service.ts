@@ -63,7 +63,7 @@ export class MesaJogoService {
     return this.http.put<Sala>(environment.API_URL+'api/jogada/comprarcoracaogrande',sala);
   }
 
-  atualizarCategoria(cartaDoJogo : CartaDoJogo){
-    return this.http.put<CartaDoJogo>(environment.API_URL+'api/jogada/atualizarcategoria',cartaDoJogo);
+  enviarNovasCategorias(sala: Sala){
+    return this.http.put<Sala>(environment.API_URL+'api/jogada/atualizarcategorias',sala);
   }
 }
