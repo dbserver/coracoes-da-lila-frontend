@@ -44,14 +44,13 @@ export class EntrarMesaComponent implements OnInit {
         next: (sala) => {
           console.log(sala);
           this.sala = sala;
-          this.salaExiste = true;
           this.verificarSeSalaCheia(this.hash);
           this.verificarSeJogoIniciado(this.hash);
           this.verificarSeJogoFinalizado(this.hash);
         },
         error: (e) => {
           console.log(e);
-          this.salaExiste = false;
+          this.router.navigate(['/salaInexistente']);
         }
       });
   }
@@ -62,10 +61,7 @@ export class EntrarMesaComponent implements OnInit {
   jogador: Jogador;
   jogadorPrincipal: Jogador;
   statusJogo: string = '';
-  salaCheia: boolean = false;
   salaExiste: boolean = true;
-  jogoIniciado: boolean = false;
-  jogoFinalizado: boolean = false;
 
   conectar() {
     this.jogador.nome = this.nick;
@@ -124,7 +120,6 @@ export class EntrarMesaComponent implements OnInit {
       .getQuantidadeJogadores(hash)
       .subscribe((jogadores) => {
         if (jogadores >= 6 || this.statusJogo === 'NOVO' && 'AGUARDANDO') {
-          this.salaCheia = true;
           this.router.navigate(['/salacheia']);
         }
       });
@@ -135,7 +130,6 @@ export class EntrarMesaComponent implements OnInit {
     .findByHash(hash)
     .subscribe((sala) => {(this.statusJogo = sala.status); 
       if(this.statusJogo === 'JOGANDO' && 'ULTIMA_RODADA'){
-      this.jogoIniciado = true
       this.router.navigate(['/jogoiniciado']);
     }})
 
@@ -146,7 +140,6 @@ export class EntrarMesaComponent implements OnInit {
       .findByHash(hash)
       .subscribe((sala) => {
         (this.statusJogo = sala.status); if (this.statusJogo === 'FINALIZADO') {
-          this.jogoIniciado = true
           this.router.navigate(['/jogofinalizado']);
         }
       })

@@ -100,7 +100,7 @@ const routes: Routes = [
     component: TelaErroJogoFinalizadoComponent,
   },
   {
-    path:'salainexistente',
+    path:'salaInexistente',
     component: TelaErroSalaInexistenteComponent,
   },
   {
