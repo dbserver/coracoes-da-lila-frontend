@@ -87,15 +87,15 @@ export class OpcoesJogadaComponent implements OnInit {
       cartaTipo = this.jogador.cartasDoJogo[ultimaCarta]?.tipo;
       
       if (cartaBonus){
-        return this.jogador.cartasDoJogo[ultimaCarta]?.tipo;
+        cartaTipo = this.jogador.cartasDoJogo[ultimaCarta]?.tipo;
+      }
+
+      if (this.jogador.status != "ESPERANDO" && this.sala.dado != 0) {
+        cartaTipo = "";
       }
 
     });
-
-    if (this.jogador.status != "ESPERANDO") {
-      cartaTipo = "";
-    }
-
+    
     return cartaTipo;
   }
   
