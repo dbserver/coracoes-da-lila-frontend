@@ -1,22 +1,32 @@
 <section class="opcoes-container">
-<h3 class="titulo">Opções de jogada:</h3>
+    <h3 class="titulo">Opções de jogada:</h3>
 
-<ul *ngIf="sala.status == 'JOGANDO'">
-  <li *ngIf="somaCoracoes() < 5">Pegar 2 corações pequenos</li>
-  <li *ngIf="somaCoracoes() < 5">Pegar um coração grande</li>
-  <li *ngIf="">Comprar uma carta</li>
-  <li *ngIf="somaCoracoes() > 0">Comprar uma carta de objetivo</li>
-  <li></li>
+    <ul *ngIf="sala.status == 'JOGANDO'">
+        <li *ngIf="somaCoracoes() < 5">Pegar 2 corações pequenos</li>
+        <li *ngIf="somaCoracoes() < 5">Pegar um coração grande</li>
+    </ul>
 
-</ul>
+    <ul *ngIf="podeComprarCarta(this.sala.baralho.cartasDoJogo) && sala.status == 'JOGANDO'">
+        <li>Comprar 1 carta</li>
+        <li>Comprar uma carta de objetivo</li>
+        <p>** Seus corações bônus permanecem com você</p>
+    </ul>
 
-<ul *ngIf="sala.status == 'ULTIMA_RODADA'">
-  <li>Trocar a categoria das cartas genéricas.</li>
-</ul>
+    <ul>
+        <li *ngIf="podeRolarDado() == 'INFORMACAO'">
+            1 a 4 = Nada
+            5 a 6 = bonus
+        </li>
+        <li *ngIf="podeRolarDado() == 'ACAO'">
+            1 = perde 1 coração (Bonus, se tiver, outro se não, não importa o tamanho)
+            2 a 3 = nada
+            4 = coração grande
+            5 a 6 = coração pequeno
+        </li>
+    </ul>
 
-<!-- <div *ngFor="let cartas of jogador?.cartasDoJogo">
-    <p>{{ cartas.tipo }}</p>
-    <p>{{ cartas.pontos }}</p>
-</div> -->
+    <ul *ngIf="sala.status == 'ULTIMA_RODADA'">
+        <li>Trocar a categoria das cartas genéricas.</li>
+    </ul>
 </section>
 

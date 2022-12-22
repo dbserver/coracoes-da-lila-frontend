@@ -4,7 +4,6 @@ import { Jogador } from 'src/app/model/jogador';
 import { Sala } from 'src/app/model/sala';
 import { AreaDeCompraService } from 'src/app/service/area-de-compra-service/area-de-compra.service';
 import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.service';
-
 @Component({
   selector: 'app-opcoes-jogada',
   templateUrl: './opcoes-jogada.component.html',
@@ -14,10 +13,11 @@ export class OpcoesJogadaComponent implements OnInit {
   public sala: Sala = {} as Sala;
   public jogador: Jogador = {} as Jogador;
   public listacartasMao: Array<CartaDoJogo> = [];
+  public statusDado = false;
 
   constructor(
     private mesaJogoService: MesaJogoService,
-    private areaCompraService: AreaDeCompraService
+    private areaCompraService: AreaDeCompraService,
   ) {}
 
   ngOnInit(): void {
@@ -27,7 +27,6 @@ export class OpcoesJogadaComponent implements OnInit {
         this.jogador = jogador;
         this.escutaEventoCompra()
         this.mesaJogoService.setJogadorAtualNaMesa(this.jogador);
-        console.log(this.jogador);
       });
     });
   }
@@ -38,6 +37,7 @@ export class OpcoesJogadaComponent implements OnInit {
         (this.jogador.cartasDoJogo = listacartasMao)
     );
     this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
+      console.log(this.jogador)
       this.jogador = this.sala.jogadores?.find(
         (jogador) => jogador.id == this.jogador?.id
       ) as Jogador;
@@ -49,6 +49,49 @@ export class OpcoesJogadaComponent implements OnInit {
     return total;
   }
 
+  public podeComprarCarta(cartas: Array<CartaDoJogo>) {
+    let cartasCompraveis: Array<number> = [];
+    cartas.forEach((carta, index) => {
+      if(index < 6) {
+        let coracaoPequeno = 0;
+        let coracaoGrande = 0;
 
+        this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => {
+          coracaoPequeno = this.jogador.coracaoPequeno + this.jogador.bonusCoracaoPequeno;
+          coracaoGrande = this.jogador.coracaoGrande + this.jogador.bonusCoracaoGrande;
+        });
 
+        if (carta.valorCoracaoPequeno! <= coracaoPequeno && carta.valorCoracaoGrande! <= coracaoGrande) {
+          cartasCompraveis.push(index);
+        }
+      }
+    });
+    return cartasCompraveis.length > 0;
+  }
+
+  public podeRolarDado() {
+    let cartaBonus = false;
+    let cartaTipo:string = "";
+
+    this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => {
+      const ultimaCarta:number = this.jogador.cartasDoJogo.length - 1;
+
+      this.statusDado = false;
+
+      cartaBonus = this.jogador.cartasDoJogo[ultimaCarta]?.bonus;
+      cartaTipo = this.jogador.cartasDoJogo[ultimaCarta]?.tipo;
+
+    });
+
+    if (this.sala.dado == 0 && cartaBonus){
+      return cartaTipo;
+    }
+
+    if (this.sala.dado != 0 && cartaBonus) {
+      return "";
+    }
+
+    
+    return "";
+  }
 }
