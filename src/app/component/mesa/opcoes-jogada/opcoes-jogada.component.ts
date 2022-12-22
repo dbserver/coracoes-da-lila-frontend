@@ -88,13 +88,10 @@ export class OpcoesJogadaComponent implements OnInit {
 
     });
 
-    if (this.sala.dado == 0 && cartaBonus){
+    if (cartaBonus){
       return cartaTipo;
     }
 
-    if (this.sala.dado != 0 && cartaBonus) {
-      return "";
-    }
     return "";
   }
   public limpaTela() {
