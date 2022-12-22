@@ -84,7 +84,7 @@
 
             <div class="carta carta-horizontal" *ngFor="let cartaObjetivo of jogador?.cartasObjetivo">
                 <div class="grid-zoom">
-                    <button class="zoom" (click)="zoomObjetivo()">
+                    <button class="zoom" (click)="zoomObjetivo($event, cartaObjetivo)">
                         <mat-icon class="mat-icon icone-zoom" alt="Ícone de zoom">search</mat-icon>
                     </button>
                     <div class="cabecalho">

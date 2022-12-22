@@ -2,6 +2,7 @@ import { Component, Injectable, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { CartaDoJogo } from 'src/app/model/cartaDoJogo';
+import { CartaObjetivo } from 'src/app/model/cartaObjetivo';
 import { Jogador } from 'src/app/model/jogador';
 import { Sala } from 'src/app/model/sala';
 import { AreaDeCompraService } from 'src/app/service/area-de-compra-service/area-de-compra.service';
@@ -85,7 +86,9 @@ export class MaoJogadorComponent implements OnInit {
     });
   }
 
-  public zoomObjetivo() {
+  public zoomObjetivo(event: Event, cartas: CartaObjetivo) {
+    event.stopPropagation();
+    
     this.zoomCarta.open(ModalZoomObjetivoComponent, {
       height: '60%',
       width: '80%',

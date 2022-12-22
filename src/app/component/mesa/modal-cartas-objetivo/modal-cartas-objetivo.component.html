@@ -7,7 +7,7 @@
                     (click)="escolherCartaObjetivo(cartaObjetivo)">
                     <div class="cabecalho">
                         <div class="grid-zoom">
-                            <button class="zoom">
+                            <button class="zoom" (click)="zoomObjetivo($event, cartaObjetivo)">
                                 <mat-icon class="mat-icon icone-zoom" alt="Ícone de zoom">search</mat-icon>
                             </button>
                             <h2 class="titulo">{{cartaObjetivo.descricao}}</h2>
