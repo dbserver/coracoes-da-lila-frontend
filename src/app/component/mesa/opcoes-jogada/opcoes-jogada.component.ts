@@ -98,7 +98,15 @@ export class OpcoesJogadaComponent implements OnInit {
     return "";
   }
   public limpaTela() {
-    if (this.podeRolarDado() != 'INFORMACAO' && this.podeRolarDado() != 'ACAO') {
+    if (this.podeRolarDado() != 'INFORMACAO' && this.podeRolarDado() != 'ACAO' && !this.selecioneUmaCartaObjetivo()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public limparTelaObjetivos() {
+    if (!this.selecioneUmaCartaObjetivo()) {
       return true;
     } else {
       return false;

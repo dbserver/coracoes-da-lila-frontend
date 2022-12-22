@@ -4,6 +4,7 @@
     <ul *ngIf="sala.status == 'JOGANDO'">
         <li *ngIf="somaCoracoes() < 5 && limpaTela()">Pegar 2 corações pequenos</li>
         <li *ngIf="somaCoracoes() < 5 && limpaTela()">Pegar um coração grande</li>
+        <li *ngIf="selecioneUmaCartaObjetivo()">selecione uma de duas cartas objtivo</li>
     </ul>
 
     <ul *ngIf="podeComprarCarta(this.sala.baralho.cartasDoJogo) && sala.status == 'JOGANDO' && limpaTela()">
@@ -13,11 +14,11 @@
     </ul>
 
     <ul>
-        <li *ngIf="podeRolarDado() == 'INFORMACAO'">
+        <li *ngIf="podeRolarDado() == 'INFORMACAO' && limparTelaObjetivos()">
             1 a 4 = Nada
             5 a 6 = bonus
         </li>
-        <li *ngIf="podeRolarDado() == 'ACAO'">
+        <li *ngIf="podeRolarDado() == 'ACAO' && limparTelaObjetivos()">
             1 = perde 1 coração (Bonus, se tiver, outro se não, não importa o tamanho)
             2 a 3 = nada
             4 = coração grande
@@ -28,7 +29,5 @@
     <ul *ngIf="sala.status == 'ULTIMA_RODADA'">
         <li>Trocar a categoria das cartas genéricas.</li>
     </ul>
-
-    <p *ngIf="selecioneUmaCartaObjetivo()">selecione uma de duas cartas onejtivo</p>
 </section>
 
