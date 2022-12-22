@@ -90,6 +90,7 @@ export class MaoJogadorComponent implements OnInit {
     event.stopPropagation();
     
     this.zoomCarta.open(ModalZoomObjetivoComponent, {
+      data: cartas,
       height: '60%',
       width: '80%',
       panelClass: 'css-carta'

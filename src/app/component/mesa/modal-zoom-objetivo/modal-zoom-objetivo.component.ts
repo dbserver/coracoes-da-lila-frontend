@@ -12,9 +12,14 @@ import { CartaObjetivo } from 'src/app/model/cartaObjetivo';
 export class ModalZoomObjetivoComponent implements OnInit {
 
   public baralho: Baralho = {} as Baralho;
+  // public cartaObjetivo!: CartaObjetivo;
+  public cartaObjetivo: CartaObjetivo = {} as CartaObjetivo;
+
+  //apagar
   public listaCartas: Array<CartaDoJogo> = [];
   public carta: CartaDoJogo = {} as CartaDoJogo;
-
+  //apagar
+  
   constructor(
     public dialogRef: MatDialogRef<ModalZoomObjetivoComponent>,
     @Inject(MAT_DIALOG_DATA)
