@@ -2,11 +2,11 @@
     <h3 class="titulo">Opções de jogada:</h3>
 
     <ul *ngIf="sala.status == 'JOGANDO'">
-        <li *ngIf="somaCoracoes() < 5">Pegar 2 corações pequenos</li>
-        <li *ngIf="somaCoracoes() < 5">Pegar um coração grande</li>
+        <li *ngIf="somaCoracoes() < 5 && limpaTela()">Pegar 2 corações pequenos</li>
+        <li *ngIf="somaCoracoes() < 5 && limpaTela()">Pegar um coração grande</li>
     </ul>
 
-    <ul *ngIf="podeComprarCarta(this.sala.baralho.cartasDoJogo) && sala.status == 'JOGANDO'">
+    <ul *ngIf="podeComprarCarta(this.sala.baralho.cartasDoJogo) && sala.status == 'JOGANDO' && limpaTela()">
         <li>Comprar 1 carta</li>
         <li>Comprar uma carta de objetivo</li>
         <p>** Seus corações bônus permanecem com você</p>
