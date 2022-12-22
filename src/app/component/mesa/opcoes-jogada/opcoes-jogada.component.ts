@@ -37,7 +37,6 @@ export class OpcoesJogadaComponent implements OnInit {
         (this.jogador.cartasDoJogo = listacartasMao)
     );
     this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
-      console.log(this.jogador)
       this.jogador = this.sala.jogadores?.find(
         (jogador) => jogador.id == this.jogador?.id
       ) as Jogador;
@@ -69,6 +68,12 @@ export class OpcoesJogadaComponent implements OnInit {
     return cartasCompraveis.length > 0;
   }
 
+  public selecioneUmaCartaObjetivo() {
+    const modal = document.getElementById("modal")?.style.display;
+
+    return modal == 'flex';
+  }
+
   public podeRolarDado() {
     let cartaBonus = false;
     let cartaTipo:string = "";
@@ -90,8 +95,6 @@ export class OpcoesJogadaComponent implements OnInit {
     if (this.sala.dado != 0 && cartaBonus) {
       return "";
     }
-
-    
     return "";
   }
 }
