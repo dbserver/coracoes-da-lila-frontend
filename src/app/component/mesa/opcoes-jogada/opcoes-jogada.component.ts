@@ -85,18 +85,20 @@ export class OpcoesJogadaComponent implements OnInit {
 
       cartaBonus = this.jogador.cartasDoJogo[ultimaCarta]?.bonus;
       cartaTipo = this.jogador.cartasDoJogo[ultimaCarta]?.tipo;
+      
+      if (cartaBonus){
+        return this.jogador.cartasDoJogo[ultimaCarta]?.tipo;
+      }
 
     });
 
-    if (this.sala.dado == 0 && cartaBonus){
-      return cartaTipo;
+    if (this.jogador.status != "ESPERANDO") {
+      cartaTipo = "";
     }
 
-    if (this.sala.dado != 0 && cartaBonus) {
-      return "";
-    }
-    return "";
+    return cartaTipo;
   }
+  
   public limpaTela() {
     if (this.podeRolarDado() != 'INFORMACAO' && this.podeRolarDado() != 'ACAO' && !this.selecioneUmaCartaObjetivo()) {
       return true;
