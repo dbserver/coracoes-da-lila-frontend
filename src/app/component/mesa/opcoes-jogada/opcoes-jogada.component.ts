@@ -91,7 +91,14 @@ export class OpcoesJogadaComponent implements OnInit {
       return "";
     }
 
-    
+
     return "";
+  }
+  public limpaTela() {
+    if (this.podeRolarDado() != 'INFORMACAO' && this.podeRolarDado() != 'ACAO') {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
