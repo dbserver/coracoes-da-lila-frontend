@@ -84,13 +84,12 @@ export class MaoJogadorComponent implements OnInit {
     for(let i = 0; i < this.cartasParaEnviar.length; i++){
       for(let j = 0; j < this.jogador.cartasDoJogo.length; j++){
         if(this.jogador.cartasDoJogo[j].categoria == "Genérica" && this.jogador.cartasDoJogo[j].texto == this.cartasParaEnviar[i].texto){
-          console.log("Trocou a categoria");
           this.jogador.cartasDoJogo[j].novaCategoria = this.cartasParaEnviar[i].novaCategoria;
         }
       }
     }
 
-    console.log(this.jogador.cartasDoJogo);
+    this.mesaJogoService.enviarJogadorParaFinalizar(this.jogador).subscribe((jogador) => (this.jogador = jogador));
     this.mesaJogoService.enviarNovasCategorias(this.sala).subscribe((sala) => (this.sala = sala));
   }
 

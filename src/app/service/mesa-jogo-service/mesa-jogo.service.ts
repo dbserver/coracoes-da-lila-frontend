@@ -64,6 +64,10 @@ export class MesaJogoService {
   }
 
   enviarNovasCategorias(sala: Sala){
-    return this.http.put<Sala>(environment.API_URL+'api/jogada/atualizarcategorias',sala);
+    return this.http.put<Sala>(environment.API_URL+'api/jogada/atualizarcategorias', sala);
+  }
+
+  enviarJogadorParaFinalizar(jogador: Jogador){
+    return this.http.put<Jogador>(environment.API_URL+'api/jogada/finalizastatusjogador', jogador);
   }
 }
