@@ -41,7 +41,8 @@
     </div>
   </div>
 </ng-template>
-<app-modal-cartas-objetivo [cartasObjetivo]="opcoesCartaObjetivo" [sala]="sala"></app-modal-cartas-objetivo>
+<app-modal-cartas-objetivo (embaralharCartas)="habilitaAnimacaoEmbaralhar($event)" [cartasObjetivo]="opcoesCartaObjetivo"
+  [sala]="sala"></app-modal-cartas-objetivo>
 <div class="container">
   <div class="compra-container">
     <div class="linha2">
@@ -74,29 +75,40 @@
       </div>
     </div>
     <div class="informacoes-gerais">
-      <div class="carta carta-objetivo dropdown">
+      <div [ngClass]="{
+        'desabilitar-carta': !podeComprarObjetivo(),
+        'desabilitar-acao': !podeJogar()
+      }" class="carta carta-objetivo dropdown">
         <div class="carta-logotexto">
           <img class="imagem-logo" src="../../../assets/img/logoLilaSozinho.png" alt="logo" />
 
-          <p class="texto">Objetivo</p>
-          <div class="dropdown">
-            <div class="dropbtn">
-              <div class="dropdown-content" *ngIf="
+    <div class="informacoes-gerais">
+      <div class="container-cartas">
+        <app-animacao-carta *ngIf="embaralharCartas"></app-animacao-carta>
+        <div class="carta carta-objetivo dropdown">
+          <div class="carta-logotexto">
+            <img class="imagem-logo" src="../../../assets/img/logoLilaSozinho.png" alt="logo" />
+
+            <p class="texto">Objetivo</p>
+            <div class="dropdown">
+              <div class="dropbtn">
+                <div class="dropdown-content" *ngIf="
                   verificaJogadorTemCoracoes() == true &&
-                  verificaStatusJogador() == true
-                ">
-                <a (click)="compraUmaCartaObjetivo()" *ngIf="verificaJogadorTemCoracaoPequeno() == true">
-                  <img src="../../../assets/img/cartacoracaopequeno.png" alt="" />
-                </a>
-                <a (click)="escolherEntreDuasCartasObjetivo()" *ngIf="verificaJogadorTemCoracaoGrande() == true">
-                  <img src="../../../assets/img/cartacoracaogrande.png" alt="" />
-                </a>
+                  verificaStatusJogador() == true">
+                  <a (click)="compraUmaCartaObjetivo()" *ngIf="verificaJogadorTemCoracaoPequeno()==true">
+                    <img src="../../../assets/img/cartacoracaopequeno.png" alt="" />
+                  </a>
+                  <a (click)="escolherEntreDuasCartasObjetivo()" *ngIf="verificaJogadorTemCoracaoGrande() == true">
+                    <img src="../../../assets/img/cartacoracaogrande.png" alt="" />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
+          <img class="imagem-lila" src="../../../assets/img/lilaSozinha.png" alt="lila" />
         </div>
-        <img class="imagem-lila" src="../../../assets/img/lilaSozinha.png" alt="lila" />
       </div>
+
 
       <div class="coracoes">
         <div class="grupo-coracoes">

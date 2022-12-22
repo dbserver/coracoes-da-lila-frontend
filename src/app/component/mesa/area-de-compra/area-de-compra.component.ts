@@ -27,6 +27,7 @@ export class AreaDeCompraComponent implements OnInit {
   public coracoes: Array<any> = [];
   public jogador: Jogador = {} as Jogador;
   public bonus = false;
+  public embaralharCartas: boolean;
 
   public mapTipo = mapTipoCartaDoJogo;
 
@@ -39,6 +40,7 @@ export class AreaDeCompraComponent implements OnInit {
     public modalCartasObjetivo: ModalCartasObjetivoComponent
   ) {
     this.opcoesCartaObjetivo = [] as CartaObjetivo[];
+    this.embaralharCartas = false;
   }
 
   ngOnInit() {
@@ -101,6 +103,17 @@ export class AreaDeCompraComponent implements OnInit {
       coracaoG = this.jogador.coracaoGrande + this.jogador.bonusCoracaoGrande;
     });
     return valorCoracaoPequeno! <= coracaoP && valorCoracaoGrande! <= coracaoG;
+  }
+
+  public podeComprarObjetivo(){
+    let coracaoP = 0;
+    let coracaoG = 0;
+    this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => {
+      coracaoP = this.jogador.coracaoPequeno + this.jogador.bonusCoracaoPequeno;
+      coracaoG = this.jogador.coracaoGrande + this.jogador.bonusCoracaoGrande;
+    });
+
+    return (coracaoP+coracaoG) > 0;
   }
 
   public verificaBonus() {
@@ -199,21 +212,40 @@ export class AreaDeCompraComponent implements OnInit {
   public escolherEntreDuasCartasObjetivo() {
     this.buscaCartasObjetivo();
 
-    const modal = document.getElementById('modal');
-    if (modal != null) {
+    this.buscaCartasObjetivo();
+    this.abrirModal();
+    this.desabilitaAnimacaoEmbaralhar();
+  }
+
+  private buscaCartasObjetivo(){
+    this.mesaJogoService.buscarDuasCartasObjetivo(this.sala).subscribe(
+      (sala) => (
+        this.opcoesCartaObjetivo = sala.opcoesCartaObjetivo,
+        this.sala = sala
+      )
+    )
+  }
+
+  public abrirModal(){
+    const modal = document.getElementById("modal");
+    if (modal != null){
       modal.style.display = 'flex';
     }
   }
 
-  private buscaCartasObjetivo() {
-    this.mesaJogoService
-      .buscarDuasCartasObjetivo(this.sala)
-      .subscribe(
-        (sala) => (
-          (this.opcoesCartaObjetivo = sala.opcoesCartaObjetivo),
-          (this.sala = sala)
-        )
-      );
+  public desabilitaAnimacaoEmbaralhar(){
+    document.getElementById('carta-1')?.classList.remove('carta-1')
+    document.getElementById('carta-2')?.classList.remove('carta-2')
+    document.getElementById('container-cartas')?.classList.remove('embaralhar-animacao')
   }
+
+
+  public habilitaAnimacaoEmbaralhar(resposta: boolean){
+    this.embaralharCartas = resposta;
+    document.getElementById('carta-1')?.classList.add('carta-1')
+    document.getElementById('carta-2')?.classList.add('carta-2')
+    document.getElementById('container-cartas')?.classList.add('embaralhar-animacao')
+  }
+
 
 }
