@@ -47,7 +47,7 @@
         <div class="cartas-container-scroll">
             <div *ngFor="let cartas of jogador?.cartasDoJogo" class="carta carta-vertical">
                 <div class="cabecalho">
-                    <h2 class="titulo">{{ cartas.tipo }}</h2>
+                    <h2 class="titulo">{{ mapTipo.get(cartas.tipo) }}</h2>
                     <div class="pontos">
                         <p class="pt">{{ cartas.pontos }}</p>
                     </div>
@@ -67,11 +67,11 @@
                         </div>
                         <div class="presentes">
                             <div class="presente-acao">
-                                <div class="presente-acao" *ngIf="cartas.tipo === 'Informação' && cartas.bonus == true">
+                                <div class="presente-acao" *ngIf="cartas.tipo === 'INFORMACAO' && cartas.bonus == true">
                                     <img class="presente" src="assets/svg/icone-presente.svg" alt="presente">
                                     <img class="presenteInfoAcoes" src="assets/svg/icone-usuario.svg" alt="acao">
                                 </div>
-                                <div class="presente-info" *ngIf="cartas.tipo === 'Ação' && cartas.bonus == true">
+                                <div class="presente-info" *ngIf="cartas.tipo === 'ACAO' && cartas.bonus == true">
                                     <img class="presente" src="assets/svg/icone-presente.svg" alt="presente">
                                     <img class="presenteInfoAcoes" src="assets/svg/icone-info.svg" alt="info">
                                 </div>

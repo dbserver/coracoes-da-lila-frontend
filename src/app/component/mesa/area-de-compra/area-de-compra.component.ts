@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MaoJogadorComponent } from '../mao-jogador/mao-jogador.component';
 import { Baralho } from '../../../model/baralho';
 import { CartaDoJogo } from '../../../model/cartaDoJogo';
 import { CartaObjetivo } from '../../../model/cartaObjetivo';
@@ -9,6 +8,7 @@ import { Sala } from '../../../model/sala';
 import { AreaDeCompraService } from '../../../service/area-de-compra-service/area-de-compra.service';
 import { MesaJogoService } from '../../../service/mesa-jogo-service/mesa-jogo.service';
 import { ModalCartasObjetivoComponent } from '../modal-cartas-objetivo/modal-cartas-objetivo.component';
+import { mapTipoCartaDoJogo } from 'src/app/maps/cartaDoJogoMaps';
 @Component({
   selector: 'app-area-de-compra',
   templateUrl: './area-de-compra.component.html',
@@ -29,16 +29,16 @@ export class AreaDeCompraComponent implements OnInit {
   public bonus = false;
   public embaralharCartas: boolean;
 
+  public mapTipo = mapTipoCartaDoJogo;
+
   opcoesCartaObjetivo: CartaObjetivo[];
 
   constructor(
     private mesaJogoService: MesaJogoService,
-    private maoJogador: MaoJogadorComponent,
     private route: ActivatedRoute,
     private areaCompraService: AreaDeCompraService,
     public modalCartasObjetivo: ModalCartasObjetivoComponent
   ) {
-
     this.opcoesCartaObjetivo = [] as CartaObjetivo[];
     this.embaralharCartas = false;
   }
@@ -56,43 +56,39 @@ export class AreaDeCompraComponent implements OnInit {
 
   public comprarCarta(indice: number): void {
     this.sala.dado = 0;
-    if (this.jogador.status == 'JOGANDO'){
-    if(this.listaCartasDisponiveis[indice].bonus){
-      this.jogador?.cartasDoJogo.push(this.listaCartasDisponiveis[indice]);
-      this.listaCartasDisponiveis.splice(indice, 1);
-      this.areaCompraService.emitirCartaJogo.emit(this.jogador?.cartasDoJogo);
-    }else{
-      this.jogador?.cartasDoJogo.push(this.listaCartasDisponiveis[indice]);
-      this.listaCartasDisponiveis.splice(indice, 1);
-      this.areaCompraService.emitirCartaJogo.emit(this.jogador?.cartasDoJogo);
-      this.mesaJogoService
-        .comprarCartas(this.sala)
-        .subscribe((sala) => (this.sala = sala));
-
+    if (this.jogador.status == 'JOGANDO') {
+      if (this.listaCartasDisponiveis[indice].bonus) {
+        this.jogador?.cartasDoJogo.push(this.listaCartasDisponiveis[indice]);
+        this.listaCartasDisponiveis.splice(indice, 1);
+        this.areaCompraService.emitirCartaJogo.emit(this.jogador?.cartasDoJogo);
+      } else {
+        this.jogador?.cartasDoJogo.push(this.listaCartasDisponiveis[indice]);
+        this.listaCartasDisponiveis.splice(indice, 1);
+        this.areaCompraService.emitirCartaJogo.emit(this.jogador?.cartasDoJogo);
+        this.mesaJogoService
+          .comprarCartas(this.sala)
+          .subscribe((sala) => (this.sala = sala));
+      }
     }
-  }
   }
 
   public comprarCoracaoP() {
-    if(this.jogador.status == 'JOGANDO'){
+    if (this.jogador.status == 'JOGANDO') {
       this.sala.dado = 0;
       this.mesaJogoService
-      .comprarCoracaoP(this.sala)
-      .subscribe((sala) => (this.sala = sala));
+        .comprarCoracaoP(this.sala)
+        .subscribe((sala) => (this.sala = sala));
     }
-
   }
 
   public comprarCoracaoG() {
-    if(this.jogador.status == 'JOGANDO'){
+    if (this.jogador.status == 'JOGANDO') {
       this.sala.dado = 0;
       this.mesaJogoService
-      .comprarCoracaoG(this.sala)
-      .subscribe((sala) => (this.sala = sala));
+        .comprarCoracaoG(this.sala)
+        .subscribe((sala) => (this.sala = sala));
     }
   }
-
-
 
   public podeComprar({
     valorCoracaoPequeno,
@@ -107,7 +103,7 @@ export class AreaDeCompraComponent implements OnInit {
     return valorCoracaoPequeno! <= coracaoP && valorCoracaoGrande! <= coracaoG;
   }
 
-  public podeComprarObjetivo(){
+  public podeComprarObjetivo() {
     let coracaoP = 0;
     let coracaoG = 0;
     this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => {
@@ -115,7 +111,7 @@ export class AreaDeCompraComponent implements OnInit {
       coracaoG = this.jogador.coracaoGrande + this.jogador.bonusCoracaoGrande;
     });
 
-    return (coracaoP+coracaoG) > 0;
+    return coracaoP + coracaoG > 0;
   }
 
   public verificaBonus() {
@@ -135,14 +131,22 @@ export class AreaDeCompraComponent implements OnInit {
     return false;
   }
 
-  public bloquearCompraCoracoesPequenos(){
-    if (this.jogador.status == 'JOGANDO' && this.verificarCoracoesQualquerTamanho() && this.desabilitarCoracoesPequenos()) {
+  public bloquearCompraCoracoesPequenos() {
+    if (
+      this.jogador.status == 'JOGANDO' &&
+      this.verificarCoracoesQualquerTamanho() &&
+      this.desabilitarCoracoesPequenos()
+    ) {
       return false;
     }
     return true;
   }
-  public bloquearCompraCoracoesGrandes(){
-    if (this.jogador.status == 'JOGANDO' && this.verificarCoracoesQualquerTamanho()  && this.verificarCoracoesGrandes()) {
+  public bloquearCompraCoracoesGrandes() {
+    if (
+      this.jogador.status == 'JOGANDO' &&
+      this.verificarCoracoesQualquerTamanho() &&
+      this.verificarCoracoesGrandes()
+    ) {
       return false;
     }
     return true;
@@ -151,9 +155,10 @@ export class AreaDeCompraComponent implements OnInit {
   public verificarCoracoesQualquerTamanho(): Boolean {
     if (
       this.jogador.coracaoGrande +
-        this.jogador.coracaoPequeno +
-        this.jogador.bonusCoracaoGrande +
-        this.jogador.bonusCoracaoPequeno < 5){
+      this.jogador.coracaoPequeno +
+      this.jogador.bonusCoracaoGrande +
+      this.jogador.bonusCoracaoPequeno < 5) {
+
       return true;
     }
     return false;
@@ -166,74 +171,81 @@ export class AreaDeCompraComponent implements OnInit {
     return this.jogador.coracaoGrande + this.jogador.coracaoPequeno < 5;
   }
 
-  public verificaJogadorTemCoracoes(){
-
-
-    if(this.jogador.coracaoGrande == 0 && this.jogador.coracaoPequeno == 0 && this.jogador.bonusCoracaoGrande == 0 && this.jogador.bonusCoracaoPequeno == 0)
+  public verificaJogadorTemCoracoes() {
+    if (
+      this.jogador.coracaoGrande == 0 &&
+      this.jogador.coracaoPequeno == 0 &&
+      this.jogador.bonusCoracaoGrande == 0 &&
+      this.jogador.bonusCoracaoPequeno == 0
+    )
       return false;
     return true;
   }
 
-  public verificaJogadorTemCoracaoGrande(){
-    if(this.jogador.coracaoGrande > 0 || this.jogador.bonusCoracaoGrande > 0)
+  public verificaJogadorTemCoracaoGrande() {
+    if (this.jogador.coracaoGrande > 0 || this.jogador.bonusCoracaoGrande > 0)
       return true;
     return false;
   }
 
-  public verificaJogadorTemCoracaoPequeno(){
-    if(this.jogador.coracaoPequeno > 0 || this.jogador.bonusCoracaoPequeno > 0)
+  public verificaJogadorTemCoracaoPequeno() {
+    if (this.jogador.coracaoPequeno > 0 || this.jogador.bonusCoracaoPequeno > 0)
       return true;
     return false;
   }
 
-
-  public verificaStatusJogador(){
-    if(this.jogador.status == "JOGANDO")
-      return true;
+  public verificaStatusJogador() {
+    if (this.jogador.status == 'JOGANDO') return true;
     return false;
   }
 
-  public compraUmaCartaObjetivo(){
+  public compraUmaCartaObjetivo() {
     if (this.jogador.status == 'JOGANDO')
-      this.mesaJogoService.comprarCartaObjetivo(this.sala).subscribe((sala) => (this.sala = sala));
+      this.mesaJogoService
+        .comprarCartaObjetivo(this.sala)
+        .subscribe((sala) => (this.sala = sala));
   }
 
-  public escolherEntreDuasCartasObjetivo(){
+  public escolherEntreDuasCartasObjetivo() {
+    this.buscaCartasObjetivo();
 
     this.buscaCartasObjetivo();
     this.abrirModal();
     this.desabilitaAnimacaoEmbaralhar();
   }
 
-  private buscaCartasObjetivo(){
-    this.mesaJogoService.buscarDuasCartasObjetivo(this.sala).subscribe(
-      (sala) => (
-        this.opcoesCartaObjetivo = sala.opcoesCartaObjetivo,
-        this.sala = sala
-      )
-    )
+  private buscaCartasObjetivo() {
+    this.mesaJogoService
+      .buscarDuasCartasObjetivo(this.sala)
+      .subscribe(
+        (sala) => (
+          (this.opcoesCartaObjetivo = sala.opcoesCartaObjetivo),
+          (this.sala = sala)
+        )
+      );
   }
 
-  public abrirModal(){
-    const modal = document.getElementById("modal");
-    if (modal != null){
+  public abrirModal() {
+    const modal = document.getElementById('modal');
+    if (modal != null) {
       modal.style.display = 'flex';
     }
   }
 
-  public desabilitaAnimacaoEmbaralhar(){
-    document.getElementById('carta-1')?.classList.remove('carta-1')
-    document.getElementById('carta-2')?.classList.remove('carta-2')
-    document.getElementById('container-cartas')?.classList.remove('embaralhar-animacao')
+  public desabilitaAnimacaoEmbaralhar() {
+    document.getElementById('carta-1')?.classList.remove('carta-1');
+    document.getElementById('carta-2')?.classList.remove('carta-2');
+    document
+      .getElementById('container-cartas')
+      ?.classList.remove('embaralhar-animacao');
   }
 
-
-  public habilitaAnimacaoEmbaralhar(resposta: boolean){
+  public habilitaAnimacaoEmbaralhar(resposta: boolean) {
     this.embaralharCartas = resposta;
-    document.getElementById('carta-1')?.classList.add('carta-1')
-    document.getElementById('carta-2')?.classList.add('carta-2')
-    document.getElementById('container-cartas')?.classList.add('embaralhar-animacao')
+    document.getElementById('carta-1')?.classList.add('carta-1');
+    document.getElementById('carta-2')?.classList.add('carta-2');
+    document
+      .getElementById('container-cartas')
+      ?.classList.add('embaralhar-animacao');
   }
-
-
 }
