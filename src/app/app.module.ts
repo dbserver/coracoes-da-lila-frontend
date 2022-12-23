@@ -98,7 +98,7 @@ import { AnimacaoCartaComponent } from './component/mesa/animacao-carta/animacao
     TelaErroJogoInciadoComponent,
     TelaErroSalaCheiaComponent,
     TelaErroJogoFinalizadoComponent,
-    TelaErroSalaInexistenteComponent
+    TelaErroSalaInexistenteComponent,
     PrimeiroJogadorComponent,
     AnimacaoCartaComponent
   ],
