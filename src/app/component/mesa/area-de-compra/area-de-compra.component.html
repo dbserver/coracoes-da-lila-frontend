@@ -41,8 +41,8 @@
     </div>
   </div>
 </ng-template>
-<app-modal-cartas-objetivo (embaralharCartas)="habilitaAnimacaoEmbaralhar($event)" [cartasObjetivo]="opcoesCartaObjetivo"
-  [sala]="sala"></app-modal-cartas-objetivo>
+<app-modal-cartas-objetivo (embaralharCartas)="habilitaAnimacaoEmbaralhar($event)"
+  [cartasObjetivo]="opcoesCartaObjetivo" [sala]="sala"></app-modal-cartas-objetivo>
 <div class="container">
   <div class="compra-container">
     <div class="linha2">
@@ -75,20 +75,14 @@
       </div>
     </div>
     <div class="informacoes-gerais">
-      <div [ngClass]="{
+      <div class="container-cartas">
+        <app-animacao-carta *ngIf="embaralharCartas"></app-animacao-carta>
+        <div [ngClass]="{
         'desabilitar-carta': !podeComprarObjetivo(),
         'desabilitar-acao': !podeJogar()
       }" class="carta carta-objetivo dropdown">
-        <div class="carta-logotexto">
-          <img class="imagem-logo" src="../../../assets/img/logoLilaSozinho.png" alt="logo" />
-
-    <div class="informacoes-gerais">
-      <div class="container-cartas">
-        <app-animacao-carta *ngIf="embaralharCartas"></app-animacao-carta>
-        <div class="carta carta-objetivo dropdown">
           <div class="carta-logotexto">
             <img class="imagem-logo" src="../../../assets/img/logoLilaSozinho.png" alt="logo" />
-
             <p class="texto">Objetivo</p>
             <div class="dropdown">
               <div class="dropbtn">

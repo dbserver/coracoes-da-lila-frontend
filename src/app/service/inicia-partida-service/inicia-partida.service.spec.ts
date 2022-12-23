@@ -1,3 +1,5 @@
+import { of } from 'rxjs';
+import { Jogador } from 'src/app/model/jogador';
 import {
   HttpClientTestingModule,
   HttpTestingController,
@@ -39,5 +41,18 @@ describe(`#${IniciaPartidaService.name}`, () => {
     expect(httpRequest.request.responseType).toEqual('json');
 
     httpRequest.flush([MockItem]);
+  });
+
+  it('deve retornar undefined quando for buscar o nome do primeiro jogador escolhido', () =>{
+    expect(iniciaPartidaService.getPrimeiroJogador().nome).toBeUndefined();
+  });
+
+  it('deve retornar o nome do jogador após ele for escolhido', () =>{
+    const jogador = {
+      "nome": 'Pedro'
+    } as Jogador;
+    iniciaPartidaService.setPrimeiroJogador(jogador);
+    expect(jogador.nome).toEqual(iniciaPartidaService.getPrimeiroJogador().nome);
+    expect(iniciaPartidaService.getPrimeiroJogador().nome).toEqual("Pedro")
   });
 });
