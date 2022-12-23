@@ -33,12 +33,12 @@ export class MesaCriadaComponent implements OnInit {
     this.hash = String(this.route.snapshot.paramMap.get('hash'));
     this.link = `${environment.CLIENT_URL}entrarmesa/${this.hash}`;
     this.mesaService
-      .findByHash(this.hash)
-      .subscribe((sala) => (this.sala = sala));
+       .findByHash(this.hash)
+       .subscribe((sala) => (this.sala = sala));
   }
 
   roteamento() {
     this.carregando = true;
-    this.router.navigate(['/jogo', this.sala.hash])
+    this.router.navigate(['/jogo', this.sala.hash]);
   }
 }

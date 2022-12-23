@@ -40,7 +40,7 @@ describe('HomePageComponent', () => {
     let botaoCriarPartida = fixture.nativeElement.querySelector('#buttonMesa');
     component.loadingCriarPartida();
  
-    expect(component.loading).toBeTrue();
+    expect(component.carregando).toBeTrue();
     expect(botaoCriarPartida.innerHTML).toContain('Criar Partida');
   });
 

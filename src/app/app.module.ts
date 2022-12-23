@@ -54,6 +54,10 @@ import { TelaErroJogoInciadoComponent } from './component/erro/tela-erro-jogo-in
 import { TelaErroSalaCheiaComponent } from './component/erro/tela-erro-sala-cheia/tela-erro-sala-cheia.component';
 import { TelaErroJogoFinalizadoComponent } from './component/erro/tela-erro-jogo-finalizado/tela-erro-jogo-finalizado.component';
 import { TelaErroSalaInexistenteComponent } from './component/erro/tela-erro-sala-inexistente/tela-erro-sala-inexistente.component';
+import { PrimeiroJogadorComponent } from './component/primeiro-jogador/primeiro-jogador.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { AnimacaoCartaComponent } from './component/mesa/animacao-carta/animacao-carta.component';
+
 
 
 
@@ -95,12 +99,15 @@ import { TelaErroSalaInexistenteComponent } from './component/erro/tela-erro-sal
     TelaErroSalaCheiaComponent,
     TelaErroJogoFinalizadoComponent,
     TelaErroSalaInexistenteComponent
+    PrimeiroJogadorComponent,
+    AnimacaoCartaComponent
   ],
   imports: [
     BrowserModule,
     MatIconModule,
     MatButtonModule,
     MatRippleModule,
+    MatRadioModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
@@ -127,7 +134,8 @@ import { TelaErroSalaInexistenteComponent } from './component/erro/tela-erro-sal
       deps: [InjectableRxStompConfig],
     },
     MesaJogoService,
-    ModalCartasObjetivoComponent
+    ModalCartasObjetivoComponent,
+    HttpClientModule
   ],
   bootstrap: [AppComponent],
 })
