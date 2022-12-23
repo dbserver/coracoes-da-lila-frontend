@@ -52,8 +52,6 @@ export class AreaDeCompraComponent implements OnInit {
       this.jogador = this.mesaJogoService.getJogadorAtualNaMesa();
       this.bonus = this.podeJogar();
     });
-
-    console.log(this.listaCartasDisponiveis[0].tipo);
   }
 
   public comprarCarta(indice: number): void {
