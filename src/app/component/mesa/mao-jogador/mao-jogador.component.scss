@@ -28,7 +28,7 @@
   color: var(--input-fontColor);
 }
 
-.centraliza h4{
+.centraliza h4 {
 
   font-size: var(--tamanhoFonte);
 }
@@ -47,12 +47,13 @@
   width: 50%;
 }
 
-.nome{
-  color:var(--font-color-aguarde);
+.nome {
+  color: var(--font-color-aguarde);
 }
 
 .cartas-container {
   padding-bottom: 10px;
+
   &-scroll {
     display: flex;
     max-width: 1400px;
@@ -68,7 +69,7 @@
       }
     }
 
-    .select{
+    .select {
       width: 100%;
       height: 10%;
     }
@@ -225,6 +226,7 @@
     }
   }
 }
+
 .cor-texto {
   color: #ffab40;
 }
@@ -258,13 +260,14 @@
       height: 95%;
       width: 95%;
     }
+
     &-pequeno {
       height: 55%;
       width: 55%;
     }
   }
 
-  .carta-coracao-bonus{
+  .carta-coracao-bonus {
     width: 40%;
     height: 50px;
     border: 2px solid var(--input-fontColor);
@@ -277,17 +280,12 @@
       height: 100%;
       width: 100%;
     }
+
     &-pequeno {
       height: 60%;
       width: 60%;
     }
   }
-}
-
-.botao-confirmar{
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 button {
@@ -296,4 +294,22 @@ button {
   font-size: calc(var(--tamanhoFonte) - 3px);
   width: fit-content;
   height: 35px;
+}
+
+.botao-confirmar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#botao-confirmar {
+  color: var(--font-color);
+  background-color: var(--btn-bg);
+  font-size: calc(var(--tamanhoFonte) - 3px);
+  width: fit-content;
+  height: 35px;
+}
+
+#botao-confirmar:disabled {
+  opacity: 0.2;
 }

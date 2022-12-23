@@ -1,6 +1,6 @@
 import { HttpParams } from '@angular/common/http';
 import { Component, Injectable, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CartaDoJogo } from 'src/app/model/cartaDoJogo';
 import { Jogador } from 'src/app/model/jogador';
@@ -28,7 +28,6 @@ export class MaoJogadorComponent implements OnInit {
   novaCategoria!: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder,
     private mesaService: MesaService,
     private route: ActivatedRoute,
     private mesaJogoService: MesaJogoService,
@@ -37,8 +36,8 @@ export class MaoJogadorComponent implements OnInit {
 
   ngOnInit(): void {
     //FORMULARIO
-    this.novaCategoria = this.formBuilder.group({
-      categoria: [null],
+    this.novaCategoria = new FormGroup({
+      categoria: new FormControl('', Validators.required),
     });
     // caminho para acessar a partir de outros componentes
     this.hash = String(this.route.snapshot.paramMap.get('hash'));
@@ -116,6 +115,16 @@ export class MaoJogadorComponent implements OnInit {
         }
       }
     }
+  }
+
+  public bloquearConfirmarCategorias(): boolean {  
+    let retorno = false;
+    for(let i = 0; i < this.jogador.cartasDoJogo.length; i++){
+      if(this.jogador.cartasDoJogo[i].categoria == "Genérica" && this.jogador.cartasDoJogo[i].novaCategoria == null){
+        retorno = true;
+      }
+    }
+    return retorno;
   }
 
 }

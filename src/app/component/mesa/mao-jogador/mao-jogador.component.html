@@ -43,7 +43,6 @@
             <div *ngFor="let cartas of jogador?.cartasDoJogo">
                 <div class="select" [formGroup]="novaCategoria" *ngIf="sala.status == 'AGUARDANDO_DEFINICAO'">
                     <select *ngIf="cartas.categoria == 'Genérica'" (change)="atualizarCategorias(cartas)" formControlName="categoria">
-                        <!-- <option selected>Categoria</option> -->
                         <option value="Intelectual">Intelectual</option>
                         <option value="Física">Física</option>
                         <option value="TEA">TEA</option>
@@ -106,7 +105,7 @@
             <br> {{jogador.pontos}}
         </h4>
         <div *ngIf="sala.status == 'AGUARDANDO_DEFINICAO' && jogador.status == 'DEFININDO'" class="botao-confirmar">
-            <button mat-raised-button (click)="enviarCategorias()">Confirmar Categorias</button>
+            <button id="botao-confirmar" [disabled]="bloquearConfirmarCategorias()" mat-raised-button (click)="enviarCategorias()">Confirmar Categorias</button>
         </div>
     </div>
 </div>
