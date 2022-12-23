@@ -143,14 +143,9 @@ button {
 
 .area-central{
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 25% auto;
   & app-opcoes-jogada {
     align-self: flex-end;
-  }
-
-  & app-area-de-compra {
-    border: 1px solid red;
-
   }
 
 }
