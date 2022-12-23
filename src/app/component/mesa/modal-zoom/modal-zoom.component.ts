@@ -1,6 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Baralho } from 'src/app/model/baralho';
 import { CartaDoJogo } from 'src/app/model/cartaDoJogo';
 
 @Component({
@@ -19,7 +18,7 @@ export class ModalZoomComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  closeDialog() {
+  fecharZoom() {
     this.dialogRef.close();
   }
 
