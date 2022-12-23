@@ -1,3 +1,4 @@
+import { HttpParams } from '@angular/common/http';
 import { Component, Injectable, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -80,6 +81,9 @@ export class MaoJogadorComponent implements OnInit {
     return valorCoracaoPequeno! <= coracaoP && valorCoracaoGrande! <= coracaoG;
   }
 
+  //TODO: Desabilitar o botão de confirmar categorias se o jogador ainda não tiver escolhido as categorias
+  //Atualmente o jogador pode "confirmar" sem escolher as categorias
+
   public enviarCategorias(): void {
     for(let i = 0; i < this.cartasParaEnviar.length; i++){
       for(let j = 0; j < this.jogador.cartasDoJogo.length; j++){
@@ -89,8 +93,12 @@ export class MaoJogadorComponent implements OnInit {
       }
     }
 
-    this.mesaJogoService.enviarJogadorParaFinalizar(this.jogador).subscribe((jogador) => (this.jogador = jogador));
-    this.mesaJogoService.enviarNovasCategorias(this.sala).subscribe((sala) => (this.sala = sala));
+    let parametros = [] as String[];
+  
+    parametros[0] = this.sala.hash;
+    parametros[1] = `${this.jogador.id}`;
+
+    this.mesaJogoService.enviarJogadorParaFinalizar(parametros).subscribe((sala) => (this.sala = sala));
   }
 
   public atualizarCategorias(cartaGenerica: CartaDoJogo): void {

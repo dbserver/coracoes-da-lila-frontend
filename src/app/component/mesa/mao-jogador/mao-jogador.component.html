@@ -5,14 +5,16 @@
 
             <app-indica-jogador *ngIf="sala.status == 'JOGANDO' && jogador?.status=='JOGANDO'" mensagem="Jogando">
             </app-indica-jogador>
-
+            <app-indica-jogador *ngIf="sala.status == 'JOGANDO' && jogador?.status=='ESPERANDO'" mensagem="Aguarde sua vez"></app-indica-jogador>
             <app-indica-jogador *ngIf="sala.status == 'ULTIMA_RODADA' && jogador?.status=='JOGANDO'" mensagem="Jogando">
             </app-indica-jogador>
-
-            <app-indica-jogador *ngIf="sala.status == 'JOGANDO' && jogador?.status=='ESPERANDO'" mensagem="Aguarde sua vez"></app-indica-jogador>
-
             <app-indica-jogador *ngIf="sala.status == 'ULTIMA_RODADA' && jogador?.status=='JOGANDO'" mensagem="ULTIMA_JOGADA"></app-indica-jogador>
+            
+            <app-indica-jogador *ngIf="sala.status == 'AGUARDANDO_DEFINICAO' && jogador?.status=='DEFININDO'" mensagem="Definindo"></app-indica-jogador>
 
+            <app-indica-jogador *ngIf="sala.status == 'AGUARDANDO_DEFINICAO' && jogador?.status=='FINALIZADO'" mensagem="Finalizado"></app-indica-jogador>
+            <app-indica-jogador *ngIf="sala.status == 'FINALIZADO'" mensagem="Finalizado"></app-indica-jogador>
+            
         </div>
         <!-- <div class="centro">
             <button class="botao-sair" mat-raised-button [routerLink]="['/']">Sair</button>
@@ -39,9 +41,9 @@
     <div class="cartas-container">
         <div class="cartas-container-scroll">
             <div *ngFor="let cartas of jogador?.cartasDoJogo">
-                <div class="select" [formGroup]="novaCategoria">
+                <div class="select" [formGroup]="novaCategoria" *ngIf="sala.status == 'AGUARDANDO_DEFINICAO'">
                     <select *ngIf="cartas.categoria == 'Genérica'" (change)="atualizarCategorias(cartas)" formControlName="categoria">
-                        <option selected>Categoria</option>
+                        <!-- <option selected>Categoria</option> -->
                         <option value="Intelectual">Intelectual</option>
                         <option value="Física">Física</option>
                         <option value="TEA">TEA</option>
@@ -103,7 +105,7 @@
         <h4>Pontos:
             <br> {{jogador.pontos}}
         </h4>
-        <div *ngIf="sala.status == 'AGUARDANDO_DEFINICAO'" class="botao-confirmar">
+        <div *ngIf="sala.status == 'AGUARDANDO_DEFINICAO' && jogador.status == 'DEFININDO'" class="botao-confirmar">
             <button mat-raised-button (click)="enviarCategorias()">Confirmar Categorias</button>
         </div>
     </div>

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { CartaDoJogo } from 'src/app/model/cartaDoJogo';
@@ -67,7 +67,7 @@ export class MesaJogoService {
     return this.http.put<Sala>(environment.API_URL+'api/jogada/atualizarcategorias', sala);
   }
 
-  enviarJogadorParaFinalizar(jogador: Jogador){
-    return this.http.put<Jogador>(environment.API_URL+'api/jogada/finalizastatusjogador', jogador);
+  enviarJogadorParaFinalizar(params: String[]){
+    return this.http.put<Sala>(environment.API_URL+'api/jogada/finalizastatusjogador', params);
   }
 }
