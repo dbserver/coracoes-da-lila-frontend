@@ -1,18 +1,17 @@
-import { IniciaPartidaComponent } from './inicia-partida.component';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { PrimeiroJogadorComponent } from './primeiro-jogador.component';
 import { IniciaPartidaService } from 'src/app/service/inicia-partida-service/inicia-partida.service';
-import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.service';
 import { Jogador } from 'src/app/model/jogador';
+import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.service';
 import { Sala } from 'src/app/model/sala';
 import { of } from 'rxjs';
 
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { HttpClient} from '@angular/common/http';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
-
-describe('IniciaPartidaComponent', () => {
-  let component: IniciaPartidaComponent;
-  let fixture: ComponentFixture<IniciaPartidaComponent>;
+describe('PrimeiroJogadorComponent', () => {
+  let component: PrimeiroJogadorComponent;
+  let fixture: ComponentFixture<PrimeiroJogadorComponent>;
   let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
   let iniciaPartidaService: IniciaPartidaService;
@@ -20,9 +19,8 @@ describe('IniciaPartidaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-
       imports: [ HttpClientTestingModule ],
-      declarations: [IniciaPartidaComponent],
+      declarations: [PrimeiroJogadorComponent],
       providers: [IniciaPartidaService, MesaJogoService],
     }).compileComponents();
   });
@@ -30,7 +28,7 @@ describe('IniciaPartidaComponent', () => {
   beforeEach(() => {
     httpClient = TestBed.get(HttpClient);
     httpTestingController = TestBed.get(HttpTestingController);
-    fixture = TestBed.createComponent(IniciaPartidaComponent);
+    fixture = TestBed.createComponent(PrimeiroJogadorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
     iniciaPartidaService = TestBed.inject(IniciaPartidaService);
@@ -41,18 +39,15 @@ describe('IniciaPartidaComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('deve testar o método transmiteJogadorEscolhido', () => {
+  it('deve testar o método transmitePrimeiroJogadorEscolhido', () => {
     const jogador = {} as Jogador;
     const sala = {} as Sala;
-    sala.jogadores = [jogador, jogador];
-    const spy = spyOn(iniciaPartidaService, 'getPrimeiroJogador');
+    const spy = spyOn(iniciaPartidaService, 'setPrimeiroJogador');
     spyOn(mesaJogoService, 'getemitSalaObservable').and.returnValue(of(sala));
     spyOn(mesaJogoService, 'getemitJogadorObservable').and.returnValue(of(jogador));
     component.ngOnInit();
-    component.transmiteJogadorEscolhido();
+    component.transmitePrimeiroJogadorEscolhido(jogador);
     expect(spy).toHaveBeenCalled();
-    expect(component.desabilitaBtn).toBeFalse();
   });
 
 });
-

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Jogador } from 'src/app/model/jogador';
 import { environment } from 'src/environments/environment';
 import { Sala } from '../../model/sala';
 
@@ -8,6 +9,9 @@ import { Sala } from '../../model/sala';
   providedIn: 'root',
 })
 export class IniciaPartidaService {
+
+  private emitePrimeiroJogador: Jogador = {} as Jogador;
+
   constructor(private http: HttpClient) {}
 
   getQuantidadeJogadores(hash: string): Observable<number> {
@@ -19,4 +23,14 @@ export class IniciaPartidaService {
   iniciaPartida(sala: Sala) {
     return this.http.put<Sala>(`${environment.API_URL}api/iniciarpartida`, sala);
   }
+
+  setPrimeiroJogador(primeiroJogador : Jogador) {
+    this.emitePrimeiroJogador = primeiroJogador;
+  }
+
+  getPrimeiroJogador(): Jogador{
+    return this.emitePrimeiroJogador;
+  }
+
 }
+
