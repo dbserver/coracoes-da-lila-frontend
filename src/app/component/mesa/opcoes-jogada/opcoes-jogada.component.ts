@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CartaDoJogo } from 'src/app/model/cartaDoJogo';
 import { Jogador } from 'src/app/model/jogador';
 import { Sala } from 'src/app/model/sala';
@@ -14,10 +14,12 @@ export class OpcoesJogadaComponent implements OnInit {
   public jogador: Jogador = {} as Jogador;
   public listacartasMao: Array<CartaDoJogo> = [];
   public statusDado = false;
+  public maoAntiga = 0;
 
   constructor(
     private mesaJogoService: MesaJogoService,
     private areaCompraService: AreaDeCompraService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -30,6 +32,11 @@ export class OpcoesJogadaComponent implements OnInit {
       });
     });
   }
+
+  ngAfterContentChecked() {
+    this.cdr.detectChanges();
+ // call or add here your code
+}
 
   public escutaEventoCompra(): void {
     this.areaCompraService.emitirCartaJogo.subscribe(
@@ -81,22 +88,26 @@ export class OpcoesJogadaComponent implements OnInit {
     this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => {
       const ultimaCarta:number = this.jogador.cartasDoJogo.length - 1;
 
-      this.statusDado = false;
-
       cartaBonus = this.jogador.cartasDoJogo[ultimaCarta]?.bonus;
       cartaTipo = this.jogador.cartasDoJogo[ultimaCarta]?.tipo;
       
-      if (cartaBonus){
-        cartaTipo = this.jogador.cartasDoJogo[ultimaCarta]?.tipo;
-      }
-
-      if (this.jogador.status != "ESPERANDO" && this.sala.dado != 0) {
-        cartaTipo = "";
-      }
-
     });
     
-    return cartaTipo;
+    if (this.sala.dado == 0 && cartaBonus && !this.statusDado){
+      return cartaTipo
+    }
+
+    if (this.sala.dado != 0) {
+      this.maoAntiga = this.jogador.cartasDoJogo.length;
+      this.statusDado = true;
+    } else if (this.jogador.cartasDoJogo.length > this.maoAntiga) {
+      this.statusDado = false;
+    }
+    return "";
+  }
+
+  public compraCarta() {
+    return this.jogador.cartasDoJogo.length > this.maoAntiga
   }
   
   public limpaTela() {
