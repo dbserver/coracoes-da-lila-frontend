@@ -86,13 +86,13 @@ export class MaoJogadorComponent implements OnInit {
     });
   }
 
-  public zoomObjetivo(event: Event, cartas: CartaObjetivo) {
+  public zoomObjetivo(event: Event, cartaObjetivo: CartaObjetivo) {
     event.stopPropagation();
     
     this.zoomCarta.open(ModalZoomObjetivoComponent, {
-      data: cartas,
+      data: cartaObjetivo,
       height: '60%',
-      width: '80%',
+      width: '50%',
       panelClass: 'css-carta'
     });
   }

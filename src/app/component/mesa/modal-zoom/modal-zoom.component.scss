@@ -1,5 +1,6 @@
 :host ::ng-deep .mat-icon {
     color: red;
+    font-size: 1.6rem;
 }
 
 button {
@@ -51,7 +52,7 @@ button {
     .definicao {
         padding-right: 8px;
         font-size: calc(var(--tamanhoFonte) + 0.5vw);
-        line-height: 2.5rem;    
+        line-height: 2.5rem;
     }
 
     .icones {
@@ -106,6 +107,6 @@ button {
         max-height: 40px;
         display: block;
         font-size: var(--tamanhoFonte);
-        line-height: 1rem;
+        line-height: 1.5rem;
     }
 }

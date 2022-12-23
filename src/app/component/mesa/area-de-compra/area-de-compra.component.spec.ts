@@ -19,15 +19,6 @@ fdescribe('AreaDeCompraComponent', () => {
       providers: [ModalCartasObjetivoComponent, ModalZoomComponent,
         { provide: MAT_DIALOG_DATA, useValue: {} },
         { provide: MatDialogRef, useValue: {} },
-        // MatDialog, {
-        //   provide: ActivatedRoute, useValue: {
-        //     snapshot: {
-        //       data: {
-        //         carta: 
-        //       }
-        //     }
-        //   }
-        // }
       ]
     })
       .compileComponents();
@@ -59,13 +50,14 @@ fdescribe('AreaDeCompraComponent', () => {
     expect(modal.style.display).toEqual('');
   })
 
-  it('deve abrir o mat-dialog com click no botão de lupa', () => {
-    const modalZoom = TestBed.createComponent(ModalZoomComponent);
-    let evento = spyOn(component, 'abrirZoom').and.stub();
+  // teste que não está passando:
+  it('deve abrir o mat-dialog com click no botão de lupa', async () => {
+    spyOn(component, 'abrirZoom').and.stub();
     const botao: HTMLElement = fixture.debugElement.nativeElement.querySelector('.zoom');
     fixture.detectChanges();
     botao.click();
-    
-    expect(evento).toHaveBeenCalled();
-  })
-});
+    fixture.whenRenderingDone().then(() => {
+      expect(component.abrirZoom).toHaveBeenCalled();
+    })
+  });
+})

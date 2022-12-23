@@ -1,6 +1,7 @@
 .mao {
   display: grid;
-  height: 13.8vw;;
+  height: 13.8vw;
+  ;
   grid-template-columns: 15% 10% 64% 8%;
   grid-gap: 5px;
   align-items: center;
@@ -28,7 +29,7 @@
   color: var(--input-fontColor);
 }
 
-.centraliza h4{
+.centraliza h4 {
 
   font-size: var(--tamanhoFonte);
 }
@@ -47,12 +48,13 @@
   width: 50%;
 }
 
-.nome{
-  color:var(--font-color-aguarde);
+.nome {
+  color: var(--font-color-aguarde);
 }
 
 .cartas-container {
   padding-bottom: 10px;
+
   &-scroll {
     display: flex;
     max-width: 1400px;
@@ -221,6 +223,7 @@
     }
   }
 }
+
 .cor-texto {
   color: #ffab40;
 }
@@ -254,13 +257,14 @@
       height: 95%;
       width: 95%;
     }
+
     &-pequeno {
       height: 55%;
       width: 55%;
     }
   }
 
-  .carta-coracao-bonus{
+  .carta-coracao-bonus {
     width: 40%;
     height: 50px;
     border: 2px solid var(--input-fontColor);
@@ -273,6 +277,7 @@
       height: 100%;
       width: 100%;
     }
+
     &-pequeno {
       height: 60%;
       width: 60%;
@@ -291,12 +296,12 @@
   cursor: pointer;
   padding-left: 0;
   padding-right: 0;
-  
+
   .mat-icon {
     font-weight: bolder;
   }
 
   .icone-zoom {
-    margin-top: 1rem;
+    margin-top: 1.7rem;
   }
 }

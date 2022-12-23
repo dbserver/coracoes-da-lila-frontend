@@ -2,7 +2,11 @@
     <mat-icon aria-label="ícone círculo vermelho com um x para fechar">cancel</mat-icon>
 </button>
 
-<div class="conteiner-carta-objetivo">
-    <h1 class="descricao">{{ data.descricao }}</h1>
-    <h2 class="classificacao">Classificação: {{ data.classificacao }}</h2>
+<div class="content">
+    <div class="cabecalho">
+        <h2 class="titulo">{{ data.descricao }}</h2>
+    </div>
+    <div class="corpo">
+        <p class="definicao">{{ data.classificacao }}</p>
+    </div>
 </div>

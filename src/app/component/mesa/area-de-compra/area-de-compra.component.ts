@@ -216,15 +216,4 @@ export class AreaDeCompraComponent implements OnInit {
       panelClass: 'css-carta'
     });
   }
-
-  public zoomObjetivo(event: Event, cartas: CartaObjetivo) {
-    event.stopPropagation();
-    
-    this.zoomCarta.open(ModalZoomObjetivoComponent, {
-      data: cartas,
-      height: '60%',
-      width: '80%',
-      panelClass: 'css-carta'
-    });
-  }
 }
