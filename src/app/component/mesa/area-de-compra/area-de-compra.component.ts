@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MaoJogadorComponent } from '../mao-jogador/mao-jogador.component';
 import { Baralho } from '../../../model/baralho';
 import { CartaDoJogo } from '../../../model/cartaDoJogo';
 import { CartaObjetivo } from '../../../model/cartaObjetivo';
@@ -12,6 +11,7 @@ import { ModalCartasObjetivoComponent } from '../modal-cartas-objetivo/modal-car
 import { MatDialog } from '@angular/material/dialog';
 import { ModalZoomComponent } from '../modal-zoom/modal-zoom.component';
 import { ModalZoomObjetivoComponent } from '../modal-zoom-objetivo/modal-zoom-objetivo.component';
+import { mapTipoCartaDoJogo } from 'src/app/maps/cartaDoJogoMaps';
 
 @Component({
   selector: 'app-area-de-compra',
@@ -31,19 +31,21 @@ export class AreaDeCompraComponent implements OnInit {
   public coracoes: Array<any> = [];
   public jogador: Jogador = {} as Jogador;
   public bonus = false;
+  public embaralharCartas: boolean;
+
+  public mapTipo = mapTipoCartaDoJogo;
 
   opcoesCartaObjetivo: CartaObjetivo[];
 
   constructor(
     private mesaJogoService: MesaJogoService,
-    private maoJogador: MaoJogadorComponent,
     private route: ActivatedRoute,
     private areaCompraService: AreaDeCompraService,
     public modalCartasObjetivo: ModalCartasObjetivoComponent,
     public zoomCarta: MatDialog,
   ) {
-
-    this.opcoesCartaObjetivo = {} as CartaObjetivo[];
+    this.opcoesCartaObjetivo = [] as CartaObjetivo[];
+    this.embaralharCartas = false;
   }
 
   ngOnInit() {
@@ -71,7 +73,6 @@ export class AreaDeCompraComponent implements OnInit {
         this.mesaJogoService
           .comprarCartas(this.sala)
           .subscribe((sala) => (this.sala = sala));
-
       }
     }
   }
@@ -83,7 +84,6 @@ export class AreaDeCompraComponent implements OnInit {
         .comprarCoracaoP(this.sala)
         .subscribe((sala) => (this.sala = sala));
     }
-
   }
 
   public comprarCoracaoG() {
@@ -108,6 +108,17 @@ export class AreaDeCompraComponent implements OnInit {
     return valorCoracaoPequeno! <= coracaoP && valorCoracaoGrande! <= coracaoG;
   }
 
+  public podeComprarObjetivo() {
+    let coracaoP = 0;
+    let coracaoG = 0;
+    this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => {
+      coracaoP = this.jogador.coracaoPequeno + this.jogador.bonusCoracaoPequeno;
+      coracaoG = this.jogador.coracaoGrande + this.jogador.bonusCoracaoGrande;
+    });
+
+    return coracaoP + coracaoG > 0;
+  }
+
   public verificaBonus() {
     if (this.jogador?.cartasDoJogo.length > 0) {
       let ultimaCarta = (this.jogador?.cartasDoJogo.length - 1) as number;
@@ -126,13 +137,21 @@ export class AreaDeCompraComponent implements OnInit {
   }
 
   public bloquearCompraCoracoesPequenos() {
-    if (this.jogador.status == 'JOGANDO' && this.verificarCoracoesQualquerTamanho() && this.desabilitarCoracoesPequenos()) {
+    if (
+      this.jogador.status == 'JOGANDO' &&
+      this.verificarCoracoesQualquerTamanho() &&
+      this.desabilitarCoracoesPequenos()
+    ) {
       return false;
     }
     return true;
   }
   public bloquearCompraCoracoesGrandes() {
-    if (this.jogador.status == 'JOGANDO' && this.verificarCoracoesQualquerTamanho() && this.verificarCoracoesGrandes()) {
+    if (
+      this.jogador.status == 'JOGANDO' &&
+      this.verificarCoracoesQualquerTamanho() &&
+      this.verificarCoracoesGrandes()
+    ) {
       return false;
     }
     return true;
@@ -157,9 +176,12 @@ export class AreaDeCompraComponent implements OnInit {
   }
 
   public verificaJogadorTemCoracoes() {
-
-
-    if (this.jogador.coracaoGrande == 0 && this.jogador.coracaoPequeno == 0 && this.jogador.bonusCoracaoGrande == 0 && this.jogador.bonusCoracaoPequeno == 0)
+    if (
+      this.jogador.coracaoGrande == 0 &&
+      this.jogador.coracaoPequeno == 0 &&
+      this.jogador.bonusCoracaoGrande == 0 &&
+      this.jogador.bonusCoracaoPequeno == 0
+    )
       return false;
     return true;
   }
@@ -176,23 +198,37 @@ export class AreaDeCompraComponent implements OnInit {
     return false;
   }
 
-
   public verificaStatusJogador() {
-    if (this.jogador.status == "JOGANDO")
-      return true;
+    if (this.jogador.status == 'JOGANDO') return true;
     return false;
   }
 
   public compraUmaCartaObjetivo() {
     if (this.jogador.status == 'JOGANDO')
-      this.mesaJogoService.comprarCartaObjetivo(this.sala).subscribe((sala) => (this.sala = sala));
+      this.mesaJogoService
+        .comprarCartaObjetivo(this.sala)
+        .subscribe((sala) => (this.sala = sala));
   }
 
   public escolherEntreDuasCartasObjetivo() {
+    this.buscaCartasObjetivo();
+    this.abrirModal();
+    this.desabilitaAnimacaoEmbaralhar();
+  }
 
-    this.buscaCartasObjetivo()
+  private buscaCartasObjetivo() {
+    this.mesaJogoService
+      .buscarDuasCartasObjetivo(this.sala)
+      .subscribe(
+        (sala) => (
+          (this.opcoesCartaObjetivo = sala.opcoesCartaObjetivo),
+          (this.sala = sala)
+        )
+      );
+  }
 
-    const modal = document.getElementById("modal");
+  public abrirModal() {
+    const modal = document.getElementById('modal');
     if (modal != null) {
       modal.style.display = 'flex';
     }
@@ -205,6 +241,22 @@ export class AreaDeCompraComponent implements OnInit {
         this.sala = sala
       )
     );
+
+  public desabilitaAnimacaoEmbaralhar() {
+    document.getElementById('carta-1')?.classList.remove('carta-1');
+    document.getElementById('carta-2')?.classList.remove('carta-2');
+    document
+      .getElementById('container-cartas')
+      ?.classList.remove('embaralhar-animacao');
+  }
+
+  public habilitaAnimacaoEmbaralhar(resposta: boolean) {
+    this.embaralharCartas = resposta;
+    document.getElementById('carta-1')?.classList.add('carta-1');
+    document.getElementById('carta-2')?.classList.add('carta-2');
+    document
+      .getElementById('container-cartas')
+      ?.classList.add('embaralhar-animacao');
   }
 
   public abrirZoom(event: Event, carta: CartaDoJogo) {

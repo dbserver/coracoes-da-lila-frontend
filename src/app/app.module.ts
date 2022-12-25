@@ -53,7 +53,9 @@ import { TelaDownloadComponent } from './component/tela-download/tela-download.c
 import { ModalCartasObjetivoComponent } from './component/mesa/modal-cartas-objetivo/modal-cartas-objetivo.component';
 import { ModalZoomComponent } from './component/mesa/modal-zoom/modal-zoom.component';
 import { ModalZoomObjetivoComponent } from './component/mesa/modal-zoom-objetivo/modal-zoom-objetivo.component';
-
+import { PrimeiroJogadorComponent } from './component/primeiro-jogador/primeiro-jogador.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { AnimacaoCartaComponent } from './component/mesa/animacao-carta/animacao-carta.component';
 
 @NgModule({
   declarations: [
@@ -89,12 +91,15 @@ import { ModalZoomObjetivoComponent } from './component/mesa/modal-zoom-objetivo
     ModalCartasObjetivoComponent,
     ModalZoomComponent,
     ModalZoomObjetivoComponent,
+    PrimeiroJogadorComponent,
+    AnimacaoCartaComponent
   ],
   imports: [
     BrowserModule,
     MatIconModule,
     MatButtonModule,
     MatRippleModule,
+    MatRadioModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
@@ -121,7 +126,8 @@ import { ModalZoomObjetivoComponent } from './component/mesa/modal-zoom-objetivo
       deps: [InjectableRxStompConfig],
     },
     MesaJogoService,
-    ModalCartasObjetivoComponent
+    ModalCartasObjetivoComponent,
+    HttpClientModule
   ],
   bootstrap: [AppComponent],
 })
