@@ -56,6 +56,7 @@ import { ModalZoomObjetivoComponent } from './component/mesa/modal-zoom-objetivo
 import { PrimeiroJogadorComponent } from './component/primeiro-jogador/primeiro-jogador.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { AnimacaoCartaComponent } from './component/mesa/animacao-carta/animacao-carta.component';
+import { OpcoesJogadaComponent } from './component/mesa/opcoes-jogada/opcoes-jogada.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import { AnimacaoCartaComponent } from './component/mesa/animacao-carta/animacao
     ModalCartasObjetivoComponent,
     ModalZoomComponent,
     ModalZoomObjetivoComponent,
+    OpcoesJogadaComponent,
     PrimeiroJogadorComponent,
     AnimacaoCartaComponent
   ],
