@@ -85,10 +85,6 @@ const routes: Routes = [
     component: TelaDownloadComponent,
   },
   {
-    path:'ranking',
-    component: RankingComponent,
-  },
-  {
     path:'**',
     component: TelaErroComponent,
   }
