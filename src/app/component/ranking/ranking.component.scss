@@ -5,6 +5,14 @@
   text-align: center;
 }
 
+#nome {
+  min-width: 10rem;
+}
+
+th {
+  max-width: 55px;
+}
+
 table,
 th,
 td {
@@ -20,7 +28,7 @@ td {
 }
 
 .jogadores {
-  width: 50%;
+  width: 60%;
   margin-right: auto;
   margin-left: auto;
   color: var(--input-fontColor);
