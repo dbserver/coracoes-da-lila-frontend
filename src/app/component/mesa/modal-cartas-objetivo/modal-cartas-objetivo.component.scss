@@ -77,9 +77,29 @@ p {
           }
   
           .cabecalho {
+            .grid-zoom {
+              display: flex;
+              // grid-template-columns: 12% 88%;
+            }
+            
+            .zoom {
+              border: none;
+              background: local;
+              cursor: pointer;
+              padding-left: 0;
+              padding-right: 0;
+              
+              .mat-icon {
+                font-weight: bolder;
+              }
+            
+              .icone-zoom {
+                margin-bottom: 16px;
+              }
+            }
             .titulo {
               color: #38761d;
-              font-size: calc(var(--tamanhoFonte) - 6pt);
+              font-size: calc(var(--tamanhoFonte) - 0.7vw);
               line-height: 15px;
             }
           }
@@ -99,23 +119,3 @@ p {
     }
   }
 
-  .grid-zoom {
-    display: grid;
-    grid-template-columns: 12% 88%;
-  }
-  
-  .zoom {
-    border: none;
-    background: local;
-    cursor: pointer;
-    padding-left: 0;
-    padding-right: 0;
-    
-    .mat-icon {
-      font-weight: bolder;
-    }
-  
-    .icone-zoom {
-      margin-bottom: 16px;
-    }
-  }

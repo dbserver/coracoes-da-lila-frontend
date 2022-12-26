@@ -22,8 +22,9 @@
         <div class="centro"><img class="avatar" src="../../../assets/avatar" alt=""></div>
 
         <div class="nome-jogador">
-            <img *ngIf="jogador?.id == sala.jogadorEscolhido?.id && sala.status === 'JOGANDO'" class="coracao-pequeno" src="assets/svg/icone-coracao.svg" alt="Ícone coração">
-        <div *ngIf="jogador" class="centro nome">{{jogador.nome}}</div>
+            <img *ngIf="jogador?.id == sala.jogadorEscolhido?.id && sala.status === 'JOGANDO'" class="coracao-pequeno"
+                src="assets/svg/icone-coracao.svg" alt="Ícone coração">
+            <div *ngIf="jogador" class="centro nome">{{jogador.nome}}</div>
         </div>
 
     </div>
@@ -93,22 +94,18 @@
                         <mat-icon class="mat-icon icone-zoom" alt="Ícone de zoom">search</mat-icon>
                     </button>
                     <div class="cabecalho">
-                        <!-- <h2 class="titulo">{{cartaObjetivo.descricao}}</h2> -->
+                        <h2 class="titulo">{{cartaObjetivo.textoTematico}}</h2>
                     </div>
-
-                <div class="cabecalho">
-                    <h2 class="titulo">{{cartaObjetivo.textoTematico}}</h2>
-                </div>
-                <div class="corpo">
-                    <p class="definicao y-scroll">{{cartaObjetivo.textoRegra}}</p>
+                    <div class="corpo">
+                        <p class="definicao y-scroll">{{cartaObjetivo.textoRegra}}</p>
+                    </div>
                 </div>
             </div>
         </div>
+        <div *ngIf="jogador" class="centraliza">
+            <h4>Pontos:
+                <br>
+                {{jogador.pontos}}
+            </h4>
+        </div>
     </div>
-    <div *ngIf="jogador" class="centraliza">
-        <h4>Pontos:
-            <br>
-            {{jogador.pontos}}
-        </h4>
-    </div>
-</div>
