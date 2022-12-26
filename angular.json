@@ -61,6 +61,27 @@
               ],
               "outputHashing": "all"
             },
+            "staging": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "4mb",
+                  "maximumError": "4mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4mb",
+                  "maximumError": "4mb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.staging.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
             "development": {
               "buildOptimizer": false,
               "optimization": false,
@@ -77,6 +98,9 @@
           "configurations": {
             "production": {
               "browserTarget": "ProjetoLilaFront:build:production"
+            },
+            "staging": {
+              "browserTarget": "ProjetoLilaFront:build:staging"
             },
             "development": {
               "browserTarget": "ProjetoLilaFront:build:development"
