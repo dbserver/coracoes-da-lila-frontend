@@ -22,13 +22,13 @@
                     </div>
                     <div class="presentes">
                         <div class="presente-acao">
-                            <div class="presente-acao" *ngIf="carta.tipo === 'Informação'">
-                                <img class="presente" src="assets/svg/icone-presente.svg" alt="presente">
-                                <img class="presenteInfoAcoes" src="assets/svg/icone-usuario.svg" alt="acao">
-                            </div>
-                            <div class="presente-info" *ngIf="carta.tipo === 'Ação'">
+                            <div class="presente-info" *ngIf="carta.tipo === 'INFORMACAO'">
                                 <img class="presente" src="assets/svg/icone-presente.svg" alt="presente">
                                 <img class="presenteInfoAcoes" src="assets/svg/icone-info.svg" alt="info">
+                            </div>
+                            <div class="presente-acao" *ngIf="carta.tipo === 'ACAO'">
+                                <img class="presente" src="assets/svg/icone-presente.svg" alt="presente">
+                                <img class="presenteInfoAcoes" src="assets/svg/icone-usuario.svg" alt="acao">
                             </div>
                         </div>
                     </div>
