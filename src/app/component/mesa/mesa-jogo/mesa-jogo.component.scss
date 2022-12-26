@@ -17,6 +17,7 @@ body {
  grid-column-gap: 10px;
  grid-row-gap: 10px;
 }
+
 header, nav, footer {
   text-align: center
 }
@@ -139,3 +140,14 @@ button {
   margin: 10px;
   font-size: var(--tamanhoFonte) ;
 }
+
+.area-central{
+  display: grid;
+  grid-template-columns: 25% auto;
+  & app-opcoes-jogada {
+    align-self: flex-end;
+  }
+
+}
+
+
