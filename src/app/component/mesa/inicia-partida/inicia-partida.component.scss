@@ -1,7 +1,7 @@
 /* loading dots */
 .div-aguarde {
   position: relative;
-  top: 40%;
+  top: 5%;
   width: auto;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -25,10 +25,10 @@ p {
   color: var(--btn-bg);
 }
 
-.mensagem-aguarde:after {
-  content: ' .';
-  animation: dots 2s steps(5, end) infinite;
-}
+// .mensagem-aguarde:after {
+//   content: ' .';
+//   animation: dots 2s steps(5, end) infinite;
+// }
 
 @keyframes dots {
 

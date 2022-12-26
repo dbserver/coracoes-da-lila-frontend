@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CartaInicio } from 'src/app/model/cartaInicio';
 import { Jogador } from 'src/app/model/jogador';
 import { Sala } from 'src/app/model/sala';
@@ -16,7 +16,7 @@ export class IniciaPartidaComponent implements OnInit {
   jogadores: number = 0;
   desabilitaBtn = true;
   sala: Sala;
-  jogadorHost: Jogador;
+  jogadorPrincipal: Jogador;
   hash = '';
   enviaCartaInicio: CartaInicio;
 
@@ -26,59 +26,40 @@ export class IniciaPartidaComponent implements OnInit {
     private cartaService: CartaService
   ) {
     this.sala = {} as Sala;
+    this.jogadorPrincipal = {} as Jogador;
     this.primeiroJogador = {} as Jogador;
     this.enviaCartaInicio = {} as CartaInicio;
-    this.jogadorHost = {} as Jogador;
   }
 
-  // verificaQuantidadeJogadores() {
-  //   if (this.sala.jogadores.length >= 2) {
-  //     this.desabilitaBtn = false;
-  //   }
-  // }
-
-  transmitePrimeiroJogadorEscolhido() {
-    this.primeiroJogador = this.iniciaPartidaService.getPrimeiroJogador();
+  transmiteJogadorEscolhido() {
+    this.sala.jogadorEscolhido = this.iniciaPartidaService.getPrimeiroJogador();
     if (this.sala.jogadores.length >= 2) {
-      this.desabilitaBtn = false
+      this.desabilitaBtn = false;
     }
-  }
-
-  enviarPrimeiroJogador() {
-    this.iniciaPartidaService
-      .definePrimeiroJogador(this.primeiroJogador)
-      .subscribe(primeiroJogador => this.primeiroJogador = primeiroJogador);
-      console.log(this.primeiroJogador)
   }
 
   enviaStatus(): void {
     this.desabilitaBtn = true;
     let sendSala: Sala = this.sala;
     sendSala.status = 'JOGANDO';
-    this.iniciaPartidaService
-      .iniciaPartida(sendSala)
-      .subscribe(sala => this.sala = sala);
+    this.iniciaPartidaService.iniciaPartida(sendSala).subscribe(sala => this.sala = sala);
   }
 
   ngOnInit(): void {
     this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
       this.sala = sala;
-      this.iniciaPartidaService.getPrimeiroJogador();
+      this.getCartaInicio();
     });
 
-    this.mesaJogoService.getemitJogadorObservable().subscribe(jogador => {
-      this.jogadorHost = jogador;
+    this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => {
+      this.jogadorPrincipal = jogador;
     });
-
-    this.getCartaInicio();
   }
 
-  private getCartaInicio() {
-    let uuid = this.sala.baralho?.idCartaInicio;
-    this.cartaService
-      .getCartaInicio(uuid)
-      .subscribe((cartaInicio: CartaInicio) => {
-        this.enviaCartaInicio = cartaInicio;
-      });
-  }
+  private getCartaInicio(){
+    let uuid = this.sala.cartaInicioId;
+    this.cartaService.getCartaInicio(uuid).subscribe((cartaInicio: CartaInicio)=>{
+      this.enviaCartaInicio = cartaInicio;
+     });
+   }
 }

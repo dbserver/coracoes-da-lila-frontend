@@ -3,7 +3,6 @@ import { Jogador } from './../../model/jogador';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Sala } from 'src/app/model/sala';
 import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.service';
-import { MatRadioChange } from '@angular/material/radio'
 
 @Component({
   selector: 'app-primeiro-jogador',
@@ -24,9 +23,9 @@ export class PrimeiroJogadorComponent implements OnInit {
 
   ngOnInit(): void {
     this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
-      this.mesaJogoService.getemitJogadorObservable().subscribe(escolhido => {
-          this.jogador = escolhido;
-          this.iniciaPartidaService.setPrimeiroJogador(escolhido);
+      this.mesaJogoService.getemitJogadorObservable().subscribe(jogadorEscolhido => {
+          this.jogador = jogadorEscolhido;
+          this.iniciaPartidaService.setPrimeiroJogador(jogadorEscolhido);
           this.sala = sala;
           this.jogadores = sala.jogadores;
         });

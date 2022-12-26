@@ -1,7 +1,7 @@
-import { Jogador } from './../../model/jogador';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
+import { Jogador } from 'src/app/model/jogador';
 import { environment } from 'src/environments/environment';
 import { Sala } from '../../model/sala';
 
@@ -9,9 +9,8 @@ import { Sala } from '../../model/sala';
   providedIn: 'root',
 })
 export class IniciaPartidaService {
-  private mudanca$ = new BehaviorSubject<boolean>({} as boolean);
-  // private primeiroJogador: Jogador = {} as Jogador;
-  private emitPrimeiroJogador: Jogador = {} as Jogador;
+
+  private emitePrimeiroJogador: Jogador = {} as Jogador;
 
   constructor(private http: HttpClient) {}
 
@@ -21,24 +20,17 @@ export class IniciaPartidaService {
     );
   }
 
-  eventoMudanca(mudanca$: boolean): Observable<boolean> {
-    return this.mudanca$.asObservable();
-  }
-
-
-  setPrimeiroJogador(primeiroJogador : Jogador) {
-    this.emitPrimeiroJogador = primeiroJogador;
-  }
-
-  getPrimeiroJogador(): Jogador{
-    return this.emitPrimeiroJogador;
-  }
-
-  definePrimeiroJogador(primeiroJogador: Jogador){
-    return this.http.put<Jogador>(`${environment.API_URL}api/primeirojogador`, primeiroJogador);
-  }
-
   iniciaPartida(sala: Sala) {
     return this.http.put<Sala>(`${environment.API_URL}api/iniciarpartida`, sala);
   }
+
+  setPrimeiroJogador(primeiroJogador : Jogador) {
+    this.emitePrimeiroJogador = primeiroJogador;
+  }
+
+  getPrimeiroJogador(): Jogador{
+    return this.emitePrimeiroJogador;
+  }
+
 }
+

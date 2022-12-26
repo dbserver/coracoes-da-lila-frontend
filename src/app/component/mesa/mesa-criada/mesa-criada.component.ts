@@ -1,5 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { catchError, Observable, pipe, tap, throwError } from 'rxjs';
 import { Sala } from 'src/app/model/sala';
 import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.service';
 import { MesaService } from 'src/app/service/mesa-service/mesa.service';
@@ -29,15 +31,14 @@ export class MesaCriadaComponent implements OnInit {
 
   ngOnInit(): void {
     this.hash = String(this.route.snapshot.paramMap.get('hash'));
-    //link é: url do site + rota do componente da US030 + hash
     this.link = `${environment.CLIENT_URL}entrarmesa/${this.hash}`;
     this.mesaService
-      .findByHash(this.hash)
-      .subscribe((sala) => (this.sala = sala));
+       .findByHash(this.hash)
+       .subscribe((sala) => (this.sala = sala));
   }
 
   roteamento() {
     this.carregando = true;
-    this.router.navigate(['/jogo', this.sala.hash])
+    this.router.navigate(['/jogo', this.sala.hash]);
   }
 }
