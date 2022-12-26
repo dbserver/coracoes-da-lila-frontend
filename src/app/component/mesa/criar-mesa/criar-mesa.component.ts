@@ -77,7 +77,8 @@ export class CriarMesaComponent implements OnInit {
     this.router.navigate(['/mesa-criada', this.sala.hash]);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   emit() {
     this.mesaJogoService.getemitSalaSubject().next(this.sala);

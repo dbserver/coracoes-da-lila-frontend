@@ -48,17 +48,16 @@ export class IniciaPartidaComponent implements OnInit {
   ngOnInit(): void {
     this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
       this.sala = sala;
+      this.getCartaInicio();
     });
 
     this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => {
       this.jogadorPrincipal = jogador;
     });
-
-    this.getCartaInicio();
   }
 
   private getCartaInicio(){
-    let uuid = this.sala.baralho?.idCartaInicio;
+    let uuid = this.sala.cartaInicioId;
     this.cartaService.getCartaInicio(uuid).subscribe((cartaInicio: CartaInicio)=>{
       this.enviaCartaInicio = cartaInicio;
      });
