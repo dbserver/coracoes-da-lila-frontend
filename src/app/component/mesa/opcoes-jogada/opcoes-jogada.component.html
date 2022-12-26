@@ -1,7 +1,7 @@
 <section class="opcoes-container">
     <h3 class="titulo">Opções de jogada:</h3>
 
-    <ul *ngIf="sala.status == 'JOGANDO'">
+    <ul *ngIf="sala.status == 'JOGANDO' && jogador.status == 'JOGANDO'">
         <li *ngIf="somaCoracoes() < 5 && limpaTela()">Pegar 2 corações pequenos</li>
         <li *ngIf="somaCoracoes() < 5 && limpaTela()">Pegar um coração grande</li>
         <li *ngIf="selecioneUmaCartaObjetivo()">selecione uma de duas cartas objetivo</li>
@@ -11,11 +11,11 @@
     </ul>
 
     <ul>
-        <li *ngIf="podeRolarDado() == 'INFORMACAO' && limparTelaObjetivos()">
+        <li *ngIf="podeRolarDado() == 'INFORMACAO' && limparTelaObjetivos() && jogador.status == 'JOGANDO'">
             1 a 4 = Nada<br>
             5 a 6 = bonus
         </li>
-        <li *ngIf="podeRolarDado() == 'ACAO' && limparTelaObjetivos()">
+        <li *ngIf="podeRolarDado() == 'ACAO' && limparTelaObjetivos() && jogador.status == 'JOGANDO'">
             1 = perde 1 coração (Bonus, se tiver, outro se não, não importa o tamanho)<br>
             2 a 3 = nada<br>
             4 = coração grande<br>
