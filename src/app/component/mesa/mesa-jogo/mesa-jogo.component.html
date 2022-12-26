@@ -7,8 +7,13 @@
 <div class="container">
     <header><app-area-jogadores></app-area-jogadores></header>
     <nav *ngIf="sala.status=='AGUARDANDO'"><app-inicia-partida></app-inicia-partida></nav>
-    <nav *ngIf="sala.status =='JOGANDO' "><app-area-de-compra></app-area-de-compra></nav>
-    <nav *ngIf="sala.status =='ULTIMA_RODADA'">
+    <nav *ngIf="sala.status =='JOGANDO' " class="area-central">
+      <app-opcoes-jogada></app-opcoes-jogada>
+      <app-area-de-compra></app-area-de-compra>
+    </nav>
+    <nav *ngIf="sala.status =='ULTIMA_RODADA'"  class="area-central">
+      <app-opcoes-jogada></app-opcoes-jogada>
+      <app-area-de-compra></app-area-de-compra>
       <div class="modal" id="modal-one" aria-hidden="true" [hidden] = "isShow">
         <div class="modal-dialog">
             <div class="modal-header">
@@ -20,8 +25,7 @@
             <div class="modal-footer"> <button mat-raised-button class="btn" (click) = fecharModal()>Fechar</button>
             </div>
         </div>
-    </div>
-      <app-area-de-compra></app-area-de-compra>
+      </div>
     </nav>
     <nav *ngIf="sala.status=='FINALIZADO'"><app-ranking></app-ranking></nav>
     <footer><app-mao-jogador></app-mao-jogador></footer>

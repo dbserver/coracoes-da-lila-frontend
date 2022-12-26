@@ -7,6 +7,7 @@ export interface Jogador {
   cartasDoJogo: CartaDoJogo[];
   cartasObjetivo: CartaObjetivo[];
   pontos: number;
+  pontosObjetivo: number;
   coracaoPequeno: number;
   coracaoGrande: number;
   bonusCoracaoPequeno: number;
