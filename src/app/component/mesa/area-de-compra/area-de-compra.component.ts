@@ -234,13 +234,14 @@ export class AreaDeCompraComponent implements OnInit {
     }
   }
 
-  private buscaCartasObjetivo() {
-    this.mesaJogoService.buscarDuasCartasObjetivo(this.sala).subscribe(
-      (sala) => (
-        this.opcoesCartaObjetivo = sala.opcoesCartaObjetivo,
-        this.sala = sala
-      )
-    );
+  // private buscaCartasObjetivo() {
+  //   this.mesaJogoService.buscarDuasCartasObjetivo(this.sala)
+  //   .subscribe(
+  //     (sala) => (
+  //       this.opcoesCartaObjetivo = sala.opcoesCartaObjetivo,
+  //       this.sala = sala
+  //     )
+  //   );
 
   public desabilitaAnimacaoEmbaralhar() {
     document.getElementById('carta-1')?.classList.remove('carta-1');

@@ -5,8 +5,8 @@ export interface CartaObjetivo {
   tipo:string;
   tipo_contagem:number;
   categoria:string;
-  texto_regra:string;
-  texto_tematico:string;
+  textoRegra:string;
+  textoTematico:string;
   pontos:number;
   baralho:Baralho[];
 }
