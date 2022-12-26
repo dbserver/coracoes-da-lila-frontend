@@ -7,6 +7,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Jogador } from '../../model/jogador';
 import { MesaJogoService } from '../../service/mesa-jogo-service/mesa-jogo.service';
 import { IniciaPartidaService } from '../../service/inicia-partida-service/inicia-partida.service';
+import { catchError, Observable, of, tap, throwError } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-entrar-mesa',
@@ -25,18 +27,32 @@ export class EntrarMesaComponent implements OnInit {
     this.sala = {} as Sala;
     this.jogador = {} as Jogador;
     this.jogadorPrincipal = {} as Jogador;
+
   }
 
   isvalid = true;
 
   ngOnInit(): void {
     this.hash = String(this.route.snapshot.paramMap.get('hash'));
-
     this.mesaService
       .findByHash(this.hash)
-      .subscribe((sala) => (this.sala = sala));
-
-    this.verificaSalaCheia(this.hash);
+      .pipe(
+        tap(console.log),
+        catchError(errorHandler)
+      )
+      .subscribe({
+        next: (sala) => {
+          console.log(sala);
+          this.sala = sala;
+          this.verificarSeSalaCheia(this.hash);
+          this.verificarSeJogoIniciado(this.hash);
+          this.verificarSeJogoFinalizado(this.hash);
+        },
+        error: (e) => {
+          console.log(e);
+          this.router.navigate(['/salaInexistente']);
+        }
+      });
   }
 
   hash = '';
@@ -44,7 +60,8 @@ export class EntrarMesaComponent implements OnInit {
   nick = '';
   jogador: Jogador;
   jogadorPrincipal: Jogador;
-  salaCheia: boolean = false;
+  statusJogo: string = '';
+  salaExiste: boolean = true;
 
   conectar() {
     this.jogador.nome = this.nick;
@@ -64,33 +81,22 @@ export class EntrarMesaComponent implements OnInit {
           this.emit();
         });
       this.roteamento();
-    }else{
+    } else {
       this.isvalid = false;
     }
   }
 
   roteamento() {
-    if(this.hash!= this.sala.hash){
+    if (this.hash != this.sala.hash) {
       this.router.navigate(['**']);
-    }else{
-    this.router.navigate(['/jogo', this.sala.hash]);
+    } else {
+      this.router.navigate(['/jogo', this.sala.hash]);
     }
   }
-  
 
   emit() {
     this.mesaJogoService.getemitSalaSubject().next(this.sala);
     this.mesaJogoService.getemitJogadorSubject().next(this.jogadorPrincipal);
-  }
-
-  verificaSalaCheia(hash: string) {
-    this.iniciaPartidaService
-      .getQuantidadeJogadores(hash)
-      .subscribe((jogadores) => {
-        if (jogadores >= 6) {
-          this.salaCheia = true;
-        }
-      });
   }
 
   getNomeJogador() {
@@ -103,4 +109,54 @@ export class EntrarMesaComponent implements OnInit {
     }
     return this.jogador.nome.length >= 2;
   }
+
+  verificarSeSalaCheia(hash: string) {
+    this.mesaService
+    .findByHash(hash)
+    .subscribe((sala) => {(this.statusJogo = sala.status); })
+
+
+    this.iniciaPartidaService
+      .getQuantidadeJogadores(hash)
+      .subscribe((jogadores) => {
+        if (jogadores >= 6 || this.statusJogo === 'NOVO' && 'AGUARDANDO') {
+          this.router.navigate(['/salacheia']);
+        }
+      });
+  }
+
+  verificarSeJogoIniciado(hash: string) {
+    this.mesaService
+    .findByHash(hash)
+    .subscribe((sala) => {(this.statusJogo = sala.status); 
+      if(this.statusJogo === 'JOGANDO' && 'ULTIMA_RODADA'){
+      this.router.navigate(['/jogoiniciado']);
+    }})
+
+  }
+
+  verificarSeJogoFinalizado(hash: string) {
+    this.mesaService
+      .findByHash(hash)
+      .subscribe((sala) => {
+        (this.statusJogo = sala.status); if (this.statusJogo === 'FINALIZADO') {
+          this.router.navigate(['/jogofinalizado']);
+        }
+      })
+
+  }
+}
+
+function errorHandler(err: HttpErrorResponse) {
+  let msg = '';
+  if (err.error instanceof ErrorEvent) {
+    msg = `Client Error Occured: ${err.error.message}`;
+  } else {
+    msg = `Server Error Occured: ${err.status} ${err.statusText}`;
+  }
+  return throwError(() => ({
+    error: err.error,
+    message: msg,
+    messageDesc: err.message,
+  }));
 }
