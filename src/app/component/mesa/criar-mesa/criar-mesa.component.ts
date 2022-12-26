@@ -36,6 +36,7 @@ export class CriarMesaComponent implements OnInit {
       cartasDoJogo: [],
       cartasObjetivo: [],
       pontos: 0,
+      pontosObjetivo: 0,
       coracaoPequeno: 2,
       coracaoGrande: 0,
       isHost: true,
