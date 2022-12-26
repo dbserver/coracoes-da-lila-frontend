@@ -3,13 +3,13 @@
 </button>
 
 <div class="cabecalho">
-    <h2 class="titulo">{{ data.tipo }}</h2>
+    <h2 class="titulo">{{ mapTipo.get(data.tipo) }}</h2>
     <div class="pontos">
         <p class="pt">{{ data.pontos }}</p>
     </div>
 </div>
 <div class="corpo">
-    <p class="definicao">
+    <p class="definicao"> 
         {{ data.texto }}
     </p>
     <div class="icones">

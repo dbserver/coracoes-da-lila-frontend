@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { mapTipoCartaDoJogo } from 'src/app/maps/cartaDoJogoMaps';
 import { CartaDoJogo } from 'src/app/model/cartaDoJogo';
 
 @Component({
@@ -8,6 +9,8 @@ import { CartaDoJogo } from 'src/app/model/cartaDoJogo';
   styleUrls: ['./modal-zoom.component.scss']
 })
 export class ModalZoomComponent implements OnInit {
+
+  public mapTipo = mapTipoCartaDoJogo;
   
   constructor(
     public dialogRef: MatDialogRef<ModalZoomComponent>,

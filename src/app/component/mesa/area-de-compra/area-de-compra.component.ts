@@ -33,7 +33,7 @@ export class AreaDeCompraComponent implements OnInit {
   public bonus = false;
   public embaralharCartas: boolean;
 
-  public mapTipo = mapTipoCartaDoJogo;
+  public mapTipo = mapTipoCartaDoJogo; 
 
   opcoesCartaObjetivo: CartaObjetivo[];
 
@@ -264,7 +264,7 @@ export class AreaDeCompraComponent implements OnInit {
     event.stopPropagation();
     this.zoomCarta.open(ModalZoomComponent, {
       data: carta,
-      height: '90%',
+      height: '92%',
       width: '33%',
       panelClass: 'css-carta'
     });
