@@ -1,7 +1,6 @@
 .mao {
   display: grid;
   height: 13.8vw;
-  ;
   grid-template-columns: 15% 10% 64% 8%;
   grid-gap: 5px;
   align-items: center;
@@ -33,10 +32,6 @@
 .centraliza {
   text-align: center;
   color: var(--input-fontColor);
-}
-
-.centraliza h4 {
-
   font-size: var(--tamanhoFonte);
 }
 
@@ -196,27 +191,6 @@
         height: 110px;
         margin-top: 20px;
 
-        .grid-zoom {
-          display: grid;
-          grid-template-columns: 12% 88%;
-        }
-        
-        .zoom {
-          border: none;
-          background: local;
-          cursor: pointer;
-          padding-left: 0;
-          padding-right: 0;
-        
-          .mat-icon {
-            font-weight: bolder;
-          }
-        
-          .icone-zoom {
-            margin-bottom: 16px;
-          }
-        }
-
         &.carta-sem-titulo {
           display: flex;
           align-items: center;
@@ -263,6 +237,27 @@
     &-thumb {
       background-color: black;
     }
+  }
+}
+
+.grid-zoom {
+  display: grid;
+  grid-template-columns: 12% 88%;
+}
+
+.zoom {
+  border: none;
+  background: local;
+  cursor: pointer;
+  padding-left: 0;
+  padding-right: 0;
+
+  .mat-icon {
+    font-weight: bolder;
+  }
+
+  .icone-zoom {
+    margin-bottom: 16px;
   }
 }
 
