@@ -1,7 +1,7 @@
 <section class="opcoes-container">
-    <h3 class="titulo">Opções de jogada:</h3>
+    <h3 class="titulo" *ngIf="jogador.status == 'JOGANDO'">Opções de jogada:</h3>
 
-    <ul *ngIf="sala.status == 'JOGANDO' && jogador.status == 'JOGANDO'">
+    <ul *ngIf="(sala.status == 'JOGANDO' || sala.status == 'ULTIMA_RODADA') && jogador.status == 'JOGANDO'">
         <li *ngIf="somaCoracoes() < 5 && limpaTela()">Pegar 2 corações pequenos</li>
         <li *ngIf="somaCoracoes() < 5 && limpaTela()">Pegar um coração grande</li>
         <li *ngIf="selecioneUmaCartaObjetivo()">selecione uma de duas cartas objetivo</li>
@@ -22,9 +22,9 @@
             5 a 6 = coração pequeno
         </li>
     </ul>
-
+    <!-- <h3 class="titulo" *ngIf="sala.status == 'ULTIMA_RODADA'">Opções de jogada:</h3>
     <ul *ngIf="sala.status == 'ULTIMA_RODADA'">
         <li>Trocar a categoria das cartas genéricas.</li>
-    </ul>
+    </ul> -->
 </section>
 
