@@ -35,15 +35,16 @@
         }
   
         .texto {
-          font-size: 10px;
+          font-size: calc(var(--tamanhoFonte) - 5px);
           color: #351c75;
         }
       }
     }
 
 .embaralhar-animacao{
-    animation: embaralhar 1.65s 1;
+    animation: embaralhar 2s 1;
     z-index: -1;
+    opacity: 0.3;
 }
  
 .carta-1{
@@ -102,8 +103,10 @@
 @keyframes embaralhar {
     0%{
         z-index: 10;
+        opacity: 1;
     }
     100%{
         z-index: 10;
+        opacity: 1;
     }
 }

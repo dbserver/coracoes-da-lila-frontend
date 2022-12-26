@@ -13,13 +13,14 @@ import { MesaCriadaComponent } from './component/mesa/mesa-criada/mesa-criada.co
 import { MesaJogoComponent } from './component/mesa/mesa-jogo/mesa-jogo.component';
 import { MaoJogadorComponent } from './component/mesa/mao-jogador/mao-jogador.component';
 import { IniciaPartidaComponent } from './component/mesa/inicia-partida/inicia-partida.component';
-import { TelaErroComponent } from './component/erro/tela-erro/tela-erro.component';
+import { TelaErroComponent } from './component/tela-erro/tela-erro.component';
 import { TelaHistoriaComponent } from './component/tela-historia/tela-historia.component';
 import { TelaDownloadComponent } from './component/tela-download/tela-download.component';
 import { TelaErroJogoInciadoComponent } from './component/erro/tela-erro-jogo-inciado/tela-erro-jogo-inciado.component';
 import { TelaErroSalaCheiaComponent } from './component/erro/tela-erro-sala-cheia/tela-erro-sala-cheia.component';
 import { TelaErroJogoFinalizadoComponent } from './component/erro/tela-erro-jogo-finalizado/tela-erro-jogo-finalizado.component';
 import { TelaErroSalaInexistenteComponent } from './component/erro/tela-erro-sala-inexistente/tela-erro-sala-inexistente.component';
+import { RankingComponent } from './component/ranking/ranking.component';
 
 const routes: Routes = [
   {
@@ -106,8 +107,7 @@ const routes: Routes = [
   {
     path:'**',
     component: TelaErroComponent,
-  },
-
+  }
 ];
 
 @NgModule({

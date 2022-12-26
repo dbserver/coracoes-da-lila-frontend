@@ -41,7 +41,7 @@ import {
 } from '@stomp/ng2-stompjs';
 
 import { myRxStompConfig } from './rx-stomp.config';
-import { TelaErroComponent } from './component/erro/tela-erro/tela-erro.component';
+import { TelaErroComponent } from './component/tela-erro/tela-erro.component';
 import { IndicaJogadorComponent } from './component/mesa/indica-jogador/indica-jogador.component';
 import { LicenciamentoComponent } from './component/licenciamento/licenciamento.component';
 import { TelaHistoriaComponent } from './component/tela-historia/tela-historia.component';
@@ -57,7 +57,7 @@ import { TelaErroSalaInexistenteComponent } from './component/erro/tela-erro-sal
 import { PrimeiroJogadorComponent } from './component/primeiro-jogador/primeiro-jogador.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { AnimacaoCartaComponent } from './component/mesa/animacao-carta/animacao-carta.component';
-
+import { OpcoesJogadaComponent } from './component/mesa/opcoes-jogada/opcoes-jogada.component';
 
 
 
@@ -99,6 +99,7 @@ import { AnimacaoCartaComponent } from './component/mesa/animacao-carta/animacao
     TelaErroSalaCheiaComponent,
     TelaErroJogoFinalizadoComponent,
     TelaErroSalaInexistenteComponent,
+    OpcoesJogadaComponent,
     PrimeiroJogadorComponent,
     AnimacaoCartaComponent
   ],
