@@ -53,6 +53,7 @@ import { ModalCartasObjetivoComponent } from './component/mesa/modal-cartas-obje
 import { PrimeiroJogadorComponent } from './component/primeiro-jogador/primeiro-jogador.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { AnimacaoCartaComponent } from './component/mesa/animacao-carta/animacao-carta.component';
+import { OpcoesJogadaComponent } from './component/mesa/opcoes-jogada/opcoes-jogada.component';
 
 
 
@@ -90,6 +91,7 @@ import { AnimacaoCartaComponent } from './component/mesa/animacao-carta/animacao
     PainelVoltarComponent,
     TelaDownloadComponent,
     ModalCartasObjetivoComponent,
+    OpcoesJogadaComponent,
     PrimeiroJogadorComponent,
     AnimacaoCartaComponent
   ],
