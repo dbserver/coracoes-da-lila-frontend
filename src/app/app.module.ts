@@ -41,7 +41,7 @@ import {
 } from '@stomp/ng2-stompjs';
 
 import { myRxStompConfig } from './rx-stomp.config';
-import { TelaErroComponent } from './component/tela-erro/tela-erro.component';
+import { TelaErroComponent } from './component/erro/tela-erro/tela-erro.component';
 import { IndicaJogadorComponent } from './component/mesa/indica-jogador/indica-jogador.component';
 import { LicenciamentoComponent } from './component/licenciamento/licenciamento.component';
 import { TelaHistoriaComponent } from './component/tela-historia/tela-historia.component';
