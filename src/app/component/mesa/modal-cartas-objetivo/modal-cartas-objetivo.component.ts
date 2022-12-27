@@ -40,9 +40,7 @@ export class ModalCartasObjetivoComponent implements OnInit {
     const modal = document.getElementById("modal");
     if (modal != null)
       modal.style.display = 'none';
-      console.log(this.cartasObjetivo);
       this.cartasObjetivo.length = 0;
-      console.log(this.cartasObjetivo);
     this.embaralharCartas.emit(true);
   }
 }
