@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./home-page.component.scss']
 }) 
 export class HomePageComponent implements OnInit {
-  loading = false;
+  carregando = false;
 
   constructor( private router: Router ) { }
 
@@ -19,7 +19,7 @@ export class HomePageComponent implements OnInit {
   }
 
   loadingCriarPartida():void {
-    this.loading = true;
+    this.carregando = true;
     this.router.navigate(['/mesa']);
   }
 

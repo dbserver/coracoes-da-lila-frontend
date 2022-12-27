@@ -2,6 +2,7 @@ import { HttpParams } from '@angular/common/http';
 import { Component, Injectable, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { mapTipoCartaDoJogo } from 'src/app/maps/cartaDoJogoMaps';
 import { CartaDoJogo } from 'src/app/model/cartaDoJogo';
 import { Jogador } from 'src/app/model/jogador';
 import { Sala } from 'src/app/model/sala';
@@ -23,6 +24,8 @@ export class MaoJogadorComponent implements OnInit {
   public listaJogador: Jogador[] = [];
   public jogador: Jogador = {} as Jogador;
   public listacartasMao: Array<CartaDoJogo> = [];
+
+  public mapTipo = mapTipoCartaDoJogo;
 
   cartasParaEnviar: Array<CartaDoJogo> = [];
   novaCategoria!: FormGroup;
@@ -93,7 +96,7 @@ export class MaoJogadorComponent implements OnInit {
     }
 
     let parametros = [] as String[];
-  
+
     parametros[0] = this.sala.hash;
     parametros[1] = `${this.jogador.id}`;
 
@@ -117,7 +120,7 @@ export class MaoJogadorComponent implements OnInit {
     }
   }
 
-  public bloquearConfirmarCategorias(): boolean {  
+  public bloquearConfirmarCategorias(): boolean {
     let retorno = false;
     for(let i = 0; i < this.jogador.cartasDoJogo.length; i++){
       if(this.jogador.cartasDoJogo[i].categoria == "Genérica" && this.jogador.cartasDoJogo[i].novaCategoria == null){

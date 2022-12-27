@@ -1,8 +1,9 @@
 import { HttpParams } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { CartaObjetivo } from 'src/app/model/cartaObjetivo';
 import { Sala } from 'src/app/model/sala';
 import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.service';
+import { AreaDeCompraComponent } from '../area-de-compra/area-de-compra.component';
 
 @Component({
   selector: 'app-modal-cartas-objetivo',
@@ -14,6 +15,7 @@ export class ModalCartasObjetivoComponent implements OnInit {
   @Input() cartasObjetivo: CartaObjetivo[] = [];
   @Input() sala: Sala = {} as Sala;
   cartaEscolhida: CartaObjetivo;
+  @Output() embaralharCartas = new EventEmitter<boolean>();
   
 
   constructor(private mesaJogoService: MesaJogoService) {
@@ -38,5 +40,6 @@ export class ModalCartasObjetivoComponent implements OnInit {
     const modal = document.getElementById("modal");
     if (modal != null)
       modal.style.display = 'none';
+    this.embaralharCartas.emit(true);
   }
 }

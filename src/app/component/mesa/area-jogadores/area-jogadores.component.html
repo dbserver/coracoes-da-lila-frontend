@@ -17,7 +17,8 @@
           <app-indica-jogador *ngIf="sala.status == 'AGUARDANDO_DEFINICAO' && jogador?.status=='FINALIZADO'" mensagem="Finalizado"></app-indica-jogador>
           <app-indica-jogador *ngIf="sala.status == 'FINALIZADO'" mensagem="Finalizado"></app-indica-jogador>
           <img class="avatar" src="assets/blank-profile-picture-gb56d1b702_1280.png">
-          <p class="nome-jogador">{{jogador.nome}}</p>
+          <p class="nome-jogador">
+            <img *ngIf="jogador?.id == sala.jogadorEscolhido?.id && sala.status === 'JOGANDO'" class="coracao-pequeno-selecionado" src="assets/svg/icone-coracao.svg" alt="Ícone coração">{{jogador.nome}}</p>
       </button>
   </div>
 </div>
@@ -27,7 +28,9 @@
       <div class="linha-3">
           <div></div>
           <div class="centro"><img class="avatar" src="../../../assets/avatar" alt=""></div>
-          <div class="centro">{{jogadorModal.nome}}
+          <div class="centro nome-jogador">
+            <img *ngIf="jogadorModal?.id == sala.jogadorEscolhido?.id && sala.status === 'JOGANDO'" class="coracao-pequeno-selecionado" src="assets/svg/icone-coracao.svg" alt="Ícone coração">
+            {{jogadorModal.nome}}
           </div>
       </div>
 
@@ -88,10 +91,10 @@
             </div>
             <div class="carta carta-horizontal" *ngFor="let cartaObjetivo of jogadorModal.cartasObjetivo">
                 <div class="cabecalho">
-                    <h2 class="titulo">{{cartaObjetivo.descricao}}</h2>
+                    <h2 class="titulo">{{cartaObjetivo.textoTematico}}</h2>
                 </div>
                 <div class="corpo">
-                    <p class="definicao y-scroll">{{cartaObjetivo.classificacao}}</p>
+                    <p class="definicao y-scroll">{{cartaObjetivo.textoRegra}}</p>
                 </div>
             </div>
         </div>
