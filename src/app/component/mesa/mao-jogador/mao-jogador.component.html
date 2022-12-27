@@ -20,7 +20,12 @@
             <button class="botao-sair" mat-raised-button [routerLink]="['/']">Sair</button>
         </div> -->
         <div class="centro"><img class="avatar" src="../../../assets/avatar" alt=""></div>
+
+        <div class="nome-jogador">
+            <img *ngIf="jogador?.id == sala.jogadorEscolhido?.id && sala.status === 'JOGANDO'" class="coracao-pequeno" src="assets/svg/icone-coracao.svg" alt="Ícone coração">
         <div *ngIf="jogador" class="centro nome">{{jogador.nome}}</div>
+        </div>
+
     </div>
 
     <div class="carta-coracoes">
@@ -49,6 +54,12 @@
                         <option value="Auditiva">Auditiva</option>
                         <option value="Visual">Visual</option>
                     </select>
+            <div *ngFor="let cartas of jogador?.cartasDoJogo" class="carta carta-vertical">
+                <div class="cabecalho">
+                    <h2 class="titulo">{{ mapTipo.get(cartas.tipo) }}</h2>
+                    <div class="pontos">
+                        <p class="pt">{{ cartas.pontos }}</p>
+                    </div>
                 </div>
                 <div class="carta carta-vertical">
                     <div class="cabecalho">
@@ -56,6 +67,7 @@
                         <div class="pontos">
                             <p class="pt">{{ cartas.pontos }}</p>
                         </div>
+<<<<<<< HEAD
                     </div>
                     <div class="corpo">
                         <p class="definicao y-scroll">
@@ -72,17 +84,16 @@
                             </div>
                             <div class="presentes">
                                 <div class="presente-acao">
-                                    <div class="presente-acao" *ngIf="cartas.tipo === 'Informação' && cartas.bonus == true">
+                                    <div class="presente-acao" *ngIf="cartas.tipo === 'INFORMACAO' && cartas.bonus == true">
                                         <img class="presente" src="assets/svg/icone-presente.svg" alt="presente">
                                         <img class="presenteInfoAcoes" src="assets/svg/icone-usuario.svg" alt="acao">
                                     </div>
-                                    <div class="presente-info" *ngIf="cartas.tipo === 'Ação' && cartas.bonus == true">
+                                    <div class="presente-info" *ngIf="cartas.tipo === 'ACAO' && cartas.bonus == true">
                                         <img class="presente" src="assets/svg/icone-presente.svg" alt="presente">
                                         <img class="presenteInfoAcoes" src="assets/svg/icone-info.svg" alt="info">
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     </div>
                     <div class="rodape">
                         <span class="fonte y-scroll">Fonte: {{cartas.fonte}}</span>
@@ -92,10 +103,10 @@
 
             <div class="carta carta-horizontal" *ngFor="let cartaObjetivo of jogador?.cartasObjetivo">
                 <div class="cabecalho">
-                    <h2 class="titulo">{{cartaObjetivo.descricao}}</h2>
+                    <h2 class="titulo">{{cartaObjetivo.textoTematico}}</h2>
                 </div>
                 <div class="corpo">
-                    <p class="definicao y-scroll">{{cartaObjetivo.classificacao}}</p>
+                    <p class="definicao y-scroll">{{cartaObjetivo.textoRegra}}</p>
                 </div>
             </div>
         </div>

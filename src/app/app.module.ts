@@ -41,7 +41,7 @@ import {
 } from '@stomp/ng2-stompjs';
 
 import { myRxStompConfig } from './rx-stomp.config';
-import { TelaErroComponent } from './component/tela-erro/tela-erro.component';
+import { TelaErroComponent } from './component/erro/tela-erro/tela-erro.component';
 import { IndicaJogadorComponent } from './component/mesa/indica-jogador/indica-jogador.component';
 import { LicenciamentoComponent } from './component/licenciamento/licenciamento.component';
 import { TelaHistoriaComponent } from './component/tela-historia/tela-historia.component';
@@ -50,6 +50,14 @@ import { CartaInicioComponent } from './component/mesa/carta-inicio/carta-inicio
 import { PainelVoltarComponent } from './component/painel-voltar/painel-voltar.component';
 import { TelaDownloadComponent } from './component/tela-download/tela-download.component';
 import { ModalCartasObjetivoComponent } from './component/mesa/modal-cartas-objetivo/modal-cartas-objetivo.component';
+import { TelaErroJogoInciadoComponent } from './component/erro/tela-erro-jogo-inciado/tela-erro-jogo-inciado.component';
+import { TelaErroSalaCheiaComponent } from './component/erro/tela-erro-sala-cheia/tela-erro-sala-cheia.component';
+import { TelaErroJogoFinalizadoComponent } from './component/erro/tela-erro-jogo-finalizado/tela-erro-jogo-finalizado.component';
+import { TelaErroSalaInexistenteComponent } from './component/erro/tela-erro-sala-inexistente/tela-erro-sala-inexistente.component';
+import { PrimeiroJogadorComponent } from './component/primeiro-jogador/primeiro-jogador.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { AnimacaoCartaComponent } from './component/mesa/animacao-carta/animacao-carta.component';
+import { OpcoesJogadaComponent } from './component/mesa/opcoes-jogada/opcoes-jogada.component';
 
 
 
@@ -86,13 +94,21 @@ import { ModalCartasObjetivoComponent } from './component/mesa/modal-cartas-obje
     RegrasComponent,
     PainelVoltarComponent,
     TelaDownloadComponent,
-    ModalCartasObjetivoComponent
+    ModalCartasObjetivoComponent,
+    TelaErroJogoInciadoComponent,
+    TelaErroSalaCheiaComponent,
+    TelaErroJogoFinalizadoComponent,
+    TelaErroSalaInexistenteComponent,
+    OpcoesJogadaComponent,
+    PrimeiroJogadorComponent,
+    AnimacaoCartaComponent
   ],
   imports: [
     BrowserModule,
     MatIconModule,
     MatButtonModule,
     MatRippleModule,
+    MatRadioModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
@@ -119,7 +135,8 @@ import { ModalCartasObjetivoComponent } from './component/mesa/modal-cartas-obje
       deps: [InjectableRxStompConfig],
     },
     MesaJogoService,
-    ModalCartasObjetivoComponent
+    ModalCartasObjetivoComponent,
+    HttpClientModule
   ],
   bootstrap: [AppComponent],
 })

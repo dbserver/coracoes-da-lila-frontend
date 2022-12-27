@@ -2,6 +2,7 @@ import { HttpParams } from '@angular/common/http';
 import { Component, Injectable, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { mapTipoCartaDoJogo } from 'src/app/maps/cartaDoJogoMaps';
 import { CartaDoJogo } from 'src/app/model/cartaDoJogo';
 import { Jogador } from 'src/app/model/jogador';
 import { Sala } from 'src/app/model/sala';
@@ -26,6 +27,7 @@ export class MaoJogadorComponent implements OnInit {
 
   cartasParaEnviar: Array<CartaDoJogo> = [];
   novaCategoria!: FormGroup;
+  public mapTipo = mapTipoCartaDoJogo;
 
   constructor(
     private mesaService: MesaService,

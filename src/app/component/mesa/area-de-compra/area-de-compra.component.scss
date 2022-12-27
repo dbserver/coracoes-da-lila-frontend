@@ -1,7 +1,6 @@
 .container {
   display: flex;
   align-items: center;
-  justify-content: center;
   height: calc(100% - 27px);
 
   .compra-container {
@@ -13,13 +12,11 @@
     .cartas-disponiveis {
       display: flex;
       flex-direction: column;
+      gap: 1.5rem;
 
       .grupo-cartas {
         display: flex;
-
-        &:not(:first-child) {
-          margin-top: 24px;
-        }
+        gap: 1.5rem;
       }
     }
 
@@ -94,10 +91,6 @@
     &.desabilitar-acao {
       cursor: not-allowed;
       opacity: 0.5;
-    }
-
-    &:not(:first-child) {
-      margin-left: 24px;
     }
 
     &-baralho {
@@ -241,6 +234,16 @@
       width: 160px;
       height: 100px;
 
+      &.desabilitar-carta {
+        cursor: not-allowed;
+        opacity: 0.2;
+      }
+
+      &.desabilitar-acao {
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
+
       &-logotexto {
         display: flex;
         flex-direction: column;
@@ -249,6 +252,7 @@
       .imagem {
         &-logo {
           height: 50px;
+          padding-top: 7px;
         }
 
         &-lila {
@@ -258,7 +262,7 @@
       }
 
       .texto {
-        font-size: 10px;
+        font-size: calc(var(--tamanhoFonte) - 5px);
         color: #351c75;
       }
     }

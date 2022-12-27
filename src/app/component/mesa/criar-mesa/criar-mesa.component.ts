@@ -17,7 +17,7 @@ export class CriarMesaComponent implements OnInit {
   nick: string;
 
   isvalid = true;
-  loading = false;
+  carregando = false;
 
   constructor(
     private mesaService: MesaService,
@@ -36,6 +36,7 @@ export class CriarMesaComponent implements OnInit {
       cartasDoJogo: [],
       cartasObjetivo: [],
       pontos: 0,
+      pontosObjetivo: 0,
       coracaoPequeno: 2,
       coracaoGrande: 0,
       isHost: true,
@@ -46,7 +47,7 @@ export class CriarMesaComponent implements OnInit {
     if(this.nomeValido()){
       this.isvalid = true;
       this.criarMesa();
-      this.loading = true;
+      this.carregando = true;
     }else{
       this.isvalid = false;
     }
@@ -76,7 +77,8 @@ export class CriarMesaComponent implements OnInit {
     this.router.navigate(['/mesa-criada', this.sala.hash]);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   emit() {
     this.mesaJogoService.getemitSalaSubject().next(this.sala);

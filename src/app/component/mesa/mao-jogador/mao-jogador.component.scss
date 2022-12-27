@@ -9,6 +9,12 @@
   margin: 15px;
 }
 
+.nome-jogador {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
 .botao-sair {
   color: var(--font-color);
   background-color: var(--btn-bg);
