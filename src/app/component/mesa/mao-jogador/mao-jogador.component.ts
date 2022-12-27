@@ -25,9 +25,10 @@ export class MaoJogadorComponent implements OnInit {
   public jogador: Jogador = {} as Jogador;
   public listacartasMao: Array<CartaDoJogo> = [];
 
+  public mapTipo = mapTipoCartaDoJogo;
+
   cartasParaEnviar: Array<CartaDoJogo> = [];
   novaCategoria!: FormGroup;
-  public mapTipo = mapTipoCartaDoJogo;
 
   constructor(
     private mesaService: MesaService,
@@ -95,7 +96,7 @@ export class MaoJogadorComponent implements OnInit {
     }
 
     let parametros = [] as String[];
-  
+
     parametros[0] = this.sala.hash;
     parametros[1] = `${this.jogador.id}`;
 
@@ -119,7 +120,7 @@ export class MaoJogadorComponent implements OnInit {
     }
   }
 
-  public bloquearConfirmarCategorias(): boolean {  
+  public bloquearConfirmarCategorias(): boolean {
     let retorno = false;
     for(let i = 0; i < this.jogador.cartasDoJogo.length; i++){
       if(this.jogador.cartasDoJogo[i].categoria == "Genérica" && this.jogador.cartasDoJogo[i].novaCategoria == null){

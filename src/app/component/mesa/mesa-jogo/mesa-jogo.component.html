@@ -7,7 +7,7 @@
 <div class="container">
     <header><app-area-jogadores></app-area-jogadores></header>
     <nav *ngIf="sala.status=='AGUARDANDO'"><app-inicia-partida></app-inicia-partida></nav>
-    <nav *ngIf="sala.status =='JOGANDO' " class="area-central">
+    <nav *ngIf="sala.status =='JOGANDO' || sala.status == 'AGUARDANDO_DEFINICAO'" class="area-central">
       <app-opcoes-jogada></app-opcoes-jogada>
       <app-area-de-compra></app-area-de-compra>
     </nav>
