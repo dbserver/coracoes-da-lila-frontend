@@ -23,11 +23,11 @@
         </div>
         <div class="presentes">
             <div class="presente-acao">
-                <div class="presente-acao" *ngIf="data.tipo === 'Informação' && data.bonus == true">
+                <div class="presente-acao" *ngIf="data.tipo === 'ACAO' && data.bonus == true">
                     <img class="presente" src="../../../assets/svg/icone-presente.svg" alt="presente" />
                     <img class="presenteInfoAcoes" src="../../../assets/svg/icone-usuario.svg" alt="acao" />
                 </div>
-                <div class="presente-info" *ngIf="data.tipo === 'Ação' && data.bonus == true">
+                <div class="presente-info" *ngIf="data.tipo === 'INFORMACAO' && data.bonus == true">
                     <img class="presente" src="../../../assets/svg/icone-presente.svg" alt="presente" />
                     <img class="presenteInfoAcoes" src="../../../assets/svg/icone-info.svg" alt="info" />
                 </div>
