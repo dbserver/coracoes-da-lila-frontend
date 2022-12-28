@@ -1,6 +1,6 @@
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ModalCartasObjetivoComponent } from './modal-cartas-objetivo.component';
 
 describe('ModalCartasObjetivoComponent', () => {
@@ -10,6 +10,7 @@ describe('ModalCartasObjetivoComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ ModalCartasObjetivoComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
       providers: [ModalCartasObjetivoComponent, HttpClient, HttpHandler]
     })
     .compileComponents();

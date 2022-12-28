@@ -2,7 +2,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ModalCartasObjetivoComponent } from '../modal-cartas-objetivo/modal-cartas-objetivo.component';
-
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { AreaDeCompraComponent } from './area-de-compra.component';
 
 describe('AreaDeCompraComponent', () => {
@@ -12,6 +12,7 @@ describe('AreaDeCompraComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ AreaDeCompraComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
       imports: [HttpClientTestingModule, RouterTestingModule],
       providers: [ModalCartasObjetivoComponent]
     })
