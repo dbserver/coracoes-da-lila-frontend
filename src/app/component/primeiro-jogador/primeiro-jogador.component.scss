@@ -1,9 +1,25 @@
-.icone-coracao {
-  visibility: hidden;
+* {
+  box-sizing: border-box;
+  border: 1px solid red;
 }
-.nomes-jogadores{
-  display:grid;
+
+.primeiro-jogador-container {
+  display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 1.5%; 
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.lista-jogadores-radio {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: repeat(3, auto);
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.nomes-jogadores{
+  
 }
