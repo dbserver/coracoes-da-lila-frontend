@@ -1,6 +1,6 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { AreaJogadoresComponent } from './area-jogadores.component';
 
 describe('AreaJogadoresComponent', () => {
@@ -10,6 +10,7 @@ describe('AreaJogadoresComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ AreaJogadoresComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
       imports: [HttpClientTestingModule]
     })
     .compileComponents();

@@ -3,6 +3,7 @@ import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AcessibilidadeComponent } from '../acessibilidade/acessibilidade.component';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 
 
 
@@ -16,6 +17,7 @@ describe('RegrasComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [RegrasComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
       imports: [RouterTestingModule, HttpClientTestingModule]
     })
       .compileComponents();
