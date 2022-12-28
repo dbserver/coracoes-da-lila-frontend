@@ -99,7 +99,7 @@ export class EntrarMesaComponent implements OnInit {
   }
 
   nomeValido(): boolean{
-    var pattern = /^[a-zA-Z\u00C0-\u00FF ]{2,10}$/gmi;
+    var pattern = /^[a-zA-Z\u00C0-\u00FF0-9 ]{2,10}$/gmi;
 
     return pattern.test(this.jogador.nome);
   }
