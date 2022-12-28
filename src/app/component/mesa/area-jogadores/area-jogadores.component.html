@@ -1,19 +1,23 @@
 <div class="area-jogadores">
-  <div class="box-jogador">
-      <button class="jogador" *ngFor="let jogador of jogadores" (click)="abrirModal(jogador)">
-          <app-indica-jogador *ngIf="sala.status == 'JOGANDO' && jogador.status=='JOGANDO'" mensagem="Jogando">
-          </app-indica-jogador>
-          <app-indica-jogador *ngIf="sala.status == 'ULTIMA_RODADA' && jogador.status=='JOGANDO'" mensagem="Jogando">
-          </app-indica-jogador>
-          <app-indica-jogador *ngIf="sala.status == 'JOGANDO' && jogador.status=='ESPERANDO'" mensagem="Aguardando">
-          </app-indica-jogador>
-          <app-indica-jogador *ngIf="sala.status == 'ULTIMA_RODADA' && jogador.status=='ESPERANDO'" mensagem="Aguardando">
-          </app-indica-jogador>
-          <img class="avatar" src="assets/blank-profile-picture-gb56d1b702_1280.png">
-          <p class="nome-jogador">
-            <img *ngIf="jogador?.id == sala.jogadorEscolhido?.id && sala.status === 'JOGANDO'" class="coracao-pequeno-selecionado" src="assets/svg/icone-coracao.svg" alt="Ícone coração">{{jogador.nome}}</p>
-      </button>
-  </div>
+    <div class="box-jogador">
+        <button class="jogador" *ngFor="let jogador of jogadores" (click)="abrirModal(jogador)">
+            <div class="status-container">
+                <app-indica-jogador *ngIf="sala.status == 'JOGANDO' && jogador.status=='JOGANDO'" mensagem="Jogando">
+                </app-indica-jogador>
+                <app-indica-jogador *ngIf="sala.status == 'ULTIMA_RODADA' && jogador.status=='JOGANDO'" mensagem="Jogando">
+                </app-indica-jogador>
+                <app-indica-jogador *ngIf="sala.status == 'JOGANDO' && jogador.status=='ESPERANDO'" mensagem="Aguardando">
+                </app-indica-jogador>
+                <app-indica-jogador *ngIf="sala.status == 'ULTIMA_RODADA' && jogador.status=='ESPERANDO'" mensagem="Aguardando">
+                </app-indica-jogador>
+            </div>
+            <img class="avatar" src="assets/blank-profile-picture-gb56d1b702_1280.png">
+            <p class="nome-jogador">
+                <img *ngIf="jogador?.id == sala.jogadorEscolhido?.id && sala.status === 'JOGANDO'" class="coracao-pequeno-selecionado" src="assets/svg/icone-coracao.svg" alt="Ícone coração">
+                {{jogador.nome}}
+            </p>
+        </button>
+    </div>
 </div>
 
 <jw-modal id="mao-jogador">

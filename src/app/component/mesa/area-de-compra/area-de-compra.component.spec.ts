@@ -1,21 +1,27 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialog, MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ModalCartasObjetivoComponent } from '../modal-cartas-objetivo/modal-cartas-objetivo.component';
+import { ModalZoomComponent } from '../modal-zoom/modal-zoom.component';
 
 import { AreaDeCompraComponent } from './area-de-compra.component';
 
-describe('AreaDeCompraComponent', () => {
+fdescribe('AreaDeCompraComponent', () => {
   let component: AreaDeCompraComponent;
   let fixture: ComponentFixture<AreaDeCompraComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AreaDeCompraComponent ],
-      imports: [HttpClientTestingModule, RouterTestingModule],
-      providers: [ModalCartasObjetivoComponent]
+      declarations: [AreaDeCompraComponent],
+      imports: [HttpClientTestingModule, RouterTestingModule, MatDialogModule],
+      providers: [ModalCartasObjetivoComponent, ModalZoomComponent,
+        { provide: MAT_DIALOG_DATA, useValue: {} },
+        { provide: MatDialogRef, useValue: {} },
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -30,7 +36,7 @@ describe('AreaDeCompraComponent', () => {
 
   it('deve abrir o modal quando o método escolherEntreDuasCartasObjetivo for chamado', () => {
     const modalCartasObjetivo = TestBed.createComponent(ModalCartasObjetivoComponent);
-    
+
     component.escolherEntreDuasCartasObjetivo();
 
     const modal = modalCartasObjetivo.nativeElement.querySelector('#modal');
@@ -44,5 +50,14 @@ describe('AreaDeCompraComponent', () => {
     expect(modal.style.display).toEqual('');
   })
 
-
-});
+  // teste que não está passando:
+  it('deve abrir o mat-dialog com click no botão de lupa', async () => {
+    spyOn(component, 'abrirZoom').and.stub();
+    const botao: HTMLElement = fixture.debugElement.nativeElement.querySelector('.zoom');
+    fixture.detectChanges();
+    botao.click();
+    fixture.whenRenderingDone().then(() => {
+      expect(component.abrirZoom).toHaveBeenCalled();
+    })
+  });
+})
