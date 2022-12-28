@@ -62,11 +62,13 @@ p {
         &-horizontal {
           width: 190px;
           height: 110px;
+          margin-left: 0;
 
           &.carta-sem-titulo {
             display: flex;
             align-items: center;
-
+            margin-left: 0;
+  
             .corpo .definicao {
               min-height: unset;
               max-height: unset;
@@ -75,9 +77,29 @@ p {
           }
 
           .cabecalho {
+            .grid-zoom {
+              display: flex;
+              // grid-template-columns: 12% 88%;
+            }
+            
+            .zoom {
+              border: none;
+              background: local;
+              cursor: pointer;
+              padding-left: 0;
+              padding-right: 0;
+              
+              .mat-icon {
+                font-weight: bolder;
+              }
+            
+              .icone-zoom {
+                margin-bottom: 16px;
+              }
+            }
             .titulo {
               color: #38761d;
-              font-size: calc(var(--tamanhoFonte) - 6pt);
+              font-size: calc(var(--tamanhoFonte) - 0.6vw);
               line-height: 15px;
             }
           }
