@@ -9,9 +9,9 @@
     </mat-form-field>
 
 
-    <div *ngIf="!isvalid">
+    <div *ngIf="!nomeValido()">
       <p class="aviso">
-      Nome deve ter pelo menos 2 caracteres
+        Nome deve ter entre 2 e 10 caracteres. O nome também não deve conter caracteres especiais (@.|! ? ...)
       </p>
     </div>
     <div >
