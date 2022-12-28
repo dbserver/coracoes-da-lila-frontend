@@ -239,7 +239,7 @@
         .cabecalho {
           .titulo {
             color: #38761d;
-            font-size: calc(var(--tamanhoFonte) - 6pt);
+            font-size: calc(var(--tamanhoFonte) - 0.45vw);
             line-height: 15px;
           }
         }
@@ -249,7 +249,7 @@
             min-height: 50px;
             max-height: 60px;
             width: 200px;
-            font-size: calc(var(--tamanhoFonte) - 7pt);
+            font-size: calc(var(--tamanhoFonte) - 6pt);
             line-height: 15px;
             overflow-y: auto;
           }
