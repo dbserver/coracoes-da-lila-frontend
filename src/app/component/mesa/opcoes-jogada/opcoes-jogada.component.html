@@ -10,21 +10,21 @@
         <p *ngIf="podeComprarCarta(this.sala.baralho.cartasDoJogo) && limpaTela()">** Seus corações bônus permanecem com você</p>
     </ul>
 
-    <ul>
-        <li *ngIf="podeRolarDado() == 'INFORMACAO' && limparTelaObjetivos() && jogador.status == 'JOGANDO'">
-            1 a 4 = nada<br>
-            5 a 6 = bônus
-        </li>
-        <li *ngIf="podeRolarDado() == 'ACAO' && limparTelaObjetivos() && jogador.status == 'JOGANDO'">
-            1 = perde 1 coração<br>
-            2 a 3 = nada<br>
-            4 = coração grande<br>
-            5 a 6 = coração pequeno
-        </li>
+    <ul *ngIf="podeRolarDado() == 'INFORMACAO' && limparTelaObjetivos() && jogador.status == 'JOGANDO'">
+      <li>Rolar o dado para bônus de Informação:</li>
+      <p>
+        1 a 4 = nada<br>
+        5 a 6 = bônus
+      </p>
     </ul>
-    <!-- <h3 class="titulo" *ngIf="sala.status == 'ULTIMA_RODADA'">Opções de jogada:</h3>
-    <ul *ngIf="sala.status == 'ULTIMA_RODADA'">
-        <li>Trocar a categoria das cartas genéricas.</li>
-    </ul> -->
+    <ul *ngIf="podeRolarDado() == 'ACAO' && limparTelaObjetivos() && jogador.status == 'JOGANDO'">
+      <li>Rolar o dado para bônus de Ação:</li>
+      <p>
+        1 = perde 1 coração<br>
+        2 a 3 = nada<br>
+        4 = coração grande<br>
+        5 a 6 = coração pequeno
+      </p>
+    </ul>
 </section>
 
