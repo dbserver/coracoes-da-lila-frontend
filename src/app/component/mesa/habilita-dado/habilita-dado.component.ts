@@ -27,6 +27,10 @@ export class HabilitaDadoComponent implements OnInit {
     this.mesaJogoService.comprarCartas(this.sala).subscribe((sala) => {
       this.mesaJogoService.getemitSalaSubject().next(sala);
     });
+    const node = this.dado.nativeElement;
+    if (node instanceof HTMLElement) {
+      this.resetarClasse(node);
+    }
   }
 
   animaDado() {
@@ -38,9 +42,11 @@ export class HabilitaDadoComponent implements OnInit {
     }
   }
 
-
   trocarClasses(die: HTMLElement) {
     die.classList.add('even-roll');
   }
 
+  resetarClasse(die: HTMLElement) {
+    die.classList.remove('even-roll');
+  }
 }
