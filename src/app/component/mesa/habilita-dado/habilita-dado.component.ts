@@ -38,19 +38,9 @@ export class HabilitaDadoComponent implements OnInit {
     }
   }
 
-  resetarDado() {
-    const node = this.dado.nativeElement;
-    if (node instanceof HTMLElement) {
-      this.resetarClasse(node);
-    }
-    this.numero = 0;
-  }
 
   trocarClasses(die: HTMLElement) {
     die.classList.add('even-roll');
   }
 
-  resetarClasse(die: HTMLElement) {
-    die.classList.remove('even-roll');
-  }
 }
