@@ -48,11 +48,11 @@
             <div *ngFor="let cartas of jogador?.cartasDoJogo">
                 <div class="select" [formGroup]="novaCategoria" *ngIf="sala.status == 'AGUARDANDO_DEFINICAO'">
                     <select *ngIf="cartas.categoria == 'GENERICA'" (change)="atualizarCategorias(cartas)" formControlName="categoria">
-                        <option value="Intelectual">Intelectual</option>
-                        <option value="Física">Física</option>
+                        <option value="INTELECTUAL">Intelectual</option>
+                        <option value="FISICA">Física</option>
                         <option value="TEA">TEA</option>
-                        <option value="Auditiva">Auditiva</option>
-                        <option value="Visual">Visual</option>
+                        <option value="AUDITIVA">Auditiva</option>
+                        <option value="VISUAL">Visual</option>
                     </select>
                 </div>
                 <div class="carta carta-vertical">
@@ -87,6 +87,7 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
                     </div>
                     <div class="rodape">
                         <span class="fonte y-scroll">Fonte: {{cartas.fonte}}</span>

@@ -9,6 +9,8 @@ import { Sala } from 'src/app/model/sala';
 import { AreaDeCompraService } from 'src/app/service/area-de-compra-service/area-de-compra.service';
 import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.service';
 import { MesaService } from 'src/app/service/mesa-service/mesa.service';
+import { SalaRequestNovaCategoriaDTO } from 'src/app/model/dto/salaRequestNovaCategoriaDTO';
+import { NovaCategoriaDTO } from 'src/app/model/dto/novaCategoriaDTO';
 
 @Injectable({
   providedIn: 'root',
@@ -19,6 +21,7 @@ import { MesaService } from 'src/app/service/mesa-service/mesa.service';
   styleUrls: ['./mao-jogador.component.scss'],
 })
 export class MaoJogadorComponent implements OnInit {
+
   private hash = '';
   public sala: Sala = {} as Sala;
   public listaJogador: Jogador[] = [];
@@ -27,7 +30,12 @@ export class MaoJogadorComponent implements OnInit {
 
   public mapTipo = mapTipoCartaDoJogo;
 
-  cartasParaEnviar: Array<CartaDoJogo> = [];
+  novaCategoriaDTO: NovaCategoriaDTO = {
+    cartaModificadaID: '',
+    enumCategoria: ''
+  };
+
+  cartasCategoriasAtualizadas: Array<NovaCategoriaDTO> = [];
   novaCategoria!: FormGroup;
 
   constructor(
@@ -83,51 +91,61 @@ export class MaoJogadorComponent implements OnInit {
     return valorCoracaoPequeno! <= coracaoP && valorCoracaoGrande! <= coracaoG;
   }
 
-  //TODO: Desabilitar o botão de confirmar categorias se o jogador ainda não tiver escolhido as categorias
-  //Atualmente o jogador pode "confirmar" sem escolher as categorias
-
   public enviarCategorias(): void {
-    for(let i = 0; i < this.cartasParaEnviar.length; i++){
-      for(let j = 0; j < this.jogador.cartasDoJogo.length; j++){
-        if(this.jogador.cartasDoJogo[j].categoria == "Genérica" && this.jogador.cartasDoJogo[j].texto == this.cartasParaEnviar[i].texto){
-          this.jogador.cartasDoJogo[j].novaCategoria = this.cartasParaEnviar[i].novaCategoria;
-        }
-      }
-    }
 
-    let parametros = [] as String[];
+    let salaRequestNovaCategoriaDTO: SalaRequestNovaCategoriaDTO = {
+      jogadorID: this.jogador.id,
+      salaHash: this.sala.hash,
+      listaCartasParaAtualizar: this.cartasCategoriasAtualizadas
+    };
 
-    parametros[0] = this.sala.hash;
-    parametros[1] = `${this.jogador.id}`;
+    console.log(this.cartasCategoriasAtualizadas)
 
-    this.mesaJogoService.enviarJogadorParaFinalizar(parametros).subscribe((sala) => (this.sala = sala));
+    this.mesaJogoService.enviarJogadorParaFinalizar(salaRequestNovaCategoriaDTO).subscribe((sala) => (this.sala = sala));
   }
 
-  public atualizarCategorias(cartaGenerica: CartaDoJogo): void {
-    let dadoRecebido:string = this.novaCategoria.value.categoria;
-    if(cartaGenerica.novaCategoria == null){
-      cartaGenerica.novaCategoria = dadoRecebido;
-      this.cartasParaEnviar.push(cartaGenerica);
-    }
-
-    if(cartaGenerica.novaCategoria != dadoRecebido){
-      for(let i = 0; i < this.cartasParaEnviar.length; i++){
-        if(this.cartasParaEnviar[i] == cartaGenerica){
-          cartaGenerica.novaCategoria = dadoRecebido;
-          this.cartasParaEnviar[i] = cartaGenerica;
-        }
+  public verificaCartaJaExistente(cartaGenerica: CartaDoJogo, novaCategoriaRecebida: string): boolean{
+   
+    for (let i = 0; i < this.cartasCategoriasAtualizadas.length; i++){
+      if (this.cartasCategoriasAtualizadas[i].cartaModificadaID == cartaGenerica.id){
+          this.novaCategoriaDTO.cartaModificadaID = cartaGenerica.id;
+          this.novaCategoriaDTO.enumCategoria = novaCategoriaRecebida;
+          this.cartasCategoriasAtualizadas[i] = this.novaCategoriaDTO;
+          return true;
       }
     }
+    return false;
+  }
+
+  
+  public atualizarCategorias(cartaGenerica: CartaDoJogo): void {
+
+    let novaCategoriaRecebida:string = this.novaCategoria.value.categoria;
+
+    if (this.verificaCartaJaExistente(cartaGenerica, novaCategoriaRecebida) == false){
+      this.novaCategoriaDTO.cartaModificadaID = cartaGenerica.id;
+      this.novaCategoriaDTO.enumCategoria = novaCategoriaRecebida;
+      this.cartasCategoriasAtualizadas.push(this.novaCategoriaDTO);
+    }
+
+    this.novaCategoriaDTO = {
+      cartaModificadaID: '',
+      enumCategoria: ''
+    }
+    console.log(this.cartasCategoriasAtualizadas);
   }
 
   public bloquearConfirmarCategorias(): boolean {
-    let retorno = false;
+    let quantidadeCartasGenericas = 0;
     for(let i = 0; i < this.jogador.cartasDoJogo.length; i++){
-      if(this.jogador.cartasDoJogo[i].categoria == "Genérica" && this.jogador.cartasDoJogo[i].novaCategoria == null){
-        retorno = true;
+      if(this.jogador.cartasDoJogo[i].categoria == "GENERICA"){
+        quantidadeCartasGenericas++;
       }
     }
-    return retorno;
+    if (quantidadeCartasGenericas == this.cartasCategoriasAtualizadas.length){
+      return false;
+    }
+    return true;
   }
 
 }

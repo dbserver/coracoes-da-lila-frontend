@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { CartaDoJogo } from 'src/app/model/cartaDoJogo';
+import { SalaRequestNovaCategoriaDTO } from 'src/app/model/dto/salaRequestNovaCategoriaDTO';
 import { environment } from 'src/environments/environment';
 import { Jogador } from '../../model/jogador';
 import { Sala } from '../../model/sala';
@@ -67,7 +68,7 @@ export class MesaJogoService {
     return this.http.put<Sala>(environment.API_URL+'api/jogada/atualizarcategorias', sala);
   }
 
-  enviarJogadorParaFinalizar(params: String[]){
+  enviarJogadorParaFinalizar(params: SalaRequestNovaCategoriaDTO){
     return this.http.put<Sala>(environment.API_URL+'api/jogada/finalizastatusjogador', params);
   }
 }

@@ -1,7 +1,7 @@
 export interface CartaDoJogo{
+    id: string;
     tipo: string;
     categoria: string;
-    novaCategoria: string;
     bonus: boolean;
     texto: string;
     valorCoracaoPequeno: number;
