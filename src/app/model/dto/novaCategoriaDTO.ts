@@ -1,5 +1,5 @@
 
 export interface NovaCategoriaDTO {
     cartaModificadaID: string;
-    enumCategoria: string;
+    novaCategoria: string;
 }

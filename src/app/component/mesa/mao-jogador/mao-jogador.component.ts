@@ -32,7 +32,7 @@ export class MaoJogadorComponent implements OnInit {
 
   novaCategoriaDTO: NovaCategoriaDTO = {
     cartaModificadaID: '',
-    enumCategoria: ''
+    novaCategoria: ''
   };
 
   cartasCategoriasAtualizadas: Array<NovaCategoriaDTO> = [];
@@ -100,6 +100,7 @@ export class MaoJogadorComponent implements OnInit {
     };
 
     console.log(this.cartasCategoriasAtualizadas)
+    console.log(salaRequestNovaCategoriaDTO)
 
     this.mesaJogoService.enviarJogadorParaFinalizar(salaRequestNovaCategoriaDTO).subscribe((sala) => (this.sala = sala));
   }
@@ -109,7 +110,7 @@ export class MaoJogadorComponent implements OnInit {
     for (let i = 0; i < this.cartasCategoriasAtualizadas.length; i++){
       if (this.cartasCategoriasAtualizadas[i].cartaModificadaID == cartaGenerica.id){
           this.novaCategoriaDTO.cartaModificadaID = cartaGenerica.id;
-          this.novaCategoriaDTO.enumCategoria = novaCategoriaRecebida;
+          this.novaCategoriaDTO.novaCategoria = novaCategoriaRecebida;
           this.cartasCategoriasAtualizadas[i] = this.novaCategoriaDTO;
           return true;
       }
@@ -124,13 +125,13 @@ export class MaoJogadorComponent implements OnInit {
 
     if (this.verificaCartaJaExistente(cartaGenerica, novaCategoriaRecebida) == false){
       this.novaCategoriaDTO.cartaModificadaID = cartaGenerica.id;
-      this.novaCategoriaDTO.enumCategoria = novaCategoriaRecebida;
+      this.novaCategoriaDTO.novaCategoria = novaCategoriaRecebida;
       this.cartasCategoriasAtualizadas.push(this.novaCategoriaDTO);
     }
 
     this.novaCategoriaDTO = {
       cartaModificadaID: '',
-      enumCategoria: ''
+      novaCategoria: ''
     }
     console.log(this.cartasCategoriasAtualizadas);
   }
