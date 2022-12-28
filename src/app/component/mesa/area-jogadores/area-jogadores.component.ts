@@ -27,7 +27,7 @@ export class AreaJogadoresComponent implements OnInit {
 
         this.sala = sala;
         this.jogadores = sala.jogadores?.filter(
-          (jogador) => jogador.nome != this.jogadorPrincipal.nome
+          (jogador) => jogador.id != this.jogadorPrincipal.id
         );
       });
     });
