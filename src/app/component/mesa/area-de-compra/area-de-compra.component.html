@@ -6,7 +6,7 @@
     <div class="cabecalho">
       <h2 class="titulo">{{ mapTipo.get(carta.tipo) }}</h2>
       <div class="pontos">
-        <p class="pt">{{ carta.pontos }}</p>
+        <p class="pt">{{ carta.pontos }}</p> 
       </div>
     </div>
     <div class="corpo">
@@ -14,6 +14,9 @@
         {{ carta.texto }}
       </p>
       <div class="icones">
+        <button id="zoom1" class="zoom" (click)="abrirZoom($event, carta)">
+          <mat-icon class="mat-icon" alt="Ícone de zoom">search</mat-icon>
+        </button>
         <div class="coracoes">
           <div class="coracao" *ngFor="let i of [].constructor(carta.valorCoracaoGrande)">
             <img class="coracao-grande" src="../../../assets/svg/icone-coracao.svg" alt="Ícone coração" />
@@ -74,6 +77,7 @@
         </ng-container>
       </div>
     </div>
+
     <div class="informacoes-gerais">
       <div class="container-cartas">
         <app-animacao-carta *ngIf="embaralharCartas"></app-animacao-carta>
@@ -82,8 +86,10 @@
         'desabilitar-acao': !podeJogar()
       }" class="carta carta-objetivo dropdown">
           <div class="carta-logotexto">
+          <div class="logo-e-texto">
             <img class="imagem-logo" src="../../../assets/img/logoLilaSozinho.png" alt="logo" />
             <p class="texto">Objetivo</p>
+            </div>
             <div class="dropdown">
               <div class="dropbtn">
                 <div class="dropdown-content" *ngIf="
