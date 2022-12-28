@@ -44,11 +44,12 @@ describe('MesaCriadaComponent', () => {
     expect(botaoIniciarJogo.trim()).toContain('Iniciar Jogo')
   })
 
-  it('deve alterar a variável "carregando" para true ao clicar', () => {
+/*   it('deve alterar a variável "carregando" para true ao clicar', () => {
     const carregando = component.carregando;
     expect(component.carregando).toBeFalsy();
     const botao = fixture.nativeElement.querySelector('.btn');
     botao.click();
     expect(carregando.valueOf).toBeTruthy();
-  });
+  }); */
+  
 })
