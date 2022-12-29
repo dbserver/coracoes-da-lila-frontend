@@ -1,5 +1,6 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { HabilitaDadoComponent } from './habilita-dado.component';
 
@@ -10,7 +11,10 @@ describe('HabilitaDadoComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ HabilitaDadoComponent ],
-      imports:[HttpClientTestingModule]
+      imports: [
+        RouterTestingModule,
+        HttpClientTestingModule
+      ]
     })
     .compileComponents();
   });
@@ -19,17 +23,21 @@ describe('HabilitaDadoComponent', () => {
     fixture = TestBed.createComponent(HabilitaDadoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+
   });
+
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('deve alterar a variável "desabilitado" para true ao clicar', () => {
-    const desabilitado = component.desabilitado;
-    expect(component.desabilitado).toBeFalsy();
-    const botao = fixture.nativeElement.querySelector('.btn');
+  it('deve testar se o método mudaDesabilitado() é chamado"', () => {
+    component.desabilitado = false;
+    let mudaDesabilitado = spyOn(component, 'mudaDesabilitado');
+    let botao = fixture.nativeElement.querySelector('botao');
     botao.click();
-    expect(!desabilitado.valueOf).toBeTruthy();
+    expect(mudaDesabilitado).toHaveBeenCalled();
   });
+
+
 });
