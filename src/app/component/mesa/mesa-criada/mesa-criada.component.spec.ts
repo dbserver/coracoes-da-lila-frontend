@@ -42,14 +42,13 @@ describe('MesaCriadaComponent', () => {
     const botaoIniciarJogo = obterValorPorId('#iniciar');
     expect(component.carregando).toBeFalse();
     expect(botaoIniciarJogo.trim()).toContain('Iniciar Jogo')
-  })
+  });
 
-/*   it('deve alterar a variável "carregando" para true ao clicar', () => {
-    const carregando = component.carregando;
-    expect(component.carregando).toBeFalsy();
+  it('deve testar se o método roteamento() é chamado"', () => {
+    const roteamento = spyOn(component, 'roteamento');
     const botao = fixture.nativeElement.querySelector('.btn');
     botao.click();
-    expect(carregando.valueOf).toBeTruthy();
-  }); */
+    expect(roteamento).toHaveBeenCalled();
+  });  
   
 })

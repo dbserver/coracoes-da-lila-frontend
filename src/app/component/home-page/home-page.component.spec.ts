@@ -36,13 +36,10 @@ describe('HomePageComponent', () => {
     expect(primeiroParagrafo.innerHTML).toContain('PCDs');
   });
 
-/*   it('Verifica se o botão existe e tem o conteudo "Criar Partida"', () => {
+  it('Verifica se o botão existe e tem o conteudo "Criar Partida"', () => {
     let botaoCriarPartida = fixture.nativeElement.querySelector('#buttonMesa');
-    component.loadingCriarPartida();
-     
-    expect(component.carregando).toBeTrue();
     expect(botaoCriarPartida.innerHTML).toContain('Criar Partida');
-  }); */
+  });
 
   it('deve redirecionar para a página de regras', inject([Router], (router: Router) => {
     spyOn(router, 'navigate').and.stub(); 
