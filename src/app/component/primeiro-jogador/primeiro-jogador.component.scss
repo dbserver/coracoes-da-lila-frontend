@@ -2,13 +2,6 @@
   box-sizing: border-box;
 }
 
-.primeiro-jogador-container label,
-.nomes-jogadores{
-  font-size: var(--tamanhoFonte);
-  color: var(--input-fontColor);
-  line-height: var(--font-heigth);
-}
-
 .primeiro-jogador-container {
   display: flex;
   flex-direction: column;
@@ -16,6 +9,9 @@
   align-items: center;
   gap: 1rem;
   margin: 1rem 0;
+  font-size: var(--tamanhoFonte);
+  color: var(--input-fontColor);
+  line-height: var(--font-heigth);
 }
 
 .lista-jogadores-radio {
