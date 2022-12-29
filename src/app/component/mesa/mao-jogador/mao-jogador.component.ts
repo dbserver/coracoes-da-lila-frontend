@@ -99,14 +99,11 @@ export class MaoJogadorComponent implements OnInit {
       listaCartasParaAtualizar: this.cartasCategoriasAtualizadas
     };
 
-    console.log(this.cartasCategoriasAtualizadas)
-    console.log(salaRequestNovaCategoriaDTO)
-
     this.mesaJogoService.enviarJogadorParaFinalizar(salaRequestNovaCategoriaDTO).subscribe((sala) => (this.sala = sala));
   }
 
   public verificaCartaJaExistente(cartaGenerica: CartaDoJogo, novaCategoriaRecebida: string): boolean{
-   
+
     for (let i = 0; i < this.cartasCategoriasAtualizadas.length; i++){
       if (this.cartasCategoriasAtualizadas[i].cartaModificadaID == cartaGenerica.id){
           this.novaCategoriaDTO.cartaModificadaID = cartaGenerica.id;
@@ -118,7 +115,7 @@ export class MaoJogadorComponent implements OnInit {
     return false;
   }
 
-  
+
   public atualizarCategorias(cartaGenerica: CartaDoJogo): void {
 
     let novaCategoriaRecebida:string = this.novaCategoria.value.categoria;
@@ -133,7 +130,6 @@ export class MaoJogadorComponent implements OnInit {
       cartaModificadaID: '',
       novaCategoria: ''
     }
-    console.log(this.cartasCategoriasAtualizadas);
   }
 
   public bloquearConfirmarCategorias(): boolean {
