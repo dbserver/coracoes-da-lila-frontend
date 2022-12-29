@@ -2,6 +2,7 @@ import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ModalCartasObjetivoComponent } from './modal-cartas-objetivo.component';
+import { MatDialog } from '@angular/material/dialog';
 
 describe('ModalCartasObjetivoComponent', () => {
   let component: ModalCartasObjetivoComponent;
@@ -11,7 +12,7 @@ describe('ModalCartasObjetivoComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ ModalCartasObjetivoComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
-      providers: [ModalCartasObjetivoComponent, HttpClient, HttpHandler]
+      providers: [ModalCartasObjetivoComponent, HttpClient, HttpHandler, {provide: MatDialog, useValue: {}}]
     })
     .compileComponents();
 
