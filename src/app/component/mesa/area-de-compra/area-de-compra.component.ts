@@ -8,7 +8,11 @@ import { Sala } from '../../../model/sala';
 import { AreaDeCompraService } from '../../../service/area-de-compra-service/area-de-compra.service';
 import { MesaJogoService } from '../../../service/mesa-jogo-service/mesa-jogo.service';
 import { ModalCartasObjetivoComponent } from '../modal-cartas-objetivo/modal-cartas-objetivo.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalZoomComponent } from '../modal-zoom/modal-zoom.component';
+import { ModalZoomObjetivoComponent } from '../modal-zoom-objetivo/modal-zoom-objetivo.component';
 import { mapTipoCartaDoJogo } from 'src/app/maps/cartaDoJogoMaps';
+
 @Component({
   selector: 'app-area-de-compra',
   templateUrl: './area-de-compra.component.html',
@@ -29,7 +33,7 @@ export class AreaDeCompraComponent implements OnInit {
   public bonus = false;
   public embaralharCartas: boolean;
 
-  public mapTipo = mapTipoCartaDoJogo;
+  public mapTipo = mapTipoCartaDoJogo; 
 
   opcoesCartaObjetivo: CartaObjetivo[];
 
@@ -37,7 +41,8 @@ export class AreaDeCompraComponent implements OnInit {
     private mesaJogoService: MesaJogoService,
     private route: ActivatedRoute,
     private areaCompraService: AreaDeCompraService,
-    public modalCartasObjetivo: ModalCartasObjetivoComponent
+    public modalCartasObjetivo: ModalCartasObjetivoComponent,
+    public zoomCarta: MatDialog,
   ) {
     this.opcoesCartaObjetivo = [] as CartaObjetivo[];
     this.embaralharCartas = false;
@@ -158,7 +163,6 @@ export class AreaDeCompraComponent implements OnInit {
       this.jogador.coracaoPequeno +
       this.jogador.bonusCoracaoGrande +
       this.jogador.bonusCoracaoPequeno < 5) {
-
       return true;
     }
     return false;
@@ -208,8 +212,6 @@ export class AreaDeCompraComponent implements OnInit {
 
   public escolherEntreDuasCartasObjetivo() {
     this.buscaCartasObjetivo();
-
-    this.buscaCartasObjetivo();
     this.abrirModal();
     this.desabilitaAnimacaoEmbaralhar();
   }
@@ -232,6 +234,15 @@ export class AreaDeCompraComponent implements OnInit {
     }
   }
 
+  // private buscaCartasObjetivo() {
+  //   this.mesaJogoService.buscarDuasCartasObjetivo(this.sala)
+  //   .subscribe(
+  //     (sala) => (
+  //       this.opcoesCartaObjetivo = sala.opcoesCartaObjetivo,
+  //       this.sala = sala
+  //     )
+  //   );
+
   public desabilitaAnimacaoEmbaralhar() {
     document.getElementById('carta-1')?.classList.remove('carta-1');
     document.getElementById('carta-2')?.classList.remove('carta-2');
@@ -247,5 +258,15 @@ export class AreaDeCompraComponent implements OnInit {
     document
       .getElementById('container-cartas')
       ?.classList.add('embaralhar-animacao');
+  }
+
+  public abrirZoom(event: Event, carta: CartaDoJogo) {
+    event.stopPropagation();
+    this.zoomCarta.open(ModalZoomComponent, {
+      data: carta,
+      height: '92%',
+      width: '35%',
+      panelClass: 'css-carta'
+    });
   }
 }
