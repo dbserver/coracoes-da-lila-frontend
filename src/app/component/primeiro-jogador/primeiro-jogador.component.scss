@@ -2,7 +2,8 @@
   box-sizing: border-box;
 }
 
-.primeiro-jogador-container label {
+.primeiro-jogador-container label,
+.nomes-jogadores{
   font-size: var(--tamanhoFonte);
   color: var(--input-fontColor);
   line-height: var(--font-heigth);
@@ -28,8 +29,4 @@
   width: 50%;
 }
 
-.nomes-jogadores{
-  font-size: var(--tamanhoFonte);
-  color: var(--input-fontColor);
-  line-height: var(--font-heigth);
-}
+
