@@ -24,4 +24,12 @@ describe('HabilitaDadoComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('deve alterar a variável "desabilitado" para true ao clicar', () => {
+    const desabilitado = component.desabilitado;
+    expect(component.desabilitado).toBeFalsy();
+    const botao = fixture.nativeElement.querySelector('.btn');
+    botao.click();
+    expect(!desabilitado.valueOf).toBeTruthy();
+  });
 });
