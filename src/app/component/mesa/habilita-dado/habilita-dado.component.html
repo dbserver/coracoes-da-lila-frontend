@@ -34,7 +34,7 @@
       <span class="dot"></span>
     </li>
   </ol>
-  <button class="botao" mat-raised-button (click)="compraCarta()">
+  <button class="botao" [disabled]="mudaDesabilitado()" mat-raised-button (click)="compraCarta()">
     Rolar o dado
   </button>
 </div>
