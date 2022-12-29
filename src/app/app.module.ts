@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -50,6 +51,8 @@ import { CartaInicioComponent } from './component/mesa/carta-inicio/carta-inicio
 import { PainelVoltarComponent } from './component/painel-voltar/painel-voltar.component';
 import { TelaDownloadComponent } from './component/tela-download/tela-download.component';
 import { ModalCartasObjetivoComponent } from './component/mesa/modal-cartas-objetivo/modal-cartas-objetivo.component';
+import { ModalZoomComponent } from './component/mesa/modal-zoom/modal-zoom.component';
+import { ModalZoomObjetivoComponent } from './component/mesa/modal-zoom-objetivo/modal-zoom-objetivo.component';
 import { TelaErroJogoInciadoComponent } from './component/erro/tela-erro-jogo-inciado/tela-erro-jogo-inciado.component';
 import { TelaErroSalaCheiaComponent } from './component/erro/tela-erro-sala-cheia/tela-erro-sala-cheia.component';
 import { TelaErroJogoFinalizadoComponent } from './component/erro/tela-erro-jogo-finalizado/tela-erro-jogo-finalizado.component';
@@ -58,10 +61,6 @@ import { PrimeiroJogadorComponent } from './component/primeiro-jogador/primeiro-
 import { MatRadioModule } from '@angular/material/radio';
 import { AnimacaoCartaComponent } from './component/mesa/animacao-carta/animacao-carta.component';
 import { OpcoesJogadaComponent } from './component/mesa/opcoes-jogada/opcoes-jogada.component';
-
-
-
-
 
 @NgModule({
   declarations: [
@@ -95,6 +94,8 @@ import { OpcoesJogadaComponent } from './component/mesa/opcoes-jogada/opcoes-jog
     PainelVoltarComponent,
     TelaDownloadComponent,
     ModalCartasObjetivoComponent,
+    ModalZoomComponent,
+    ModalZoomObjetivoComponent,
     TelaErroJogoInciadoComponent,
     TelaErroSalaCheiaComponent,
     TelaErroJogoFinalizadoComponent,
@@ -117,12 +118,12 @@ import { OpcoesJogadaComponent } from './component/mesa/opcoes-jogada/opcoes-jog
     FormsModule,
     MatButtonModule,
     MatInputModule,
-    MatButtonModule,
     MatIconModule,
     HttpClientModule,
     ClipboardModule,
     MatCardModule,
     MatProgressSpinnerModule,
+    MatDialogModule,
   ],
   providers: [
     {

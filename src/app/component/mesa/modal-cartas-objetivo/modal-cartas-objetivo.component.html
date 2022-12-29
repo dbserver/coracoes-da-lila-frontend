@@ -3,9 +3,17 @@
         <p>Selecione uma das cartas</p>
         <div class="container-card">
             <div class="cartas-container-scroll">
-                <div class="carta carta-horizontal" *ngFor="let cartaObjetivo of this.cartasObjetivo" (click)="escolherCartaObjetivo(cartaObjetivo)">
+                <div class="carta carta-horizontal" *ngFor="let cartaObjetivo of this.cartasObjetivo"
+                    (click)="escolherCartaObjetivo(cartaObjetivo)">
                     <div class="cabecalho">
-                        <h2 class="titulo">{{cartaObjetivo.textoTematico}}</h2>
+                        <div class="grid-zoom">
+                            <button class="zoom" (click)="zoomObjetivo($event, cartaObjetivo)">
+                                <mat-icon class="mat-icon icone-zoom" alt="Ícone de zoom">search</mat-icon>
+                            </button>
+                            <div class="titulo-modal">
+                                <h2 class="titulo">{{cartaObjetivo.textoTematico}}</h2>
+                            </div>
+                        </div>
                     </div>
                     <div class="corpo">
                         <p class="definicao y-scroll">{{cartaObjetivo.textoRegra}}</p>
