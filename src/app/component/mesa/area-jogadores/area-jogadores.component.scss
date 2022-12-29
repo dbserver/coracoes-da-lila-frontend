@@ -1,13 +1,12 @@
 .area-jogadores {
   display: flex;
   justify-content: center;
-  margin-top: 16px;
-  margin-bottom: 16px;
+  margin: 1rem 0;
 }
 
 .box-jogador {
   width: 48rem;
-  height: 6rem;
+  height: fit-content;
   display: flex;
   gap: 1rem;
   justify-content: center;
@@ -23,11 +22,6 @@
   flex-direction: column;
   align-items: center;
   width: 20%;
-}
-
-.avatar {
-  width: 2rem;
-  height: 2rem;
 }
 
 .nome-jogador{
