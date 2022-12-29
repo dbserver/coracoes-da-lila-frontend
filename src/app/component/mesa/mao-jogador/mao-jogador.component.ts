@@ -84,7 +84,7 @@ export class MaoJogadorComponent implements OnInit {
     this.zoomCarta.open(ModalZoomComponent, {
       data: cartas,
       height: '90%',
-      width: '33%',
+      width: '35%',
       panelClass: 'css-carta'
     });
   }

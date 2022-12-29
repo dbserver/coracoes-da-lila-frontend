@@ -4,17 +4,18 @@ import { MatDialog, MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angu
 import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ModalCartasObjetivoComponent } from '../modal-cartas-objetivo/modal-cartas-objetivo.component';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ModalZoomComponent } from '../modal-zoom/modal-zoom.component';
-
 import { AreaDeCompraComponent } from './area-de-compra.component';
 
-fdescribe('AreaDeCompraComponent', () => {
+describe('AreaDeCompraComponent', () => {
   let component: AreaDeCompraComponent;
   let fixture: ComponentFixture<AreaDeCompraComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AreaDeCompraComponent],
+      declarations: [ AreaDeCompraComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
       imports: [HttpClientTestingModule, RouterTestingModule, MatDialogModule],
       providers: [ModalCartasObjetivoComponent, ModalZoomComponent,
         { provide: MAT_DIALOG_DATA, useValue: {} },

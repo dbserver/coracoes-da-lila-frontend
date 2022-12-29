@@ -2,7 +2,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
-
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { MesaCriadaComponent } from './mesa-criada.component';
 
 describe('MesaCriadaComponent', () => {
@@ -12,6 +12,7 @@ describe('MesaCriadaComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [MesaCriadaComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
       imports: [
         RouterTestingModule,
         HttpClientTestingModule
@@ -41,13 +42,13 @@ describe('MesaCriadaComponent', () => {
     const botaoIniciarJogo = obterValorPorId('#iniciar');
     expect(component.carregando).toBeFalse();
     expect(botaoIniciarJogo.trim()).toContain('Iniciar Jogo')
-  })
+  });
 
-  it('deve alterar a variável "carregando" para true ao clicar', () => {
-    const carregando = component.carregando;
-    expect(component.carregando).toBeFalsy();
+  it('deve testar se o método roteamento() é chamado"', () => {
+    const roteamento = spyOn(component, 'roteamento');
     const botao = fixture.nativeElement.querySelector('.btn');
     botao.click();
-    expect(carregando.valueOf).toBeTruthy();
-  });
+    expect(roteamento).toHaveBeenCalled();
+  });  
+  
 })

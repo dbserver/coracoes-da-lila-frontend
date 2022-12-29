@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { TelaDownloadComponent } from './tela-download.component';
 
 describe('TelaDownloadComponent', () => {
@@ -8,7 +8,9 @@ describe('TelaDownloadComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TelaDownloadComponent ]
+      declarations: [ TelaDownloadComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+
     })
     .compileComponents();
 
