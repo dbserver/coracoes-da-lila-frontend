@@ -1,6 +1,11 @@
 * {
   box-sizing: border-box;
-  border: 1px solid red;
+}
+
+.primeiro-jogador-container label {
+  font-size: var(--tamanhoFonte);
+  color: var(--input-fontColor);
+  line-height: var(--font-heigth);
 }
 
 .primeiro-jogador-container {
@@ -8,6 +13,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
   margin: 1rem 0;
 }
 
@@ -17,9 +23,13 @@
   grid-template-rows: repeat(3, auto);
   justify-content: center;
   align-items: center;
+  row-gap: .25rem;
+  column-gap: 2rem;
   width: 50%;
 }
 
 .nomes-jogadores{
-  
+  font-size: var(--tamanhoFonte);
+  color: var(--input-fontColor);
+  line-height: var(--font-heigth);
 }
