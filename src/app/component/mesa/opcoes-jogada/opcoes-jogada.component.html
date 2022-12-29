@@ -3,24 +3,24 @@
 
     <ul *ngIf="(sala.status == 'JOGANDO' || sala.status == 'ULTIMA_RODADA') && jogador.status == 'JOGANDO'">
         <li *ngIf="somaCoracoes() < 5 && limpaTela()">Pegar 2 corações pequenos</li>
-        <li *ngIf="somaCoracoes() < 5 && limpaTela()">Pegar um coração grande</li>
-        <li *ngIf="selecioneUmaCartaObjetivo()">selecione uma de duas cartas objetivo</li>
+        <li *ngIf="somaCoracoes() < 5 && limpaTela()">Pegar 1 coração grande</li>
+        <li *ngIf="selecioneUmaCartaObjetivo()">Selecione uma de duas cartas objetivo</li>
         <li *ngIf="podeComprarCarta(this.sala.baralho.cartasDoJogo) && limpaTela()">Comprar 1 carta</li>
-        <li *ngIf="podeComprarCarta(this.sala.baralho.cartasDoJogo) && limpaTela()">Comprar uma carta de objetivo</li>
+        <li *ngIf="podeComprarCarta(this.sala.baralho.cartasDoJogo) && limpaTela()">Comprar 1 objetivo</li>
         <p *ngIf="podeComprarCarta(this.sala.baralho.cartasDoJogo) && limpaTela()">** Seus corações bônus permanecem com você</p>
     </ul>
 
     <ul *ngIf="podeRolarDado() == 'INFORMACAO' && limparTelaObjetivos() && jogador.status == 'JOGANDO'">
       <li>Rolar o dado para bônus de Informação:</li>
       <p>
-        1 a 4 = Nada<br>
-        5 a 6 = bonus
+        1 a 4 = nada<br>
+        5 a 6 = bônus
       </p>
     </ul>
     <ul *ngIf="podeRolarDado() == 'ACAO' && limparTelaObjetivos() && jogador.status == 'JOGANDO'">
       <li>Rolar o dado para bônus de Ação:</li>
       <p>
-        1 = perde 1 coração (Bonus, se tiver, outro se não, não importa o tamanho)<br>
+        1 = perde 1 coração<br>
         2 a 3 = nada<br>
         4 = coração grande<br>
         5 a 6 = coração pequeno
