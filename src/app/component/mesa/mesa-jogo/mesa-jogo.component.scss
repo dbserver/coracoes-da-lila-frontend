@@ -1,21 +1,8 @@
 .container {
-  height: 89%;
+  height: 90%;
   width: 100%;
   display: grid;
-  grid-template-rows: 15% auto 30%;
-  grid-gap: 10px;
-}
-
-
-body {
- height: calc(80% - 20px);
- margin: 10px;
- display: grid;
- font-family: Arial;
- grid-template-columns: 90px auto 90px;
- grid-template-rows: 15% auto 30%;
- grid-column-gap: 10px;
- grid-row-gap: 10px;
+  grid-template-rows: repeat(3, auto);
 }
 
 header, nav, footer {
