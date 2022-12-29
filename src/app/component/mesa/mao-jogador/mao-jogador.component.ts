@@ -9,8 +9,8 @@ import { Sala } from 'src/app/model/sala';
 import { AreaDeCompraService } from 'src/app/service/area-de-compra-service/area-de-compra.service';
 import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.service';
 import { MesaService } from 'src/app/service/mesa-service/mesa.service';
-import { SalaRequestNovaCategoriaDTO } from 'src/app/model/dto/salaRequestNovaCategoriaDTO';
-import { NovaCategoriaDTO } from 'src/app/model/dto/novaCategoriaDTO';
+import { NovaCategoriaCartasDoJogoDTO } from 'src/app/dto/NovaCategoriaCartasDoJogoDTO';
+import { NovaCategoriaDTO } from 'src/app/dto/NovaCategoriaDTO';
 
 @Injectable({
   providedIn: 'root',
@@ -93,7 +93,7 @@ export class MaoJogadorComponent implements OnInit {
 
   public enviarCategorias(): void {
 
-    let salaRequestNovaCategoriaDTO: SalaRequestNovaCategoriaDTO = {
+    let salaRequestNovaCategoriaDTO: NovaCategoriaCartasDoJogoDTO = {
       jogadorID: this.jogador.id,
       salaHash: this.sala.hash,
       listaCartasParaAtualizar: this.cartasCategoriasAtualizadas
