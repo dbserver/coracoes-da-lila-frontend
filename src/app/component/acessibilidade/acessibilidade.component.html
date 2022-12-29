@@ -3,7 +3,7 @@
     <label>
       <input (change)="toggleClass('contraste')" type='checkbox' id='switch'> Contraste
     </label>
-    <label for='fonte'>
+    <label *ngIf="!esconderFonte" for='fonte'>
       <input (change)="toggleClass('fonteMaior')" type='checkbox' id='fonte' ><span style="font-size: 12px;"> A -</span>  A +
     </label>
   </div>

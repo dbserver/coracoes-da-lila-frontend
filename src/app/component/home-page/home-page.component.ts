@@ -12,6 +12,9 @@ export class HomePageComponent implements OnInit {
   constructor( private router: Router ) { }
 
   ngOnInit(): void {
+    if(localStorage.length > 0)
+    localStorage.removeItem('esconder');
+    
   }
 
   irParaRegras() {

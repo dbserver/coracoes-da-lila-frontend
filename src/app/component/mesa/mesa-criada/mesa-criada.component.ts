@@ -35,6 +35,7 @@ export class MesaCriadaComponent implements OnInit {
     this.mesaService
        .findByHash(this.hash)
        .subscribe((sala) => (this.sala = sala));
+       localStorage.setItem('esconder', 'esconder');
   }
 
   roteamento() {

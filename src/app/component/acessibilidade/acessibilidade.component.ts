@@ -6,16 +6,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./acessibilidade.component.scss']
 })
 export class AcessibilidadeComponent implements OnInit {
+  esconderFonte:boolean = false;
 
   constructor() { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    if(localStorage.length > 0)
+    this.esconderFonte = true;
+    this.ngOnInit();
+   }
 
   toggleClass(classe: string) {
     const $html = document.querySelector('html')!
 
     $html.classList.toggle(classe)
   }
+
 }
 
 //   const $html = document.querySelector('html')!
