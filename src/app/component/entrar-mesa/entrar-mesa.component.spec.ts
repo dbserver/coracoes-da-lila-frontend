@@ -1,4 +1,5 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -13,6 +14,7 @@ describe('EntrarMesaComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ EntrarMesaComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
       imports: [RouterTestingModule, HttpClientTestingModule]
     })
     .compileComponents();

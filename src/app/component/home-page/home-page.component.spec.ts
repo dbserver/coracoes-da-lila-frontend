@@ -3,7 +3,7 @@ import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { LicenciamentoComponent } from '../licenciamento/licenciamento.component';
-
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { HomePageComponent } from './home-page.component';
 
 describe('HomePageComponent', () => {
@@ -13,6 +13,7 @@ describe('HomePageComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ HomePageComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
       imports: [ RouterTestingModule, HttpClientTestingModule ]
     })
     .compileComponents();
@@ -35,12 +36,8 @@ describe('HomePageComponent', () => {
     expect(primeiroParagrafo.innerHTML).toContain('PCDs');
   });
 
-
   it('Verifica se o botão existe e tem o conteudo "Criar Partida"', () => {
     let botaoCriarPartida = fixture.nativeElement.querySelector('#buttonMesa');
-    component.loadingCriarPartida();
- 
-    expect(component.carregando).toBeTrue();
     expect(botaoCriarPartida.innerHTML).toContain('Criar Partida');
   });
 

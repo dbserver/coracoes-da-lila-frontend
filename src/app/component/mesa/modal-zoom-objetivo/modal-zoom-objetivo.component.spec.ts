@@ -1,7 +1,7 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ModalZoomObjetivoComponent } from './modal-zoom-objetivo.component';
 
 describe('ModalZoomObjetivoComponent', () => {
@@ -11,6 +11,7 @@ describe('ModalZoomObjetivoComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ ModalZoomObjetivoComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
       imports: [ MatDialogModule, HttpClientTestingModule ],
       providers: [
         { provide: MAT_DIALOG_DATA, useValue: {} },
