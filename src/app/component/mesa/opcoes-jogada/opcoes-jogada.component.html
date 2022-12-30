@@ -4,7 +4,7 @@
     <ul *ngIf="(sala.status == 'JOGANDO' || sala.status == 'ULTIMA_RODADA') && jogador.status == 'JOGANDO'">
         <li *ngIf="somaCoracoes() < 5 && limpaTela()">Pegar 2 corações pequenos</li>
         <li *ngIf="somaCoracoes() < 5 && limpaTela()">Pegar 1 coração grande</li>
-        <li *ngIf="selecioneUmaCartaObjetivo()">Selecione uma de duas cartas objetivo</li>
+        <li *ngIf="selecioneUmaCartaObjetivo()">Selecionar 1 de 2 objetivos</li>
         <li *ngIf="podeComprarCarta(this.sala.baralho.cartasDoJogo) && limpaTela()">Comprar 1 carta</li>
         <li *ngIf="podeComprarCarta(this.sala.baralho.cartasDoJogo) && limpaTela()">Comprar 1 objetivo</li>
         <p *ngIf="podeComprarCarta(this.sala.baralho.cartasDoJogo) && limpaTela()">** Seus corações bônus permanecem com você</p>
