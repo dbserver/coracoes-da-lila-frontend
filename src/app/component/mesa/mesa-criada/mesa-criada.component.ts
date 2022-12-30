@@ -1,7 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { catchError, Observable, pipe, tap, throwError } from 'rxjs';
+import { RxStompService } from '@stomp/ng2-stompjs';
+import { Message } from '@stomp/stompjs';
+import { Subscription } from 'rxjs';
 import { Sala } from 'src/app/model/sala';
 import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.service';
 import { MesaService } from 'src/app/service/mesa-service/mesa.service';
@@ -18,10 +20,14 @@ export class MesaCriadaComponent implements OnInit {
   link: string;
 
   carregando: boolean = false;
+  private topicSubscription: Subscription = Subscription.EMPTY;
+
 
   constructor(
     private route: ActivatedRoute,
     private mesaService: MesaService,
+    private mesaJogoService: MesaJogoService,
+    private rxStompService: RxStompService,
     private router: Router
   ) {
     this.sala = {} as Sala;
@@ -35,10 +41,20 @@ export class MesaCriadaComponent implements OnInit {
     this.mesaService
        .findByHash(this.hash)
        .subscribe((sala) => (this.sala = sala));
+    this.topicSubscription = this.rxStompService
+      .watch(`/gameplay/game-update/${this.hash}`)
+      .subscribe((msg: Message) => {
+        //recebe uma sala pelo websocket e envia para o mesa-jogo service..
+        this.mesaJogoService.getemitSalaSubject().next(JSON.parse(msg.body));
+      });
   }
 
   roteamento() {
     this.carregando = true;
     this.router.navigate(['/jogo', this.sala.hash]);
+  }
+
+  ngOnDestroy(): void {
+    this.topicSubscription.unsubscribe();
   }
 }
