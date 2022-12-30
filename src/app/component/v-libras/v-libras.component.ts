@@ -7,7 +7,6 @@ import { NavigationEnd, Router } from '@angular/router';
   styleUrls: ['./v-libras.component.scss']
 })
 export class VLibrasComponent implements OnInit {
-  public render: boolean = true;
   public href: string = "";
 
   constructor(private router: Router) {}
@@ -16,9 +15,6 @@ export class VLibrasComponent implements OnInit {
     this.router.events.subscribe(route => {
       if (route instanceof NavigationEnd) {
         this.href = route.url
-        console.log(this.href)
-        console.log(this.renderizarVLibras())
-        this.render = this.renderizarVLibras();
       }
     })
   }
