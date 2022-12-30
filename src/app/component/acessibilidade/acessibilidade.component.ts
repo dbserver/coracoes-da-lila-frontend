@@ -13,13 +13,22 @@ export class AcessibilidadeComponent implements OnInit {
   ngOnInit(): void {
     if(localStorage.length > 0){
       this.esconderFonte = true;
+      this.fonteTamanhoNormal('fonteMaior')
     }
+     
    }
 
   toggleClass(classe: string) {
+    
     const $html = document.querySelector('html')!
 
-    $html.classList.toggle(classe)
+    $html.classList.toggle(classe);
+
+  }
+
+  fonteTamanhoNormal(classe: string){
+    const $html = document.querySelector('html')!
+    $html.classList.remove(classe)
   }
 
 }
