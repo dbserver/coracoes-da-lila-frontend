@@ -5,7 +5,7 @@ import { Jogador } from 'src/app/model/jogador';
 import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.service';
 import { Sala } from 'src/app/model/sala';
 import { of } from 'rxjs';
-
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
@@ -21,6 +21,7 @@ describe('PrimeiroJogadorComponent', () => {
     await TestBed.configureTestingModule({
       imports: [ HttpClientTestingModule ],
       declarations: [PrimeiroJogadorComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
       providers: [IniciaPartidaService, MesaJogoService],
     }).compileComponents();
   });
