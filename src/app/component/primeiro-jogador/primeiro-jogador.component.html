@@ -1,15 +1,18 @@
-<label> Escolha o primeiro jogador: </label>
+<section class="primeiro-jogador-container"> 
+  <label> Escolha o primeiro jogador: </label>
 
-<mat-radio-group class="lista-jogadores-radio"
-  aria-label="Selecione um jogador"
-  [(ngModel)]="primeiroJogador"
-  (ngModelChange)="transmitirPrimeiroJogador"
->
-  <mat-radio-button class="nomes-jogadores"
-    *ngFor="let jogador of jogadores"
-    [value]="jogador"
-    (change)="transmitePrimeiroJogadorEscolhido(jogador)"
+  <mat-radio-group class="lista-jogadores-radio"
+    aria-label="Selecione um jogador"
+    [(ngModel)]="primeiroJogador"
+    (ngModelChange)="transmitirPrimeiroJogador"
   >
-    {{ jogador.nome }}
-  </mat-radio-button>
-</mat-radio-group>
+    <mat-radio-button class="nomes-jogadores"
+      *ngFor="let jogador of jogadores"
+      [value]="jogador"
+      (change)="transmitePrimeiroJogadorEscolhido(jogador)"
+      >
+      {{ jogador.nome }}
+    </mat-radio-button>
+  </mat-radio-group>
+</section>
+
