@@ -26,6 +26,6 @@ export class VLibrasComponent implements OnInit {
   renderizarVLibras() {
     const pattern = /\/jogo\//gm;
 
-    return !pattern.test(this.href);
+    return pattern.test(this.href);
   }
 }
