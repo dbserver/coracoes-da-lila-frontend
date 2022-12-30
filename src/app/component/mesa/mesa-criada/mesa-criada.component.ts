@@ -34,12 +34,15 @@ export class MesaCriadaComponent implements OnInit {
     this.link = `${environment.CLIENT_URL}entrarmesa/${this.hash}`;
     this.mesaService
        .findByHash(this.hash)
-       .subscribe((sala) => (this.sala = sala));
-       localStorage.setItem('esconder', 'esconder');
+       .subscribe((sala) => (this.sala = sala));   
+    
   }
 
   roteamento() {
     this.carregando = true;
     this.router.navigate(['/jogo', this.sala.hash]);
+    this.mesaService
+    .esconderBotaoFonteMaior();
   }
+
 }

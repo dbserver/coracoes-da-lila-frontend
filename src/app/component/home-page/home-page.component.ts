@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MesaService } from 'src/app/service/mesa-service/mesa.service';
 
 @Component({
   selector: 'app-home-page',
@@ -9,12 +10,13 @@ import { Router } from '@angular/router';
 export class HomePageComponent implements OnInit {
   carregando = false;
 
-  constructor( private router: Router ) { }
+  constructor( private router: Router, 
+  private mesaService: MesaService, 
+    ) { }
 
   ngOnInit(): void {
-    if(localStorage.length > 0)
-    localStorage.removeItem('esconder');
-    
+   this.mesaService
+   .mostrarBotaoFonteMaior(); 
   }
 
   irParaRegras() {
@@ -25,5 +27,7 @@ export class HomePageComponent implements OnInit {
     this.carregando = true;
     this.router.navigate(['/mesa']);
   }
+
+
 
 }

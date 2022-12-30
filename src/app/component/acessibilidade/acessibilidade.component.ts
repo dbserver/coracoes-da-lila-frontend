@@ -11,9 +11,9 @@ export class AcessibilidadeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    if(localStorage.length > 0)
-    this.esconderFonte = true;
-    this.ngOnInit();
+    if(localStorage.length > 0){
+      this.esconderFonte = true;
+    }
    }
 
   toggleClass(classe: string) {
