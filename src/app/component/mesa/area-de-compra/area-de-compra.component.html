@@ -5,6 +5,7 @@
     }" class="carta carta-vertical" (click)="podeComprar(carta) && comprarCarta(index)">
     <div class="cabecalho">
       <h2 class="titulo">{{ mapTipo.get(carta.tipo) }}</h2>
+      <h2 class="titulo">{{ carta.categoria }}</h2>
       <div class="pontos">
         <p class="pt">{{ carta.pontos }}</p>
       </div>
@@ -24,11 +25,11 @@
         </div>
         <div class="presentes">
           <div class="presente-acao">
-            <div class="presente-acao" *ngIf="carta.tipo === 'ACAO' && carta.bonus == true">
+            <div class="presente-acao" *ngIf="carta.tipo === enumTipo.ACAO && carta.bonus == true">
               <img class="presente" src="../../../assets/svg/icone-presente.svg" alt="presente" />
               <img class="presenteInfoAcoes" src="../../../assets/svg/icone-usuario.svg" alt="acao" />
             </div>
-            <div class="presente-info" *ngIf="carta.tipo === 'INFORMACAO' && carta.bonus == true">
+            <div class="presente-info" *ngIf="carta.tipo === enumTipo.INFORMACAO && carta.bonus == true">
               <img class="presente" src="../../../assets/svg/icone-presente.svg" alt="presente" />
               <img class="presenteInfoAcoes" src="../../../assets/svg/icone-info.svg" alt="info" />
             </div>
@@ -61,6 +62,7 @@
             let carta of listaCartasDisponiveis.slice(0, 3);
             let i = index">
           <ng-container *ngTemplateOutlet="cartaTemplate; context: { carta, index: i }">
+
 
           </ng-container>
         </ng-container>

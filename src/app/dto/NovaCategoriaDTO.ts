@@ -1,5 +1,6 @@
+import { CartaDoJogoEnumCategoria } from "../enum/CartaDoJogoEnumCategoria";
 
 export interface NovaCategoriaDTO {
-    cartaModificadaID: string;
-    novaCategoria: string;
+    cartaID: string;
+    novaCategoria: CartaDoJogoEnumCategoria;
 }

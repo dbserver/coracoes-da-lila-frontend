@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CartaDoJogoEnumCategoria } from 'src/app/enum/CartaDoJogoEnumCategoria';
+import { CartaDoJogoEnumTipo } from 'src/app/enum/CartaDoJogoEnumTipo';
 import { Jogador } from 'src/app/model/jogador';
 import { Sala } from 'src/app/model/sala';
 import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.service';
@@ -14,6 +16,9 @@ export class AreaJogadoresComponent implements OnInit {
   sala: Sala = {} as Sala;
   jogadorPrincipal: Jogador = {} as Jogador;
   public jogadorModal: Jogador = {} as Jogador;
+
+  enumCategoria = CartaDoJogoEnumCategoria;
+  enumTipo = CartaDoJogoEnumTipo;
 
   constructor(
     private modal: ModalService,

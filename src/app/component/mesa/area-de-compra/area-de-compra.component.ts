@@ -9,6 +9,7 @@ import { AreaDeCompraService } from '../../../service/area-de-compra-service/are
 import { MesaJogoService } from '../../../service/mesa-jogo-service/mesa-jogo.service';
 import { ModalCartasObjetivoComponent } from '../modal-cartas-objetivo/modal-cartas-objetivo.component';
 import { mapTipoCartaDoJogo } from 'src/app/maps/cartaDoJogoMaps';
+import { CartaDoJogoEnumTipo } from 'src/app/enum/CartaDoJogoEnumTipo';
 @Component({
   selector: 'app-area-de-compra',
   templateUrl: './area-de-compra.component.html',
@@ -32,6 +33,8 @@ export class AreaDeCompraComponent implements OnInit {
   public mapTipo = mapTipoCartaDoJogo;
 
   opcoesCartaObjetivo: CartaObjetivo[];
+
+  enumTipo = CartaDoJogoEnumTipo;
 
   constructor(
     private mesaJogoService: MesaJogoService,
@@ -248,4 +251,6 @@ export class AreaDeCompraComponent implements OnInit {
       .getElementById('container-cartas')
       ?.classList.add('embaralhar-animacao');
   }
+
+  public toEnumTipo = (tipo: any) => tipo as CartaDoJogoEnumTipo;
 }

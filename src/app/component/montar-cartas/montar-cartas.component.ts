@@ -3,6 +3,7 @@ import { CartaDoJogo } from '../../model/cartaDoJogo';
 import { CartaInicio } from '../../model/cartaInicio';
 import { CartaObjetivo } from '../../model/cartaObjetivo';
 import { CartaService } from '../../service/cartas-service/cartas.service';
+import { CartaDoJogoEnumTipo } from 'src/app/enum/CartaDoJogoEnumTipo';
 
 
 @Component({
@@ -15,6 +16,8 @@ export class MontarCartasComponent implements OnInit {
   public listaCartasInicio: Array<CartaInicio> = [];
   public listaCartasObjetivo: Array<CartaObjetivo> = [];
   public listaRandomicaCartas: Array<CartaDoJogo> = [];
+
+  enumTipo = CartaDoJogoEnumTipo;
 
 
 

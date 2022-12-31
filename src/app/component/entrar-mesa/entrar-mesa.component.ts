@@ -42,7 +42,7 @@ export class EntrarMesaComponent implements OnInit {
       )
       .subscribe({
         next: (sala) => {
-          console.log(sala);
+          console.log(sala); // TODO REMOVER
           this.sala = sala;
           this.verificarSeSalaCheia(this.hash);
           this.verificarSeJogoIniciado(this.hash);
@@ -128,7 +128,7 @@ export class EntrarMesaComponent implements OnInit {
   verificarSeJogoIniciado(hash: string) {
     this.mesaService
     .findByHash(hash)
-    .subscribe((sala) => {(this.statusJogo = sala.status); 
+    .subscribe((sala) => {(this.statusJogo = sala.status);
       if(this.statusJogo === 'JOGANDO' && 'ULTIMA_RODADA'){
       this.router.navigate(['/jogoiniciado']);
     }})

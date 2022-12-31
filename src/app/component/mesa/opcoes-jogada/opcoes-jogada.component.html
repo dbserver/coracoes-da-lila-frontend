@@ -11,11 +11,11 @@
     </ul>
 
     <ul>
-        <li *ngIf="podeRolarDado() == 'INFORMACAO' && limparTelaObjetivos() && jogador.status == 'JOGANDO'">
+        <li *ngIf="podeRolarDado() == enumTipo.INFORMACAO && limparTelaObjetivos() && jogador.status == 'JOGANDO'">
             1 a 4 = Nada<br>
             5 a 6 = bonus
         </li>
-        <li *ngIf="podeRolarDado() == 'ACAO' && limparTelaObjetivos() && jogador.status == 'JOGANDO'">
+        <li *ngIf="podeRolarDado() == enumTipo.ACAO && limparTelaObjetivos() && jogador.status == 'JOGANDO'">
             1 = perde 1 coração (Bonus, se tiver, outro se não, não importa o tamanho)<br>
             2 a 3 = nada<br>
             4 = coração grande<br>

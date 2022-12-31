@@ -45,43 +45,43 @@
 
     <div class="cartas-container">
         <div class="cartas-container-scroll">
-            <div *ngFor="let cartas of jogador?.cartasDoJogo">
+            <div *ngFor="let carta of jogador?.cartasDoJogo">
                 <div class="select" [formGroup]="novaCategoria" *ngIf="sala.status == 'AGUARDANDO_DEFINICAO'">
-                    <select *ngIf="cartas.categoria == 'GENERICA'" (change)="atualizarCategorias(cartas)" formControlName="categoria">
-                        <option value="INTELECTUAL">Intelectual</option>
-                        <option value="FISICA">Física</option>
-                        <option value="TEA">TEA</option>
-                        <option value="AUDITIVA">Auditiva</option>
-                        <option value="VISUAL">Visual</option>
+                    <select *ngIf="carta.categoria == enumCategoria.GENERICA" (change)="atualizaCategoriaDeCartasGenericas(carta)" formControlName="categoria">
+                        <option value="{{enumCategoria.INTELECTUAL}}">Intelectual</option>
+                        <option value="{{enumCategoria.FISICA}}">Física</option>
+                        <option value="{{enumCategoria.TEA}}">TEA</option>
+                        <option value="{{enumCategoria.AUDITIVA}}">Auditiva</option>
+                        <option value="{{enumCategoria.VISUAL}}">Visual</option>
                     </select>
                 </div>
                 <div class="carta carta-vertical">
                     <div class="cabecalho">
-                        <h2 class="titulo">{{ mapTipo.get(cartas.tipo) }}</h2>
+                        <h2 class="titulo">{{ mapTipo.get(carta.tipo) }}</h2>
                         <div class="pontos">
-                            <p class="pt">{{ cartas.pontos }}</p>
+                            <p class="pt">{{ carta.pontos }}</p>
                         </div>
                     </div>
                     <div class="corpo">
                         <p class="definicao y-scroll">
-                            {{cartas.texto}}
+                            {{carta.texto}}
                         </p>
                         <div class="icones">
                             <div class="coracoes">
-                                <div class="coracao" *ngFor="let i of [].constructor(cartas.valorCoracaoGrande)">
+                                <div class="coracao" *ngFor="let i of [].constructor(carta.valorCoracaoGrande)">
                                     <img class="coracao-grande" src="assets/svg/icone-coracao.svg" alt="Ícone coração">
                                 </div>
-                                <div class="coracao" *ngFor="let i of [].constructor(cartas.valorCoracaoPequeno)">
+                                <div class="coracao" *ngFor="let i of [].constructor(carta.valorCoracaoPequeno)">
                                     <img class="coracao-pequeno" src="assets/svg/icone-coracao.svg" alt="Ícone coração">
                                 </div>
                             </div>
                             <div class="presentes">
                                 <div class="presente-acao">
-                                    <div class="presente-acao" *ngIf="cartas.tipo === 'INFORMACAO' && cartas.bonus == true">
+                                    <div class="presente-acao" *ngIf="carta.tipo === enumTipo.INFORMACAO && carta.bonus == true">
                                         <img class="presente" src="assets/svg/icone-presente.svg" alt="presente">
                                         <img class="presenteInfoAcoes" src="assets/svg/icone-info.svg" alt="info">
                                     </div>
-                                    <div class="presente-info" *ngIf="cartas.tipo === 'ACAO' && cartas.bonus == true">
+                                    <div class="presente-info" *ngIf="carta.tipo === enumTipo.ACAO && carta.bonus == true">
                                         <img class="presente" src="assets/svg/icone-presente.svg" alt="presente">
                                         <img class="presenteInfoAcoes" src="assets/svg/icone-usuario.svg" alt="acao">
                                     </div>
@@ -90,7 +90,7 @@
                         </div>
                     </div>
                     <div class="rodape">
-                        <span class="fonte y-scroll">Fonte: {{cartas.fonte}}</span>
+                        <span class="fonte y-scroll">Fonte: {{carta.fonte}}</span>
                     </div>
                 </div>
             </div>

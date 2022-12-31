@@ -11,6 +11,8 @@ import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.ser
 import { MesaService } from 'src/app/service/mesa-service/mesa.service';
 import { NovaCategoriaCartasDoJogoDTO } from 'src/app/dto/NovaCategoriaCartasDoJogoDTO';
 import { NovaCategoriaDTO } from 'src/app/dto/NovaCategoriaDTO';
+import { CartaDoJogoEnumCategoria } from 'src/app/enum/CartaDoJogoEnumCategoria';
+import { CartaDoJogoEnumTipo } from 'src/app/enum/CartaDoJogoEnumTipo';
 
 @Injectable({
   providedIn: 'root',
@@ -30,13 +32,13 @@ export class MaoJogadorComponent implements OnInit {
 
   public mapTipo = mapTipoCartaDoJogo;
 
-  novaCategoriaDTO: NovaCategoriaDTO = {
-    cartaModificadaID: '',
-    novaCategoria: ''
-  };
+  novaCategoriaCartasDoJogoDTO!: NovaCategoriaCartasDoJogoDTO;
 
   cartasCategoriasAtualizadas: Array<NovaCategoriaDTO> = [];
   novaCategoria!: FormGroup;
+
+  enumCategoria = CartaDoJogoEnumCategoria;
+  enumTipo = CartaDoJogoEnumTipo;
 
   constructor(
     private mesaService: MesaService,
@@ -46,10 +48,18 @@ export class MaoJogadorComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    //FORMULARIO
+    // FORMULARIO
+
     this.novaCategoria = new FormGroup({
-      categoria: new FormControl('', Validators.required),
+      categoria: new FormControl(CartaDoJogoEnumCategoria.VAZIA, Validators.required),
     });
+
+    this.novaCategoriaCartasDoJogoDTO = {
+      jogadorID: '',
+      salaHash: '',
+      listaDeCartas: [],
+    }
+
     // caminho para acessar a partir de outros componentes
     this.hash = String(this.route.snapshot.paramMap.get('hash'));
     this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => {
@@ -93,56 +103,73 @@ export class MaoJogadorComponent implements OnInit {
 
   public enviarCategorias(): void {
 
-    let salaRequestNovaCategoriaDTO: NovaCategoriaCartasDoJogoDTO = {
-      jogadorID: this.jogador.id,
-      salaHash: this.sala.hash,
-      listaCartasParaAtualizar: this.cartasCategoriasAtualizadas
-    };
+    this.novaCategoriaCartasDoJogoDTO.jogadorID = this.jogador.id;
+    this.novaCategoriaCartasDoJogoDTO.salaHash = this.sala.hash;
 
-    this.mesaJogoService.enviarJogadorParaFinalizar(salaRequestNovaCategoriaDTO).subscribe((sala) => (this.sala = sala));
+    console.log('size array cartas ' + this.novaCategoriaCartasDoJogoDTO.listaDeCartas.length)
+
+    this.mesaJogoService.enviarJogadorParaFinalizar(this.novaCategoriaCartasDoJogoDTO).subscribe((sala) => (this.sala = sala));
   }
 
-  public verificaCartaJaExistente(cartaGenerica: CartaDoJogo, novaCategoriaRecebida: string): boolean{
+  public verificaCartaExisteNaListaDeCartas(cartaDoJogo: CartaDoJogo): boolean{
 
-    for (let i = 0; i < this.cartasCategoriasAtualizadas.length; i++){
-      if (this.cartasCategoriasAtualizadas[i].cartaModificadaID == cartaGenerica.id){
-          this.novaCategoriaDTO.cartaModificadaID = cartaGenerica.id;
-          this.novaCategoriaDTO.novaCategoria = novaCategoriaRecebida;
-          this.cartasCategoriasAtualizadas[i] = this.novaCategoriaDTO;
-          return true;
+    for (let i = 0; i < this.novaCategoriaCartasDoJogoDTO.listaDeCartas.length; i++){
+      if (this.novaCategoriaCartasDoJogoDTO.listaDeCartas[i].cartaID == cartaDoJogo.id){
+        return true;
       }
     }
     return false;
   }
 
+  public verificaSeCategoriaGenerica(cartaDoJogo: CartaDoJogo){
+    return cartaDoJogo.categoria == this.enumCategoria.GENERICA ? true: false;
+  }
 
-  public atualizarCategorias(cartaGenerica: CartaDoJogo): void {
+  public atualizaCategoriaDeCartasGenericas(cartaDoJogo: CartaDoJogo): void {
 
-    let novaCategoriaRecebida:string = this.novaCategoria.value.categoria;
+    let categoria: string = this.novaCategoria.value.categoria
+    let novaCategoriaEnum: CartaDoJogoEnumCategoria = (<any>CartaDoJogoEnumCategoria)[categoria]
 
-    if (this.verificaCartaJaExistente(cartaGenerica, novaCategoriaRecebida) == false){
-      this.novaCategoriaDTO.cartaModificadaID = cartaGenerica.id;
-      this.novaCategoriaDTO.novaCategoria = novaCategoriaRecebida;
-      this.cartasCategoriasAtualizadas.push(this.novaCategoriaDTO);
-    }
+    if (this.verificaCartaExisteNaListaDeCartas(cartaDoJogo) == false){
 
-    this.novaCategoriaDTO = {
-      cartaModificadaID: '',
-      novaCategoria: ''
+      if(this.verificaSeCategoriaGenerica(cartaDoJogo)){
+
+        console.log('GENERICA ' + cartaDoJogo.id + ' - Categoria ' + novaCategoriaEnum)
+
+        this.novaCategoriaCartasDoJogoDTO.listaDeCartas.push(
+          {
+            cartaID: cartaDoJogo.id,
+            novaCategoria: novaCategoriaEnum
+          } as NovaCategoriaDTO
+        );
+
+      } else {
+
+        console.log('')
+
+        this.novaCategoriaCartasDoJogoDTO.listaDeCartas.push(
+          {
+            cartaID: cartaDoJogo.id,
+            novaCategoria: ''
+          } as NovaCategoriaDTO
+        )
+      }
     }
   }
 
   public bloquearConfirmarCategorias(): boolean {
     let quantidadeCartasGenericas = 0;
     for(let i = 0; i < this.jogador.cartasDoJogo.length; i++){
-      if(this.jogador.cartasDoJogo[i].categoria == "GENERICA"){
+      if(this.jogador.cartasDoJogo[i].categoria == CartaDoJogoEnumCategoria.GENERICA){
         quantidadeCartasGenericas++;
       }
     }
-    if (quantidadeCartasGenericas == this.cartasCategoriasAtualizadas.length){
+    if (quantidadeCartasGenericas == this.novaCategoriaCartasDoJogoDTO.listaDeCartas.length){
       return false;
     }
     return true;
   }
 
+  public toEnumTipo = (tipo: any) => tipo as CartaDoJogoEnumTipo;
+  public toEnumCategoria = (tipo: any) => tipo as CartaDoJogoEnumCategoria;
 }
