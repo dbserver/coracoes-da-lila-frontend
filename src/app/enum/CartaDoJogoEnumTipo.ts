@@ -1,7 +1,7 @@
 export enum CartaDoJogoEnumTipo{
-  ACAO,
-  DEFINICAO,
-  FILME,
-  INFORMACAO,
-  PESSOA
+  ACAO = 'ACAO',
+  DEFINICAO = 'DEFINICAO',
+  FILME = 'FILME',
+  INFORMACAO = 'INFORMACAO',
+  PESSOA = 'PESSOA'
 }

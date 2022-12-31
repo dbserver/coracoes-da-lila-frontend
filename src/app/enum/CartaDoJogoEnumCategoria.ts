@@ -1,8 +1,9 @@
 export enum CartaDoJogoEnumCategoria{
-  AUDITIVA,
-  FISICA,
-  GENERICA,
-  INTELECTUAL,
-  TEA,
-  VISUAL
+  AUDITIVA = 'AUDITIVA',
+  FISICA = 'FISICA',
+  GENERICA = 'GENERICA',
+  INTELECTUAL = 'INTELECTUAL',
+  TEA = 'TEA',
+  VISUAL = 'VISUAL',
+  VAZIA = ''
 }
