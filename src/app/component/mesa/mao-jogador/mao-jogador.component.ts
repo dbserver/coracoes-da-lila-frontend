@@ -134,8 +134,6 @@ export class MaoJogadorComponent implements OnInit {
 
       if(this.verificaSeCategoriaGenerica(cartaDoJogo)){
 
-        console.log('GENERICA ' + cartaDoJogo.id + ' - Categoria ' + novaCategoriaEnum)
-
         this.novaCategoriaCartasDoJogoDTO.listaDeCartas.push(
           {
             cartaID: cartaDoJogo.id,

@@ -42,7 +42,6 @@ export class EntrarMesaComponent implements OnInit {
       )
       .subscribe({
         next: (sala) => {
-          console.log(sala); // TODO REMOVER
           this.sala = sala;
           this.verificarSeSalaCheia(this.hash);
           this.verificarSeJogoIniciado(this.hash);
