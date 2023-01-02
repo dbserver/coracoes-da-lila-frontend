@@ -11,7 +11,6 @@ import { SalaResponse } from '../../model/salaResponse';
   providedIn: 'root',
 })
 export class MesaService {
-  private items: any[] = [];
 
   constructor(private http: HttpClient) {}
 

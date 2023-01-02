@@ -1,9 +1,6 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { catchError, Observable, pipe, tap, throwError } from 'rxjs';
 import { Sala } from 'src/app/model/sala';
-import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.service';
 import { MesaService } from 'src/app/service/mesa-service/mesa.service';
 import { environment } from 'src/environments/environment';
 
