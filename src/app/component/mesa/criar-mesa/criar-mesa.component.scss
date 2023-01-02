@@ -6,6 +6,7 @@
     background: var(--background); 
     justify-content: center;
     align-items: center; 
+    margin-top: 4%;
 }
 
 .aviso{
@@ -81,3 +82,7 @@ input{
     background-color: rgb(167, 163, 163);
     color: rgb(167, 163, 163);
   }
+
+  :host ::ng-deep .mat-form-field {
+    font-size: calc(var(--tamanhoFonte) - 5px);
+}

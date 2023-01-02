@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { MesaCriadaComponent } from './mesa-criada.component';
+import { RxStompService } from '@stomp/ng2-stompjs';
 
 describe('MesaCriadaComponent', () => {
   let component: MesaCriadaComponent;
@@ -17,9 +18,7 @@ describe('MesaCriadaComponent', () => {
         RouterTestingModule,
         HttpClientTestingModule
       ],
-      providers: [
-
-      ]
+      providers: [RxStompService]
     })
       .compileComponents();
   });
