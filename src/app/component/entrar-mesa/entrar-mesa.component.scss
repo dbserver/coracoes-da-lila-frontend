@@ -68,3 +68,7 @@ button {
 @media (max-width: 616px) {
 
 }
+
+:host ::ng-deep .mat-form-field {
+  font-size: calc(var(--tamanhoFonte) - 5px);
+}
