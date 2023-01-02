@@ -13,7 +13,7 @@ export class AcessibilidadeComponent implements OnInit {
   ngOnInit(): void {
     if(localStorage.length > 0){
       this.esconderFonte = true;
-      this.fonteTamanhoNormal('fonteMaior')
+      this.fonteTamanhoNormal()
     }
      
    }
@@ -21,14 +21,13 @@ export class AcessibilidadeComponent implements OnInit {
   toggleClass(classe: string) {
     
     const $html = document.querySelector('html')!
-
     $html.classList.toggle(classe);
 
   }
 
-  fonteTamanhoNormal(classe: string){
+  fonteTamanhoNormal(){
     const $html = document.querySelector('html')!
-    $html.classList.remove(classe)
+    $html.classList.remove('fonteMaior')
   }
 
 }
