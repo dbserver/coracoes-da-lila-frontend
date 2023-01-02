@@ -8,7 +8,7 @@ import { ModalZoomComponent } from '../modal-zoom/modal-zoom.component';
 
 import { AreaDeCompraComponent } from './area-de-compra.component';
 
-fdescribe('AreaDeCompraComponent', () => {
+describe('AreaDeCompraComponent', () => {
   let component: AreaDeCompraComponent;
   let fixture: ComponentFixture<AreaDeCompraComponent>;
 
