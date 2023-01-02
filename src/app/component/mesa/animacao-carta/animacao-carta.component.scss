@@ -1,4 +1,4 @@
-.container-cartaobjetivo{
+.container-cartaobjetivo {
     display: flex;
     position: relative;
 }
@@ -15,63 +15,73 @@
         justify-content: center;
         width: 160px;
         height: 100px;
-  
-        &-logotexto {
-          display: flex;
-          flex-direction: column;
-          position: relative;
-          top: -4px;
-        }
-  
-        .imagem {
-          &-logo {
-            height: 50px;
-          }
-  
-          &-lila {
-            height: 90px;
-            margin-top: 10px;
-          }
-        }
-  
-        .texto {
-          font-size: calc(var(--tamanhoFonte) - 5px);
-          color: #351c75;
-        }
-      }
-    }
 
-.embaralhar-animacao{
+        &-logotexto {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-e-texto {
+            display: grid;
+            grid-template-rows: 100% auto;
+        }
+
+        .imagem {
+            &-logo {
+                height: 50px;
+                padding-top: 7px;
+            }
+
+            &-lila {
+                height: 90px;
+                margin-top: 10px;
+            }
+        }
+
+        .texto {
+            font-weight: bold;
+            font-size: 1.2vw;
+            margin-bottom: 0;
+            color: var(--font-color);
+        }
+    }
+}
+
+.embaralhar-animacao {
     animation: embaralhar 2s 1;
     z-index: -1;
     opacity: 0.3;
 }
- 
-.carta-1{
+
+.carta-1 {
     animation: carta-1 1.5s 1;
     z-index: 5;
 }
 
-.carta-2{
+.carta-2 {
     animation: carta-2 1.5s 2;
-    
+
 }
 
 @keyframes carta-1 {
-    0%{
+    0% {
         left: 0;
         display: block;
     }
+
     50% {
         left: 0;
     }
+
     74% {
         z-index: 5;
     }
+
     75% {
         left: calc(-160px - 2rem);
         z-index: 4;
     }
+
     100% {
         left: 0;
         z-index: 4;
@@ -83,17 +93,21 @@
         left: 0;
         z-index: 5;
     }
+
     24% {
         z-index: 5;
     }
+
     25% {
         left: calc(160px + 2rem);
         z-index: 4;
     }
+
     50% {
         left: 0;
         z-index: 4;
     }
+
     100% {
         left: 0;
         z-index: 4;
@@ -101,11 +115,12 @@
 }
 
 @keyframes embaralhar {
-    0%{
+    0% {
         z-index: 10;
         opacity: 1;
     }
-    100%{
+
+    100% {
         z-index: 10;
         opacity: 1;
     }

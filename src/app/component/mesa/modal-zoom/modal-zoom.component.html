@@ -1,15 +1,18 @@
-<button id="fechar" (click)="fecharZoom()">
-    <mat-icon aria-label="ícone círculo vermelho com um x para fechar">cancel</mat-icon>
-</button>
-
-<div class="cabecalho">
-    <h2 class="titulo">{{ mapTipo.get(data.tipo) }}</h2>
-    <div class="pontos">
-        <p class="pt">{{ data.pontos }}</p>
+<div class="topo">
+    <div class="cabecalho">
+        <h2 class="titulo">{{ mapTipo.get(data.tipo) }}</h2>
+        <div class="pontos">
+            <p class="pt">{{ data.pontos }}</p>
+        </div>
     </div>
+
+    <button id="fechar" (click)="fecharZoom()">
+        <mat-icon aria-label="ícone círculo vermelho com um x para fechar">cancel</mat-icon>
+    </button>
 </div>
+
 <div class="corpo">
-    <p class="definicao"> 
+    <p class="definicao">
         {{ data.texto }}
     </p>
     <div class="icones">
