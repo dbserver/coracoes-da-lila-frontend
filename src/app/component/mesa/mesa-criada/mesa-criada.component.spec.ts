@@ -22,7 +22,6 @@ describe('MesaCriadaComponent', () => {
   let fixture: ComponentFixture<MesaCriadaComponent>;
   let serviceSpy: jasmine.SpyObj<MesaService>;
   let findByHashSpy: jasmine.Spy;
-  let router: Router;
   const hash = 'hash';
   const sala: Sala = {
     id: 'id',
@@ -59,7 +58,6 @@ describe('MesaCriadaComponent', () => {
     fixture = TestBed.createComponent(MesaCriadaComponent);
     component = fixture.componentInstance;
     serviceSpy = TestBed.inject(MesaService) as jasmine.SpyObj<MesaService>;
-    router = fixture.debugElement.injector.get(Router);
   });
   
   it('foi criado', () => {
@@ -104,8 +102,6 @@ describe('MesaCriadaComponent', () => {
     buttonDebugElement.triggerEventHandler('click', null);
     fixture.detectChanges();
     //Verificar argumentos passados para a navegação
-    //const routerSpy = router.navigate as jasmine.Spy;
-    //expect(routerSpy.calls.mostRecent().args[0]).toHaveBeenCalledWith(['/jogo',hash]);
     expect(mockRouter.navigate).toHaveBeenCalledWith(['/jogo',hash]);
   });
 
@@ -123,53 +119,3 @@ describe('MesaCriadaComponent', () => {
     expect(routerLink.navigatedTo).toEqual(['']);
   });
 });
-
-/*
-describe('MesaCriadaComponent', () => {
-  let component: MesaCriadaComponent;
-  let fixture: ComponentFixture<MesaCriadaComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [MesaCriadaComponent],
-      imports: [
-        RouterTestingModule,
-        HttpClientTestingModule
-      ],
-      providers: [
-
-      ]
-    })
-      .compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(MesaCriadaComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  function obterValorPorId(nomeId: string): string {
-    return fixture.debugElement.query(By.css(nomeId)).nativeElement.innerHTML;
-  }
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
-  it('deve verificar se o botão iniciar partida contém a mensagem "Iniciar Jogo"', () => {
-    const botaoIniciarJogo = obterValorPorId('#iniciar');
-    expect(component.carregando).toBeFalse();
-    expect(botaoIniciarJogo.trim()).toContain('Iniciar Jogo')
-  })
-
-  it('deve alterar a variável "carregando" para true ao clicar', () => {
-    const carregando = component.carregando;
-    expect(component.carregando).toBeFalsy();
-    const botao = fixture.nativeElement.querySelector('.btn');
-    botao.click();
-    expect(carregando.valueOf).toBeTruthy();
-  });
-});
-*/
-
