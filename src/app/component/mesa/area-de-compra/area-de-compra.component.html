@@ -82,7 +82,7 @@
       <div class="container-cartas">
         <app-animacao-carta *ngIf="embaralharCartas"></app-animacao-carta>
         <div [ngClass]="{
-        'desabilitar-carta': !podeComprarObjetivo(),
+        'desabilitar-carta': !podeComprarObjetivo() || verificaSeTemCartaObjetivo(),
         'desabilitar-acao': !podeJogar()
       }" class="carta carta-objetivo dropdown">
           <div class="carta-logotexto">
@@ -95,10 +95,10 @@
                 <div class="dropdown-content" *ngIf="
                   verificaJogadorTemCoracoes() == true &&
                   verificaStatusJogador() == true">
-                  <a (click)="compraUmaCartaObjetivo()" *ngIf="verificaJogadorTemCoracaoPequeno()==true">
+                  <a (click)="compraUmaCartaObjetivo()" *ngIf="verificaJogadorTemCoracaoPequeno()==true && sala.cartasObjetivo.length >= 1">
                     <img src="../../../assets/img/cartacoracaopequeno.png" alt="" />
                   </a>
-                  <a (click)="escolherEntreDuasCartasObjetivo()" *ngIf="verificaJogadorTemCoracaoGrande() == true">
+                  <a (click)="escolherEntreDuasCartasObjetivo()" *ngIf="verificaJogadorTemCoracaoGrande() && sala.cartasObjetivo.length >= 2">
                     <img src="../../../assets/img/cartacoracaogrande.png" alt="" />
                   </a>
                 </div>

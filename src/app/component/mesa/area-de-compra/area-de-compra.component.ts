@@ -119,6 +119,13 @@ export class AreaDeCompraComponent implements OnInit {
     return coracaoP + coracaoG > 0;
   }
 
+  public verificaSeTemCartaObjetivo() {
+    if (this.sala.cartasObjetivo.length == 0) {
+      return true;
+    }
+    return false;
+  }
+
   public verificaBonus() {
     if (this.jogador?.cartasDoJogo.length > 0) {
       let ultimaCarta = (this.jogador?.cartasDoJogo.length - 1) as number;
