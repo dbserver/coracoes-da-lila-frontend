@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Jogador } from '../../model/jogador';
 import { MesaJogoService } from '../../service/mesa-jogo-service/mesa-jogo.service';
 import { IniciaPartidaService } from '../../service/inicia-partida-service/inicia-partida.service';
-import { catchError, Observable, of, tap, throwError } from 'rxjs';
+import { catchError, tap, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
@@ -112,7 +112,7 @@ export class EntrarMesaComponent implements OnInit {
   nickNaoEmBranco(): boolean {
     return this.jogador.nome.trim().length > 0;
   }
-  
+
   verificarSeSalaCheia(hash: string) {
     this.mesaService
       .findByHash(hash)
