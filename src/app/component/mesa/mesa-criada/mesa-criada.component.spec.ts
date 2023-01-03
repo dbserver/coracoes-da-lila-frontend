@@ -37,10 +37,10 @@ describe('MesaCriadaComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('deve verificar se o botão iniciar partida contém a mensagem "Iniciar Jogo"', () => {
-    const botaoIniciarJogo = obterValorPorId('#iniciar');
+  it('deve verificar se o botão iniciar partida contém a mensagem "Entrar na Mesa"', () => {
+    const botaoEntrarMesa = obterValorPorId('#entrar');
     expect(component.carregando).toBeFalse();
-    expect(botaoIniciarJogo.trim()).toContain('Iniciar Jogo')
+    expect(botaoEntrarMesa.trim()).toContain('Entrar na Mesa')
   });
 
   it('deve testar se o método roteamento() é chamado"', () => {
