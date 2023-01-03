@@ -11,6 +11,7 @@ import { MesaService } from 'src/app/service/mesa-service/mesa.service';
 import { asyncError, findEl, RouterLinkDirectiveStub } from 'src/app/utils/testUtils';
 import { environment } from 'src/environments/environment';
 import { MesaCriadaComponent } from './mesa-criada.component';
+import { RxStompService } from '@stomp/ng2-stompjs';
 
 /*
 Teste unitário do componente.

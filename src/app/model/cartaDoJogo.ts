@@ -5,6 +5,6 @@ export interface CartaDoJogo{
     texto: string;
     valorCoracaoPequeno: number;
     valorCoracaoGrande: number;
-    fonte: string;
+    fonte: string; 
     pontos: number;
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PatternValidator } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Jogador } from 'src/app/model/jogador';
 import { Sala } from 'src/app/model/sala';
@@ -16,7 +17,6 @@ export class CriarMesaComponent implements OnInit {
   private jogadorPrincipal: Jogador;
   nick: string;
 
-  isvalid = true;
   carregando = false;
 
   constructor(
@@ -45,11 +45,8 @@ export class CriarMesaComponent implements OnInit {
       status: 'JOGANDO'
     };
     if(this.nomeValido()){
-      this.isvalid = true;
       this.criarMesa();
       this.carregando = true;
-    }else{
-      this.isvalid = false;
     }
   }
 
@@ -58,10 +55,9 @@ export class CriarMesaComponent implements OnInit {
   }
 
   nomeValido(): boolean{
-    if(this.jogador.nome == null){
-      return false;
-    }
-    return this.jogador.nome.length >= 2;
+    var pattern = /^[a-zA-Z\u00C0-\u00FF0-9 ]{2,10}$/gmi;
+
+    return pattern.test(this.jogador.nome);
   }
 
   criarMesa() {

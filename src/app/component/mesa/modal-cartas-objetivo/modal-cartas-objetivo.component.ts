@@ -1,3 +1,5 @@
+import { MatDialog } from '@angular/material/dialog';
+import { ModalZoomObjetivoComponent } from '../modal-zoom-objetivo/modal-zoom-objetivo.component';
 import { HttpParams } from '@angular/common/http';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { CartaObjetivo } from 'src/app/model/cartaObjetivo';
@@ -18,12 +20,14 @@ export class ModalCartasObjetivoComponent implements OnInit {
   @Output() embaralharCartas = new EventEmitter<boolean>();
   
 
-  constructor(private mesaJogoService: MesaJogoService) {
+  constructor(
+    private mesaJogoService: MesaJogoService,
+    public zoomCarta: MatDialog
+    ) {
     this.cartaEscolhida = {} as CartaObjetivo;
   }
 
   ngOnInit(): void {
-
   }
 
   public escolherCartaObjetivo(cartaObjetivo: CartaObjetivo){
@@ -40,6 +44,17 @@ export class ModalCartasObjetivoComponent implements OnInit {
     const modal = document.getElementById("modal");
     if (modal != null)
       modal.style.display = 'none';
+      this.cartasObjetivo.length = 0;
     this.embaralharCartas.emit(true);
+  }
+
+  public zoomObjetivo(event: Event, cartaObjetivo: CartaObjetivo) {
+    event.stopPropagation();
+    this.zoomCarta.open(ModalZoomObjetivoComponent, {
+      data: cartaObjetivo,
+      height: '60%',
+      width: '50%',
+      panelClass: 'css-carta'
+    });
   }
 }

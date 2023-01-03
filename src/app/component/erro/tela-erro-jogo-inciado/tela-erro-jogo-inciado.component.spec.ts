@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { TelaErroJogoInciadoComponent } from './tela-erro-jogo-inciado.component';
 
 describe('TelaErroJogoInciadoComponent', () => {
@@ -8,7 +8,8 @@ describe('TelaErroJogoInciadoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TelaErroJogoInciadoComponent ]
+      declarations: [ TelaErroJogoInciadoComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
     })
     .compileComponents();
 

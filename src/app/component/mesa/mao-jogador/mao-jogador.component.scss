@@ -1,7 +1,7 @@
 .mao {
   display: grid;
-  height: 100%;
-  grid-template-columns: 15% 10% 66% 8%;
+  height: 13.8vw;
+  grid-template-columns: 15% 10% 64% 8%;
   grid-gap: 5px;
   align-items: center;
   max-width: 100%;
@@ -32,10 +32,6 @@
 .centraliza {
   text-align: center;
   color: var(--input-fontColor);
-}
-
-.centraliza h4{
-
   font-size: var(--tamanhoFonte);
 }
 
@@ -53,12 +49,13 @@
   width: 50%;
 }
 
-.nome{
-  color:var(--font-color-aguarde);
+.nome {
+  color: var(--font-color-aguarde);
 }
 
 .cartas-container {
   padding-bottom: 10px;
+
   &-scroll {
     display: flex;
     max-width: 1400px;
@@ -177,12 +174,13 @@
         }
 
         .rodape {
-          margin-top: 10px;
+          margin-top: 0;
 
           .fonte {
             max-height: 25px;
             overflow-y: auto;
             display: block;
+            line-height: 8px;
             font-size: calc(var(--tamanhoFonte) - 9pt);
           }
         }
@@ -207,7 +205,7 @@
         .cabecalho {
           .titulo {
             color: #38761d;
-            font-size: calc(var(--tamanhoFonte) - 6pt);
+            font-size: calc(var(--tamanhoFonte) - 0.45vw);
             line-height: 15px;
           }
         }
@@ -217,8 +215,8 @@
             min-height: 50px;
             max-height: 60px;
             width: 200px;
-            font-size: calc(var(--tamanhoFonte) - 7pt);
-            line-height: 20px;
+            font-size: calc(var(--tamanhoFonte) - 6pt);
+            line-height: 15px;
             overflow-y: auto;
           }
         }
@@ -226,6 +224,7 @@
     }
   }
 }
+
 .cor-texto {
   color: #ffab40;
 }
@@ -238,6 +237,27 @@
     &-thumb {
       background-color: black;
     }
+  }
+}
+
+.grid-zoom {
+  display: grid;
+  grid-template-columns: 12% 88%;
+}
+
+.zoom {
+  border: none;
+  background: local;
+  cursor: pointer;
+  padding-left: 0;
+  padding-right: 0;
+
+  .mat-icon {
+    font-weight: bolder; 
+  }
+
+  .icone-zoom {
+    margin-bottom: 16px;
   }
 }
 
@@ -259,13 +279,14 @@
       height: 95%;
       width: 95%;
     }
+
     &-pequeno {
       height: 55%;
       width: 55%;
     }
   }
 
-  .carta-coracao-bonus{
+  .carta-coracao-bonus {
     width: 40%;
     height: 50px;
     border: 2px solid var(--input-fontColor);
@@ -278,6 +299,7 @@
       height: 100%;
       width: 100%;
     }
+
     &-pequeno {
       height: 60%;
       width: 60%;
