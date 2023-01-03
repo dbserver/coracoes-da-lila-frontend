@@ -6,7 +6,7 @@
     <div class="cabecalho">
       <h2 class="titulo">{{ mapTipo.get(carta.tipo) }}</h2>
       <div class="pontos">
-        <p class="pt">{{ carta.pontos }}</p> 
+        <p class="pt">{{ carta.pontos }}</p>
       </div>
     </div>
     <div class="corpo">
@@ -96,10 +96,10 @@
                   verificaJogadorTemCoracoes() == true &&
                   verificaStatusJogador() == true">
                   <a (click)="compraUmaCartaObjetivo()" *ngIf="verificaJogadorTemCoracaoPequeno()==true && sala.cartasObjetivo.length >= 1">
-                    <img src="../../../assets/img/cartacoracaopequeno.png" alt="" />
+                    <img src="../../../../assets/img/botao_objetivo_comprar.png" alt="" />
                   </a>
                   <a (click)="escolherEntreDuasCartasObjetivo()" *ngIf="verificaJogadorTemCoracaoGrande() && sala.cartasObjetivo.length >= 2">
-                    <img src="../../../assets/img/cartacoracaogrande.png" alt="" />
+                    <img src="../../../../assets/img/botao_objetivo_selecionar.png" alt="" />
                   </a>
                 </div>
               </div>
