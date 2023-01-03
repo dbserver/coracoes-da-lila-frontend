@@ -10,7 +10,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,7 +31,6 @@ import { RegrasJogoComponent } from './component/mesa/regras-jogo/regras-jogo.co
 import { IniciaPartidaComponent } from './component/mesa/inicia-partida/inicia-partida.component';
 import { MesaJogoComponent } from './component/mesa/mesa-jogo/mesa-jogo.component';
 import { AreaJogadoresComponent } from './component/mesa/area-jogadores/area-jogadores.component';
-import { MesaJogoService } from './service/mesa-jogo-service/mesa-jogo.service';
 import { RankingComponent } from './component/ranking/ranking.component';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import {
@@ -40,7 +38,6 @@ import {
   RxStompService,
   rxStompServiceFactory,
 } from '@stomp/ng2-stompjs';
-
 import { myRxStompConfig } from './rx-stomp.config';
 import { TelaErroComponent } from './component/erro/tela-erro/tela-erro.component';
 import { IndicaJogadorComponent } from './component/mesa/indica-jogador/indica-jogador.component';
@@ -137,8 +134,8 @@ import { VLibrasComponent } from './component/v-libras/v-libras.component';
       useFactory: rxStompServiceFactory,
       deps: [InjectableRxStompConfig],
     },
-    MesaJogoService,
-    ModalCartasObjetivoComponent,
+    //MesaJogoService,
+    //ModalCartasObjetivoComponent,
     HttpClientModule
   ],
   bootstrap: [AppComponent],
