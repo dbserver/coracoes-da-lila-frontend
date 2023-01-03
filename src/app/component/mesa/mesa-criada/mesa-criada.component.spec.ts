@@ -13,6 +13,9 @@ import { environment } from 'src/environments/environment';
 import { MesaCriadaComponent } from './mesa-criada.component';
 import { RxStompService } from '@stomp/ng2-stompjs';
 
+//Após o merge com desenvolvimento, o teste precisa ser reimplementado
+//devido a alterações no componente original
+
 /*
 Teste unitário do componente.
 Configurar Testbed apenas com a classe do componente e dublês das dependências
