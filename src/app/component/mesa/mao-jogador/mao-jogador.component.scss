@@ -65,6 +65,7 @@
     max-width: 1400px;
     overflow-x: auto;
     padding-bottom: 8px;
+    align-items: flex-end;
 
     &::-webkit-scrollbar {
       height: 4px;
@@ -197,7 +198,7 @@
       &-horizontal {
         width: 190px;
         height: 110px;
-        margin-top: 20px;
+        margin-bottom: 1.5rem;
 
         &.carta-sem-titulo {
           display: flex;
