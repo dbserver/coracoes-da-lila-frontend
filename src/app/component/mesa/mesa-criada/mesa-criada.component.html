@@ -3,21 +3,21 @@
     <h1 class="titulo">Mesa criada:</h1>
   </div>
   <div>
-    <p class="link-da-mesa">{{ link }}</p>
+    <p class="link-da-mesa" data-testid="linkDaMesa">{{ link }}</p>
 
     <button class="btn-copiar" mat-icon-button color="primary" aria-label="Copiar link para a área de transferência"
-      [cdkCopyToClipboard]="link">
+      [cdkCopyToClipboard]="link" data-testid="btnCopiar">
       <mat-icon>content_copy</mat-icon>
     </button>
   </div>
   <div>
-    <button mat-raised-button class="btn btn-inicio" id="iniciar" (click)="roteamento()" [class.spinner]="carregando" [disabled]="carregando">
+    <button mat-raised-button class="btn btn-inicio" id="iniciar" (click)="roteamento()" [class.spinner]="carregando" [disabled]="carregando" data-testid="btnIniciar">
       Iniciar Jogo
     </button>
   </div>
   <div>
-    <button mat-raised-button class="btn-inicio" type="submit" [routerLink]="['']">Voltar</button>
+    <button mat-raised-button class="btn-inicio" [routerLink]="['']" data-testid="btnVoltar">Voltar</button>
   </div>
-  <div class="area-da-mesa"></div>
+  <!--<div class="area-da-mesa"></div>-->
 </div>
 
