@@ -30,7 +30,7 @@ export class HabilitaDadoComponent implements OnInit {
   mudaDesabilitado(): boolean{
     // Se a carta tem um boolean bonus como true, então  desabilitado = false, chama o compraCarta
     // caso contrario desabilitado = true
-    let ultimaCarta = this.mesaJogoService.getJogadorAtualNaMesa().cartasDoJogo.length - 1;
+    let ultimaCarta = this.mesaJogoService.getJogadorAtualNaMesa().cartasDoJogo?.length - 1;
     if(ultimaCarta < 0||this.mesaJogoService.getJogadorAtualNaMesa().status != 'JOGANDO'){
       return this.desabilitado = true;
     }
@@ -41,8 +41,6 @@ export class HabilitaDadoComponent implements OnInit {
       this.aux = ultimaCarta;
       this.desabilitado = false;
     }
-
-
     return this.desabilitado;
   }
   compraCarta() {
