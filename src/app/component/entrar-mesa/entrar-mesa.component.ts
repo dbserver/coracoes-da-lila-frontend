@@ -16,6 +16,9 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./entrar-mesa.component.scss'],
 })
 export class EntrarMesaComponent implements OnInit {
+
+  aviso = false;
+
   constructor(
     private route: ActivatedRoute,
     private mesaJogoService: MesaJogoService,
@@ -69,7 +72,7 @@ export class EntrarMesaComponent implements OnInit {
       jogador: this.jogador,
       hash: this.hash,
     } as SalaRequest;
-    if (this.nomeValido()) {
+    if (this.nomeValido() && this.nickNaoEmBranco()) {
       this.mesaService
         .conectarNovoJogador(salarequest)
         .subscribe((salaResp) => {
@@ -78,6 +81,8 @@ export class EntrarMesaComponent implements OnInit {
           this.emit();
         });
       this.roteamento();
+    } else {
+      this.aviso = true;
     }
   }
 
@@ -98,16 +103,20 @@ export class EntrarMesaComponent implements OnInit {
     return this.jogador.nome;
   }
 
-  nomeValido(): boolean{
+  nomeValido(): boolean {
     var pattern = /^[a-zA-Z\u00C0-\u00FF0-9 ]{2,10}$/gmi;
 
     return pattern.test(this.jogador.nome);
   }
 
+  nickNaoEmBranco(): boolean {
+    return this.jogador.nome.trim().length > 0;
+  }
+  
   verificarSeSalaCheia(hash: string) {
     this.mesaService
-    .findByHash(hash)
-    .subscribe((sala) => {(this.statusJogo = sala.status); })
+      .findByHash(hash)
+      .subscribe((sala) => { (this.statusJogo = sala.status); })
 
 
     this.iniciaPartidaService
@@ -121,11 +130,13 @@ export class EntrarMesaComponent implements OnInit {
 
   verificarSeJogoIniciado(hash: string) {
     this.mesaService
-    .findByHash(hash)
-    .subscribe((sala) => {(this.statusJogo = sala.status); 
-      if(this.statusJogo === 'JOGANDO' && 'ULTIMA_RODADA'){
-      this.router.navigate(['/jogoiniciado']);
-    }})
+      .findByHash(hash)
+      .subscribe((sala) => {
+        (this.statusJogo = sala.status);
+        if (this.statusJogo === 'JOGANDO' && 'ULTIMA_RODADA') {
+          this.router.navigate(['/jogoiniciado']);
+        }
+      })
 
   }
 

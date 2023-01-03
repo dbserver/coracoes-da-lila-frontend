@@ -11,7 +11,13 @@
     </mat-form-field>
   </div>
 
-  <div>
+  <div class="aviso-centro" *ngIf="aviso === true">
+    <p class="aviso">
+      Seu nick não pode estar vazio ou em branco!
+    </p>
+  </div>
+
+  <div class="aviso-centro">
     <p class="aviso">
       Nome deve ter entre 2 e 10 caracteres. O nome também não deve conter caracteres especiais (@.|! ? ...)
     </p>

@@ -18,6 +18,7 @@ export class CriarMesaComponent implements OnInit {
   nick: string;
 
   carregando = false;
+  aviso = false;
 
   constructor(
     private mesaService: MesaService,
@@ -44,20 +45,26 @@ export class CriarMesaComponent implements OnInit {
       bonusCoracaoGrande: 0,
       status: 'JOGANDO'
     };
-    if(this.nomeValido()){
+    if (this.nomeValido() && this.nickNaoEmBranco()) {
       this.criarMesa();
       this.carregando = true;
+    } else {
+      this.aviso = true;
     }
   }
 
-  getNomeJogador(){
+  getNomeJogador() {
     return this.jogador.nome;
   }
 
-  nomeValido(): boolean{
+  nomeValido(): boolean {
     var pattern = /^[a-zA-Z\u00C0-\u00FF0-9 ]{2,10}$/gmi;
 
     return pattern.test(this.jogador.nome);
+  }
+
+  nickNaoEmBranco(): boolean {
+    return this.jogador.nome.trim().length > 0;
   }
 
   criarMesa() {
