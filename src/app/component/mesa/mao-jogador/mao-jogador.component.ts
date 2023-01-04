@@ -110,10 +110,10 @@ export class MaoJogadorComponent implements OnInit {
     this.mesaJogoService.enviarJogadorParaFinalizar(this.novaCategoriaCartasDoJogoDTO).subscribe((sala) => (this.sala = sala));
   }
 
-  public verificaCartaExisteNaListaDeCartas(cartaDoJogo: CartaDoJogo): boolean{
+  public verificaCartaExisteNaListaDeCartas(cartaDoJogo: CartaDoJogo, novaCategoriaCartasDoJogoDTO: NovaCategoriaCartasDoJogoDTO): boolean{
 
-    for (let i = 0; i < this.novaCategoriaCartasDoJogoDTO.listaDeCartas.length; i++){
-      if (this.novaCategoriaCartasDoJogoDTO.listaDeCartas[i].cartaID == cartaDoJogo.id){
+    for (let i = 0; i < novaCategoriaCartasDoJogoDTO.listaDeCartas.length; i++){
+      if (novaCategoriaCartasDoJogoDTO.listaDeCartas[i].cartaID == cartaDoJogo.id){
         return true;
       }
     }
@@ -129,7 +129,7 @@ export class MaoJogadorComponent implements OnInit {
     let categoria: string = this.novaCategoria.value.categoria
     let novaCategoriaEnum: CartaDoJogoEnumCategoria = (<any>CartaDoJogoEnumCategoria)[categoria]
 
-    if (this.verificaCartaExisteNaListaDeCartas(cartaDoJogo) == false){
+    if (this.verificaCartaExisteNaListaDeCartas(cartaDoJogo, this.novaCategoriaCartasDoJogoDTO) == false){
 
       if(this.verificaSeCategoriaGenerica(cartaDoJogo)){
 
@@ -141,9 +141,6 @@ export class MaoJogadorComponent implements OnInit {
         );
 
       } else {
-
-        console.log('')
-
         this.novaCategoriaCartasDoJogoDTO.listaDeCartas.push(
           {
             cartaID: cartaDoJogo.id,
