@@ -23,7 +23,7 @@
 
         <div class="nome-jogador">
             <img *ngIf="jogador?.id == sala.jogadorEscolhido?.id && sala.status === 'JOGANDO'" class="coracao-pequeno"
-                src="assets/svg/icone-coracao.svg" alt="Ícone coração">
+            title="Jogador inicial" src="assets/svg/icone-coracao.svg" alt="Ícone coração">
             <div *ngIf="jogador" class="centro nome">{{jogador.nome}}</div>
         </div>
 
