@@ -45,7 +45,7 @@ export class CriarMesaComponent implements OnInit {
       bonusCoracaoGrande: 0,
       status: 'JOGANDO'
     };
-    if (this.nomeValido() && this.nickNaoEmBranco()) {
+    if (this.nomeValido()) {
       this.criarMesa();
       this.carregando = true;
     } else {
@@ -61,10 +61,6 @@ export class CriarMesaComponent implements OnInit {
     var pattern = /^[a-zA-Z\u00C0-\u00FF0-9 ]{2,10}$/gmi;
 
     return pattern.test(this.jogador.nome);
-  }
-
-  nickNaoEmBranco(): boolean {
-    return this.jogador.nome.trim().length > 0;
   }
 
   caracteresPermitidos(event: { charCode: any; }) {

@@ -72,7 +72,7 @@ export class EntrarMesaComponent implements OnInit {
       jogador: this.jogador,
       hash: this.hash,
     } as SalaRequest;
-    if (this.nomeValido() && this.nickNaoEmBranco()) {
+    if (this.nomeValido()) {
       this.mesaService
         .conectarNovoJogador(salarequest)
         .subscribe((salaResp) => {
@@ -107,10 +107,6 @@ export class EntrarMesaComponent implements OnInit {
     var pattern = /^[a-zA-Z\u00C0-\u00FF0-9 ]{2,10}$/gmi;
 
     return pattern.test(this.jogador.nome);
-  }
-
-  nickNaoEmBranco(): boolean {
-    return this.jogador.nome.trim().length > 0;
   }
 
   caracteresPermitidos(event: { charCode: any; }) {
