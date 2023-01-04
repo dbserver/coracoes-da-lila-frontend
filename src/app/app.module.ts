@@ -59,6 +59,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { AnimacaoCartaComponent } from './component/mesa/animacao-carta/animacao-carta.component';
 import { OpcoesJogadaComponent } from './component/mesa/opcoes-jogada/opcoes-jogada.component';
 import { VLibrasComponent } from './component/v-libras/v-libras.component';
+import { MesaJogoService } from './service/mesa-jogo-service/mesa-jogo.service';
 
 @NgModule({
   declarations: [
@@ -134,8 +135,8 @@ import { VLibrasComponent } from './component/v-libras/v-libras.component';
       useFactory: rxStompServiceFactory,
       deps: [InjectableRxStompConfig],
     },
-    //MesaJogoService,
-    //ModalCartasObjetivoComponent,
+    MesaJogoService, //Isso é um problema estar aqui, se remover quebra o sistema
+    ModalCartasObjetivoComponent, //Isso é um problema estar aqui, se remover quebra o sistema?
     HttpClientModule
   ],
   bootstrap: [AppComponent],
