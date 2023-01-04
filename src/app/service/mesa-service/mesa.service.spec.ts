@@ -17,11 +17,13 @@ describe('MesaService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('Deve adicionar uma Key e um Value no localStorage', () => {
-    expect(service.esconderBotaoFonteMaior()).toBeTruthy
+  it('Deve adicionar uma Key "esconder" com o Value "true" no localStorage', () => {
+    service.esconderBotaoFonteMaior()
+    expect(localStorage.getItem('esconder')).toEqual('true')
   });
 
-  it('deve remover uma Key do localStorage', () => {
-    expect(service.mostrarBotaoFonteMaior()).toBeTruthy
+  it('deve remover a Key "esconder" do localStorage', () => {
+    service.mostrarBotaoFonteMaior()
+    expect(localStorage.getItem('esconder')).toEqual(null)
   });
 });
