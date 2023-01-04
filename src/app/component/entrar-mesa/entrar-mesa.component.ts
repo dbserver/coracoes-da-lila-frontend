@@ -113,6 +113,12 @@ export class EntrarMesaComponent implements OnInit {
     return this.jogador.nome.trim().length > 0;
   }
 
+  caracteresPermitidos(event: { charCode: any; }) {
+    var k;
+    k = event.charCode;
+    return ((k >= 48 && k <= 57) || (k >= 65 && k <= 90) || (k >= 97 && k <= 122) || (k >= 192 && k <= 255));
+  }
+
   verificarSeSalaCheia(hash: string) {
     this.mesaService
       .findByHash(hash)
