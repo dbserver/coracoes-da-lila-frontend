@@ -11,7 +11,7 @@ export class AcessibilidadeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    if(localStorage.length > 0){
+    if(localStorage.getItem('esconder')){
       this.esconderFonte = true;
       this.fonteTamanhoNormal()
     }

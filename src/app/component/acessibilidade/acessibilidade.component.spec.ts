@@ -24,7 +24,7 @@ describe('AcessibilidadeComponent', () => {
   });
 
   it('Mudar a boolean esconder para true', () => {
-    localStorage.setItem('esconder', 'esconder')
+    localStorage.setItem('esconder', 'true')
     expect(component.esconderFonte).toEqual(true)
   });
 

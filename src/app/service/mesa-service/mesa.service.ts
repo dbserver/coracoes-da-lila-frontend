@@ -47,6 +47,6 @@ export class MesaService {
 
   esconderBotaoFonteMaior() {
     return(
-    localStorage.setItem('esconder', 'esconder')
+    localStorage.setItem('esconder', 'true')
     )}
 }
