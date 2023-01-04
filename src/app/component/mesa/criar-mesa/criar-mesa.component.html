@@ -7,7 +7,7 @@
   <div>
     <mat-form-field appearance="fill">
       <mat-label>Nick:</mat-label>
-      <input matInput type="text" [(ngModel)]="nick" minlength="2" maxlength="10">
+      <input matInput type="text" [(ngModel)]="nick" minlength="2" maxlength="10" (keypress)="caracteresPermitidos($event)">
     </mat-form-field>
   </div>
 
