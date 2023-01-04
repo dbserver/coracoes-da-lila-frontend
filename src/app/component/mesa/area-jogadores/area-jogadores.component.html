@@ -12,7 +12,7 @@
             </app-indica-jogador>
             <img class="avatar" src="assets/blank-profile-picture-gb56d1b702_1280.png">
             <p class="nome-jogador">
-                <img *ngIf="jogador?.id == sala.jogadorEscolhido?.id && sala.status === 'JOGANDO'"
+                <img *ngIf="(jogador?.id == sala.jogadorEscolhido?.id) && (sala.status === 'JOGANDO' || sala.status === 'ULTIMA_RODADA')"
                     class="coracao-pequeno-selecionado" src="assets/svg/icone-coracao.svg"
                     alt="Ícone coração">
                 {{jogador.nome}}
@@ -27,7 +27,7 @@
             <div></div>
             <div class="centro"><img class="avatar" src="../../../assets/avatar" alt=""></div>
             <div class="centro nome-jogador">
-                <img *ngIf="jogadorModal?.id == sala.jogadorEscolhido?.id && sala.status === 'JOGANDO'"
+                <img *ngIf="(jogadorModal?.id == sala.jogadorEscolhido?.id) && (sala.status === 'JOGANDO' || sala.status === 'ULTIMA_RODADA')"
                     class="coracao-pequeno-selecionado" src="assets/svg/icone-coracao.svg" alt="Ícone coração">
                 {{jogadorModal.nome}}
             </div>
