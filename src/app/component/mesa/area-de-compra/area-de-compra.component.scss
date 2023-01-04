@@ -2,6 +2,7 @@
   display: flex;
   height: calc(100% - 27px);
 
+
   .compra-container {
     height: 90%;
     width: 850px;
@@ -25,6 +26,7 @@
       align-items: center;
 
       .coracoes {
+        cursor: pointer;
         display: flex;
         flex-direction: column;
         margin-top: 24px;
@@ -97,6 +99,7 @@
     }
 
     &-baralho {
+      cursor: default;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -246,6 +249,7 @@
     }
 
     &-objetivo {
+      cursor: default;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -268,12 +272,14 @@
       }
 
       .imagem {
+        cursor: none;
         &-logo {
           height: 50px;
           padding-top: 7px;
         }
 
         &-lila {
+          
           height: 90px;
           margin-top: 10px;
         }
@@ -386,4 +392,5 @@
 
 .dropdown:hover .dropdown-content {
   display: block;
+  cursor: pointer;
 }
