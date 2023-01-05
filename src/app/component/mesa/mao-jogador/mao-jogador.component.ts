@@ -22,7 +22,7 @@ import { CartaDoJogoEnumTipo } from 'src/app/enum/CartaDoJogoEnumTipo';
   styleUrls: ['./mao-jogador.component.scss'],
 })
 export class MaoJogadorComponent implements OnInit {
-
+  
   private hash = '';
   public sala: Sala = {} as Sala;
   public listaJogador: Jogador[] = [];
@@ -38,7 +38,7 @@ export class MaoJogadorComponent implements OnInit {
 
   enumCategoria = CartaDoJogoEnumCategoria;
   enumTipo = CartaDoJogoEnumTipo;
-
+  
   constructor(
     private mesaService: MesaService,
     private route: ActivatedRoute,
@@ -105,15 +105,13 @@ export class MaoJogadorComponent implements OnInit {
     this.novaCategoriaCartasDoJogoDTO.jogadorID = this.jogador.id;
     this.novaCategoriaCartasDoJogoDTO.salaHash = this.sala.hash;
 
-    console.log('size array cartas ' + this.novaCategoriaCartasDoJogoDTO.listaDeCartas.length)
-
     this.mesaJogoService.enviarJogadorParaFinalizar(this.novaCategoriaCartasDoJogoDTO).subscribe((sala) => (this.sala = sala));
   }
 
-  public verificaCartaExisteNaListaDeCartas(cartaDoJogo: CartaDoJogo, novaCategoriaCartasDoJogoDTO: NovaCategoriaCartasDoJogoDTO): boolean{
+  public verificaCartaExisteNaListaDeCartas(cartaDoJogo: CartaDoJogo): boolean{
 
-    for (let i = 0; i < novaCategoriaCartasDoJogoDTO.listaDeCartas.length; i++){
-      if (novaCategoriaCartasDoJogoDTO.listaDeCartas[i].cartaID == cartaDoJogo.id){
+    for (let i = 0; i < this.novaCategoriaCartasDoJogoDTO.listaDeCartas.length; i++){
+      if (this.novaCategoriaCartasDoJogoDTO.listaDeCartas[i].cartaID == cartaDoJogo.id){
         return true;
       }
     }
@@ -129,8 +127,7 @@ export class MaoJogadorComponent implements OnInit {
     let categoria: string = this.novaCategoria.value.categoria
     let novaCategoriaEnum: CartaDoJogoEnumCategoria = (<any>CartaDoJogoEnumCategoria)[categoria]
 
-    if (this.verificaCartaExisteNaListaDeCartas(cartaDoJogo, this.novaCategoriaCartasDoJogoDTO) == false){
-      console.log(this.novaCategoriaCartasDoJogoDTO)
+    if (this.verificaCartaExisteNaListaDeCartas(cartaDoJogo) == false){
       if(this.verificaSeCategoriaGenerica(cartaDoJogo)){
         this.novaCategoriaCartasDoJogoDTO.listaDeCartas.push(
           {
@@ -150,11 +147,13 @@ export class MaoJogadorComponent implements OnInit {
 
   public bloquearConfirmarCategorias(): boolean {
     let quantidadeCartasGenericas = 0;
-    for(let i = 0; i < this.jogador.cartasDoJogo.length; i++){
-      if(this.jogador.cartasDoJogo[i].categoria == CartaDoJogoEnumCategoria.GENERICA){
-        quantidadeCartasGenericas++;
+
+    this.jogador.cartasDoJogo.forEach(cartaDoJogo => {
+      if (cartaDoJogo.categoria == CartaDoJogoEnumCategoria.GENERICA){
+        quantidadeCartasGenericas++
       }
-    }
+    });
+
     if (quantidadeCartasGenericas == this.novaCategoriaCartasDoJogoDTO.listaDeCartas.length){
       return false;
     }
