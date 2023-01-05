@@ -1,3 +1,4 @@
+import { HabilitaDadoComponent } from './../habilita-dado/habilita-dado.component';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Baralho } from '../../../model/baralho';
@@ -32,8 +33,10 @@ export class AreaDeCompraComponent implements OnInit {
   public jogador: Jogador = {} as Jogador;
   public bonus = false;
   public embaralharCartas: boolean;
+  public HabilitaDadoComponent = new HabilitaDadoComponent(this.mesaJogoService);
 
-  public mapTipo = mapTipoCartaDoJogo; 
+  public mapTipo = mapTipoCartaDoJogo;
+  bloqueiaAcao = false;
 
   opcoesCartaObjetivo: CartaObjetivo[];
 
@@ -55,16 +58,18 @@ export class AreaDeCompraComponent implements OnInit {
       this.listaCartasDisponiveis = sala.baralho.cartasDoJogo;
       this.listaCartasDisponiveisObjetivo = sala.cartasObjetivo;
       this.jogador = this.mesaJogoService.getJogadorAtualNaMesa();
+      this.bloqueiaAcao = false;
       this.bonus = this.podeJogar();
     });
   }
 
   public comprarCarta(indice: number): void {
     this.sala.dado = 0;
-    if (this.jogador.status == 'JOGANDO') {
+    if (this.jogador.status == 'JOGANDO'&& !this.bloqueiaAcao) {
       if (this.listaCartasDisponiveis[indice].bonus) {
         this.jogador?.cartasDoJogo.push(this.listaCartasDisponiveis[indice]);
         this.listaCartasDisponiveis.splice(indice, 1);
+        this.bloqueiaAcao = !this.HabilitaDadoComponent.mudaDesabilitado();
         this.areaCompraService.emitirCartaJogo.emit(this.jogador?.cartasDoJogo);
       } else {
         this.jogador?.cartasDoJogo.push(this.listaCartasDisponiveis[indice]);
@@ -78,7 +83,7 @@ export class AreaDeCompraComponent implements OnInit {
   }
 
   public comprarCoracaoP() {
-    if (this.jogador.status == 'JOGANDO') {
+    if (this.jogador.status == 'JOGANDO' && !this.bloqueiaAcao) {
       this.sala.dado = 0;
       this.mesaJogoService
         .comprarCoracaoP(this.sala)
@@ -87,7 +92,7 @@ export class AreaDeCompraComponent implements OnInit {
   }
 
   public comprarCoracaoG() {
-    if (this.jogador.status == 'JOGANDO') {
+    if (this.jogador.status == 'JOGANDO' && !this.bloqueiaAcao) {
       this.sala.dado = 0;
       this.mesaJogoService
         .comprarCoracaoG(this.sala)
@@ -131,6 +136,7 @@ export class AreaDeCompraComponent implements OnInit {
 
   public podeJogar() {
     if (this.jogador.status == 'JOGANDO') {
+      console.log(this.HabilitaDadoComponent.mudaDesabilitado());
       return true;
     }
     return false;
@@ -204,7 +210,7 @@ export class AreaDeCompraComponent implements OnInit {
   }
 
   public compraUmaCartaObjetivo() {
-    if (this.jogador.status == 'JOGANDO')
+    if (this.jogador.status == 'JOGANDO'&& !this.bloqueiaAcao)
       this.mesaJogoService
         .comprarCartaObjetivo(this.sala)
         .subscribe((sala) => (this.sala = sala));

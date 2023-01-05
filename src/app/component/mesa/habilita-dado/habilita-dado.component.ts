@@ -30,7 +30,8 @@ export class HabilitaDadoComponent implements OnInit {
   mudaDesabilitado(): boolean{
     let ultimaCarta = this.mesaJogoService.getJogadorAtualNaMesa().cartasDoJogo?.length - 1;
     if(ultimaCarta < 0||this.mesaJogoService.getJogadorAtualNaMesa().status != 'JOGANDO'){
-      return this.desabilitado = true;
+      this.desabilitado = true;
+      return this.desabilitado;
     }
     if(!this.mesaJogoService.getJogadorAtualNaMesa().cartasDoJogo[ultimaCarta].bonus){
       this.desabilitado = true;
@@ -49,6 +50,7 @@ export class HabilitaDadoComponent implements OnInit {
     if (node instanceof HTMLElement) {
       this.resetarClasse(node);
     }
+    this.desabilitado = true;
   }
 
   animaDado() {
