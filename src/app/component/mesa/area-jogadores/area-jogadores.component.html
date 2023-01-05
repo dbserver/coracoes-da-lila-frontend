@@ -9,10 +9,6 @@
             </app-indica-jogador>
             <app-indica-jogador *ngIf="sala.status == 'ULTIMA_RODADA' && jogador.status=='ESPERANDO'" mensagem="Aguardando">
             </app-indica-jogador>
-            <app-indica-jogador *ngIf="sala.status == 'ULTIMA_RODADA' && jogador.status=='DEFININDO'" mensagem="Definindo">
-          </app-indica-jogador>
-          <app-indica-jogador *ngIf="sala.status == 'ULTIMA_RODADA' && jogador.status=='FINALIZADO'" mensagem="Finalizado">
-          </app-indica-jogador>
           <app-indica-jogador *ngIf="sala.status == 'AGUARDANDO_DEFINICAO' && jogador?.status=='DEFININDO'" mensagem="Definindo"></app-indica-jogador>
           <app-indica-jogador *ngIf="sala.status == 'AGUARDANDO_DEFINICAO' && jogador?.status=='FINALIZADO'" mensagem="Finalizado"></app-indica-jogador>
           <app-indica-jogador *ngIf="sala.status == 'FINALIZADO'" mensagem="Finalizado"></app-indica-jogador>

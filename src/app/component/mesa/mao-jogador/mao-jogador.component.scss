@@ -1,8 +1,7 @@
 .mao {
   display: grid;
-  //TODO: AVALIAR SE ESTÁ OK ISSO
   height: 13.8vw;
-  grid-template-columns: 15% 10% 55% 19%;
+  grid-template-columns: 15% 10% 64% 8%;
   grid-gap: 5px;
   align-items: center;
   max-width: 100%;
@@ -332,7 +331,7 @@ button {
   color: var(--font-color);
   background-color: var(--btn-bg);
   font-size: calc(var(--tamanhoFonte) - 3px);
-  width: fit-content;
+  min-width: fit-content;
   height: 35px;
 }
 
