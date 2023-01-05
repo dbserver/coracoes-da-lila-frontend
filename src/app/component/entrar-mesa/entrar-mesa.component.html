@@ -2,22 +2,22 @@
   <div class="logo">
     <img src="assets/img/logoLilaSozinho.png">
   </div>
-   
+
   <mat-form-field appearance="fill">
     <mat-label>Nick:</mat-label>
-    <input [(ngModel)]='nick' matInput type="text">
-    </mat-form-field>
+    <input [(ngModel)]='nick' matInput type="text" minlength="2" maxlength="10" (keypress)="caracteresPermitidos($event)">
+  </mat-form-field>
 
+  <div class="aviso-centro">
+    <p class="aviso">
+      Nick deve ter entre 2 e 10 caracteres. Não usar caracteres especiais (@.|!? ...)
+    </p>
+  </div>
 
-    <div *ngIf="!nomeValido()">
-      <p class="aviso">
-        Nome deve ter entre 2 e 10 caracteres. O nome também não deve conter caracteres especiais (@.|! ? ...)
-      </p>
-    </div>
-    <div >
-      <button class="btn" mat-raised-button (click)='conectar()'> Entrar na mesa</button>
-    </div>   
-    
+  <div>
+    <button class="btn" mat-raised-button (click)='conectar()' > Entrar na mesa</button>
+  </div>
+
   <div>
     <button mat-raised-button type="submit" [routerLink]="['']">Voltar</button>
   </div>
