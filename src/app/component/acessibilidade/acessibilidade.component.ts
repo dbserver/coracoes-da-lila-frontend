@@ -7,15 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AcessibilidadeComponent implements OnInit {
   esconderFonte:boolean = false;
-
   constructor() { }
 
   ngOnInit(): void {
-    if(localStorage.getItem('esconder')){
-      this.esconderFonte = true;
-      this.fonteTamanhoNormal()
-    }
-     
+    if(localStorage.getItem('esconder')){this.mesaCriada()}
+    //if(localStorage.getItem('esconder')){this.mesaCriada()}
    }
 
   toggleClass(classe: string) {
@@ -23,6 +19,15 @@ export class AcessibilidadeComponent implements OnInit {
     const $html = document.querySelector('html')!
     $html.classList.toggle(classe);
 
+  }
+
+  mesaCriada(){
+    this.esconderBotaoAjusteFonte()
+    this.fonteTamanhoNormal()
+  }
+
+  esconderBotaoAjusteFonte(){
+    this.esconderFonte = true;
   }
 
   fonteTamanhoNormal(){
