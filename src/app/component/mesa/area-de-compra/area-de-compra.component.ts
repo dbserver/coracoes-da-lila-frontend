@@ -217,9 +217,11 @@ export class AreaDeCompraComponent implements OnInit {
   }
 
   public escolherEntreDuasCartasObjetivo() {
-    this.buscaCartasObjetivo();
-    this.abrirModal();
-    this.desabilitaAnimacaoEmbaralhar();
+    if (this.jogador.status == 'JOGANDO'&& !this.bloqueiaAcao){
+      this.buscaCartasObjetivo();
+      this.abrirModal();
+      this.desabilitaAnimacaoEmbaralhar();
+    }
   }
 
   private buscaCartasObjetivo() {
