@@ -130,23 +130,20 @@ export class MaoJogadorComponent implements OnInit {
     let novaCategoriaEnum: CartaDoJogoEnumCategoria = (<any>CartaDoJogoEnumCategoria)[categoria]
 
     if (this.verificaCartaExisteNaListaDeCartas(cartaDoJogo, this.novaCategoriaCartasDoJogoDTO) == false){
-
+      console.log(this.novaCategoriaCartasDoJogoDTO)
       if(this.verificaSeCategoriaGenerica(cartaDoJogo)){
-
         this.novaCategoriaCartasDoJogoDTO.listaDeCartas.push(
           {
             cartaID: cartaDoJogo.id,
             novaCategoria: novaCategoriaEnum
           } as NovaCategoriaDTO
         );
-
-      } else {
-        this.novaCategoriaCartasDoJogoDTO.listaDeCartas.push(
-          {
-            cartaID: cartaDoJogo.id,
-            novaCategoria: ''
-          } as NovaCategoriaDTO
-        )
+      } 
+    } else {
+      for(let i = 0; i < this.novaCategoriaCartasDoJogoDTO.listaDeCartas.length; i++){
+        if (this.novaCategoriaCartasDoJogoDTO.listaDeCartas[i].cartaID == cartaDoJogo.id){
+          this.novaCategoriaCartasDoJogoDTO.listaDeCartas[i].novaCategoria = novaCategoriaEnum;
+        }
       }
     }
   }
