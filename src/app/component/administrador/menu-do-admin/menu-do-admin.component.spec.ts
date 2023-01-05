@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { MenuDoAdminComponent } from './menu-do-admin.component';
 
 describe('MenuDoAdminComponent', () => {
@@ -8,7 +8,8 @@ describe('MenuDoAdminComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MenuDoAdminComponent ]
+      declarations: [ MenuDoAdminComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
     })
     .compileComponents();
   });

@@ -1,0 +1,117 @@
+:host ::ng-deep .mat-icon {
+    color: red;
+    font-size: 1.6rem;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    background: local;
+    float: right;
+    margin-bottom: 90%;
+}
+
+.topo {
+    display: grid;
+    grid-template-columns: 90% auto;
+}
+
+.cabecalho {
+    height: max-content;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8%;
+
+    .titulo {
+        margin-top: 2%;
+        margin-bottom: 0;
+        line-height: 24px;
+        font-size: calc(var(--tamanhoFonte) + 1vw);
+    }
+
+    .pontos {
+        background-color: black;
+        min-width: 1.7em;
+        min-height: 1.7em;
+        max-width: 1.7em;
+        max-height: 1.7em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 20px;
+        border-radius: 50%;
+        margin-right: 5%;
+
+        .pt {
+            margin-top: 15px;
+            font-size: calc(var(--tamanhoFonte) - 3pt);
+            font-weight: bold;
+        }
+    }
+}
+
+.corpo {
+    margin-top: 13%;
+
+    .definicao {
+        padding-right: 8px;
+        font-size: calc(var(--tamanhoFonte) + 0.5vw);
+        line-height: 2.5rem;
+    }
+
+    .icones {
+        min-height: 35px;
+        margin-top: 16px;
+        font-size: calc(var(--tamanhoFonte) + 0.5vw);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .coracoes {
+            display: flex;
+            align-items: center;
+
+            .coracao:not(:first-child) {
+                margin-left: 8px;
+            }
+
+            .coracao-pequeno {
+                width: 0.9em;
+                height: 0.9em;
+            }
+
+            .coracao-grande {
+                width: 1.35em;
+                height: 1.35em;
+            }
+        }
+
+        .presentes {
+            position: relative;
+
+            .presente {
+                width: 1.75em;
+                height: 1.75em;
+            }
+
+            .presenteInfoAcoes {
+                width: 1em;
+                position: absolute;
+                bottom: 0px;
+                right: -5px;
+            }
+        }
+    }
+}
+
+.rodape {
+    margin-top: 32px;
+
+    .fonte {
+        max-height: 40px;
+        display: block;
+        font-size: var(--tamanhoFonte);
+        line-height: 1.5rem;
+    }
+}

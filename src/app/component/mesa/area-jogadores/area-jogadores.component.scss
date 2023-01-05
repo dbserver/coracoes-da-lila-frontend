@@ -1,35 +1,37 @@
 .area-jogadores {
-  display: grid;
-  position: absolute;
-  left: 30%;
-  grid-template-columns: 10% 10% 10% 10%;
-  grid-gap: 1em;
-  justify-items: center;
-  align-items: center;
-  gap: 12px;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
 }
 
 .box-jogador {
   width: 48rem;
-  height: 6rem;
-  display: inline-flex;
-  gap: inherit;
+  height: fit-content;
+  display: flex;
+  gap: 1rem;
   justify-content: center;
+  align-items: center;
+}
+
+.status-container {
+  height: 24px;
 }
 
 .jogador{
-  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20%;
 }
 
 .nome-jogador{
+  display: flex;
+  gap: 0.3rem;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
   word-break: break-all;
-  font-size: 20px;
-}
-
-.avatar{
-  width: 40%;
+  margin-bottom: 0;
 }
 
 .mao {
@@ -74,12 +76,7 @@
   height: 50%;
   width: 50%;
 }
-.nome-jogador {
-  display: flex;
-  gap: 0.3rem;
-  justify-content: center;
-  align-items: center;
-}
+
 .coracao-pequeno-selecionado {
   width: 0.9em;
   height: 0.9em;
@@ -239,7 +236,7 @@
         .cabecalho {
           .titulo {
             color: #38761d;
-            font-size: calc(var(--tamanhoFonte) - 6pt);
+            font-size: calc(var(--tamanhoFonte) - 0.45vw);
             line-height: 15px;
           }
         }
@@ -249,8 +246,8 @@
             min-height: 50px;
             max-height: 60px;
             width: 200px;
-            font-size: calc(var(--tamanhoFonte) - 7pt);
-            line-height: 20px;
+            font-size: calc(var(--tamanhoFonte) - 6pt);
+            line-height: 15px;
             overflow-y: auto;
           }
         }
@@ -325,4 +322,25 @@
   height: 35px;
   margin-top: 10px;
   margin-left: 10px;
+}
+
+.grid-zoom {
+  display: grid;
+  grid-template-columns: 12% 88%;
+}
+
+.zoom {
+  border: none;
+  background: local;
+  cursor: pointer;
+  padding-left: 0;
+  padding-right: 0;
+
+  .mat-icon {
+    font-weight: bolder;
+  }
+
+  .icone-zoom {
+    margin-bottom: 16px;
+  }
 }

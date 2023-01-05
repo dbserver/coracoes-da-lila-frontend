@@ -1,8 +1,10 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { mapTipoCartaDoJogo } from 'src/app/maps/cartaDoJogoMaps';
 import { CartaDoJogo } from 'src/app/model/cartaDoJogo';
+import { CartaObjetivo } from 'src/app/model/cartaObjetivo';
 import { Jogador } from 'src/app/model/jogador';
 import { Sala } from 'src/app/model/sala';
 import { AreaDeCompraService } from 'src/app/service/area-de-compra-service/area-de-compra.service';
@@ -12,6 +14,8 @@ import { NovaCategoriaCartasDoJogoDTO } from 'src/app/dto/NovaCategoriaCartasDoJ
 import { NovaCategoriaDTO } from 'src/app/dto/NovaCategoriaDTO';
 import { CartaDoJogoEnumCategoria } from 'src/app/enum/CartaDoJogoEnumCategoria';
 import { CartaDoJogoEnumTipo } from 'src/app/enum/CartaDoJogoEnumTipo';
+import { ModalZoomObjetivoComponent } from '../modal-zoom-objetivo/modal-zoom-objetivo.component';
+import { ModalZoomComponent } from '../modal-zoom/modal-zoom.component';
 
 @Injectable({
   providedIn: 'root',
@@ -44,6 +48,7 @@ export class MaoJogadorComponent implements OnInit {
     private route: ActivatedRoute,
     private mesaJogoService: MesaJogoService,
     private areaCompraService: AreaDeCompraService,
+    public zoomCarta: MatDialog,
   ) {}
 
   ngOnInit(): void {
@@ -162,4 +167,24 @@ export class MaoJogadorComponent implements OnInit {
 
   public toEnumTipo = (tipo: any) => tipo as CartaDoJogoEnumTipo;
   public toEnumCategoria = (tipo: any) => tipo as CartaDoJogoEnumCategoria;
+  public abrirZoom(event: Event, cartas: CartaDoJogo) {
+    event.stopPropagation();
+    this.zoomCarta.open(ModalZoomComponent, {
+      data: cartas,
+      height: '90%',
+      width: '35%',
+      panelClass: 'css-carta'
+    });
+  }
+
+  public zoomObjetivo(event: Event, cartaObjetivo: CartaObjetivo) {
+    event.stopPropagation();
+    
+    this.zoomCarta.open(ModalZoomObjetivoComponent, {
+      data: cartaObjetivo,
+      height: '60%',
+      width: '50%',
+      panelClass: 'css-carta'
+    });
+  }
 }

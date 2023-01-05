@@ -1,32 +1,36 @@
 <div class="centro">
-    <div class="btn-superior">
-        <app-guia-rapido></app-guia-rapido>
-        <app-regras-jogo></app-regras-jogo>
-    </div>
+  <div class="btn-superior">
+    <app-guia-rapido
+      *ngIf="sala.status=='AGUARDANDO' || sala.status=='JOGANDO' || sala.status=='ULTIMA_RODADA' || sala.status=='AGUARDANDO_DEFINICAO' || sala.status=='FINALIZADO'"></app-guia-rapido>
+    <app-regras-jogo
+      *ngIf="sala.status=='AGUARDANDO' || sala.status=='JOGANDO' || sala.status=='ULTIMA_RODADA' || sala.status=='AGUARDANDO_DEFINICAO' || sala.status=='FINALIZADO'"></app-regras-jogo>
+  </div>
 </div>
 <div class="container">
-    <header><app-area-jogadores></app-area-jogadores></header>
-    <nav *ngIf="sala.status=='AGUARDANDO'"><app-inicia-partida></app-inicia-partida></nav>
-    <nav *ngIf="sala.status =='JOGANDO' || sala.status == 'AGUARDANDO_DEFINICAO'" class="area-central">
-      <app-opcoes-jogada></app-opcoes-jogada>
-      <app-area-de-compra></app-area-de-compra>
-    </nav>
-    <nav *ngIf="sala.status =='ULTIMA_RODADA'"  class="area-central">
-      <app-opcoes-jogada></app-opcoes-jogada>
-      <app-area-de-compra></app-area-de-compra>
-      <div class="modal" id="modal-one" aria-hidden="true" [hidden] = "isShow">
-        <div class="modal-dialog">
-            <div class="modal-header">
-                 <h2>Última rodada!</h2>
-            </div>
-            <div class="modal-body">
-                <p>8 Pontos alcançados! :D</p>
-            </div>
-            <div class="modal-footer"> <button mat-raised-button class="btn" (click) = fecharModal()>Fechar</button>
-            </div>
+  <header
+    *ngIf="sala.status=='AGUARDANDO' || sala.status=='JOGANDO' || sala.status=='ULTIMA_RODADA' || sala.status=='AGUARDANDO_DEFINICAO' || sala.status=='FINALIZADO'">
+    <app-area-jogadores></app-area-jogadores></header>
+  <nav *ngIf="sala.status=='AGUARDANDO'"><app-inicia-partida></app-inicia-partida></nav>
+  <nav *ngIf="sala.status =='JOGANDO' || sala.status =='ULTIMA_RODADA'" class="area-central">
+    <app-opcoes-jogada></app-opcoes-jogada>
+    <app-area-de-compra></app-area-de-compra>
+  </nav>
+  <nav *ngIf="sala.status =='ULTIMA_RODADA'">
+    <div class="modal" id="modal-one" aria-hidden="true" [hidden]="isShow">
+      <div class="modal-dialog">
+        <div class="modal-header">
+          <h2>Última rodada!</h2>
+        </div>
+        <div class="modal-body">
+          <p>8 Pontos alcançados! :D</p>
+        </div>
+        <div class="modal-footer"> <button mat-raised-button class="btn" (click)=fecharModal()>Fechar</button>
         </div>
       </div>
-    </nav>
-    <nav *ngIf="sala.status=='FINALIZADO'"><app-ranking></app-ranking></nav>
-    <footer><app-mao-jogador></app-mao-jogador></footer>
+    </div>
+  </nav>
+  <nav *ngIf="sala.status=='FINALIZADO'"><app-ranking></app-ranking></nav>
+  <footer
+    *ngIf="sala.status=='AGUARDANDO' || sala.status=='JOGANDO' || sala.status=='ULTIMA_RODADA' || sala.status=='AGUARDANDO_DEFINICAO' || sala.status=='FINALIZADO'">
+    <app-mao-jogador></app-mao-jogador></footer>
 </div>

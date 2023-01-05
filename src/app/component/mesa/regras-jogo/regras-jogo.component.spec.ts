@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { RegrasJogoComponent } from './regras-jogo.component';
 
 describe('RegrasJogoComponent', () => {
@@ -8,7 +8,8 @@ describe('RegrasJogoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RegrasJogoComponent ]
+      declarations: [ RegrasJogoComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
     })
     .compileComponents();
   });

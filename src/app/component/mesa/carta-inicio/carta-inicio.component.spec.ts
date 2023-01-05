@@ -1,6 +1,6 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CartaInicioComponent } from './carta-inicio.component';
 
 describe('CartaInicioComponent', () => {
@@ -10,6 +10,7 @@ describe('CartaInicioComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ CartaInicioComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
       imports: [HttpClientTestingModule]
     })
     .compileComponents();

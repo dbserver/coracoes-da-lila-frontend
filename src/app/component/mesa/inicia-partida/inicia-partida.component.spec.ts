@@ -4,7 +4,7 @@ import { MesaJogoService } from 'src/app/service/mesa-jogo-service/mesa-jogo.ser
 import { Jogador } from 'src/app/model/jogador';
 import { Sala } from 'src/app/model/sala';
 import { of } from 'rxjs';
-
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { HttpClient} from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
@@ -23,6 +23,7 @@ describe('IniciaPartidaComponent', () => {
 
       imports: [ HttpClientTestingModule ],
       declarations: [IniciaPartidaComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
       providers: [IniciaPartidaService, MesaJogoService],
     }).compileComponents();
   });

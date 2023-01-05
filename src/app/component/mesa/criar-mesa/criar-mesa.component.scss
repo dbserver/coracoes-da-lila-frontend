@@ -6,15 +6,23 @@
     background: var(--background); 
     justify-content: center;
     align-items: center; 
+    margin-top: 4%;
 }
 
-.aviso{
+.aviso-centro {
+    text-align: center;
+    margin-bottom: 1%;
+}
+
+.aviso {
     font-size: var(--tamanhoFonte);
-    color:red;
+    color: var(--font-color);
+    line-height: 110%;
   }
 
 .logo {
     margin-bottom: 2%;
+    margin-top: var(--margemTopoLogo);
 }
 
 .texto{
@@ -81,3 +89,7 @@ input{
     background-color: rgb(167, 163, 163);
     color: rgb(167, 163, 163);
   }
+
+  :host ::ng-deep .mat-form-field {
+    font-size: calc(var(--tamanhoFonte) - 5px);
+}

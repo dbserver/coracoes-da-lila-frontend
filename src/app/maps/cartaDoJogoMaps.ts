@@ -6,7 +6,7 @@ export const mapTipoCartaDoJogo = new Map<string, string>(
     ['FILME', 'FILME'],
     ['INFORMACAO', 'INFORMAÇÃO'],
     ['PESSOA', 'PESSOA']
-  ]
+  ] 
 )
 
 
