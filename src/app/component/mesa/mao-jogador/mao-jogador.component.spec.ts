@@ -16,7 +16,9 @@ describe('MaoJogadorComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [MaoJogadorComponent],
-      imports: [HttpClientTestingModule, RouterTestingModule]
+      imports: [HttpClientTestingModule, RouterTestingModule],
+      providers: [{ provide: MatDialog, useValue: {}
+      }],
     })
       .compileComponents();
   });

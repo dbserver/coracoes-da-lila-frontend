@@ -38,7 +38,7 @@ export class EntrarMesaComponent implements OnInit {
     this.mesaService
       .findByHash(this.hash)
       .pipe(
-        tap(console.log),
+        //tap(console.log),
         catchError(errorHandler)
       )
       .subscribe({
