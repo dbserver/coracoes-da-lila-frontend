@@ -95,10 +95,10 @@
                 <div class="dropdown-content" *ngIf="
                   verificaJogadorTemCoracoes() == true &&
                   verificaStatusJogador() == true">
-                  <a (click)="compraUmaCartaObjetivo()" *ngIf="verificaJogadorTemCoracaoPequeno()==true">
+                  <a (click)="compraUmaCartaObjetivo()" *ngIf="verificaJogadorTemCoracaoPequeno()==true && bloqueiaAcao == false">
                     <img src="../../../assets/img/cartacoracaopequeno.png" alt="" />
                   </a>
-                  <a (click)="escolherEntreDuasCartasObjetivo()" *ngIf="verificaJogadorTemCoracaoGrande() == true">
+                  <a (click)="escolherEntreDuasCartasObjetivo()" *ngIf="verificaJogadorTemCoracaoGrande() == true && bloqueiaAcao == false">
                     <img src="../../../assets/img/cartacoracaogrande.png" alt="" />
                   </a>
                 </div>
