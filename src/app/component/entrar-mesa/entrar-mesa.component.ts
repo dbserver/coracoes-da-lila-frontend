@@ -7,8 +7,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Jogador } from '../../model/jogador';
 import { MesaJogoService } from '../../service/mesa-jogo-service/mesa-jogo.service';
 import { IniciaPartidaService } from '../../service/inicia-partida-service/inicia-partida.service';
-import { catchError, Observable, of, tap, throwError } from 'rxjs';
-import { HttpErrorResponse } from '@angular/common/http';
+import { catchError, tap } from 'rxjs';
+import { errorHandler } from 'src/app/utils/errorHandler';
 
 @Component({
   selector: 'app-entrar-mesa',
@@ -141,16 +141,3 @@ export class EntrarMesaComponent implements OnInit {
   }
 }
 
-function errorHandler(err: HttpErrorResponse) {
-  let msg = '';
-  if (err.error instanceof ErrorEvent) {
-    msg = `Client Error Occured: ${err.error.message}`;
-  } else {
-    msg = `Server Error Occured: ${err.status} ${err.statusText}`;
-  }
-  return throwError(() => ({
-    error: err.error,
-    message: msg,
-    messageDesc: err.message,
-  }));
-}

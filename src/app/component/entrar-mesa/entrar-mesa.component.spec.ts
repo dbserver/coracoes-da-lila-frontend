@@ -1,19 +1,18 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
-import { ComponentFixture, fakeAsync, inject, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, inject, TestBed, tick } from '@angular/core/testing';
 import { ActivatedRoute, Router, convertToParamMap } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-
-
 import { EntrarMesaComponent } from './entrar-mesa.component';
 import { Sala } from 'src/app/model/sala';
 import { Baralho } from 'src/app/model/baralho';
 import { CartaObjetivo } from 'src/app/model/cartaObjetivo';
 import { Jogador } from 'src/app/model/jogador';
 import { MesaService } from 'src/app/service/mesa-service/mesa.service';
-import { Observable, of } from 'rxjs';
-import { RouterLinkDirectiveStub, asyncData, asyncError } from 'src/app/utils/testUtils';
+import { of } from 'rxjs';
+import { asyncError, RouterLinkDirectiveStub } from 'src/app/utils/testUtils';
 import { IniciaPartidaService } from 'src/app/service/inicia-partida-service/inicia-partida.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 fdescribe('EntrarMesaComponent', () => {
   let component: EntrarMesaComponent;
@@ -90,17 +89,20 @@ fdescribe('EntrarMesaComponent', () => {
     findByHashSpy = mesaServiceSpy.findByHash.withArgs(hash).and.returnValue(of(sala));
     component.verificarSeJogoFinalizado(hash);
     fixture.detectChanges();
-
     expect(mockRouter.navigate).toHaveBeenCalledWith(['/jogofinalizado']);
   });
 
-  xit('deve indicar ao Router para navegar quando a hash da sala for inexistente', () => {
-    sala.hash = 'hashCorreta';
-    findByHashSpy = mesaServiceSpy.findByHash.withArgs('hashSala').and.returnValue(of(sala));
-    fixture.detectChanges();
+  it('deve indicar ao Router para navegar quando a hash da sala for inexistente', fakeAsync(() => {
+    mockRouter.navigate.calls.reset();
+    findByHashSpy = mesaServiceSpy.findByHash.withArgs(hash).and.returnValue(asyncError(new HttpErrorResponse({
+      status: 404,
+      statusText: 'Not Found'
+    })));
+    fixture.detectChanges(); //processar ngOnInit()
+    tick(); //processar o Observable
+    expect(mockRouter.navigate).toHaveBeenCalledWith(['/salaInexistente']);
+  }));
 
-    expect(findByHashSpy).toHaveBeenCalledWith(['/salaInexistente']);
-  });
 });
 
 
