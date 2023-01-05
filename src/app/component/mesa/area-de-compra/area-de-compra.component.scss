@@ -26,7 +26,6 @@
       align-items: center;
 
       .coracoes {
-        cursor: pointer;
         display: flex;
         flex-direction: column;
         margin-top: 24px;
@@ -36,6 +35,7 @@
           margin-top: 24px;
 
           .coracao {
+            cursor: pointer;
             width: 44px;
             height: 44px;
             border: 1px solid black;
@@ -394,3 +394,4 @@
   display: block;
   cursor: pointer;
 }
+
