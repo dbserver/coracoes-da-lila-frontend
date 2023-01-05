@@ -243,15 +243,6 @@ export class AreaDeCompraComponent implements OnInit {
     }
   }
 
-  // private buscaCartasObjetivo() {
-  //   this.mesaJogoService.buscarDuasCartasObjetivo(this.sala)
-  //   .subscribe(
-  //     (sala) => (
-  //       this.opcoesCartaObjetivo = sala.opcoesCartaObjetivo,
-  //       this.sala = sala
-  //     )
-  //   );
-
   public desabilitaAnimacaoEmbaralhar() {
     document.getElementById('carta-1')?.classList.remove('carta-1');
     document.getElementById('carta-2')?.classList.remove('carta-2');
@@ -270,6 +261,7 @@ export class AreaDeCompraComponent implements OnInit {
   }
 
   public toEnumTipo = (tipo: any) => tipo as CartaDoJogoEnumTipo;
+
   public abrirZoom(event: Event, carta: CartaDoJogo) {
     event.stopPropagation();
     this.zoomCarta.open(ModalZoomComponent, {
