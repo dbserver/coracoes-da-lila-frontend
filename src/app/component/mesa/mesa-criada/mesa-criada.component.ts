@@ -42,7 +42,6 @@ export class MesaCriadaComponent implements OnInit {
        .subscribe((sala) => (this.sala = sala));   
     
 
-       .subscribe((sala) => (this.sala = sala));
     this.topicSubscription = this.rxStompService
       .watch(`/gameplay/game-update/${this.hash}`)
       .subscribe((msg: Message) => {
