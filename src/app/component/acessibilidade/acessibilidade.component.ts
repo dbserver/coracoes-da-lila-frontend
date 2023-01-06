@@ -11,7 +11,6 @@ export class AcessibilidadeComponent implements OnInit {
 
   ngOnInit(): void {
     if(localStorage.getItem('esconder')){this.mesaCriada()}
-    //if(localStorage.getItem('esconder')){this.mesaCriada()}
    }
 
   toggleClass(classe: string) {

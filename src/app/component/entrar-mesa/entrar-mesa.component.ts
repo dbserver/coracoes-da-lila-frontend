@@ -54,6 +54,8 @@ export class EntrarMesaComponent implements OnInit {
           this.router.navigate(['/salaInexistente']);
         }
       });
+    this.mesaService
+    .mostrarBotaoFonteMaior();  
   }
 
   hash = '';
@@ -92,6 +94,8 @@ export class EntrarMesaComponent implements OnInit {
     } else {
       this.router.navigate(['/jogo', this.sala.hash]);
     }
+    this.mesaService
+    .esconderBotaoFonteMaior();
   }
 
   emit() {
