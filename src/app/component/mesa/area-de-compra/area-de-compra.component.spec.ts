@@ -38,7 +38,7 @@ describe('AreaDeCompraComponent', () => {
   it('deve abrir o modal quando o método escolherEntreDuasCartasObjetivo for chamado', () => {
     const modalCartasObjetivo = TestBed.createComponent(ModalCartasObjetivoComponent);
 
-    component.escolherEntreDuasCartasObjetivo();
+    component.abrirModal();
 
     const modal = modalCartasObjetivo.nativeElement.querySelector('#modal');
     expect(modal.style.display).toEqual('flex');
