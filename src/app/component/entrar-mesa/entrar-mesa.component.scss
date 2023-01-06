@@ -11,33 +11,35 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 50px;
+  margin-top: var(--margemTopoLogo);
 }
 
 .logo img {
   background-color: var(--background);
 }
 
+.aviso-centro {
+  text-align: center;
+}
+
 .aviso{
   font-size: var(--tamanhoFonte);
-  color:red;
+  color: var(--input-fontColor);
+  line-height: 110%;
 }
 
 .texto {
   color: green;
 }
 
-
 .titulo {
   font-size: var(--tamanhoFonte);
   color: var(--font-color);
   margin-bottom: 20px;
-
-
 }
 
 input{
   background-color: var(--bg-input);
-
 }
 
 button {
@@ -51,20 +53,17 @@ button {
   font-size: var(--tamanhoFonte);
 }
 
-
 @media screen and (max-width: 640px) {
   .titulo {
     display: flex;
     justify-content: center;
     margin-bottom: 50px;
   }
-
 }
 
-
-
-
-
 @media (max-width: 616px) {
+}
 
+:host ::ng-deep .mat-form-field {
+  font-size: calc(var(--tamanhoFonte) - 5px);
 }

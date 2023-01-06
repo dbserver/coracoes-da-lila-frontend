@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TelaHistoriaComponent } from './tela-historia.component';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('TelaHistoriaComponent', () => {
   let component: TelaHistoriaComponent;
@@ -7,7 +8,8 @@ describe('TelaHistoriaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TelaHistoriaComponent ]
+      declarations: [ TelaHistoriaComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
     })
     .compileComponents();
 

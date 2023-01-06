@@ -1,7 +1,6 @@
 import { SalaRequest } from './../../model/salaRequest';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { Sala } from 'src/app/model/sala';
 import { Jogador } from '../../model/jogador';
@@ -12,9 +11,8 @@ import { SalaResponse } from '../../model/salaResponse';
   providedIn: 'root',
 })
 export class MesaService {
-  private items: any[] = [];
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient) {}
 
   /* Envia a informação do primeiro jogador para o back end.
    * Recebe as informações da sala criada.

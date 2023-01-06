@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
@@ -10,7 +10,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,7 +31,6 @@ import { RegrasJogoComponent } from './component/mesa/regras-jogo/regras-jogo.co
 import { IniciaPartidaComponent } from './component/mesa/inicia-partida/inicia-partida.component';
 import { MesaJogoComponent } from './component/mesa/mesa-jogo/mesa-jogo.component';
 import { AreaJogadoresComponent } from './component/mesa/area-jogadores/area-jogadores.component';
-import { MesaJogoService } from './service/mesa-jogo-service/mesa-jogo.service';
 import { RankingComponent } from './component/ranking/ranking.component';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import {
@@ -40,7 +38,6 @@ import {
   RxStompService,
   rxStompServiceFactory,
 } from '@stomp/ng2-stompjs';
-
 import { myRxStompConfig } from './rx-stomp.config';
 import { TelaErroComponent } from './component/erro/tela-erro/tela-erro.component';
 import { IndicaJogadorComponent } from './component/mesa/indica-jogador/indica-jogador.component';
@@ -61,6 +58,9 @@ import { PrimeiroJogadorComponent } from './component/primeiro-jogador/primeiro-
 import { MatRadioModule } from '@angular/material/radio';
 import { AnimacaoCartaComponent } from './component/mesa/animacao-carta/animacao-carta.component';
 import { OpcoesJogadaComponent } from './component/mesa/opcoes-jogada/opcoes-jogada.component';
+import { VLibrasComponent } from './component/v-libras/v-libras.component';
+import { MesaJogoService } from './service/mesa-jogo-service/mesa-jogo.service';
+import { ModalZoomCartaInicialComponent } from './component/mesa/modal-zoom-carta-inicial/modal-zoom-carta-inicial.component';
 
 @NgModule({
   declarations: [
@@ -102,7 +102,9 @@ import { OpcoesJogadaComponent } from './component/mesa/opcoes-jogada/opcoes-jog
     TelaErroSalaInexistenteComponent,
     OpcoesJogadaComponent,
     PrimeiroJogadorComponent,
-    AnimacaoCartaComponent
+    AnimacaoCartaComponent,
+    VLibrasComponent,
+    ModalZoomCartaInicialComponent
   ],
   imports: [
     BrowserModule,
@@ -135,10 +137,13 @@ import { OpcoesJogadaComponent } from './component/mesa/opcoes-jogada/opcoes-jog
       useFactory: rxStompServiceFactory,
       deps: [InjectableRxStompConfig],
     },
-    MesaJogoService,
-    ModalCartasObjetivoComponent,
+    MesaJogoService, //Isso é um problema estar aqui, se remover quebra o sistema
+    ModalCartasObjetivoComponent, //Isso é um problema estar aqui, se remover quebra o sistema?
     HttpClientModule
   ],
   bootstrap: [AppComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA
+  ],
 })
 export class AppModule { }

@@ -1,9 +1,28 @@
-.icone-coracao {
-  visibility: hidden;
+* {
+  box-sizing: border-box;
 }
-.nomes-jogadores{
-  display:grid;
+
+.primeiro-jogador-container {
+  display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 1.5%; 
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+  font-size: var(--tamanhoFonte);
+  color: var(--input-fontColor);
+  line-height: var(--font-heigth);
 }
+
+.lista-jogadores-radio {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: repeat(3, auto);
+  justify-content: center;
+  align-items: center;
+  row-gap: .25rem;
+  column-gap: 2rem;
+  width: 50%;
+}
+
+

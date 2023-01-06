@@ -12,8 +12,8 @@
             </app-indica-jogador>
             <img class="avatar" src="assets/blank-profile-picture-gb56d1b702_1280.png">
             <p class="nome-jogador">
-                <img *ngIf="jogador?.id == sala.jogadorEscolhido?.id && sala.status === 'JOGANDO'"
-                    class="coracao-pequeno-selecionado" src="assets/svg/icone-coracao.svg"
+                <img *ngIf="(jogador?.id == sala.jogadorEscolhido?.id) && (sala.status === 'JOGANDO' || sala.status === 'ULTIMA_RODADA')"
+                title="Jogador inicial" class="coracao-pequeno-selecionado" src="assets/svg/icone-coracao.svg"
                     alt="Ícone coração">
                 {{jogador.nome}}
             </p>
@@ -27,23 +27,23 @@
             <div></div>
             <div class="centro"><img class="avatar" src="../../../assets/avatar" alt=""></div>
             <div class="centro nome-jogador">
-                <img *ngIf="jogadorModal?.id == sala.jogadorEscolhido?.id && sala.status === 'JOGANDO'"
-                    class="coracao-pequeno-selecionado" src="assets/svg/icone-coracao.svg" alt="Ícone coração">
+                <img *ngIf="(jogadorModal?.id == sala.jogadorEscolhido?.id) && (sala.status === 'JOGANDO' || sala.status === 'ULTIMA_RODADA')"
+                title="Jogador inicial" class="coracao-pequeno-selecionado" src="assets/svg/icone-coracao.svg" alt="Ícone coração">
                 {{jogadorModal.nome}}
             </div>
         </div>
 
         <div class="carta-coracoes">
-            <div class="carta-coracao" *ngFor="let i of [].constructor(jogadorModal.coracaoGrande)">
+            <div title="Coração grande" class="carta-coracao" *ngFor="let i of [].constructor(jogadorModal.coracaoGrande)">
                 <img class="carta-coracao-grande" src="../../../assets/svg/icone-coracao.svg" alt="Ícone coração">
             </div>
-            <div class="carta-coracao" *ngFor="let i of [].constructor(jogadorModal.bonusCoracaoGrande)">
+            <div title="Coração bônus grande" class="carta-coracao" *ngFor="let i of [].constructor(jogadorModal.bonusCoracaoGrande)">
                 <img class="carta-coracao-bonus-grande" src="../../../assets/svg/coracaoBonus.svg" alt="Ícone coração">
             </div>
-            <div class="carta-coracao" *ngFor="let i of [].constructor(jogadorModal.bonusCoracaoPequeno)">
+            <div title="Coração bônus pequeno" class="carta-coracao" *ngFor="let i of [].constructor(jogadorModal.bonusCoracaoPequeno)">
                 <img class="carta-coracao-bonus-pequeno" src="../../../assets/svg/coracaoBonus.svg" alt="Ícone coração">
             </div>
-            <div class="carta-coracao" *ngFor="let i of [].constructor(jogadorModal.coracaoPequeno)">
+            <div title="Coração pequeno" class="carta-coracao" *ngFor="let i of [].constructor(jogadorModal.coracaoPequeno)">
                 <img class="carta-coracao-pequeno" src="../../../assets/svg/icone-coracao.svg" alt="Ícone coração">
             </div>
         </div>
@@ -75,14 +75,14 @@
                             </div>
                             <div class="presentes">
                                 <div class="presente-acao">
-                                    <div class="presente-acao" *ngIf="cartas.tipo === 'Informação'">
-                                        <img class="presente" src="assets/svg/icone-presente.svg" alt="presente">
-                                        <img class="presenteInfoAcoes" src="assets/svg/icone-usuario.svg" alt="acao">
-                                    </div>
-                                    <div class="presente-info" *ngIf="cartas.tipo === 'Ação'">
-                                        <img class="presente" src="assets/svg/icone-presente.svg" alt="presente">
-                                        <img class="presenteInfoAcoes" src="assets/svg/icone-info.svg" alt="info">
-                                    </div>
+                                  <div class="presente-info" *ngIf="cartas.tipo === 'INFORMACAO'">
+                                    <img class="presente" src="assets/svg/icone-presente.svg" alt="presente">
+                                    <img class="presenteInfoAcoes" src="assets/svg/icone-info.svg" alt="info">
+                                  </div>
+                                  <div class="presente-acao" *ngIf="cartas.tipo === 'ACAO'">
+                                    <img class="presente" src="assets/svg/icone-presente.svg" alt="presente">
+                                    <img class="presenteInfoAcoes" src="assets/svg/icone-usuario.svg" alt="acao">
+                                  </div>
                                 </div>
                             </div>
                         </div>
@@ -94,7 +94,7 @@
                 <div class="carta carta-horizontal" *ngFor="let cartaObjetivo of jogadorModal.cartasObjetivo">
                     <div class="grid-zoom">
                         <button class="zoom" (click)="zoomObjetivo($event, cartaObjetivo)">
-                            <mat-icon class="mat-icon icone-zoom" alt="Ícone de zoom">search</mat-icon>
+                            <mat-icon class="mat-icon icone-zoom" alt="Ícone de zoom">zoom_in</mat-icon>
                         </button>
                         <div class="cabecalho">
                             <h2 class="titulo">{{cartaObjetivo.textoTematico}}</h2>
