@@ -109,17 +109,16 @@
         </div>
       </div>
 
-
       <div class="coracoes">
         <div class="grupo-coracoes">
           <div [ngClass]="{
               'desabilitar-coracao': bloquearCompraCoracoesGrandes() || bloqueiaAcao
-            }" title="Comprar 1 coração grande" class="coracao grande" (click)="comprarCoracaoG()">
+            }" title="Pegar 1 coração grande" class="coracao grande" (click)="comprarCoracaoG()">
             <img class="coracao-grande" src="assets/svg/icone-coracao.svg" alt="coracao grande" />
           </div>
           <div [ngClass]="{
               'desabilitar-coracao': bloquearCompraCoracoesPequenos() || bloqueiaAcao
-            }" title="Comprar 1 coração pequeno" class="coracao pequeno" (click)="comprarCoracaoP()">
+            }" title="Pegar 2 corações pequenos" class="coracao pequeno" (click)="comprarCoracaoP()">
             <img class="coracao-pequeno" src="assets/svg/icone-coracao.svg" alt="coracao pequeno" />
           </div>
         </div>
