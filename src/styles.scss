@@ -64,6 +64,7 @@ body {
   --input-backgroundColor:#e5e4e2;
   --widthImagem: 550px;
   --input-hoverTable: #e6c7e5;
+  --radio-button: rgba(0, 0, 0, 0.54);
 }
 
 .contraste:root {
@@ -74,6 +75,7 @@ body {
   --input-fontColor: white;
   --input-backgroundColor:#e5e4e2;
   --input-hoverTable: #cc8cc9;
+  --radio-button: #E5E4E2;
 }
 
 
@@ -83,7 +85,8 @@ body {
   --font-heigth: 2rem;
   --btn-width: 420px;
   --btn-height: auto;
-  --widthImagem: 700px
+  --widthImagem: 700px;
+  --margemTopoLogo: 10%;
 }
 
 .mat-form-field-appearance-fill .mat-form-field-flex {
@@ -105,7 +108,12 @@ body {
   border: 2.5px solid black;
 }
 
-
+.carta-inicio {
+  border: 2.5px solid black;
+}
+.mat-radio-outer-circle {
+  border-color: var(--radio-button);
+}
 
 @media (max-width: 616px) {
   .mat-form-field-appearance-fill .mat-form-field-flex {
