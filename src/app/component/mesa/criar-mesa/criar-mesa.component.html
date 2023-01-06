@@ -7,13 +7,13 @@
   <div>
     <mat-form-field appearance="fill">
       <mat-label>Nick:</mat-label>
-      <input matInput type="text" [(ngModel)]="nick"/>
+      <input matInput type="text" [(ngModel)]="nick" minlength="2" maxlength="10" (keypress)="caracteresPermitidos($event)">
     </mat-form-field>
   </div>
 
-  <div *ngIf="!isvalid">
+  <div class="aviso-centro">
     <p class="aviso">
-    Nome deve ter pelo menos 2 caracteres
+      Nick deve ter entre 2 e 10 caracteres. Não usar caracteres especiais (@.|!? ...)
     </p>
   </div>
 

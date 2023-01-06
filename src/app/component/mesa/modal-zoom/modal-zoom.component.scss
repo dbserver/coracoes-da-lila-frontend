@@ -8,7 +8,12 @@ button {
     cursor: pointer;
     background: local;
     float: right;
-    margin: -5% -5% 0 0;
+    margin-bottom: 90%;
+}
+
+.topo {
+    display: grid;
+    grid-template-columns: 90% auto;
 }
 
 .cabecalho {

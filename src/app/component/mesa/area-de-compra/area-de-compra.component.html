@@ -82,7 +82,7 @@
       <div class="container-cartas">
         <app-animacao-carta *ngIf="embaralharCartas"></app-animacao-carta>
         <div [ngClass]="{
-        'desabilitar-carta': !podeComprarObjetivo() || bloqueiaAcao,
+        'desabilitar-carta': !podeComprarObjetivo() || bloqueiaAcao || verificaSeTemCartaObjetivo(),
         'desabilitar-acao': !podeJogar()
       }" class="carta carta-objetivo dropdown">
           <div class="carta-logotexto">
@@ -95,17 +95,17 @@
                 <div class="dropdown-content" *ngIf="
                   verificaJogadorTemCoracoes() == true &&
                   verificaStatusJogador() == true">
-                  <a (click)="compraUmaCartaObjetivo()" *ngIf="verificaJogadorTemCoracaoPequeno()==true && bloqueiaAcao == false">
-                    <img src="../../../assets/img/cartacoracaopequeno.png" alt="" />
+                  <a (click)="compraUmaCartaObjetivo()" *ngIf="verificaJogadorTemCoracaoPequeno()==true && sala.cartasObjetivo.length >= 1 && bloqueiaAcao == false">
+                    <img src="../../../../assets/img/botao_objetivo_comprar.png" alt="" />
                   </a>
-                  <a (click)="escolherEntreDuasCartasObjetivo()" *ngIf="verificaJogadorTemCoracaoGrande() == true && bloqueiaAcao == false">
-                    <img src="../../../assets/img/cartacoracaogrande.png" alt="" />
+                  <a (click)="escolherEntreDuasCartasObjetivo()" *ngIf="verificaJogadorTemCoracaoGrande() && sala.cartasObjetivo.length >= 2 && bloqueiaAcao == false">
+                    <img src="../../../../assets/img/botao_objetivo_selecionar.png" alt="" />
                   </a>
                 </div>
               </div>
             </div>
           </div>
-          <img class="imagem-lila" src="../../../assets/img/lilaSozinha.png" alt="lila" />
+          <img class="imagem-lila" src="../../../assets/img/lilaSozinha.png" alt="lila"/>
         </div>
       </div>
 
@@ -114,12 +114,12 @@
         <div class="grupo-coracoes">
           <div [ngClass]="{
               'desabilitar-coracao': bloquearCompraCoracoesGrandes() || bloqueiaAcao
-            }" class="coracao grande" (click)="comprarCoracaoG()">
+            }" title="Comprar 1 coração grande" class="coracao grande" (click)="comprarCoracaoG()">
             <img class="coracao-grande" src="assets/svg/icone-coracao.svg" alt="coracao grande" />
           </div>
           <div [ngClass]="{
               'desabilitar-coracao': bloquearCompraCoracoesPequenos() || bloqueiaAcao
-            }" class="coracao pequeno" (click)="comprarCoracaoP()">
+            }" title="Comprar 1 coração pequeno" class="coracao pequeno" (click)="comprarCoracaoP()">
             <img class="coracao-pequeno" src="assets/svg/icone-coracao.svg" alt="coracao pequeno" />
           </div>
         </div>

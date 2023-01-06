@@ -9,7 +9,7 @@
 }
 
 .div-btn-aguarde {
-  margin: auto;
+  margin-bottom: 2%;
 }
 
 p {
@@ -25,10 +25,6 @@ p {
   color: var(--btn-bg);
 }
 
-// .mensagem-aguarde:after {
-//   content: ' .';
-//   animation: dots 2s steps(5, end) infinite;
-// }
 
 @keyframes dots {
 
@@ -95,4 +91,5 @@ app-carta-inicio {
 .aguardando {
   display: flex;
   justify-content: center;
+  margin-bottom: 1.5%;
 }
