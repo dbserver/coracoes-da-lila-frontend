@@ -14,7 +14,7 @@ import { asyncError, RouterLinkDirectiveStub } from 'src/app/utils/testUtils';
 import { IniciaPartidaService } from 'src/app/service/inicia-partida-service/inicia-partida.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
-fdescribe('EntrarMesaComponent', () => {
+describe('EntrarMesaComponent', () => {
   let component: EntrarMesaComponent;
   let fixture: ComponentFixture<EntrarMesaComponent>;
   let mesaServiceSpy: jasmine.SpyObj<MesaService>;
@@ -69,7 +69,7 @@ fdescribe('EntrarMesaComponent', () => {
   it('deve indicar ao Router para navegar quando o jogo já tiver sido iniciado', () => {
     sala.status = 'JOGANDO';
     findByHashSpy = mesaServiceSpy.findByHash.withArgs(hash).and.returnValue(of(sala));
-    component.verificarSeJogoIniciado(hash); 
+    component.verificarSeJogoIniciado(hash);
     fixture.detectChanges();
 
     expect(mockRouter.navigate).toHaveBeenCalledWith(['/jogoiniciado']);
