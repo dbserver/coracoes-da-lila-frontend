@@ -123,7 +123,7 @@ export class EntrarMesaComponent implements OnInit {
     this.mesaService
     .findByHash(hash)
     .subscribe((sala) => {(this.statusJogo = sala.status); 
-      if(this.statusJogo === 'JOGANDO' && 'ULTIMA_RODADA'){
+      if(this.statusJogo === 'JOGANDO' || this.statusJogo === 'ULTIMA_RODADA'){
       this.router.navigate(['/jogoiniciado']);
     }})
 
