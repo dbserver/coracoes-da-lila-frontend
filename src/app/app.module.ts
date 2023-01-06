@@ -60,6 +60,7 @@ import { AnimacaoCartaComponent } from './component/mesa/animacao-carta/animacao
 import { OpcoesJogadaComponent } from './component/mesa/opcoes-jogada/opcoes-jogada.component';
 import { VLibrasComponent } from './component/v-libras/v-libras.component';
 import { MesaJogoService } from './service/mesa-jogo-service/mesa-jogo.service';
+import { ModalZoomCartaInicialComponent } from './component/mesa/modal-zoom-carta-inicial/modal-zoom-carta-inicial.component';
 
 @NgModule({
   declarations: [
@@ -102,7 +103,8 @@ import { MesaJogoService } from './service/mesa-jogo-service/mesa-jogo.service';
     OpcoesJogadaComponent,
     PrimeiroJogadorComponent,
     AnimacaoCartaComponent,
-    VLibrasComponent
+    VLibrasComponent,
+    ModalZoomCartaInicialComponent
   ],
   imports: [
     BrowserModule,

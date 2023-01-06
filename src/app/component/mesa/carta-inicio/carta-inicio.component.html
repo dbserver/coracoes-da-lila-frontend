@@ -1,4 +1,7 @@
 <mat-card class="carta-inicio mat-elevation-z8">
+  <button id="zoom1" class="zoom" (click)="abrirZoom($event)">
+    <mat-icon class="mat-icon" alt="Ícone de zoom">zoom_in</mat-icon>
+  </button>
   <mat-card-content *ngIf="recebeCartaInicio != null">
     {{ recebeCartaInicio.descricao }}
   </mat-card-content>
