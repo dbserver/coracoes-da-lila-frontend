@@ -7,8 +7,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Jogador } from '../../model/jogador';
 import { MesaJogoService } from '../../service/mesa-jogo-service/mesa-jogo.service';
 import { IniciaPartidaService } from '../../service/inicia-partida-service/inicia-partida.service';
-import { catchError, tap, throwError } from 'rxjs';
-import { HttpErrorResponse } from '@angular/common/http';
+import { catchError, tap } from 'rxjs';
+import { errorHandler } from 'src/app/utils/errorHandler';
 
 @Component({
   selector: 'app-entrar-mesa',
@@ -43,7 +43,6 @@ export class EntrarMesaComponent implements OnInit {
       )
       .subscribe({
         next: (sala) => {
-          console.log(sala);
           this.sala = sala;
           this.verificarSeSalaCheia(this.hash);
           this.verificarSeJogoIniciado(this.hash);
@@ -132,14 +131,11 @@ export class EntrarMesaComponent implements OnInit {
 
   verificarSeJogoIniciado(hash: string) {
     this.mesaService
-      .findByHash(hash)
-      .subscribe((sala) => {
-        (this.statusJogo = sala.status);
-        if (this.statusJogo === 'JOGANDO' && 'ULTIMA_RODADA') {
-          this.router.navigate(['/jogoiniciado']);
-        }
-      })
-
+    .findByHash(hash)
+    .subscribe((sala) => {(this.statusJogo = sala.status);
+      if(this.statusJogo === 'JOGANDO' || this.statusJogo === 'ULTIMA_RODADA' || this.statusJogo === 'AGUARDANDO_DEFINICAO'){
+      this.router.navigate(['/jogoiniciado']);
+    }})
   }
 
   verificarSeJogoFinalizado(hash: string) {
@@ -154,16 +150,3 @@ export class EntrarMesaComponent implements OnInit {
   }
 }
 
-function errorHandler(err: HttpErrorResponse) {
-  let msg = '';
-  if (err.error instanceof ErrorEvent) {
-    msg = `Client Error Occured: ${err.error.message}`;
-  } else {
-    msg = `Server Error Occured: ${err.status} ${err.statusText}`;
-  }
-  return throwError(() => ({
-    error: err.error,
-    message: msg,
-    messageDesc: err.message,
-  }));
-}
