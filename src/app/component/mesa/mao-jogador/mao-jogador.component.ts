@@ -26,7 +26,7 @@ import { ModalZoomComponent } from '../modal-zoom/modal-zoom.component';
   styleUrls: ['./mao-jogador.component.scss'],
 })
 export class MaoJogadorComponent implements OnInit {
-  
+
   private hash = '';
   public sala: Sala = {} as Sala;
   public listaJogador: Jogador[] = [];
@@ -42,7 +42,7 @@ export class MaoJogadorComponent implements OnInit {
 
   enumCategoria = CartaDoJogoEnumCategoria;
   enumTipo = CartaDoJogoEnumTipo;
-  
+
   constructor(
     private mesaService: MesaService,
     private route: ActivatedRoute,
@@ -140,7 +140,7 @@ export class MaoJogadorComponent implements OnInit {
             novaCategoria: novaCategoriaEnum
           } as NovaCategoriaDTO
         );
-      } 
+      }
     } else {
       for(let i = 0; i < this.novaCategoriaCartasDoJogoDTO.listaDeCartas.length; i++){
         if (this.novaCategoriaCartasDoJogoDTO.listaDeCartas[i].cartaID == cartaDoJogo.id){
@@ -165,8 +165,6 @@ export class MaoJogadorComponent implements OnInit {
     return true;
   }
 
-  public toEnumTipo = (tipo: any) => tipo as CartaDoJogoEnumTipo;
-  public toEnumCategoria = (tipo: any) => tipo as CartaDoJogoEnumCategoria;
   public abrirZoom(event: Event, cartas: CartaDoJogo) {
     event.stopPropagation();
     this.zoomCarta.open(ModalZoomComponent, {
@@ -179,7 +177,7 @@ export class MaoJogadorComponent implements OnInit {
 
   public zoomObjetivo(event: Event, cartaObjetivo: CartaObjetivo) {
     event.stopPropagation();
-    
+
     this.zoomCarta.open(ModalZoomObjetivoComponent, {
       data: cartaObjetivo,
       height: '60%',

@@ -33,7 +33,7 @@ export class AreaDeCompraComponent implements OnInit {
   public bonus = false;
   public embaralharCartas: boolean;
 
-  public mapTipo = mapTipoCartaDoJogo; 
+  public mapTipo = mapTipoCartaDoJogo;
 
   opcoesCartaObjetivo: CartaObjetivo[];
 
@@ -259,8 +259,6 @@ export class AreaDeCompraComponent implements OnInit {
       .getElementById('container-cartas')
       ?.classList.add('embaralhar-animacao');
   }
-
-  public toEnumTipo = (tipo: any) => tipo as CartaDoJogoEnumTipo;
 
   public abrirZoom(event: Event, carta: CartaDoJogo) {
     event.stopPropagation();
