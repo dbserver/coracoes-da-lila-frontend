@@ -16,6 +16,9 @@ import { errorHandler } from 'src/app/utils/errorHandler';
   styleUrls: ['./entrar-mesa.component.scss'],
 })
 export class EntrarMesaComponent implements OnInit {
+
+  aviso = false;
+
   constructor(
     private route: ActivatedRoute,
     private mesaJogoService: MesaJogoService,
@@ -77,6 +80,8 @@ export class EntrarMesaComponent implements OnInit {
           this.emit();
         });
       this.roteamento();
+    } else {
+      this.aviso = true;
     }
   }
 
@@ -97,16 +102,22 @@ export class EntrarMesaComponent implements OnInit {
     return this.jogador.nome;
   }
 
-  nomeValido(): boolean{
+  nomeValido(): boolean {
     var pattern = /^[a-zA-Z\u00C0-\u00FF0-9 ]{2,10}$/gmi;
 
     return pattern.test(this.jogador.nome);
   }
 
+  caracteresPermitidos(event: { charCode: any; }) {
+    var k;
+    k = event.charCode;
+    return ((k >= 48 && k <= 57) || (k >= 65 && k <= 90) || (k >= 97 && k <= 122) || (k >= 192 && k <= 255));
+  }
+
   verificarSeSalaCheia(hash: string) {
     this.mesaService
-    .findByHash(hash)
-    .subscribe((sala) => {(this.statusJogo = sala.status); })
+      .findByHash(hash)
+      .subscribe((sala) => { (this.statusJogo = sala.status); })
 
 
     this.iniciaPartidaService
@@ -125,7 +136,6 @@ export class EntrarMesaComponent implements OnInit {
       if(this.statusJogo === 'JOGANDO' || this.statusJogo === 'ULTIMA_RODADA'){
       this.router.navigate(['/jogoiniciado']);
     }})
-
   }
 
   verificarSeJogoFinalizado(hash: string) {

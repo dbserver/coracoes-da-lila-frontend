@@ -92,6 +92,7 @@ describe('MesaCriadaComponent', () => {
     //Observar que o componente não está implementado correto para tratar deste caso
   });
 
+
   xit('deve tratar o problema de falha de consumo do service', fakeAsync(() => {
     //Observar que o componente não está implementado correto para tratar deste caso
     //Dublê do service consumido
