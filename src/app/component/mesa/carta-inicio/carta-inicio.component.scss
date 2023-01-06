@@ -10,6 +10,16 @@
   align-items: center;
 }
 
+.zoom {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: .5rem;
+}
+
 .carta-inicio mat-card-content {
   color: darkgoldenrod;
   font-size: var(--tamanhoFonte);
