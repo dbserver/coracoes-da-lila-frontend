@@ -13,6 +13,7 @@ import { environment } from 'src/environments/environment';
 import { MesaCriadaComponent } from './mesa-criada.component';
 import { RxStompService } from '@stomp/ng2-stompjs';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
 //Após o merge com desenvolvimento, o teste precisa ser reimplementado
 //devido a alterações no componente original
@@ -59,7 +60,7 @@ describe('MesaCriadaComponent', () => {
         { provide: MesaService, useValue: mockService }, //Aqui foi passada uma referência para o dublê
         { provide: Router, useValue: mockRouter },
         { provide: ActivatedRoute, useValue: { snapshot: { paramMap: convertToParamMap({ 'hash': hash }) } } }, //Aqui o dublê foi criado inline
-        RxStompService
+        HttpClient, HttpHandler, RxStompService
       ]
     }).compileComponents();
     fixture = TestBed.createComponent(MesaCriadaComponent);

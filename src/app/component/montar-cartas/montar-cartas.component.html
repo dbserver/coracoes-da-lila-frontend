@@ -22,11 +22,11 @@
                     </div>
                     <div class="presentes">
                         <div class="presente-acao">
-                            <div class="presente-info" *ngIf="carta.tipo === 'INFORMACAO'">
+                            <div class="presente-info" *ngIf="carta.tipo === enumTipo.INFORMACAO">
                                 <img class="presente" src="assets/svg/icone-presente.svg" alt="presente">
                                 <img class="presenteInfoAcoes" src="assets/svg/icone-info.svg" alt="info">
                             </div>
-                            <div class="presente-acao" *ngIf="carta.tipo === 'ACAO'">
+                            <div class="presente-acao" *ngIf="carta.tipo === enumTipo.ACAO">
                                 <img class="presente" src="assets/svg/icone-presente.svg" alt="presente">
                                 <img class="presenteInfoAcoes" src="assets/svg/icone-usuario.svg" alt="acao">
                             </div>
