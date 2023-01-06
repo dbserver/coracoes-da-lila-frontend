@@ -12,6 +12,7 @@ import { asyncError, findEl, RouterLinkDirectiveStub } from 'src/app/utils/testU
 import { environment } from 'src/environments/environment';
 import { MesaCriadaComponent } from './mesa-criada.component';
 import { RxStompService } from '@stomp/ng2-stompjs';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 
 //Após o merge com desenvolvimento, o teste precisa ser reimplementado
@@ -43,7 +44,7 @@ describe('MesaCriadaComponent', () => {
   };
   const mockService = jasmine.createSpyObj<MesaService>({ findByHash: undefined });
   const mockRouter = jasmine.createSpyObj('Router', ['navigate','navigateByUrl']);
-  
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
@@ -53,6 +54,7 @@ describe('MesaCriadaComponent', () => {
       imports: [
         MatIconModule,
         ClipboardModule,
+        HttpClientTestingModule
       ],
       providers: [
         { provide: MesaService, useValue: mockService }, //Aqui foi passada uma referência para o dublê
@@ -65,7 +67,7 @@ describe('MesaCriadaComponent', () => {
     component = fixture.componentInstance;
     serviceSpy = TestBed.inject(MesaService) as jasmine.SpyObj<MesaService>;
   });
-  
+
   it('foi criado', () => {
     expect(component).toBeTruthy();
   });
