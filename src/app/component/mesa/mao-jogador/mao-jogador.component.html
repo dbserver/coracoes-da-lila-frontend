@@ -26,7 +26,7 @@
         <div class="centro"><img class="avatar" src="../../../assets/avatar" alt=""></div>
 
         <div class="nome-jogador">
-            <img *ngIf="(jogador?.id == sala.jogadorEscolhido?.id) && (sala.status === 'JOGANDO' || sala.status === 'ULTIMA_RODADA' || sala.status === 'AGUARDANDO_DEFINICAO')"
+            <img *ngIf="(jogador?.id == sala.jogadorEscolhido?.id) && (sala.status === 'JOGANDO' || sala.status === 'ULTIMA_RODADA' || sala.status == 'AGUARDANDO_DEFINICAO' || sala.status == 'FINALIZADO')"
                 class="coracao-pequeno" title="Jogador inicial" src="assets/svg/icone-coracao.svg" alt="Ícone coração">
             <div *ngIf="jogador" class="centro nome">{{jogador.nome}}</div>
         </div>
