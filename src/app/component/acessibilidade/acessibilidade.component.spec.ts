@@ -25,7 +25,6 @@ describe('AcessibilidadeComponent', () => {
 
   //testa se o botão de ajustar a fonte parou de ser exibido
   it('Mudar a boolean esconderFonte para true', () => {
-    //localStorage.setItem('esconder', 'true')
     //component.esconderFonte = true
     component.esconderBotaoAjusteFonte()
     expect(component.esconderFonte).toEqual(true)
@@ -35,7 +34,6 @@ describe('AcessibilidadeComponent', () => {
   it('Mudar fonte para tamanho normal', () => {
     
     document.querySelector('html')!.classList.add('fonteMaior')
-    //localStorage.setItem('esconder', 'true')
     //component.esconderFonte = true
     component.fonteTamanhoNormal()
     expect(document.querySelector('html')!.classList.contains('fonteMaior')).toEqual(false)

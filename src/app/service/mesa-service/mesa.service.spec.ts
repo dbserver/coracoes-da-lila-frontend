@@ -37,16 +37,6 @@ describe('MesaService', () => {
       expect(service).toBeTruthy();
     });
 
-    // it('Deve adicionar uma Key "esconder" com o Value "true" no localStorage', () => {
-    //   service.esconderBotaoFonteMaior()
-    //   expect(localStorage.getItem('esconder')).toEqual('true')
-    // });
-
-    // it('deve remover a Key "esconder" do localStorage', () => {
-    //   service.mostrarBotaoFonteMaior()
-    //   expect(localStorage.getItem('esconder')).toEqual(null)
-    // });
-
     it('deve retornar uma sala para um hash existente', () => {
       const hash = 'hash';
       const testeUrl = `${environment.API_URL}sala/${hash}`;
