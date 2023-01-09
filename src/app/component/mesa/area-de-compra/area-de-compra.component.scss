@@ -16,6 +16,8 @@
         .grupo-coracoes {
           display: flex;
           margin-top: 24px;
+          
+          }
 
           .coracao {
             cursor: pointer;
@@ -61,8 +63,7 @@
           }
         }
       }
-    }
-  }
+    
 
   .carta {
     border: 1.5px solid black;
@@ -434,3 +435,4 @@
   cursor: pointer;
 }
 
+}
