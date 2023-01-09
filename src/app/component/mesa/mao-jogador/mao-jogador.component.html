@@ -3,18 +3,14 @@
         <div>
             <app-indica-jogador *ngIf="sala.status == 'JOGANDO' && jogador?.status == 'JOGANDO'" mensagem="Jogando">
             </app-indica-jogador>
-            <app-indica-jogador *ngIf="sala.status == 'JOGANDO' && jogador?.status=='ESPERANDO'"
-                mensagem="Aguarde sua vez"></app-indica-jogador>
+            <app-indica-jogador *ngIf="sala.status == 'JOGANDO' && jogador?.status=='ESPERANDO'" mensagem="Aguarde sua vez"></app-indica-jogador>
             <app-indica-jogador *ngIf="sala.status == 'ULTIMA_RODADA' && jogador?.status=='JOGANDO'" mensagem="Jogando">
             </app-indica-jogador>
-            <app-indica-jogador *ngIf="sala.status == 'ULTIMA_RODADA' && jogador?.status=='JOGANDO'"
-                mensagem="Última jogada"></app-indica-jogador>
+            <app-indica-jogador *ngIf="sala.status == 'ULTIMA_RODADA' && jogador?.status=='JOGANDO'" mensagem="Última jogada"></app-indica-jogador>
             <app-indica-jogador *ngIf="sala.status == 'ULTIMA_RODADA' && jogador?.status=='ESPERANDO'" mensagem="Aguardando"></app-indica-jogador>
-            <app-indica-jogador *ngIf="sala.status == 'AGUARDANDO_DEFINICAO' && jogador?.status=='DEFININDO'"
-                mensagem="Definindo"></app-indica-jogador>
+            <app-indica-jogador *ngIf="sala.status == 'AGUARDANDO_DEFINICAO' && jogador?.status=='DEFININDO'" mensagem="Definindo"></app-indica-jogador>
 
-            <app-indica-jogador *ngIf="sala.status == 'AGUARDANDO_DEFINICAO' && jogador?.status=='FINALIZADO'"
-                mensagem="Finalizado"></app-indica-jogador>
+            <app-indica-jogador *ngIf="sala.status == 'AGUARDANDO_DEFINICAO' && jogador?.status=='FINALIZADO'" mensagem="Finalizado"></app-indica-jogador>
             <app-indica-jogador *ngIf="sala.status == 'FINALIZADO'" mensagem="Finalizado"></app-indica-jogador>
 
             <app-indica-jogador *ngIf="sala.status == 'ULTIMA_RODADA' && jogador?.status == 'JOGANDO'" mensagem="ULTIMA_JOGADA"></app-indica-jogador>
@@ -27,8 +23,8 @@
         </div>
 
         <div class="nome-jogador">
-            <img *ngIf="(jogador?.id == sala.jogadorEscolhido?.id) && (sala.status === 'JOGANDO' || sala.status === 'ULTIMA_RODADA' || sala.status == 'AGUARDANDO_DEFINICAO' || sala.status == 'FINALIZADO')"
-                class="coracao-pequeno" title="Jogador inicial" src="assets/svg/icone-coracao.svg" alt="Ícone coração">
+            <img *ngIf="(jogador?.id == sala.jogadorEscolhido?.id) && (sala.status === 'JOGANDO' || sala.status === 'ULTIMA_RODADA' || sala.status == 'AGUARDANDO_DEFINICAO' || sala.status == 'FINALIZADO')" class="coracao-pequeno" title="Jogador inicial" src="assets/svg/icone-coracao.svg"
+                alt="Ícone coração">
             <div *ngIf="jogador" class="centro nome">{{jogador.nome}}</div>
         </div>
     </div>
@@ -37,12 +33,10 @@
         <div title="Coração grande" class="carta-coracao" *ngFor="let i of [].constructor(jogador?.coracaoGrande)">
             <img class="carta-coracao-grande" src="../../../assets/svg/icone-coracao.svg" alt="Ícone coração">
         </div>
-        <div title="Coração bônus grande" class="carta-coracao"
-            *ngFor="let i of [].constructor(jogador?.bonusCoracaoGrande)">
+        <div title="Coração bônus grande" class="carta-coracao" *ngFor="let i of [].constructor(jogador?.bonusCoracaoGrande)">
             <img class="carta-coracao-bonus-grande" src="../../../assets/svg/coracaoBonus.svg" alt="Ícone coração">
         </div>
-        <div title="Coração bônus pequeno" class="carta-coracao"
-            *ngFor="let i of [].constructor(jogador?.bonusCoracaoPequeno)">
+        <div title="Coração bônus pequeno" class="carta-coracao" *ngFor="let i of [].constructor(jogador?.bonusCoracaoPequeno)">
             <img class="carta-coracao-bonus-pequeno" src="../../../assets/svg/coracaoBonus.svg" alt="Ícone coração">
         </div>
         <div title="Coração pequeno" class="carta-coracao" *ngFor="let i of [].constructor(jogador?.coracaoPequeno)">
@@ -54,8 +48,7 @@
         <div class="cartas-container-scroll">
             <div *ngFor="let carta of jogador?.cartasDoJogo">
                 <div class="select" [formGroup]="novaCategoria" *ngIf="sala.status == 'AGUARDANDO_DEFINICAO'">
-                    <select *ngIf="carta.categoria == enumCategoria.GENERICA"
-                        (change)="atualizaCategoriaDeCartasGenericas(carta)" formControlName="categoria">
+                    <select *ngIf="carta.categoria == enumCategoria.GENERICA" (change)="atualizaCategoriaDeCartasGenericas(carta)" formControlName="categoria">
                         <option value="{{enumCategoria.INTELECTUAL}}">Intelectual</option>
                         <option value="{{enumCategoria.FISICA}}">Física</option>
                         <option value="{{enumCategoria.TEA}}">TEA</option>
@@ -65,6 +58,9 @@
                 </div>
                 <div class="carta carta-vertical">
                     <div class="cabecalho">
+                        <button id="zoom1" class="zoom" (click)="abrirZoom($event, carta)">
+                        <mat-icon class="mat-icon" alt="Ícone de zoom">zoom_in</mat-icon>
+                      </button>
 
                         <div class="pontos">
                             <p class="pt">{{ carta.pontos }}</p>
@@ -89,13 +85,11 @@
                             </div>
                             <div class="presentes">
                                 <div class="presente-acao">
-                                    <div class="presente-acao"
-                                        *ngIf="carta.tipo === enumTipo.INFORMACAO && carta.bonus == true">
+                                    <div class="presente-acao" *ngIf="carta.tipo === enumTipo.INFORMACAO && carta.bonus == true">
                                         <img class="presente" src="assets/svg/icone-presente.svg" alt="presente">
                                         <img class="presenteInfoAcoes" src="assets/svg/icone-info.svg" alt="info">
                                     </div>
-                                    <div class="presente-info"
-                                        *ngIf="carta.tipo === enumTipo.ACAO && carta.bonus == true">
+                                    <div class="presente-info" *ngIf="carta.tipo === enumTipo.ACAO && carta.bonus == true">
                                         <img class="presente" src="assets/svg/icone-presente.svg" alt="presente">
                                         <img class="presenteInfoAcoes" src="assets/svg/icone-usuario.svg" alt="acao">
                                     </div>
@@ -106,10 +100,6 @@
                             <span class="fonte y-scroll">Fonte: {{carta.fonte}}</span>
                         </div>
                     </div>
-                </div>
-
-                <div class="rodape">
-                    <span class="fonte y-scroll">Fonte: {{ carta.fonte }}</span>
                 </div>
 
             </div>
@@ -134,7 +124,6 @@
             <br> {{jogador.pontos}}
         </p>
         <div *ngIf="sala.status == 'AGUARDANDO_DEFINICAO' && jogador.status == 'DEFININDO'" class="botao-confirmar">
-            <button id="botao-confirmar" [disabled]="bloquearConfirmarCategorias()" mat-raised-button
-                (click)="enviarCategorias()">Confirmar Categorias</button>
+            <button id="botao-confirmar" [disabled]="bloquearConfirmarCategorias()" mat-raised-button (click)="enviarCategorias()">Confirmar Categorias</button>
         </div>
     </div>
