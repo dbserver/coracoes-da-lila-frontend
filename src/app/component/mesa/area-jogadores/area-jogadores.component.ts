@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CartaDoJogoEnumCategoria } from 'src/app/enum/CartaDoJogoEnumCategoria';
+import { CartaDoJogoEnumTipo } from 'src/app/enum/CartaDoJogoEnumTipo';
 import { MatDialog } from '@angular/material/dialog';
 import { mapTipoCartaDoJogo } from 'src/app/maps/cartaDoJogoMaps';
 import { CartaDoJogo } from 'src/app/model/cartaDoJogo';
@@ -24,6 +26,9 @@ export class AreaJogadoresComponent implements OnInit {
   cartaObjetivo: CartaObjetivo = {} as CartaObjetivo;
 
   public mapTipo = mapTipoCartaDoJogo;
+
+  enumCategoria = CartaDoJogoEnumCategoria;
+  enumTipo = CartaDoJogoEnumTipo;
 
   constructor(
     private modal: ModalService,

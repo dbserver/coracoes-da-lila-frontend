@@ -1,4 +1,3 @@
-import { map } from "rxjs"
 
 export const mapTipoCartaDoJogo = new Map<string, string>(
   [
