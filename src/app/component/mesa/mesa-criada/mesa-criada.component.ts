@@ -39,7 +39,10 @@ export class MesaCriadaComponent implements OnInit {
     this.link = `${environment.CLIENT_URL}entrarmesa/${this.hash}`;
     this.mesaService
        .findByHash(this.hash)
-       .subscribe((sala) => (this.sala = sala));
+       .subscribe((sala) => (this.sala = sala));   
+    this.mesaService
+       .mostrarBotaoFonteMaior();   
+
     this.topicSubscription = this.rxStompService
       .watch(`/gameplay/game-update/${this.hash}`)
       .subscribe((msg: Message) => {
@@ -51,9 +54,13 @@ export class MesaCriadaComponent implements OnInit {
   roteamento() {
     this.carregando = true;
     this.router.navigate(['/jogo', this.sala.hash]);
+    this.mesaService
+    .esconderBotaoFonteMaior();
   }
+
 
   ngOnDestroy(): void {
     this.topicSubscription.unsubscribe();
   }
+  
 }
