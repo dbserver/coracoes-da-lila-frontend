@@ -1,12 +1,27 @@
 .container {
+  display: flex;
+  height: calc(100% - 27px);
+
+
+  .compra-container {
+    height: 90%;
+    width: 850px;
     display: flex;
-    height: calc(100% - 27px);
-    .compra-container {
-        height: 90%;
-        width: 850px;
-        display: flex;
-        justify-content: space-around;
-        .cartas-disponiveis {
+    justify-content: space-around;
+      
+          .cartas-disponiveis {
+          flex-direction: column;
+          margin-top: 24px;
+      }
+        .grupo-coracoes {
+          display: flex;
+          margin-top: 24px;
+
+          .coracao {
+            cursor: pointer;
+            width: 44px;
+            height: 44px;
+            border: 1px solid black;
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
@@ -14,6 +29,73 @@
                 display: flex;
                 gap: 1.5rem;
             }
+
+
+            &-grande {
+              height: 30px;
+              width: 30px;
+            }
+
+            &-pequeno {
+              height: 20px;
+              width: 20px;
+            }
+
+            .coracao-bannerg {
+              position: relative;
+              height: 30px;
+              width: 30px;
+              margin-left: -25px;
+            }
+
+            .coracao-bannerp {
+              position: relative;
+              height: 19.5px;
+              width: 19.5px;
+              margin-left: -16.7px;
+            }
+
+            &:not(:first-child) {
+              margin-left: 24px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .carta {
+    border: 1.5px solid black;
+    padding: 8px;
+    background: var(--input-backgroundColor);
+    word-wrap: break-word;
+    cursor: pointer;
+
+    &.desabilitar-carta {
+      cursor: not-allowed;
+      opacity: 0.2;
+    }
+
+    &.desabilitar-acao {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    &-baralho {
+      cursor: default;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      justify-content: space-around;
+      min-width: 120px;
+      max-width: 120px;
+      height: 160px;
+
+      .imagem {
+        &-lila {
+          width: 80px;
+          height: 130px;
         }
         .informacoes-gerais {
             display: flex;
@@ -228,41 +310,45 @@
                 }
             }
         }
-        &-objetivo {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 160px;
-            height: 100px;
-            &.desabilitar-carta {
-                cursor: not-allowed;
-                opacity: 0.2;
-            }
-            &.desabilitar-acao {
-                cursor: not-allowed;
-                opacity: 0.5;
-            }
-            &-logotexto {
-                display: flex;
-                flex-direction: column;
-            }
-            .imagem {
-                &-logo {
-                    height: 50px;
-                    padding-top: 7px;
-                }
-                &-lila {
-                    height: 90px;
-                    margin-top: 10px;
-                }
-            }
-            .texto {
-                font-weight: bold;
-                font-size: 1.2vw;
-                margin-bottom: 0;
-                color: var(--font-color);
-            }
+      }
+    }
+
+    &-objetivo {
+      cursor: default;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 160px;
+      height: 100px;
+
+      &.desabilitar-carta {
+        cursor: not-allowed;
+        opacity: 0.2;
+      }
+
+      &.desabilitar-acao {
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
+
+      &-logotexto {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .imagem {
+        cursor: none;
+        &-logo {
+          height: 50px;
+          padding-top: 7px;
         }
+
+        &-lila {
+          
+          height: 90px;
+          margin-top: 10px;
+        }
+        
         .logo-e-texto {
             display: grid;
             grid-template-rows: 100% auto;
@@ -343,5 +429,8 @@
 }
 
 .dropdown:hover .dropdown-content {
-    display: block;
+
+  display: block;
+  cursor: pointer;
 }
+

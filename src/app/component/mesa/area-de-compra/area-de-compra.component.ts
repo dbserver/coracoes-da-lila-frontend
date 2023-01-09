@@ -1,3 +1,4 @@
+import { HabilitaDadoComponent } from './../habilita-dado/habilita-dado.component';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Baralho } from '../../../model/baralho';
@@ -12,7 +13,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ModalZoomComponent } from '../modal-zoom/modal-zoom.component';
 import { ModalZoomObjetivoComponent } from '../modal-zoom-objetivo/modal-zoom-objetivo.component';
 import { mapTipoCartaDoJogo } from 'src/app/maps/cartaDoJogoMaps';
-
+import { CartaDoJogoEnumTipo } from 'src/app/enum/CartaDoJogoEnumTipo';
 @Component({
   selector: 'app-area-de-compra',
   templateUrl: './area-de-compra.component.html',
@@ -32,10 +33,15 @@ export class AreaDeCompraComponent implements OnInit {
   public jogador: Jogador = {} as Jogador;
   public bonus = false;
   public embaralharCartas: boolean;
+  public HabilitaDadoComponent = new HabilitaDadoComponent(this.mesaJogoService);
 
-  public mapTipo = mapTipoCartaDoJogo; 
+  public mapTipo = mapTipoCartaDoJogo;
+
+  bloqueiaAcao = false;
 
   opcoesCartaObjetivo: CartaObjetivo[];
+
+  enumTipo = CartaDoJogoEnumTipo;
 
   constructor(
     private mesaJogoService: MesaJogoService,
@@ -55,16 +61,18 @@ export class AreaDeCompraComponent implements OnInit {
       this.listaCartasDisponiveis = sala.baralho.cartasDoJogo;
       this.listaCartasDisponiveisObjetivo = sala.cartasObjetivo;
       this.jogador = this.mesaJogoService.getJogadorAtualNaMesa();
+      this.bloqueiaAcao = false;
       this.bonus = this.podeJogar();
     });
   }
 
   public comprarCarta(indice: number): void {
     this.sala.dado = 0;
-    if (this.jogador.status == 'JOGANDO') {
+    if (this.jogador.status == 'JOGANDO'&& !this.bloqueiaAcao) {
       if (this.listaCartasDisponiveis[indice].bonus) {
         this.jogador?.cartasDoJogo.push(this.listaCartasDisponiveis[indice]);
         this.listaCartasDisponiveis.splice(indice, 1);
+        this.bloqueiaAcao = !this.HabilitaDadoComponent.mudaDesabilitado();
         this.areaCompraService.emitirCartaJogo.emit(this.jogador?.cartasDoJogo);
       } else {
         this.jogador?.cartasDoJogo.push(this.listaCartasDisponiveis[indice]);
@@ -78,7 +86,7 @@ export class AreaDeCompraComponent implements OnInit {
   }
 
   public comprarCoracaoP() {
-    if (this.jogador.status == 'JOGANDO') {
+    if (this.jogador.status == 'JOGANDO' && !this.bloqueiaAcao) {
       this.sala.dado = 0;
       this.mesaJogoService
         .comprarCoracaoP(this.sala)
@@ -87,7 +95,7 @@ export class AreaDeCompraComponent implements OnInit {
   }
 
   public comprarCoracaoG() {
-    if (this.jogador.status == 'JOGANDO') {
+    if (this.jogador.status == 'JOGANDO' && !this.bloqueiaAcao) {
       this.sala.dado = 0;
       this.mesaJogoService
         .comprarCoracaoG(this.sala)
@@ -138,6 +146,7 @@ export class AreaDeCompraComponent implements OnInit {
 
   public podeJogar() {
     if (this.jogador.status == 'JOGANDO') {
+      console.log(this.HabilitaDadoComponent.mudaDesabilitado());
       return true;
     }
     return false;
@@ -211,16 +220,18 @@ export class AreaDeCompraComponent implements OnInit {
   }
 
   public compraUmaCartaObjetivo() {
-    if (this.jogador.status == 'JOGANDO')
+    if (this.jogador.status == 'JOGANDO'&& !this.bloqueiaAcao)
       this.mesaJogoService
         .comprarCartaObjetivo(this.sala)
         .subscribe((sala) => (this.sala = sala));
   }
 
   public escolherEntreDuasCartasObjetivo() {
-    this.buscaCartasObjetivo();
-    this.abrirModal();
-    this.desabilitaAnimacaoEmbaralhar();
+    if (this.jogador.status == 'JOGANDO'&& !this.bloqueiaAcao){
+      this.buscaCartasObjetivo();
+      this.abrirModal();
+      this.desabilitaAnimacaoEmbaralhar();
+    }
   }
 
   private buscaCartasObjetivo() {
@@ -240,15 +251,6 @@ export class AreaDeCompraComponent implements OnInit {
       modal.style.display = 'flex';
     }
   }
-
-  // private buscaCartasObjetivo() {
-  //   this.mesaJogoService.buscarDuasCartasObjetivo(this.sala)
-  //   .subscribe(
-  //     (sala) => (
-  //       this.opcoesCartaObjetivo = sala.opcoesCartaObjetivo,
-  //       this.sala = sala
-  //     )
-  //   );
 
   public desabilitaAnimacaoEmbaralhar() {
     document.getElementById('carta-1')?.classList.remove('carta-1');

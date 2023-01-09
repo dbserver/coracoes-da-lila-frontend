@@ -7,8 +7,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Jogador } from '../../model/jogador';
 import { MesaJogoService } from '../../service/mesa-jogo-service/mesa-jogo.service';
 import { IniciaPartidaService } from '../../service/inicia-partida-service/inicia-partida.service';
-import { catchError, Observable, of, tap, throwError } from 'rxjs';
-import { HttpErrorResponse } from '@angular/common/http';
+import { catchError, tap } from 'rxjs';
+import { errorHandler } from 'src/app/utils/errorHandler';
 
 @Component({
   selector: 'app-entrar-mesa',
@@ -16,6 +16,9 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./entrar-mesa.component.scss'],
 })
 export class EntrarMesaComponent implements OnInit {
+
+  aviso = false;
+
   constructor(
     private route: ActivatedRoute,
     private mesaJogoService: MesaJogoService,
@@ -35,12 +38,11 @@ export class EntrarMesaComponent implements OnInit {
     this.mesaService
       .findByHash(this.hash)
       .pipe(
-        tap(console.log),
+        //tap(console.log),
         catchError(errorHandler)
       )
       .subscribe({
         next: (sala) => {
-          console.log(sala);
           this.sala = sala;
           this.verificarSeSalaCheia(this.hash);
           this.verificarSeJogoIniciado(this.hash);
@@ -51,6 +53,8 @@ export class EntrarMesaComponent implements OnInit {
           this.router.navigate(['/salaInexistente']);
         }
       });
+    this.mesaService
+    .mostrarBotaoFonteMaior();  
   }
 
   hash = '';
@@ -78,6 +82,8 @@ export class EntrarMesaComponent implements OnInit {
           this.emit();
         });
       this.roteamento();
+    } else {
+      this.aviso = true;
     }
   }
 
@@ -87,6 +93,8 @@ export class EntrarMesaComponent implements OnInit {
     } else {
       this.router.navigate(['/jogo', this.sala.hash]);
     }
+    this.mesaService
+    .esconderBotaoFonteMaior();
   }
 
   emit() {
@@ -98,16 +106,22 @@ export class EntrarMesaComponent implements OnInit {
     return this.jogador.nome;
   }
 
-  nomeValido(): boolean{
+  nomeValido(): boolean {
     var pattern = /^[a-zA-Z\u00C0-\u00FF0-9 ]{2,10}$/gmi;
 
     return pattern.test(this.jogador.nome);
   }
 
+  caracteresPermitidos(event: { charCode: any; }) {
+    var k;
+    k = event.charCode;
+    return ((k >= 48 && k <= 57) || (k >= 65 && k <= 90) || (k >= 97 && k <= 122) || (k >= 192 && k <= 255));
+  }
+
   verificarSeSalaCheia(hash: string) {
     this.mesaService
-    .findByHash(hash)
-    .subscribe((sala) => {(this.statusJogo = sala.status); })
+      .findByHash(hash)
+      .subscribe((sala) => { (this.statusJogo = sala.status); })
 
 
     this.iniciaPartidaService
@@ -122,11 +136,10 @@ export class EntrarMesaComponent implements OnInit {
   verificarSeJogoIniciado(hash: string) {
     this.mesaService
     .findByHash(hash)
-    .subscribe((sala) => {(this.statusJogo = sala.status); 
-      if(this.statusJogo === 'JOGANDO' && 'ULTIMA_RODADA'){
+    .subscribe((sala) => {(this.statusJogo = sala.status);
+      if(this.statusJogo === 'JOGANDO' || this.statusJogo === 'ULTIMA_RODADA' || this.statusJogo === 'AGUARDANDO_DEFINICAO'){
       this.router.navigate(['/jogoiniciado']);
     }})
-
   }
 
   verificarSeJogoFinalizado(hash: string) {
@@ -141,16 +154,3 @@ export class EntrarMesaComponent implements OnInit {
   }
 }
 
-function errorHandler(err: HttpErrorResponse) {
-  let msg = '';
-  if (err.error instanceof ErrorEvent) {
-    msg = `Client Error Occured: ${err.error.message}`;
-  } else {
-    msg = `Server Error Occured: ${err.status} ${err.statusText}`;
-  }
-  return throwError(() => ({
-    error: err.error,
-    message: msg,
-    messageDesc: err.message,
-  }));
-}

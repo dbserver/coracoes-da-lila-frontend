@@ -1,3 +1,4 @@
+<app-acessibilidade></app-acessibilidade>
 <div class="container">
   <div class="logo">
     <a [routerLink]="['']">
@@ -7,13 +8,13 @@
   <div>
     <mat-form-field appearance="fill">
       <mat-label>Nick:</mat-label>
-      <input matInput type="text" [(ngModel)]="nick" />
+      <input matInput type="text" [(ngModel)]="nick" minlength="2" maxlength="10" (keypress)="caracteresPermitidos($event)">
     </mat-form-field>
   </div>
 
-  <div *ngIf="!nomeValido()">
+  <div class="aviso-centro">
     <p class="aviso">
-      Nome deve ter entre 2 e 10 caracteres. O nome também não deve conter caracteres especiais (@.|! ? ...)
+      Nick deve ter entre 2 e 10 caracteres. Não usar caracteres especiais (@.|!? ...)
     </p>
   </div>
 
