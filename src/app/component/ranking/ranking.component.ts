@@ -19,7 +19,7 @@ export class RankingComponent implements OnInit {
     this.mesa.getemitSalaObservable().subscribe(sala =>{
        this.jogadores = sala.jogadores;
         this.jogadores.sort((JogadorA, JogadorB) => {
-          return (JogadorB.pontos) - (JogadorA.pontos);
+          return (JogadorB.pontos + JogadorB.pontosObjetivo) - (JogadorA.pontos + JogadorA.pontosObjetivo);
         });
         
     });
