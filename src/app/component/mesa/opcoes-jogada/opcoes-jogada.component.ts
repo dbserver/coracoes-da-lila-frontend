@@ -1,4 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { CartaDoJogoEnumCategoria } from 'src/app/enum/CartaDoJogoEnumCategoria';
+import { CartaDoJogoEnumTipo } from 'src/app/enum/CartaDoJogoEnumTipo';
 import { CartaDoJogo } from 'src/app/model/cartaDoJogo';
 import { Jogador } from 'src/app/model/jogador';
 import { Sala } from 'src/app/model/sala';
@@ -15,6 +17,9 @@ export class OpcoesJogadaComponent implements OnInit {
   public listacartasMao: Array<CartaDoJogo> = [];
   public statusDado = false;
   public maoAntiga = 0;
+
+  enumCategoria = CartaDoJogoEnumCategoria;
+  enumTipo = CartaDoJogoEnumTipo;
 
   constructor(
     private mesaJogoService: MesaJogoService,
@@ -83,16 +88,16 @@ export class OpcoesJogadaComponent implements OnInit {
 
   public podeRolarDado() {
     let cartaBonus = false;
-    let cartaTipo:string = "";
+    let cartaTipo!:CartaDoJogoEnumTipo;
 
     this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => {
       const ultimaCarta:number = this.jogador.cartasDoJogo.length - 1;
 
       cartaBonus = this.jogador.cartasDoJogo[ultimaCarta]?.bonus;
       cartaTipo = this.jogador.cartasDoJogo[ultimaCarta]?.tipo;
-      
+
     });
-    
+
     if (this.sala.dado == 0 && cartaBonus && !this.statusDado){
       return cartaTipo
     }
@@ -103,15 +108,15 @@ export class OpcoesJogadaComponent implements OnInit {
     } else if (this.jogador.cartasDoJogo.length > this.maoAntiga) {
       this.statusDado = false;
     }
-    return "";
+    return '';
   }
 
   public compraCarta() {
     return this.jogador.cartasDoJogo.length > this.maoAntiga
   }
-  
+
   public limpaTela() {
-    if (this.podeRolarDado() != 'INFORMACAO' && this.podeRolarDado() != 'ACAO' && !this.selecioneUmaCartaObjetivo()) {
+    if (this.podeRolarDado() != CartaDoJogoEnumTipo.INFORMACAO && this.podeRolarDado() != CartaDoJogoEnumTipo.ACAO && !this.selecioneUmaCartaObjetivo()) {
       return true;
     } else {
       return false;
