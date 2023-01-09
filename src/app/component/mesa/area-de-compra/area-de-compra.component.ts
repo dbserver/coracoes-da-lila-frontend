@@ -13,7 +13,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ModalZoomComponent } from '../modal-zoom/modal-zoom.component';
 import { ModalZoomObjetivoComponent } from '../modal-zoom-objetivo/modal-zoom-objetivo.component';
 import { mapTipoCartaDoJogo } from 'src/app/maps/cartaDoJogoMaps';
-
+import { CartaDoJogoEnumTipo } from 'src/app/enum/CartaDoJogoEnumTipo';
 @Component({
   selector: 'app-area-de-compra',
   templateUrl: './area-de-compra.component.html',
@@ -36,9 +36,12 @@ export class AreaDeCompraComponent implements OnInit {
   public HabilitaDadoComponent = new HabilitaDadoComponent(this.mesaJogoService);
 
   public mapTipo = mapTipoCartaDoJogo;
+
   bloqueiaAcao = false;
 
   opcoesCartaObjetivo: CartaObjetivo[];
+
+  enumTipo = CartaDoJogoEnumTipo;
 
   constructor(
     private mesaJogoService: MesaJogoService,
@@ -248,15 +251,6 @@ export class AreaDeCompraComponent implements OnInit {
       modal.style.display = 'flex';
     }
   }
-
-  // private buscaCartasObjetivo() {
-  //   this.mesaJogoService.buscarDuasCartasObjetivo(this.sala)
-  //   .subscribe(
-  //     (sala) => (
-  //       this.opcoesCartaObjetivo = sala.opcoesCartaObjetivo,
-  //       this.sala = sala
-  //     )
-  //   );
 
   public desabilitaAnimacaoEmbaralhar() {
     document.getElementById('carta-1')?.classList.remove('carta-1');

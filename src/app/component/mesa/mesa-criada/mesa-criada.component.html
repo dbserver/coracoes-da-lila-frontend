@@ -1,10 +1,10 @@
+<app-acessibilidade></app-acessibilidade>
 <div class="container">
   <div class="texto">
     <h1 class="titulo">Mesa criada:</h1>
   </div>
   <div>
     <p class="link-da-mesa" data-testid="linkDaMesa">{{ link }}</p>
-
     <button class="btn-copiar" mat-icon-button color="primary" aria-label="Copiar link para a área de transferência"
       [cdkCopyToClipboard]="link" data-testid="btnCopiar">
       <mat-icon>content_copy</mat-icon>
@@ -20,4 +20,3 @@
   </div>
   <!--<div class="area-da-mesa"></div>-->
 </div>
-
