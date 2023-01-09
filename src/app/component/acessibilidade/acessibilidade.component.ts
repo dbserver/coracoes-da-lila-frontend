@@ -6,16 +6,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./acessibilidade.component.scss']
 })
 export class AcessibilidadeComponent implements OnInit {
-
+  esconderFonte:boolean = false;
   constructor() { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    if(localStorage.getItem('esconder')){this.mesaCriada()}
+   }
 
   toggleClass(classe: string) {
+    
     const $html = document.querySelector('html')!
+    $html.classList.toggle(classe);
 
-    $html.classList.toggle(classe)
   }
+
+  mesaCriada(){
+    this.esconderBotaoAjusteFonte()
+    this.fonteTamanhoNormal()
+  }
+
+  esconderBotaoAjusteFonte(){
+    this.esconderFonte = true;
+  }
+
+  fonteTamanhoNormal(){
+    const $html = document.querySelector('html')!
+    $html.classList.remove('fonteMaior')
+  }
+
 }
 
 //   const $html = document.querySelector('html')!

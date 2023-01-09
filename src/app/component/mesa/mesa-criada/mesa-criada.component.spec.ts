@@ -44,7 +44,7 @@ describe('MesaCriadaComponent', () => {
   };
   const mockService = jasmine.createSpyObj<MesaService>({ findByHash: undefined });
   const mockRouter = jasmine.createSpyObj('Router', ['navigate','navigateByUrl']);
-  
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
@@ -67,7 +67,7 @@ describe('MesaCriadaComponent', () => {
     component = fixture.componentInstance;
     serviceSpy = TestBed.inject(MesaService) as jasmine.SpyObj<MesaService>;
   });
-  
+
   it('foi criado', () => {
     expect(component).toBeTruthy();
   });
