@@ -5,7 +5,7 @@ import { CartaInicioComponent } from './carta-inicio.component';
 import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { findEl } from 'src/app/utils/testUtils';
 
-fdescribe('CartaInicioComponent', () => {
+describe('CartaInicioComponent', () => {
   let component: CartaInicioComponent;
   let fixture: ComponentFixture<CartaInicioComponent>;
 

@@ -31,10 +31,6 @@ export class AcessibilidadeComponent implements OnInit {
 
   }
 
-  // mesaCriada(){
-  //   this.esconderBotaoAjusteFonte()
-  //   this.fonteTamanhoNormal()
-  // }
 
   esconderBotaoAjusteFonte(){
     this.esconderFonte = true;
