@@ -53,16 +53,7 @@
     <div class="cartas-container">
         <div class="cartas-container-scroll">
             <div *ngFor="let carta of jogador?.cartasDoJogo">
-                <div class="select" [formGroup]="novaCategoria" *ngIf="sala.status == 'AGUARDANDO_DEFINICAO'">
-                    <select *ngIf="carta.categoria == enumCategoria.GENERICA"
-                        (change)="atualizaCategoriaDeCartasGenericas(carta)" formControlName="categoria">
-                        <option value="{{enumCategoria.INTELECTUAL}}">Intelectual</option>
-                        <option value="{{enumCategoria.FISICA}}">Física</option>
-                        <option value="{{enumCategoria.TEA}}">TEA</option>
-                        <option value="{{enumCategoria.AUDITIVA}}">Auditiva</option>
-                        <option value="{{enumCategoria.VISUAL}}">Visual</option>
-                    </select>
-                </div>
+                <app-seleciona-categoria [desabilitaFormulario]=enviaDesabilitaFormulario [idCartaAtualizaCategoria]=carta.id (novaCategorias)="recebeNovasCategorias($event)" *ngIf="habilitaSelecionarCategoria(carta)" id="{{carta.id}}"></app-seleciona-categoria>
                 <div class="carta carta-vertical">
                     <div class="cabecalho">
                         <h2 class="titulo">{{ mapTipo.get(carta.tipo) }}</h2>
@@ -128,7 +119,7 @@
             <br> {{jogador.pontos}}
         </p>
         <div *ngIf="sala.status == 'AGUARDANDO_DEFINICAO' && jogador.status == 'DEFININDO'" class="botao-confirmar">
-            <button id="botao-confirmar" [disabled]="bloquearConfirmarCategorias()" mat-raised-button
+            <button id="botao-confirmar" mat-raised-button [disabled]="bloquearConfirmarCategorias()"
                 (click)="enviarCategorias()">Confirmar Categorias</button>
         </div>
     </div>

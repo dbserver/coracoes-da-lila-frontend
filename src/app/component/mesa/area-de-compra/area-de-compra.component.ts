@@ -146,7 +146,6 @@ export class AreaDeCompraComponent implements OnInit {
 
   public podeJogar() {
     if (this.jogador.status == 'JOGANDO') {
-      console.log(this.HabilitaDadoComponent.mudaDesabilitado());
       return true;
     }
     return false;
