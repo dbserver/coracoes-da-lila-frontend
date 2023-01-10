@@ -1,346 +1,341 @@
 .area-jogadores {
-  display: flex;
-  justify-content: center;
-  margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
 }
 
 .box-jogador {
-  width: 48rem;
-  height: fit-content;
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  align-items: center;
+    width: 48rem;
+    height: fit-content;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
 }
 
 .status-container {
-  height: 24px;
+    height: 24px;
 }
 
-.jogador{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 20%;
+.jogador {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20%;
 }
 
-.nome-jogador{
-  display: flex;
-  gap: 0.3rem;
-  justify-content: center;
-  align-items: center;
-  font-size: 15px;
-  word-break: break-all;
-  margin-bottom: 0;
+.nome-jogador {
+    display: flex;
+    gap: 0.3rem;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    word-break: break-all;
+    margin-bottom: 0;
 }
 
 .mao {
-  display: grid;
-  height: 200px;
-  grid-template-columns: 15% 10% 66% 8%;
-  grid-gap: 5px;
-  align-items: center;
-  max-width: 100%;
-  border: 2px solid black;
-  margin: 15px;
+    display: grid;
+    height: 200px;
+    grid-template-columns: 15% 10% 66% 8%;
+    grid-gap: 5px;
+    align-items: center;
+    max-width: 100%;
+    border: 2px solid black;
+    margin: 15px;
 }
 
 .botao-sair {
-  color: var(--font-color);
-  background-color: var(--btn-bg);
-  font-size: calc(var(--tamanhoFonte) - 3px);
-  width: 50%;
-  height: 35px;
+    color: var(--font-color);
+    background-color: var(--btn-bg);
+    font-size: calc(var(--tamanhoFonte) - 3px);
+    width: 50%;
+    height: 35px;
 }
 
 .centro {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .centraliza {
-  text-align: center;
+    text-align: center;
 }
 
 .linha-3 {
-  display: grid;
-  grid-template-rows: 20% 60% 20%;
-  align-items: center;
-  justify-content: center;
-  font-size: var(--tamanhoFonte);
-  height: 90%;
+    display: grid;
+    grid-template-rows: 20% 60% 20%;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--tamanhoFonte);
+    height: 90%;
 }
 
 .avatar {
-  height: 50%;
-  width: 50%;
+    height: 50%;
+    width: 50%;
 }
 
 .coracao-pequeno-selecionado {
-  width: 0.9em;
-  height: 0.9em;
+    width: 0.9em;
+    height: 0.9em;
 }
 
 .cartas-container {
-
-  display: flex;
-  padding-bottom: 10px;
-
-  &-scroll {
     display: flex;
-    max-width: 1400px;
-    overflow-x: auto;
-    padding-bottom: 8px;
-
-    &::-webkit-scrollbar {
-      height: 4px;
-      background-color: rgba(0, 0, 0, 0.25);
-
-      &-thumb {
-        background-color: black;
-      }
+    padding-bottom: 10px;
+    &-scroll {
+        display: flex;
+        max-width: 1400px;
+        overflow-x: auto;
+        padding-bottom: 8px;
+        &::-webkit-scrollbar {
+            height: 4px;
+            background-color: rgba(0, 0, 0, 0.25);
+            &-thumb {
+                background-color: black;
+            }
+        }
+        .carta {
+            border: 2px solid black;
+            margin-left: 5px;
+            padding: 10px;
+            background: var(--input-backgroundColor);
+            word-wrap: break-word;
+            &-vertical {
+                min-width: 100px;
+                max-width: 100px;
+                height: 150px;
+                margin-top: 7px;
+                .zoom {
+                    border: none;
+                    background: local;
+                    cursor: pointer;
+                    padding-left: 0;
+                    padding-right: 0;
+                    display: flex;
+                    .mat-icon {
+                        font-weight: bolder;
+                        align-self: center;
+                        justify-self: center;
+                    }
+                }
+                .cabecalho {
+                    height: 15px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    .pontos {
+                        background-color: black;
+                        min-width: 1.1em;
+                        min-height: 1.1em;
+                        max-width: 1.1em;
+                        max-height: 1.1em;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: white;
+                        font-size: 15px;
+                        border-radius: 50%;
+                        .pt {
+                            margin-top: 13px;
+                            font-size: calc(var(--tamanhoFonte) - 6pt);
+                            font-weight: bold;
+                        }
+                    }
+                    .titulo {
+                        margin-bottom: 0;
+                        line-height: 24px;
+                        font-size: calc(var(--tamanhoFonte) - 6pt);
+                    }
+                }
+                .corpo {
+                    margin-top: 5px;
+                    flex-direction: column;
+                    .definicao {
+                        margin-bottom: 0;
+                        padding-right: 8px;
+                        min-width: 90px;
+                        min-height: 75px;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        display: -webkit-box !important;
+                        display: block;
+                        -webkit-line-clamp: 5;
+                        -webkit-box-orient: vertical;
+                        white-space: pre-line;
+                        font-size: calc(var(--tamanhoFonte) - 7pt);
+                        line-height: 15px;
+                        text-align: left;
+                    }
+                    .icones {
+                        min-height: 15px;
+                        margin-top: 5px;
+                        font-size: var(--tamanhoFonte);
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        .coracoes {
+                            display: flex;
+                            align-items: center;
+                            .coracao:not(:first-child) {
+                                margin-left: 5px;
+                            }
+                            .coracao-pequeno {
+                                width: 0.6em;
+                                height: 0.6em;
+                            }
+                            .coracao-grande {
+                                width: 1em;
+                                height: 1em;
+                            }
+                        }
+                        .presentes {
+                            position: relative;
+                            .presente {
+                                width: 1em;
+                                height: 1em;
+                            }
+                            .presenteInfoAcoes {
+                                width: 0.6em;
+                                position: absolute;
+                                bottom: 0px;
+                                right: -5px;
+                            }
+                        }
+                    }
+                }
+                .rodape {
+                    margin-top: 12px;
+                    align-self: flex-end;
+                    .fonte {
+                        min-height: 30px;
+                        max-height: 30px;
+                        width: 117px;
+                        white-space: nowrap;
+                        display: block;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        font-size: calc(var(--tamanhoFonte) - 8pt);
+                        line-height: 8px;
+                    }
+                }
+            }
+            &-horizontal {
+                width: 190px;
+                height: 110px;
+                margin-top: 20px;
+                &.carta-sem-titulo {
+                    display: flex;
+                    align-items: center;
+                    .corpo .definicao {
+                        min-height: unset;
+                        max-height: unset;
+                        margin: 0;
+                    }
+                }
+                .cabecalho {
+                    .titulo {
+                        color: #38761d;
+                        font-size: calc(var(--tamanhoFonte) - 0.45vw);
+                        line-height: 15px;
+                    }
+                }
+                .corpo {
+                    .definicao {
+                        min-height: 50px;
+                        max-height: 60px;
+                        width: 200px;
+                        font-size: calc(var(--tamanhoFonte) - 6pt);
+                        line-height: 15px;
+                        overflow-y: auto;
+                    }
+                }
+            }
+        }
     }
-
-    .carta {
-      border: 2px solid black;
-      margin-left: 5px;
-      padding: 10px;
-      background: var(--input-backgroundColor);
-      word-wrap: break-word;
-
-      &-vertical {
-        min-width: 100px;
-        max-width: 100px;
-        height: 150px;
-        margin-top: 7px;
-
-        .cabecalho {
-          height: 15px;
-          display: flex;
-          justify-content: space-between;
-
-          .titulo {
-            margin-bottom: 0;
-            line-height: 24px;
-            font-size: calc(var(--tamanhoFonte) - 6pt);
-          }
-
-          .pontos {
-            background-color: black;
-            min-width: 1.1em;
-            min-height: 1.1em;
-            max-width: 1.1em;
-            max-height: 1.1em;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 15px;
-            border-radius: 50%;
-
-            .pt {
-              margin-top: 15px;
-              font-size: calc(var(--tamanhoFonte) - 6pt);
-              font-weight: bold;
-            }
-          }
-        }
-
-        .corpo {
-          margin-top: 10px;
-
-          .definicao {
-            margin-bottom: 0;
-            padding-right: 8px;
-            min-height: 60px;
-            max-height: 60px;
-            overflow-y: auto;
-            font-size: calc(var(--tamanhoFonte) - 6pt);
-          }
-
-          .icones {
-            min-height: 15px;
-            margin-top: 16px;
-            font-size: var(--tamanhoFonte);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            .coracoes {
-              display: flex;
-              align-items: center;
-
-              .coracao:not(:first-child) {
-                margin-left: 5px;
-              }
-
-              .coracao-pequeno {
-                width: 0.6em;
-                height: 0.6em;
-              }
-
-              .coracao-grande {
-                width: 1em;
-                height: 1em;
-              }
-            }
-
-            .presentes {
-              position: relative;
-
-              .presente {
-                width: 1em;
-                height: 1em;
-              }
-
-              .presenteInfoAcoes {
-                width: 0.6em;
-                position: absolute;
-                bottom: 0px;
-                right: -5px;
-              }
-            }
-          }
-        }
-
-        .rodape {
-          margin-top: 10px;
-
-          .fonte {
-            max-height: 25px;
-            overflow-y: auto;
-            display: block;
-            font-size: calc(var(--tamanhoFonte) - 9pt);
-          }
-        }
-      }
-
-      &-horizontal {
-
-        width: 190px;
-        height: 110px;
-        margin-top: 20px;
-
-        &.carta-sem-titulo {
-          display: flex;
-          align-items: center;
-
-          .corpo .definicao {
-            min-height: unset;
-            max-height: unset;
-            margin: 0;
-          }
-        }
-
-        .cabecalho {
-          .titulo {
-            color: #38761d;
-            font-size: calc(var(--tamanhoFonte) - 0.45vw);
-            line-height: 15px;
-          }
-        }
-
-        .corpo {
-          .definicao {
-            min-height: 50px;
-            max-height: 60px;
-            width: 200px;
-            font-size: calc(var(--tamanhoFonte) - 6pt);
-            line-height: 15px;
-            overflow-y: auto;
-          }
-        }
-      }
-    }
-  }
 }
+
 .cor-texto {
-  color: #ffab40;
+    color: #ffab40;
 }
 
 .y-scroll {
-  &::-webkit-scrollbar {
-    width: 4px;
-    background-color: rgba(0, 0, 0, 0.25);
-
-    &-thumb {
-      background-color: black;
+    &::-webkit-scrollbar {
+        width: 4px;
+        background-color: rgba(0, 0, 0, 0.25);
+        &-thumb {
+            background-color: black;
+        }
     }
-  }
 }
 
 .carta-coracoes {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-
-  .carta-coracao {
-    width: 40%;
-    height: 50px;
-    border: 2px solid black;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 2px;
-
-    &-grande {
-      height: 100%;
-      width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .carta-coracao {
+        width: 40%;
+        height: 50px;
+        border: 2px solid black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 2px;
+        &-grande {
+            height: 100%;
+            width: 100%;
+        }
+        &-pequeno {
+            height: 55%;
+            width: 55%;
+        }
     }
-    &-pequeno {
-      height: 55%;
-      width: 55%;
+    .carta-coracao-bonus {
+        width: 40%;
+        height: 50px;
+        border: 2px solid black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 2px;
+        &-grande {
+            height: 100%;
+            width: 100%;
+        }
+        &-pequeno {
+            height: 65%;
+            width: 65%;
+        }
     }
-  }
-
-  .carta-coracao-bonus{
-    width: 40%;
-    height: 50px;
-    border: 2px solid black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 2px;
-
-    &-grande {
-      height: 100%;
-      width: 100%;
-    }
-    &-pequeno {
-      height: 65%;
-      width: 65%;
-    }
-  }
 }
 
 .botao {
-  color: var(--font-color);
-  background-color: var(--btn-bg);
-  font-size: calc(var(--tamanhoFonte) - 3px);
-  width: 150px;
-  height: 35px;
-  margin-top: 10px;
-  margin-left: 10px;
+    color: var(--font-color);
+    background-color: var(--btn-bg);
+    font-size: calc(var(--tamanhoFonte) - 3px);
+    width: 150px;
+    height: 35px;
+    margin-top: 10px;
+    margin-left: 10px;
 }
 
 .grid-zoom {
-  display: grid;
-  grid-template-columns: 12% 88%;
+    display: grid;
+    grid-template-columns: 12% 88%;
 }
 
 .zoom {
-  border: none;
-  background: local;
-  cursor: pointer;
-  padding-left: 0;
-  padding-right: 0;
-
-  .mat-icon {
-    font-weight: bolder;
-  }
-
-  .icone-zoom {
-    margin-bottom: 16px;
-  }
+    border: none;
+    background: local;
+    cursor: pointer;
+    padding-left: 0;
+    padding-right: 0;
+    .mat-icon {
+        font-weight: bolder;
+    }
+    .icone-zoom {
+        margin-bottom: 16px;
+    }
 }

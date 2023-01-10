@@ -260,6 +260,12 @@
                     margin-top: 10px;
                 }
             }
+            .texto {
+                font-weight: bold;
+                font-size: 1.2vw;
+                margin-bottom: 0;
+                color: var(--font-color);
+            }
             .logo-e-texto {
                 display: grid;
                 grid-template-rows: 100% auto;
@@ -295,15 +301,6 @@
     .mao {
         align-self: flex-end;
         justify-self: flex-start;
-    }
-    .y-scroll {
-        &::-webkit-scrollbar {
-            width: 4px;
-            background-color: rgba(0, 0, 0, 0.25);
-            &-thumb {
-                background-color: black;
-            }
-        }
     }
 }
 
