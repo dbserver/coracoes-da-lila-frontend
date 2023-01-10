@@ -8,6 +8,8 @@ import { Jogador } from 'src/app/model/jogador';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { of } from 'rxjs';
+import { CartaDoJogoEnumTipo } from 'src/app/enum/CartaDoJogoEnumTipo';
+import { CartaDoJogoEnumCategoria } from 'src/app/enum/CartaDoJogoEnumCategoria';
 
 describe('HabilitaDadoComponent', () => {
   let component: HabilitaDadoComponent;
@@ -44,8 +46,9 @@ describe('HabilitaDadoComponent', () => {
           nome: 'jogador1',
           cartasDoJogo: [
             {
-              tipo: 'CARTA',
-              categoria: 'CARTA',
+              id: 'a',
+              tipo: CartaDoJogoEnumTipo.ACAO,
+              categoria: CartaDoJogoEnumCategoria.FISICA,
               bonus: false,
               texto: 'texto',
               valorCoracaoPequeno: 0,
@@ -54,8 +57,9 @@ describe('HabilitaDadoComponent', () => {
               pontos: 0,
             },
             {
-              tipo: 'CARTA',
-              categoria: 'CARTA',
+              id: 'b',
+              tipo: CartaDoJogoEnumTipo.DEFINICAO,
+              categoria: CartaDoJogoEnumCategoria.INTELECTUAL,
               bonus: true,
               texto: 'texto',
               valorCoracaoPequeno: 0,
