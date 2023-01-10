@@ -54,7 +54,7 @@
                 <div *ngFor="let cartas of jogadorModal.cartasDoJogo" class="carta carta-vertical">
                     <div class="cabecalho">
                         <button id="zoom1" class="zoom" (click)="abrirZoom($event, cartas)">
-                        <mat-icon class="mat-icon" alt="Ícone de zoom">zoom-in</mat-icon>
+                        <mat-icon class="mat-icon" alt="Ícone de zoom">zoom_in</mat-icon>
                     </button>
 
                         <div class="pontos">
@@ -92,7 +92,7 @@
                         </div>
                     </div>
                     <div class="rodape">
-                        <span class="fonte y-scroll">Fonte: {{cartas.fonte}}</span>
+                        <span class="fonte">Fonte: {{cartas.fonte}}</span>
                     </div>
                 </div>
                 <div class="carta carta-horizontal" *ngFor="let cartaObjetivo of jogadorModal.cartasObjetivo">
