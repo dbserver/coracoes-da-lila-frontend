@@ -38,13 +38,4 @@ export class MesaService {
     return this.http.get<Sala>(`${environment.API_URL}sala/${hash}`);
   }
 
-  mostrarBotaoFonteMaior() {
-    return(
-    localStorage.removeItem('esconder')
-    )}
-
-  esconderBotaoFonteMaior() {
-    return(
-    localStorage.setItem('esconder', 'true')
-    )}
 }
