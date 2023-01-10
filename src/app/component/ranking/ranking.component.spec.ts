@@ -3,6 +3,8 @@ import { RankingComponent } from './ranking.component';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler';
 
 describe('RankingComponent', () => {
   let component: RankingComponent;
@@ -11,6 +13,7 @@ describe('RankingComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ RankingComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
       imports: [ RouterTestingModule, HttpClientTestingModule ]
     })
     .compileComponents();

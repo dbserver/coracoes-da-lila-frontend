@@ -14,6 +14,7 @@ import { MesaCriadaComponent } from './mesa-criada.component';
 import { RxStompService } from '@stomp/ng2-stompjs';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { HttpClient, HttpHandler } from '@angular/common/http';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 
 //Após o merge com desenvolvimento, o teste precisa ser reimplementado
 //devido a alterações no componente original
@@ -56,6 +57,7 @@ describe('MesaCriadaComponent', () => {
         ClipboardModule,
         HttpClientTestingModule
       ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
       providers: [
         { provide: MesaService, useValue: mockService }, //Aqui foi passada uma referência para o dublê
         { provide: Router, useValue: mockRouter },
