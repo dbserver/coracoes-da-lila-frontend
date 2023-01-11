@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { NovaCategoriaCartasDoJogoDTO } from 'src/app/dto/NovaCategoriaCartasDoJogoDTO';
 import { NovaCategoriaDTO } from 'src/app/dto/NovaCategoriaDTO';
 import { CartaDoJogoEnumCategoria } from 'src/app/enum/CartaDoJogoEnumCategoria';
 import { CartaDoJogo } from 'src/app/model/cartaDoJogo';
@@ -20,23 +19,18 @@ export class SelecionaCategoriaComponent implements OnInit {
   private hash = '';
   public sala: Sala = {} as Sala;
   public jogador: Jogador = {} as Jogador;
+  public novaCategoriaDTO: NovaCategoriaDTO;
+  public enumCategoria = CartaDoJogoEnumCategoria;
+  public categoria!: FormControl;
 
-  novaCategoriaDTO: NovaCategoriaDTO;
-
-  cartasCategoriasAtualizadas: Array<NovaCategoriaDTO> = [];
-  categoria!: FormControl;
+  @Input() novaCategoriaDessaCarta!: string | undefined;
   @Input() idCartaAtualizaCategoria!: string;
-  @Input() desabilitaFormulario!: boolean;
   @Output() novaCategorias = new EventEmitter<NovaCategoriaDTO>();
-
-  enumCategoria = CartaDoJogoEnumCategoria;
-  selected!: FormControl;
 
   constructor(
     private mesaService: MesaService,
     private route: ActivatedRoute,
     private mesaJogoService: MesaJogoService,
-    private jogadorService: JogadorService
   ) {
     this.novaCategoriaDTO = {
       cartaID: '',
@@ -46,10 +40,16 @@ export class SelecionaCategoriaComponent implements OnInit {
 
   ngOnInit(): void {
     // FORMULARIO
-    this.categoria = new FormControl(CartaDoJogoEnumCategoria.VAZIA, Validators.required)
+    this.categoria = new FormControl(CartaDoJogoEnumCategoria.VAZIA, Validators.required);
 
-    this.selected = new FormControl('valid', [Validators.required, Validators.pattern('valid')]);
-
+    //Se já existir alguma nova categoria selecionada para essa carta
+    //o formulário inicia com esse valor e desabilitado
+    if(this.novaCategoriaDessaCarta){
+      this.categoria.setValue(this.novaCategoriaDessaCarta);
+      this.categoria.disable();
+    }
+    
+    //Busca a sala e atualiza conforme o hash
     this.hash = String(this.route.snapshot.paramMap.get('hash'));
     this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => {
       this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
@@ -62,28 +62,14 @@ export class SelecionaCategoriaComponent implements OnInit {
     this.mesaService.findByHash(this.hash).subscribe((val) => {
       this.sala = val
     });
-
   }
 
+  //Enviar a categoria selecionada para o componente MaoJogador
   public enviarCategorias(): void {
-    console.log('ok1')
     this.novaCategoriaDTO = {
       cartaID: this.idCartaAtualizaCategoria,
       novaCategoria: this.categoria.value
     }
     this.novaCategorias.emit(this.novaCategoriaDTO);
-    this.desabilitaFormulario;
-  }
-
-  public desabilitarFormulario(){
-    if (this.jogador.id != null){
-      this.jogadorService.procurarJogador(this.jogador.id).subscribe((jogador)=>{
-        this.jogador = jogador})
-    }
-
-    if (this.jogador.status == 'FINALIZADO'){
-      return true;
-    }
-    return false;
   }
 }

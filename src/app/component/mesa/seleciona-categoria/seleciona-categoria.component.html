@@ -1,7 +1,7 @@
 
 <mat-form-field appearance="fill" class="select">
     <mat-label>Selecione a categoria</mat-label>
-    <mat-select [formControl]="categoria" (change)="enviarCategorias()">
+    <mat-select [formControl]="categoria" (selectionChange)="enviarCategorias()">
         <mat-option value="{{enumCategoria.INTELECTUAL}}">Intelectual</mat-option>
         <mat-option value="{{enumCategoria.FISICA}}">Física</mat-option>
         <mat-option value="{{enumCategoria.TEA}}">TEA</mat-option>
@@ -9,13 +9,3 @@
         <mat-option value="{{enumCategoria.VISUAL}}">Visual</mat-option>
     </mat-select>
 </mat-form-field>
-
-<!-- <div class="select" [formGroup]="novaCategoria" class="form-categoria">
-    <select (change)="enviarCategorias()" formControlName="categoria"  [disabled]="desabilitaFormulario">
-        <option value="{{enumCategoria.INTELECTUAL}}">Intelectual</option>
-        <option value="{{enumCategoria.FISICA}}">Física</option>
-        <option value="{{enumCategoria.TEA}}">TEA</option>
-        <option value="{{enumCategoria.AUDITIVA}}">Auditiva</option>
-        <option value="{{enumCategoria.VISUAL}}">Visual</option>
-    </select>
-</div> -->
