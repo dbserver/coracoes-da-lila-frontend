@@ -63,7 +63,7 @@ describe('MaoJogadorComponent', () => {
         listaDeCartas: [novaCategoriaDTO1, novaCategoriaDTO2]
       }
 
-      expect(component.verificaCartaExisteNaListaDeCartas(cartaDoJogo1)).toBeTruthy();
+      expect(component.verificaCartaExisteNaListaCartasParaEnviar(cartaDoJogo1.id)).toBeTruthy();
     })
 
     it('Deve retornar false para carta inexistente na lista de cartas', () => {
@@ -72,31 +72,7 @@ describe('MaoJogadorComponent', () => {
         listaDeCartas: [novaCategoriaDTO2]
       }
 
-      expect(component.verificaCartaExisteNaListaDeCartas(cartaDoJogo1)).toBeFalsy();
-    })
-  })
-
-  describe('Testes do método verificaSeCategoriaGenerica', () => {
-
-
-    it('Deve retornar true para carta do jogo com categoria genérica', () => {
-      expect(component.verificaSeCategoriaGenerica(cartaDoJogo1)).toBeTruthy();
-    })
-
-    it('Deve retornar false para carta do jogo com categoria diferente de genérica', () => {
-      let cartaDoJogo2: CartaDoJogo = {
-        id: 'carta2-765',
-        tipo: CartaDoJogoEnumTipo.ACAO,
-        categoria: CartaDoJogoEnumCategoria.AUDITIVA,
-        bonus: false,
-        texto: '',
-        valorCoracaoPequeno: 0,
-        valorCoracaoGrande: 0,
-        fonte: '',
-        pontos: 0
-      }
-
-      expect(component.verificaSeCategoriaGenerica(cartaDoJogo2)).toBeFalsy();
+      expect(component.verificaCartaExisteNaListaCartasParaEnviar(cartaDoJogo1.id)).toBeFalsy();
     })
   })
 
@@ -105,14 +81,12 @@ describe('MaoJogadorComponent', () => {
 
     it('Deve adicionar uma nova categoria ao DTO para uma nova carta do jogo', () => {
       //Mockando a lista de cartas já adicionadas pelo formulário, com apenas 1 carta
-
-      component.novaCategoria.setValue({ 'categoria': CartaDoJogoEnumCategoria.AUDITIVA });
       component.novaCategoriaCartasDoJogoDTO = {
         salaHash: '',
         listaDeCartas: [novaCategoriaDTO2]
       }
 
-      component.atualizaCategoriaDeCartasGenericas(cartaDoJogo1);
+      component.atualizaCategoriaDeCartasGenericas(novaCategoriaDTO1);
 
       expect(component.novaCategoriaCartasDoJogoDTO.listaDeCartas.length).toBe(2);
       expect(component.novaCategoriaCartasDoJogoDTO.listaDeCartas[1].cartaID).toEqual('carta1-576');
@@ -121,71 +95,30 @@ describe('MaoJogadorComponent', () => {
 
     it('Deve alterar a nova categoria do DTO para uma carta já existente na lista', () => {
 
-      //Mock do valor recebido pelo formulário
-      component.novaCategoria.setValue({ 'categoria': CartaDoJogoEnumCategoria.VISUAL });
       component.novaCategoriaCartasDoJogoDTO = {
         salaHash: '',
         listaDeCartas: []
       }
 
-      //Mock de carta do jogo
-      let cartaDoJogo2: CartaDoJogo = {
-        id: 'carta2-765',
-        tipo: CartaDoJogoEnumTipo.ACAO,
-        categoria: CartaDoJogoEnumCategoria.GENERICA,
-        bonus: false,
-        texto: '',
-        valorCoracaoPequeno: 0,
-        valorCoracaoGrande: 0,
-        fonte: '',
-        pontos: 0
-      }
-
       //Adicionando uma nova categoria à primeira carta selecionada pelo jogador (VISUAL)
-      component.atualizaCategoriaDeCartasGenericas(cartaDoJogo2);
+      component.atualizaCategoriaDeCartasGenericas(novaCategoriaDTO2);
       //Testes: deve conter apenas um DTO de carta com categoria alterada
-      //deve conter o mesmo ID da carta passada ao método
-      //deve ser adicionado a categoria passada no formulário component.novaCategoria (VISUAL)
+      //deve conter o mesmo ID do DTO passado ao método
+      //deve ser adicionado a categoria recebida pelo DTO adicionado ao método (VISUAL)
       expect(component.novaCategoriaCartasDoJogoDTO.listaDeCartas.length).toBe(1);
-      expect(component.novaCategoriaCartasDoJogoDTO.listaDeCartas[0].cartaID).toEqual(cartaDoJogo2.id);
-      expect(component.novaCategoriaCartasDoJogoDTO.listaDeCartas[0].novaCategoria).toBe(CartaDoJogoEnumCategoria.VISUAL)
+      expect(component.novaCategoriaCartasDoJogoDTO.listaDeCartas[0].cartaID).toEqual(novaCategoriaDTO2.cartaID);
+      expect(component.novaCategoriaCartasDoJogoDTO.listaDeCartas[0].novaCategoria).toBe(novaCategoriaDTO2.novaCategoria);
 
-      //Alterando a categoria da mesma carta já adicionada
-      component.novaCategoria.setValue({ 'categoria': CartaDoJogoEnumCategoria.AUDITIVA });
-      component.atualizaCategoriaDeCartasGenericas(cartaDoJogo2);
+      //Alterando a categoria do mesmo DTO/carta já adicionada
+      novaCategoriaDTO2.novaCategoria = CartaDoJogoEnumCategoria.AUDITIVA;
+      component.atualizaCategoriaDeCartasGenericas(novaCategoriaDTO2);
 
       //Testes: deve conter apenas um DTO de carta com categoria atualizada
       //deve conter o mesmo ID da carta passada ao método
       //deve ser adicionado a NOVA categoria passada no formulário component.novaCategoria (AUDITIVA)
       expect(component.novaCategoriaCartasDoJogoDTO.listaDeCartas.length).toBe(1);
-      expect(component.novaCategoriaCartasDoJogoDTO.listaDeCartas[0].cartaID).toEqual(cartaDoJogo2.id);
-      expect(component.novaCategoriaCartasDoJogoDTO.listaDeCartas[0].novaCategoria).toBe(CartaDoJogoEnumCategoria.AUDITIVA)
-    })
-
-    it('Não deve adicionar um novo DTO à lista de cartas novaCategoriaCartasDoJogoDTO se a carta não for genérica', () => {
-      let cartaDoJogo2: CartaDoJogo = {
-        id: 'carta2-765',
-        tipo: CartaDoJogoEnumTipo.ACAO,
-        categoria: CartaDoJogoEnumCategoria.VISUAL,
-        bonus: false,
-        texto: '',
-        valorCoracaoPequeno: 0,
-        valorCoracaoGrande: 0,
-        fonte: '',
-        pontos: 0
-      }
-
-      component.novaCategoria.setValue({ 'categoria': CartaDoJogoEnumCategoria.VISUAL });
-      component.novaCategoriaCartasDoJogoDTO = {
-        salaHash: '',
-        listaDeCartas: []
-      }
-
-      component.atualizaCategoriaDeCartasGenericas(cartaDoJogo2);
-
-      //Teste: espera-se que não tenha nenhum DTO adicionado
-      expect(component.novaCategoriaCartasDoJogoDTO.listaDeCartas.length).toBe(0);
-
+      expect(component.novaCategoriaCartasDoJogoDTO.listaDeCartas[0].cartaID).toEqual(novaCategoriaDTO2.cartaID);
+      expect(component.novaCategoriaCartasDoJogoDTO.listaDeCartas[0].novaCategoria).toBe(novaCategoriaDTO2.novaCategoria)
     })
   })
 
