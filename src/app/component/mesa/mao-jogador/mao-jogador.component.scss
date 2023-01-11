@@ -1,6 +1,7 @@
 .mao {
   display: grid;
-  height: 13.8vw;
+  min-height: 13.8vw;
+  height: fit-content;
   grid-template-columns: 15% 10% 64% 8%;
   grid-gap: 5px;
   align-items: center;
@@ -58,10 +59,11 @@
 
   &-scroll {
     display: flex;
+    align-items: flex-end;
+    gap: 0.5rem;
     max-width: 1400px;
     overflow-x: auto;
     padding-bottom: 8px;
-    align-items: flex-end;
 
     &::-webkit-scrollbar {
       height: 4px;
@@ -79,7 +81,6 @@
 
     .carta {
       border: 2px solid black;
-      margin-left: 5px;
       padding: 10px;
       background: var(--input-backgroundColor);
       word-wrap: break-word;
