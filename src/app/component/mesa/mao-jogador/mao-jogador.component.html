@@ -53,7 +53,12 @@
     <div class="cartas-container">
         <div class="cartas-container-scroll">
             <div *ngFor="let carta of jogador?.cartasDoJogo">
-                <app-seleciona-categoria [desabilitaFormulario]=enviaDesabilitaFormulario [idCartaAtualizaCategoria]=carta.id (novaCategorias)="recebeNovasCategorias($event)" *ngIf="habilitaSelecionarCategoria(carta)" id="{{carta.id}}"></app-seleciona-categoria>
+                <app-seleciona-categoria 
+                    [idCartaAtualizaCategoria]=carta.id 
+                    [novaCategoriaDessaCarta]="enviaDTOselecionado(carta)" 
+                    (novaCategorias)="atualizaCategoriaDeCartasGenericas($event)" 
+                    *ngIf="habilitaSelecionarCategoria(carta)">
+                </app-seleciona-categoria>
                 <div class="carta carta-vertical">
                     <div class="cabecalho">
                         <h2 class="titulo">{{ mapTipo.get(carta.tipo) }}</h2>
@@ -120,6 +125,6 @@
         </p>
         <div *ngIf="sala.status == 'AGUARDANDO_DEFINICAO' && jogador.status == 'DEFININDO'" class="botao-confirmar">
             <button id="botao-confirmar" mat-raised-button [disabled]="bloquearConfirmarCategorias()"
-                (click)="enviarCategorias()">Confirmar Categorias</button>
+                (click)="enviaDTONovasCategorias()">Confirmar Categorias</button>
         </div>
     </div>

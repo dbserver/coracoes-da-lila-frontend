@@ -1,5 +1,4 @@
 import { Component, Injectable, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { mapTipoCartaDoJogo } from 'src/app/maps/cartaDoJogoMaps';
@@ -16,7 +15,6 @@ import { CartaDoJogoEnumCategoria } from 'src/app/enum/CartaDoJogoEnumCategoria'
 import { CartaDoJogoEnumTipo } from 'src/app/enum/CartaDoJogoEnumTipo';
 import { ModalZoomObjetivoComponent } from '../modal-zoom-objetivo/modal-zoom-objetivo.component';
 import { ModalZoomComponent } from '../modal-zoom/modal-zoom.component';
-import { SelecionaCategoriaComponent } from '../seleciona-categoria/seleciona-categoria.component';
 
 @Injectable({
   providedIn: 'root',
@@ -32,43 +30,25 @@ export class MaoJogadorComponent implements OnInit {
   public sala: Sala = {} as Sala;
   public listaJogador: Jogador[] = [];
   public jogador: Jogador = {} as Jogador;
-  public listacartasMao: Array<CartaDoJogo> = [];
   public recebeNovaCategoria!: NovaCategoriaDTO;
   public mapTipo = mapTipoCartaDoJogo;
-
-  novaCategoriaCartasDoJogoDTO!: NovaCategoriaCartasDoJogoDTO;
-
-  cartasCategoriasAtualizadas: Array<NovaCategoriaDTO> = [];
-  novaCategoria!: FormGroup;
-  enviaDesabilitaFormulario!: boolean;
-
-  enumCategoria = CartaDoJogoEnumCategoria;
-  enumTipo = CartaDoJogoEnumTipo;
+  public novaCategoriaCartasDoJogoDTO: NovaCategoriaCartasDoJogoDTO = {
+      jogadorID: '',
+      salaHash: '',
+      listaDeCartas: []
+  }
+  public enumCategoria = CartaDoJogoEnumCategoria;
+  public enumTipo = CartaDoJogoEnumTipo;
 
   constructor(
     private mesaService: MesaService,
     private route: ActivatedRoute,
     private mesaJogoService: MesaJogoService,
     private areaCompraService: AreaDeCompraService,
-    public zoomCarta: MatDialog,
-    public selecionarCategoriaComponent: SelecionaCategoriaComponent
-  ) {
-
-  }
+    public zoomCarta: MatDialog
+  ) { }
 
   ngOnInit(): void {
-    // FORMULARIO
-
-    this.novaCategoria = new FormGroup({
-      categoria: new FormControl(CartaDoJogoEnumCategoria.VAZIA, Validators.required),
-    });
-
-    this.novaCategoriaCartasDoJogoDTO = {
-      jogadorID: '',
-      salaHash: '',
-      listaDeCartas: [],
-    }
-
     // caminho para acessar a partir de outros componentes
     this.hash = String(this.route.snapshot.paramMap.get('hash'));
     this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => {
@@ -110,18 +90,20 @@ export class MaoJogadorComponent implements OnInit {
     return valorCoracaoPequeno! <= coracaoP && valorCoracaoGrande! <= coracaoG;
   }
 
-  public enviarCategorias(): void {
+  public enviaDTONovasCategorias(): void {
     this.novaCategoriaCartasDoJogoDTO.jogadorID = this.jogador.id;
     this.novaCategoriaCartasDoJogoDTO.salaHash = this.sala.hash;
-    this.enviaDesabilitaFormulario = true;
-    this.mesaJogoService.enviarJogadorParaFinalizar(this.novaCategoriaCartasDoJogoDTO).subscribe((sala) => (this.sala = sala));
+    this.mesaJogoService.enviarJogadorParaFinalizar(this.novaCategoriaCartasDoJogoDTO)
+      .subscribe((sala) => (this.sala = sala));
   }
 
-  public verificaCartaExisteNaListaDeCartas(idCartaDoJogo: string): boolean{
+  public verificaCartaExisteNaListaCartasParaEnviar(idCartaDoJogo: string): boolean{
+    
+    let listaDeCartas = this.novaCategoriaCartasDoJogoDTO.listaDeCartas;
 
-    for (let i = 0; i < this.novaCategoriaCartasDoJogoDTO.listaDeCartas.length; i++){
-      if (this.novaCategoriaCartasDoJogoDTO.listaDeCartas[i].cartaID == idCartaDoJogo){
-        return true;
+    for (const novaCategoriaDTO of listaDeCartas) {
+      if(novaCategoriaDTO.cartaID == idCartaDoJogo){
+        return true
       }
     }
     return false;
@@ -131,25 +113,36 @@ export class MaoJogadorComponent implements OnInit {
     return cartaDoJogo.categoria == this.enumCategoria.GENERICA ? true: false;
   }
 
-  public atualizaCategoriaDeCartasGenericas(novaCategoriaDTO: NovaCategoriaDTO): void {
+  public atualizaCategoriaDeCartasGenericas(novaCategoriaRecebida: NovaCategoriaDTO): void {
 
-    let categoria: string = novaCategoriaDTO.novaCategoria;
-    let novaCategoriaEnum: CartaDoJogoEnumCategoria = (<any>CartaDoJogoEnumCategoria)[categoria]
+    let categoria: string = novaCategoriaRecebida.novaCategoria;
+    let novaCategoriaEnum: CartaDoJogoEnumCategoria = (<any>CartaDoJogoEnumCategoria)[categoria];
 
-    if (this.verificaCartaExisteNaListaDeCartas(novaCategoriaDTO.cartaID) == false){
+    if (this.verificaCartaExisteNaListaCartasParaEnviar(novaCategoriaRecebida.cartaID) == false){
       this.novaCategoriaCartasDoJogoDTO.listaDeCartas.push(
         {
-          cartaID: novaCategoriaDTO.cartaID,
+          cartaID: novaCategoriaRecebida.cartaID,
           novaCategoria: novaCategoriaEnum
         } as NovaCategoriaDTO
       );
     } else {
-      for(let i = 0; i < this.novaCategoriaCartasDoJogoDTO.listaDeCartas.length; i++){
-        if (this.novaCategoriaCartasDoJogoDTO.listaDeCartas[i].cartaID == novaCategoriaDTO.cartaID){
-          this.novaCategoriaCartasDoJogoDTO.listaDeCartas[i].novaCategoria = novaCategoriaEnum;
+      this.novaCategoriaCartasDoJogoDTO.listaDeCartas.forEach(novaCategoriaLista => {
+        if (novaCategoriaLista.cartaID == novaCategoriaRecebida.cartaID){
+          novaCategoriaLista.novaCategoria = novaCategoriaEnum;
         }
+      });
+    }
+  }
+
+  public enviaDTOselecionado(carta: CartaDoJogo): string {
+    let listaDeCartas = this.novaCategoriaCartasDoJogoDTO.listaDeCartas;
+
+    for (const novaCategoriaDTO of listaDeCartas) {
+      if (novaCategoriaDTO.cartaID == carta.id){
+        return novaCategoriaDTO.novaCategoria
       }
     }
+    return '';
   }
 
   public habilitaSelecionarCategoria(cartaDoJogo: CartaDoJogo){
@@ -159,10 +152,6 @@ export class MaoJogadorComponent implements OnInit {
       }
     }
     return false;
-  }
-
-  public recebeNovasCategorias(novasCategorias: NovaCategoriaDTO){
-    this.atualizaCategoriaDeCartasGenericas(novasCategorias);
   }
 
   public bloquearConfirmarCategorias(): boolean {
