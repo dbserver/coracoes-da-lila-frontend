@@ -90,29 +90,6 @@ export class MaoJogadorComponent implements OnInit {
     return valorCoracaoPequeno! <= coracaoP && valorCoracaoGrande! <= coracaoG;
   }
 
-  public enviaDTONovasCategorias(): void {
-    this.novaCategoriaCartasDoJogoDTO.jogadorID = this.jogador.id;
-    this.novaCategoriaCartasDoJogoDTO.salaHash = this.sala.hash;
-    this.mesaJogoService.enviarJogadorParaFinalizar(this.novaCategoriaCartasDoJogoDTO)
-      .subscribe((sala) => (this.sala = sala));
-  }
-
-  public verificaCartaExisteNaListaCartasParaEnviar(idCartaDoJogo: string): boolean{
-    
-    let listaDeCartas = this.novaCategoriaCartasDoJogoDTO.listaDeCartas;
-
-    for (const novaCategoriaDTO of listaDeCartas) {
-      if(novaCategoriaDTO.cartaID == idCartaDoJogo){
-        return true
-      }
-    }
-    return false;
-  }
-
-  public verificaSeCategoriaGenerica(cartaDoJogo: CartaDoJogo){
-    return cartaDoJogo.categoria == this.enumCategoria.GENERICA ? true: false;
-  }
-
   public atualizaCategoriaDeCartasGenericas(novaCategoriaRecebida: NovaCategoriaDTO): void {
 
     let categoria: string = novaCategoriaRecebida.novaCategoria;
@@ -134,6 +111,23 @@ export class MaoJogadorComponent implements OnInit {
     }
   }
 
+  public verificaCartaExisteNaListaCartasParaEnviar(idCartaDoJogo: string): boolean{
+    let listaDeCartas = this.novaCategoriaCartasDoJogoDTO.listaDeCartas;
+    for (const novaCategoriaDTO of listaDeCartas) {
+      if(novaCategoriaDTO.cartaID == idCartaDoJogo){
+        return true
+      }
+    }
+    return false;
+  }
+
+  public enviaDTONovasCategorias(): void {
+    this.novaCategoriaCartasDoJogoDTO.jogadorID = this.jogador.id;
+    this.novaCategoriaCartasDoJogoDTO.salaHash = this.sala.hash;
+    this.mesaJogoService.enviarJogadorParaFinalizar(this.novaCategoriaCartasDoJogoDTO)
+      .subscribe((sala) => (this.sala = sala));
+  }
+
   public enviaDTOselecionado(carta: CartaDoJogo): string {
     let listaDeCartas = this.novaCategoriaCartasDoJogoDTO.listaDeCartas;
 
@@ -143,6 +137,27 @@ export class MaoJogadorComponent implements OnInit {
       }
     }
     return '';
+  }
+
+  public abrirZoom(event: Event, cartas: CartaDoJogo) {
+    event.stopPropagation();
+    this.zoomCarta.open(ModalZoomComponent, {
+      data: cartas,
+      height: '90%',
+      width: '35%',
+      panelClass: 'css-carta'
+    });
+  }
+
+  public zoomObjetivo(event: Event, cartaObjetivo: CartaObjetivo) {
+    event.stopPropagation();
+
+    this.zoomCarta.open(ModalZoomObjetivoComponent, {
+      data: cartaObjetivo,
+      height: '60%',
+      width: '50%',
+      panelClass: 'css-carta'
+    });
   }
 
   public habilitaSelecionarCategoria(cartaDoJogo: CartaDoJogo){
@@ -167,30 +182,5 @@ export class MaoJogadorComponent implements OnInit {
       return false;
     }
     return true;
-  }
-
-  public bloqueiaFormulario(){
-
-  }
-
-  public abrirZoom(event: Event, cartas: CartaDoJogo) {
-    event.stopPropagation();
-    this.zoomCarta.open(ModalZoomComponent, {
-      data: cartas,
-      height: '90%',
-      width: '35%',
-      panelClass: 'css-carta'
-    });
-  }
-
-  public zoomObjetivo(event: Event, cartaObjetivo: CartaObjetivo) {
-    event.stopPropagation();
-
-    this.zoomCarta.open(ModalZoomObjetivoComponent, {
-      data: cartaObjetivo,
-      height: '60%',
-      width: '50%',
-      panelClass: 'css-carta'
-    });
   }
 }
