@@ -117,9 +117,14 @@ body {
 }
 
 .select .mat-form-field-flex {
-  height: 2rem;
-  padding: 0 !important;
-  margin: .5rem 0;
+  height: 2.5rem;
+  padding: .25rem .5rem !important;
+  margin: .5rem 1rem;
+}
+
+.select mat-label,
+.select .mat-select-arrow {
+  color: var(--font-color) !important;
 }
 
 @media (max-width: 616px) {
