@@ -1,28 +1,18 @@
 <div class="mao">
     <div class="linha-3">
-
-        <div>
-
-            <app-indica-jogador *ngIf="sala.status == 'JOGANDO' && jogador?.status=='JOGANDO'" mensagem="Jogando">
+        <div *ngIf="sala.status != 'AGUARDANDO'">
+            <app-indica-jogador *ngIf="jogador.status=='JOGANDO'" mensagem="Jogando">
             </app-indica-jogador>
-            <app-indica-jogador *ngIf="sala.status == 'JOGANDO' && jogador?.status=='ESPERANDO'"
-                mensagem="Aguarde sua vez"></app-indica-jogador>
-            <app-indica-jogador *ngIf="sala.status == 'ULTIMA_RODADA' && jogador?.status=='JOGANDO'" mensagem="Jogando">
+            <app-indica-jogador *ngIf="sala.status != 'ULTIMA_RODADA' && jogador.status=='ESPERANDO'" mensagem="Aguarde sua vez">
             </app-indica-jogador>
-            <app-indica-jogador *ngIf="sala.status == 'ULTIMA_RODADA' && jogador?.status=='JOGANDO'"
-                mensagem="Última jogada"></app-indica-jogador>
-            <app-indica-jogador *ngIf="sala.status == 'ULTIMA_RODADA' && jogador?.status=='ESPERANDO'" mensagem="Aguardando"></app-indica-jogador>
-            <app-indica-jogador *ngIf="sala.status == 'AGUARDANDO_DEFINICAO' && jogador?.status=='DEFININDO'"
-                mensagem="Definindo"></app-indica-jogador>
-
-            <app-indica-jogador *ngIf="sala.status == 'AGUARDANDO_DEFINICAO' && jogador?.status=='FINALIZADO'"
-                mensagem="Finalizado"></app-indica-jogador>
-            <app-indica-jogador *ngIf="sala.status == 'FINALIZADO'" mensagem="Finalizado"></app-indica-jogador>
-
+            <app-indica-jogador *ngIf="sala.status == 'ULTIMA_RODADA' && jogador?.status=='ESPERANDO'" mensagem="Aguardando">
+            </app-indica-jogador>
+            <app-indica-jogador *ngIf="jogador?.status=='DEFININDO'" mensagem="Definindo">
+            </app-indica-jogador>
+            <app-indica-jogador *ngIf="jogador?.status=='FINALIZADO'" mensagem="Finalizado">
+            </app-indica-jogador>
         </div>
-        <!-- <div class="centro">
-            <button class="botao-sair" mat-raised-button [routerLink]="['/']">Sair</button>
-        </div> -->
+
         <div class="centro"><img class="avatar" src="../../../assets/avatar" alt=""></div>
 
         <div class="nome-jogador">
