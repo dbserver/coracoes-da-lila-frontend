@@ -24,12 +24,13 @@ export class SelecionaCategoriaComponent implements OnInit {
   novaCategoriaDTO: NovaCategoriaDTO;
 
   cartasCategoriasAtualizadas: Array<NovaCategoriaDTO> = [];
-  novaCategoria!: FormGroup;
+  categoria!: FormControl;
   @Input() idCartaAtualizaCategoria!: string;
   @Input() desabilitaFormulario!: boolean;
   @Output() novaCategorias = new EventEmitter<NovaCategoriaDTO>();
 
   enumCategoria = CartaDoJogoEnumCategoria;
+  selected!: FormControl;
 
   constructor(
     private mesaService: MesaService,
@@ -45,10 +46,10 @@ export class SelecionaCategoriaComponent implements OnInit {
 
   ngOnInit(): void {
     // FORMULARIO
-    this.novaCategoria = new FormGroup({
-      categoria: new FormControl(CartaDoJogoEnumCategoria.VAZIA, Validators.required),
-    });
-    
+    this.categoria = new FormControl(CartaDoJogoEnumCategoria.VAZIA, Validators.required)
+
+    this.selected = new FormControl('valid', [Validators.required, Validators.pattern('valid')]);
+
     this.hash = String(this.route.snapshot.paramMap.get('hash'));
     this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => {
       this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
@@ -65,9 +66,10 @@ export class SelecionaCategoriaComponent implements OnInit {
   }
 
   public enviarCategorias(): void {
+    console.log('ok1')
     this.novaCategoriaDTO = {
       cartaID: this.idCartaAtualizaCategoria,
-      novaCategoria: this.novaCategoria.value.categoria
+      novaCategoria: this.categoria.value
     }
     this.novaCategorias.emit(this.novaCategoriaDTO);
     this.desabilitaFormulario;

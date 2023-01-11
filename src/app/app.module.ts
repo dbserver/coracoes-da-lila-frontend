@@ -33,6 +33,7 @@ import { MesaJogoComponent } from './component/mesa/mesa-jogo/mesa-jogo.componen
 import { AreaJogadoresComponent } from './component/mesa/area-jogadores/area-jogadores.component';
 import { RankingComponent } from './component/ranking/ranking.component';
 import { ClipboardModule } from '@angular/cdk/clipboard';
+import {MatSelectModule} from '@angular/material/select';
 import {
   InjectableRxStompConfig,
   RxStompService,
@@ -128,6 +129,7 @@ import { SelecionaCategoriaComponent } from './component/mesa/seleciona-categori
     MatCardModule,
     MatProgressSpinnerModule,
     MatDialogModule,
+    MatSelectModule
   ],
   providers: [
     {

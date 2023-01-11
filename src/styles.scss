@@ -89,7 +89,7 @@ body {
   --margemTopoLogo: 10%;
 }
 
-.mat-form-field-appearance-fill .mat-form-field-flex {
+.mat-form-field-appearance-fill:not(.select) .mat-form-field-flex:not(.select) {
   border-radius: 30px !important;
   width: var(--btn-width);
   background-color: var(--input-backgroundColor);
@@ -116,8 +116,14 @@ body {
   border-color: var(--radio-button);
 }
 
+.select .mat-form-field-flex {
+  height: 2rem;
+  padding: 0 !important;
+  margin: .5rem 0;
+}
+
 @media (max-width: 616px) {
-  .mat-form-field-appearance-fill .mat-form-field-flex {
+  .mat-form-field-appearance-fill:not(.select) .mat-form-field-flex:not(.select) {
     border-radius: 30px !important;
     width: var(--btn-width);
     background-color: var(--input-backgroundColor);
