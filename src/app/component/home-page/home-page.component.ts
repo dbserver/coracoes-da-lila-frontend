@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CartaDoJogoEnumTipo } from 'src/app/enum/CartaDoJogoEnumTipo';
 import { MesaService } from 'src/app/service/mesa-service/mesa.service';
 
 @Component({
@@ -15,7 +16,6 @@ export class HomePageComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-   
   }
 
   irParaRegras() {
