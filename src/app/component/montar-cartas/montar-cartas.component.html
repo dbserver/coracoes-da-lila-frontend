@@ -1,61 +1,41 @@
-<div class="cartas-container">
-    <div class="cartas-container-scroll">
-        <div class="carta carta-vertical" *ngFor="let carta of listaCartas">
-            <div class="cabecalho">
-                <h2 class="titulo">{{ carta.categoria }}</h2>
-                <div class="pontos">
-                    <p class="pt">{{ carta.pontos }}</p>
-                </div>
-            </div>
-            <div class="corpo">
-                <p class="definicao y-scroll">
-                    {{carta.texto}}
-                </p>
-                <div class="icones">
-                    <div class="coracoes">
-                        <div class="coracao" *ngFor="let i of [].constructor(carta.valorCoracaoGrande)">
-                            <img class="coracao-grande" src="assets/svg/icone-coracao.svg" alt="Ícone coração">
-                        </div>
-                        <div class="coracao" *ngFor="let i of [].constructor(carta.valorCoracaoPequeno)">
-                            <img class="coracao-pequeno" src="assets/svg/icone-coracao.svg" alt="Ícone coração">
-                        </div>
-                    </div>
-                    <div class="presentes">
-                        <div class="presente-acao">
-                            <div class="presente-info" *ngIf="carta.tipo === enumTipo.INFORMACAO">
-                                <img class="presente" src="assets/svg/icone-presente.svg" alt="presente">
-                                <img class="presenteInfoAcoes" src="assets/svg/icone-info.svg" alt="info">
-                            </div>
-                            <div class="presente-acao" *ngIf="carta.tipo === enumTipo.ACAO">
-                                <img class="presente" src="assets/svg/icone-presente.svg" alt="presente">
-                                <img class="presenteInfoAcoes" src="assets/svg/icone-usuario.svg" alt="acao">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="rodape">
-                <span class="fonte y-scroll">Fonte: {{carta.fonte}}</span>
-            </div>
-        </div>
+<div class="carta carta-vertical">
+  <div class="cabecalho">
+    <h2 class="titulo">{{ mapTipo.get(carta.tipo) }}</h2>
+    <div class="pontos">
+      <p class="pt">{{ carta.pontos }}</p>
     </div>
-
-    <div class="cartas-container-scroll">
-        <div class="carta carta-horizontal" *ngFor="let cartaObjetivo of listaCartasObjetivo">
-            <div class="cabecalho">
-                <h2 class="titulo">{{cartaObjetivo.textoTematico}}</h2>
-            </div>
-            <div class="corpo">
-                <p class="definicao y-scroll">{{cartaObjetivo.textoRegra}}</p>
-            </div>
+  </div>
+  <div class="corpo">
+    <p class="definicao y-scroll">
+      {{ carta.texto }}
+    </p>
+    <div class="icones">
+      <button id="zoom1" class="zoom" (click)="abrirZoom($event, carta)">
+        <mat-icon class="mat-icon" alt="Ícone de zoom">search</mat-icon>
+      </button>
+      <div class="coracoes">
+        <div class="coracao" *ngFor="let i of [].constructor(carta.valorCoracaoGrande)">
+          <img class="coracao-grande" src="../../../assets/svg/icone-coracao.svg" alt="Ícone coração" />
         </div>
-    </div>
-
-    <div class="cartas-container-scroll">
-        <div class="carta carta-horizontal carta-sem-titulo" *ngFor="let cartaInicio of listaCartasInicio">
-            <div class="corpo">
-                <p class="definicao cor-texto">{{cartaInicio.descricao}}</p>
-            </div>
+        <div class="coracao" *ngFor="let i of [].constructor(carta.valorCoracaoPequeno)">
+          <img class="coracao-pequeno" src="../../../assets/svg/icone-coracao.svg" alt="Ícone coração" />
         </div>
+      </div>
+      <div class="presentes">
+        <div class="presente-acao">
+          <div class="presente-acao" *ngIf="carta.tipo === enumTipo.ACAO && carta.bonus == true">
+            <img class="presente" src="../../../assets/svg/icone-presente.svg" alt="presente" />
+            <img class="presenteInfoAcoes" src="../../../assets/svg/icone-usuario.svg" alt="acao" />
+          </div>
+          <div class="presente-info" *ngIf="carta.tipo === enumTipo.INFORMACAO && carta.bonus == true">
+            <img class="presente" src="../../../assets/svg/icone-presente.svg" alt="presente" />
+            <img class="presenteInfoAcoes" src="../../../assets/svg/icone-info.svg" alt="info" />
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="rodape">
+      <span class="fonte y-scroll">Fonte: {{ carta.fonte }}</span>
+    </div>
+  </div>
 </div>
