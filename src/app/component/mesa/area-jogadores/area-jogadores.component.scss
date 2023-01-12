@@ -89,6 +89,7 @@
 
   &-scroll {
     display: flex;
+    gap: 0.5rem;
     max-width: 1400px;
     overflow-x: auto;
     padding-bottom: 8px;
@@ -108,113 +109,6 @@
       padding: 10px;
       background: var(--input-backgroundColor);
       word-wrap: break-word;
-
-      &-vertical {
-        min-width: 100px;
-        max-width: 100px;
-        height: 150px;
-        margin-top: 7px;
-
-        .cabecalho {
-          height: 15px;
-          display: flex;
-          justify-content: space-between;
-
-          .titulo {
-            margin-bottom: 0;
-            line-height: 24px;
-            font-size: calc(var(--tamanhoFonte) - 6pt);
-          }
-
-          .pontos {
-            background-color: black;
-            min-width: 1.1em;
-            min-height: 1.1em;
-            max-width: 1.1em;
-            max-height: 1.1em;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 15px;
-            border-radius: 50%;
-
-            .pt {
-              margin-top: 15px;
-              font-size: calc(var(--tamanhoFonte) - 6pt);
-              font-weight: bold;
-            }
-          }
-        }
-
-        .corpo {
-          margin-top: 10px;
-
-          .definicao {
-            margin-bottom: 0;
-            padding-right: 8px;
-            min-height: 60px;
-            max-height: 60px;
-            overflow-y: auto;
-            font-size: calc(var(--tamanhoFonte) - 6pt);
-          }
-
-          .icones {
-            min-height: 15px;
-            margin-top: 16px;
-            font-size: var(--tamanhoFonte);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            .coracoes {
-              display: flex;
-              align-items: center;
-
-              .coracao:not(:first-child) {
-                margin-left: 5px;
-              }
-
-              .coracao-pequeno {
-                width: 0.6em;
-                height: 0.6em;
-              }
-
-              .coracao-grande {
-                width: 1em;
-                height: 1em;
-              }
-            }
-
-            .presentes {
-              position: relative;
-
-              .presente {
-                width: 1em;
-                height: 1em;
-              }
-
-              .presenteInfoAcoes {
-                width: 0.6em;
-                position: absolute;
-                bottom: 0px;
-                right: -5px;
-              }
-            }
-          }
-        }
-
-        .rodape {
-          margin-top: 10px;
-
-          .fonte {
-            max-height: 25px;
-            overflow-y: auto;
-            display: block;
-            font-size: calc(var(--tamanhoFonte) - 9pt);
-          }
-        }
-      }
 
       &-horizontal {
 
