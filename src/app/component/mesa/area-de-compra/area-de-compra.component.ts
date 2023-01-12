@@ -85,7 +85,7 @@ export class AreaDeCompraComponent implements OnInit {
   }
 
   public comprarCoracaoP() {
-    if (this.verificaJogadorJogando() && !this.bloqueiaAcao) {
+    if (this.verificaJogadorJogando() && !this.bloqueiaAcao && this.verificaPodeComprarCoracoesPequenos()) {
       this.sala.dado = 0;
       this.mesaJogoService
         .comprarCoracaoP(this.sala)
@@ -94,7 +94,7 @@ export class AreaDeCompraComponent implements OnInit {
   }
 
   public comprarCoracaoG() {
-    if (this.verificaJogadorJogando() && !this.bloqueiaAcao) {
+    if (this.verificaJogadorJogando() && !this.bloqueiaAcao && this.verificaPodeComprarCoracaoGrande()) {
       this.sala.dado = 0;
       this.mesaJogoService
         .comprarCoracaoG(this.sala)
