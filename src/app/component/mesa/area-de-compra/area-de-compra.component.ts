@@ -141,44 +141,19 @@ export class AreaDeCompraComponent implements OnInit {
   }
 
   public bloquearCompraCoracoesPequenos() {
-    if (
-      this.verificaJogadorJogando() &&
-      this.verificarCoracoesQualquerTamanho() &&
-      this.desabilitarCoracoesPequenos()
-    ) {
-      return false;
-    }
-    return true;
+    return this.verificaJogadorJogando() && this.verificaPodeComprarCoracoesPequenos()
   }
 
   public bloquearCompraCoracoesGrandes() {
-    if (
-      this.verificaJogadorJogando() &&
-      this.verificarCoracoesQualquerTamanho() &&
-      this.verificarCoracoesGrandes()
-    ) {
-      return false;
-    }
-    return true;
+    return this.verificaJogadorJogando() && this.verificaPodeComprarCoracaoGrande()
   }
 
-  public verificarCoracoesQualquerTamanho(): Boolean {
-    if (
-      this.jogador.coracaoGrande +
-      this.jogador.coracaoPequeno +
-      this.jogador.bonusCoracaoGrande +
-      this.jogador.bonusCoracaoPequeno < 5) {
-      return true;
-    }
-    return false;
+  public verificaPodeComprarCoracoesPequenos(): Boolean {
+    return this.jogador.coracaoGrande + this.jogador.coracaoPequeno + this.jogador.bonusCoracaoGrande + this.jogador.bonusCoracaoPequeno < 4;
   }
 
-  public desabilitarCoracoesPequenos(): Boolean {
-    return this.jogador.coracaoPequeno + this.jogador.coracaoGrande < 4;
-  }
-
-  public verificarCoracoesGrandes(): Boolean {
-    return this.jogador.coracaoGrande + this.jogador.coracaoPequeno < 5;
+  public verificaPodeComprarCoracaoGrande(): Boolean {
+    return this.jogador.coracaoGrande + this.jogador.coracaoPequeno + this.jogador.bonusCoracaoGrande + this.jogador.bonusCoracaoPequeno < 5;
   }
 
   public verificaJogadorTemCoracaoGrande() {

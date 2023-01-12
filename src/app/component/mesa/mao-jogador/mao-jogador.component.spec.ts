@@ -17,8 +17,7 @@ describe('MaoJogadorComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [MaoJogadorComponent],
       imports: [HttpClientTestingModule, RouterTestingModule],
-      providers: [{ provide: MatDialog, useValue: {}
-      }],
+      providers: [{ provide: MatDialog, useValue: {}}],
     })
       .compileComponents();
   });

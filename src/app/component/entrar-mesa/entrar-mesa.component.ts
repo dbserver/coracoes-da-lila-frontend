@@ -49,11 +49,11 @@ export class EntrarMesaComponent implements OnInit {
           this.verificarSeJogoFinalizado(this.hash);
         },
         error: (e) => {
-          console.log(e);
+          //console.log(e);
           this.router.navigate(['/salaInexistente']);
         }
       });
-     
+
   }
 
   hash = '';
@@ -92,7 +92,7 @@ export class EntrarMesaComponent implements OnInit {
     } else {
       this.router.navigate(['/jogo', this.sala.hash]);
     }
-    
+
   }
 
   emit() {

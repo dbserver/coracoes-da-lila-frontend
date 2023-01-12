@@ -1,12 +1,12 @@
 <div class="mao">
     <div class="linha-3">
         <div>
-            <div *ngIf="sala.status != 'AGUARDANDO'">
-                <app-indica-jogador *ngIf="jogador.status=='JOGANDO'" mensagem="Jogando">
+            <div *ngIf="sala?.status != 'AGUARDANDO'">
+                <app-indica-jogador *ngIf="jogador?.status=='JOGANDO'" mensagem="Jogando">
                 </app-indica-jogador>
-                <app-indica-jogador *ngIf="sala.status != 'ULTIMA_RODADA' && jogador.status=='ESPERANDO'" mensagem="Aguarde sua vez">
+                <app-indica-jogador *ngIf="sala?.status != 'ULTIMA_RODADA' && jogador?.status=='ESPERANDO'" mensagem="Aguarde sua vez">
                 </app-indica-jogador>
-                <app-indica-jogador *ngIf="sala.status == 'ULTIMA_RODADA' && jogador?.status=='ESPERANDO'" mensagem="Aguardando">
+                <app-indica-jogador *ngIf="sala?.status == 'ULTIMA_RODADA' && jogador?.status=='ESPERANDO'" mensagem="Aguardando">
                 </app-indica-jogador>
                 <app-indica-jogador *ngIf="jogador?.status=='DEFININDO'" mensagem="Definindo">
                 </app-indica-jogador>
@@ -45,10 +45,10 @@
     <div class="cartas-container">
         <div class="cartas-container-scroll">
             <div *ngFor="let carta of jogador?.cartasDoJogo">
-                <app-seleciona-categoria 
-                    [idCartaAtualizaCategoria]=carta.id 
-                    [novaCategoriaDessaCarta]="enviaDTOselecionado(carta)" 
-                    (novaCategorias)="atualizaCategoriaDeCartasGenericas($event)" 
+                <app-seleciona-categoria
+                    [idCartaAtualizaCategoria]=carta.id
+                    [novaCategoriaDessaCarta]="enviaDTOselecionado(carta)"
+                    (novaCategorias)="atualizaCategoriaDeCartasGenericas($event)"
                     *ngIf="habilitaSelecionarCategoria(carta)">
                 </app-seleciona-categoria>
                 <app-montar-cartas [carta]=carta></app-montar-cartas>
