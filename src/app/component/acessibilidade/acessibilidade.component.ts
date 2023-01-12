@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-acessibilidade',
@@ -6,16 +6,41 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./acessibilidade.component.scss']
 })
 export class AcessibilidadeComponent implements OnInit {
-
+  
+  @Input() esconderFonte!: boolean
+  
   constructor() { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.botaoAjustarFonte()
+   }
+
+  botaoAjustarFonte(){
+    if(this.esconderFonte != true){
+      this.esconderFonte = false;
+    }else{
+      this.esconderBotaoAjusteFonte()
+      this.fonteTamanhoNormal()
+    }
+  }
 
   toggleClass(classe: string) {
+    
     const $html = document.querySelector('html')!
+    $html.classList.toggle(classe);
 
-    $html.classList.toggle(classe)
   }
+
+
+  esconderBotaoAjusteFonte(){
+    this.esconderFonte = true;
+  }
+
+  fonteTamanhoNormal(){
+    const $html = document.querySelector('html')!
+    $html.classList.remove('fonteMaior')
+  }
+
 }
 
 //   const $html = document.querySelector('html')!

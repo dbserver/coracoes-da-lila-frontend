@@ -1,0 +1,36 @@
+.content {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 40% 60%;
+    align-items: center;
+    padding-left: 5%;
+}
+
+:host ::ng-deep .mat-icon {
+    color: red;
+    font-size: 1.6rem;
+}
+
+button {
+    border: none;
+    background: local;
+    cursor: pointer;
+    float: right;
+}
+
+.cabecalho {
+    .titulo {
+        color: #38761d;
+        font-size: calc(var(--tamanhoFonte) + 1.3vw);
+        line-height: 2.7rem;
+        text-align: center;
+    }
+}
+
+.corpo {
+    .definicao {
+        font-size: calc(var(--tamanhoFonte) + 0.7vw);
+        line-height: 2.5rem;
+        text-align: center;
+    }
+}

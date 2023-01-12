@@ -1,4 +1,3 @@
-import { map } from "rxjs"
 
 export const mapTipoCartaDoJogo = new Map<string, string>(
   [
@@ -7,7 +6,7 @@ export const mapTipoCartaDoJogo = new Map<string, string>(
     ['FILME', 'FILME'],
     ['INFORMACAO', 'INFORMAÇÃO'],
     ['PESSOA', 'PESSOA']
-  ]
+  ] 
 )
 
 
