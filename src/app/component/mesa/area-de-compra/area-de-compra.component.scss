@@ -9,15 +9,11 @@
     display: flex;
     justify-content: space-around;
 
-    .cartas-disponiveis {
-      display: flex;
-      flex-direction: column;
+    .grupo-cartas {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
       gap: 1.5rem;
-
-      .grupo-cartas {
-        display: flex;
-        gap: 1.5rem;
-      }
     }
 
     .informacoes-gerais {
@@ -121,133 +117,7 @@
         }
       }
     }
-
-    &-vertical {
-      min-width: 120px;
-      max-width: 120px;
-      height: 160px;
-
-      .cabecalho {
-        height: 15px;
-        display: flex;
-        justify-content: space-between;
-
-        .titulo {
-          margin-bottom: 0;
-          line-height: 10px;
-          font-size: calc(var(--tamanhoFonte) - 6pt);
-          align-self: flex-end;
-        }
-
-        .pontos {
-          background-color: black;
-          min-width: 1.1em;
-          min-height: 1.1em;
-          max-width: 1.1em;
-          max-height: 1.1em;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: white;
-          font-size: 15px;
-          border-radius: 50%;
-
-          .pt {
-            margin-top: 13px;
-            font-size: calc(var(--tamanhoFonte) - 6pt);
-            font-weight: bold;
-          }
-        }
-      }
-
-      .corpo {
-        margin-top: 5px;
-
-        .definicao {
-          margin-bottom: 0;
-          padding-right: 8px;
-          min-height: 90px;
-          max-height: 90px;
-          width: 117px;
-          overflow-y: auto;
-          font-size: calc(var(--tamanhoFonte) - 7pt);
-          line-height: 15px;
-          text-align: justify;
-        }
-
-        .icones {
-          min-height: 15px;
-          margin-top: 5px;
-          font-size: var(--tamanhoFonte);
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-
-          .coracoes {
-            display: flex;
-            align-items: center;
-
-            .coracao:not(:first-child) {
-              margin-left: 5px;
-            }
-
-            .coracao-pequeno {
-              width: 0.6em;
-              height: 0.6em;
-            }
-
-            .coracao-grande {
-              width: 1em;
-              height: 1em;
-            }
-          }
-
-          .presentes {
-            position: relative;
-
-            .presente {
-              width: 1em;
-              height: 1em;
-            }
-
-            .presenteInfoAcoes {
-              width: 0.6em;
-              position: absolute;
-              bottom: 0px;
-              right: -5px;
-            }
-          }
-
-          .zoom {
-            border: none;
-            background: local;
-            cursor: pointer;
-            padding-left: 0;
-            padding-right: 0;
-
-            .mat-icon {
-              font-weight: bolder;
-            }
-          }
-        }
-      }
-
-      .rodape {
-        margin-top: 5px;
-
-        .fonte {
-          word-break: break-all;
-          min-height: 30px;
-          max-height: 30px;
-          width: 117px;
-          overflow-y: auto;
-          display: block;
-          font-size: calc(var(--tamanhoFonte) - 8pt);
-          line-height: 8px;
-        }
-      }
-    }
-
+    
     &-objetivo {
       cursor: default;
       display: flex;
@@ -395,3 +265,12 @@
   cursor: pointer;
 }
 
+.desabilitar-carta {
+  cursor: not-allowed;
+  opacity: 0.2;
+}
+
+.desabilitar-acao {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
