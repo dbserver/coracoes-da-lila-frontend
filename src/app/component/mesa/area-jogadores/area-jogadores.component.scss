@@ -92,6 +92,7 @@
     gap: 0.5rem;
     max-width: 1400px;
     overflow-x: auto;
+    overflow-y: hidden;
     padding-bottom: 8px;
 
     &::-webkit-scrollbar {
