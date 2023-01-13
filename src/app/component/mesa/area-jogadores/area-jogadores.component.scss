@@ -84,9 +84,13 @@
 
 .cartas-container {
     padding-bottom: 10px;
+
     &-scroll {
         display: flex;
+        align-items: flex-end;
+        gap: 0.5rem;
     }
+
     .carta {
         border: 2px solid black;
         margin-left: 5px;
@@ -248,7 +252,7 @@
         &-horizontal {
             width: 190px;
             height: 110px;
-            margin-top: 20px;
+            margin-bottom: 1.5rem;
 
             &.carta-sem-titulo {
                 display: flex;
@@ -355,12 +359,12 @@
     margin-left: 10px;
 }
 
-/* .grid-zoom {
+.grid-zoom {
     display: grid;
     grid-template-columns: 12% 88%;
-} */
+}
 
-/* .zoom {
+.zoom {
     border: none;
     background: local;
     cursor: pointer;
@@ -375,4 +379,4 @@
     .icone-zoom {
         margin-bottom: 16px;
     }
-} */
+}
