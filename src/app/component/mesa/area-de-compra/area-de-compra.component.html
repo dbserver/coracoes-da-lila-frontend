@@ -16,11 +16,10 @@
       <ng-container class="lista-cartas" *ngFor="
           let carta of listaCartasDisponiveis.slice(0, 6);
           let i = index">
-        <div [ngClass]="{
+        <div class="container-carta" [ngClass]="{
               'desabilitar-carta': !podeComprar(carta) || bloqueiaAcao,
               'desabilitar-acao': !verificaJogadorJogando()}" (click)="podeComprar(carta) && comprarCarta(i)">
-          <app-montar-cartas [carta]="carta">
-          </app-montar-cartas>
+          <app-montar-cartas [carta]="carta"></app-montar-cartas>
         </div>
       </ng-container>
     </div>
