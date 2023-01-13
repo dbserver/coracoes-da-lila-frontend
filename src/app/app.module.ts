@@ -33,6 +33,7 @@ import { MesaJogoComponent } from './component/mesa/mesa-jogo/mesa-jogo.componen
 import { AreaJogadoresComponent } from './component/mesa/area-jogadores/area-jogadores.component';
 import { RankingComponent } from './component/ranking/ranking.component';
 import { ClipboardModule } from '@angular/cdk/clipboard';
+import {MatSelectModule} from '@angular/material/select';
 import {
   InjectableRxStompConfig,
   RxStompService,
@@ -61,6 +62,7 @@ import { OpcoesJogadaComponent } from './component/mesa/opcoes-jogada/opcoes-jog
 import { VLibrasComponent } from './component/v-libras/v-libras.component';
 import { MesaJogoService } from './service/mesa-jogo-service/mesa-jogo.service';
 import { ModalZoomCartaInicialComponent } from './component/mesa/modal-zoom-carta-inicial/modal-zoom-carta-inicial.component';
+import { SelecionaCategoriaComponent } from './component/mesa/seleciona-categoria/seleciona-categoria.component';
 
 @NgModule({
   declarations: [
@@ -104,7 +106,8 @@ import { ModalZoomCartaInicialComponent } from './component/mesa/modal-zoom-cart
     PrimeiroJogadorComponent,
     AnimacaoCartaComponent,
     VLibrasComponent,
-    ModalZoomCartaInicialComponent
+    ModalZoomCartaInicialComponent,
+    SelecionaCategoriaComponent
   ],
   imports: [
     BrowserModule,
@@ -126,6 +129,7 @@ import { ModalZoomCartaInicialComponent } from './component/mesa/modal-zoom-cart
     MatCardModule,
     MatProgressSpinnerModule,
     MatDialogModule,
+    MatSelectModule
   ],
   providers: [
     {
@@ -138,7 +142,8 @@ import { ModalZoomCartaInicialComponent } from './component/mesa/modal-zoom-cart
       deps: [InjectableRxStompConfig],
     },
     MesaJogoService, //Isso é um problema estar aqui, se remover quebra o sistema
-    ModalCartasObjetivoComponent, //Isso é um problema estar aqui, se remover quebra o sistema?
+    ModalCartasObjetivoComponent,
+    SelecionaCategoriaComponent, //Isso é um problema estar aqui, se remover quebra o sistema?
     HttpClientModule
   ],
   bootstrap: [AppComponent],
