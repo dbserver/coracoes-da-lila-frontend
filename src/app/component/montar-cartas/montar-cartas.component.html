@@ -1,18 +1,16 @@
 <div class="carta carta-vertical">
   <div class="cabecalho">
-    <h2 class="titulo">{{ mapTipo.get(carta.tipo) }}</h2>
+    <button id="zoom1" class="zoom" (click)="abrirZoom($event, carta)">
+      <mat-icon class="mat-icon" alt="Ícone de zoom">zoom_in</mat-icon>
+    </button>
     <div class="pontos">
       <p class="pt">{{ carta.pontos }}</p>
     </div>
   </div>
+  <h2 class="titulo">{{ mapTipo.get(carta.tipo) }}</h2>
   <div class="corpo">
-    <p class="definicao y-scroll">
-      {{ carta.texto }}
-    </p>
+    <p class="definicao y-scroll">{{ carta.texto }}</p>
     <div class="icones">
-      <button id="zoom1" class="zoom" (click)="abrirZoom($event, carta)">
-        <mat-icon class="mat-icon" alt="Ícone de zoom">search</mat-icon>
-      </button>
       <div class="coracoes">
         <div class="coracao" *ngFor="let i of [].constructor(carta.valorCoracaoGrande)">
           <img class="coracao-grande" src="../../../assets/svg/icone-coracao.svg" alt="Ícone coração" />

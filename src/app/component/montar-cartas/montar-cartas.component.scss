@@ -1,128 +1,136 @@
 .carta {
   background: var(--input-backgroundColor);
-  border: 1.5px solid black;
+  border: 1.5px solid var(--input-fontColor);
   padding: 0.5rem;
   word-wrap: break-word;
   text-align: center;
+  width: 7.75rem;
+  height: 10rem;
+  margin-top: 3px;
 
-  &-vertical {
-    width: 7.75rem;
-    height: 10rem;
+  .titulo {
+    align-self: flex-end;
+    margin-bottom: 0;
+    line-height: 10px;
+    font-size: calc(var(--tamanhoFonte) - 6pt);
+  }
 
-    .cabecalho {
-      height: 15px;
+  .cabecalho {
+    height: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .zoom {
+      border: none;
+      background: local;
+      cursor: pointer;
+      padding-left: 0;
+      padding-right: 0;
+      display: flex;
+
+      .mat-icon {
+        font-weight: bolder;
+        align-self: center;
+        justify-self: center;
+      }
+    }
+
+    .pontos {
+      background-color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 15px;
+      width: 1.1em;
+      height: 1.1em;
+      border-radius: 50%;
+
+      .pt {
+        margin-top: 13px;
+        font-size: calc(var(--tamanhoFonte) - 6pt);
+        font-weight: bold;
+      }
+    }
+  }
+
+  .corpo {
+    margin-top: 5px;
+
+    .definicao {
+      margin-bottom: 0;
+      padding-right: 8px;
+      height: 75px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+      white-space: pre-line;
+      font-size: calc(var(--tamanhoFonte) - 7pt);
+      line-height: 15px;
+      text-align: left;
+    }
+
+    .icones {
       display: flex;
       justify-content: space-between;
+      align-items: center;
+      //min-height: 15px;
+      margin-top: 5px;
+      font-size: var(--tamanhoFonte);
 
-      .titulo {
-        align-self: flex-end;
-        margin-bottom: 0;
-        line-height: 10px;
-        font-size: calc(var(--tamanhoFonte) - 6pt);
-      }
-
-      .pontos {
-        background-color: black;
+      .coracoes {
         display: flex;
         align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 15px;
-        width: 1.1em;
-        height: 1.1em;
-        border-radius: 50%;
 
-        .pt {
-          margin-top: 13px;
-          font-size: calc(var(--tamanhoFonte) - 6pt);
-          font-weight: bold;
+        .coracao:not(:first-child) {
+          margin-left: 5px;
+        }
+
+        .coracao-pequeno {
+          width: 0.6em;
+          height: 0.6em;
+        }
+
+        .coracao-grande {
+          width: 1em;
+          height: 1em;
+        }
+      }
+
+      .presentes {
+        position: relative;
+
+        .presente {
+          width: 1em;
+          height: 1em;
+        }
+
+        .presenteInfoAcoes {
+          width: 0.6em;
+          position: absolute;
+          bottom: 0px;
+          right: -5px;
         }
       }
     }
+  }
 
-    .corpo {
-      margin-top: 5px;
+  .rodape {
+    margin-top: 12px;
 
-      .definicao {
-        margin-bottom: 0;
-        padding-right: 8px;
-        height: 90px;
-        width: 117px;
-        overflow-y: auto;
-        font-size: calc(var(--tamanhoFonte) - 7pt);
-        line-height: 15px;
-        text-align: justify;
-      }
-
-      .icones {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        //min-height: 15px;
-        margin-top: 5px;
-        font-size: var(--tamanhoFonte);
-
-        .coracoes {
-          display: flex;
-          align-items: center;
-
-          .coracao:not(:first-child) {
-            margin-left: 5px;
-          }
-
-          .coracao-pequeno {
-            width: 0.6em;
-            height: 0.6em;
-          }
-
-          .coracao-grande {
-            width: 1em;
-            height: 1em;
-          }
-        }
-
-        .presentes {
-          position: relative;
-
-          .presente {
-            width: 1em;
-            height: 1em;
-          }
-
-          .presenteInfoAcoes {
-            width: 0.6em;
-            position: absolute;
-            bottom: 0px;
-            right: -5px;
-          }
-        }
-
-        .zoom {
-          background: local;
-          border: none;
-          padding-left: 0;
-          padding-right: 0;
-          cursor: pointer;
-
-          .mat-icon {
-            font-weight: bolder;
-          }
-        }
-      }
-    }
-
-    .rodape {
-      margin-top: 5px;
-
-      .fonte {
-        display: block;
-        word-break: break-all;
-        height: 30px;
-        width: 117px;
-        overflow-y: auto;
-        font-size: calc(var(--tamanhoFonte) - 8pt);
-        line-height: 8px;
-      }
+    .fonte {
+      min-height: 30px;
+      max-height: 30px;
+      width: 117px;
+      white-space: nowrap;
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: calc(var(--tamanhoFonte) - 8pt);
+      line-height: 8px;
     }
   }
 }

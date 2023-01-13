@@ -129,17 +129,6 @@
   color: #ffab40;
 }
 
-.y-scroll {
-  &::-webkit-scrollbar {
-    width: 4px;
-    background-color: rgba(0, 0, 0, 0.25);
-
-    &-thumb {
-      background-color: black;
-    }
-  }
-}
-
 .grid-zoom {
   display: grid;
   grid-template-columns: 12% 88%;
