@@ -17,7 +17,7 @@ export class JogadorService {
     return this.httpclient.get<Jogador>(`${this.jogadorURL}${id}`);
   }
 
-  jogadorURL = `${environment.API_URL}/jogador/`;
+  jogadorURL = `${environment.API_URL}jogador/`;
 
 
 constructor(private httpclient: HttpClient) { }
