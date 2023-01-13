@@ -141,11 +141,11 @@ export class AreaDeCompraComponent implements OnInit {
   }
 
   public bloquearCompraCoracoesPequenos() {
-    return this.verificaJogadorJogando() && this.verificaPodeComprarCoracoesPequenos()
+    return !(this.verificaJogadorJogando() && this.verificaPodeComprarCoracoesPequenos())
   }
 
   public bloquearCompraCoracoesGrandes() {
-    return this.verificaJogadorJogando() && this.verificaPodeComprarCoracaoGrande()
+    return !(this.verificaJogadorJogando() && this.verificaPodeComprarCoracaoGrande())
   }
 
   public verificaPodeComprarCoracoesPequenos(): Boolean {
