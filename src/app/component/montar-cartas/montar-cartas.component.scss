@@ -1,176 +1,136 @@
-.cartas-container {
-    margin: 16px;
-    padding-bottom: 10px;
-    &-scroll {
+.carta {
+  background: var(--input-backgroundColor);
+  border: 1.5px solid var(--input-fontColor);
+  padding: 0.5rem;
+  word-wrap: break-word;
+  text-align: center;
+  width: 7.75rem;
+  height: 10rem;
+  margin-top: 3px;
+
+  .titulo {
+    align-self: flex-end;
+    margin-bottom: 0;
+    line-height: 10px;
+    font-size: calc(var(--tamanhoFonte) - 6pt);
+  }
+
+  .cabecalho {
+    height: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .zoom {
+      border: none;
+      background: local;
+      cursor: pointer;
+      padding-left: 0;
+      padding-right: 0;
+      display: flex;
+
+      .mat-icon {
+        font-weight: bolder;
+        align-self: center;
+        justify-self: center;
+      }
+    }
+
+    .pontos {
+      background-color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 15px;
+      width: 1.1em;
+      height: 1.1em;
+      border-radius: 50%;
+
+      .pt {
+        margin-top: 13px;
+        font-size: calc(var(--tamanhoFonte) - 6pt);
+        font-weight: bold;
+      }
+    }
+  }
+
+  .corpo {
+    margin-top: 5px;
+
+    .definicao {
+      margin-bottom: 0;
+      padding-right: 8px;
+      height: 75px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+      white-space: pre-line;
+      font-size: calc(var(--tamanhoFonte) - 7pt);
+      line-height: 15px;
+      text-align: justify;
+    }
+
+    .icones {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      //min-height: 15px;
+      margin-top: 5px;
+      font-size: var(--tamanhoFonte);
+
+      .coracoes {
         display: flex;
-        max-width: 100%;
-        overflow-x: auto;
-        padding-bottom: 8px;
-        &:not(:first-child) {
-            margin-top: 64px;
-        }
-        &::-webkit-scrollbar {
-            height: 4px;
-            background-color: rgba(0, 0, 0, 0.25);
-            &-thumb {
-                background-color: black;
-            }
-        }
-        .carta {
-            border: 2px solid black;
-            padding: 20px;
-            background: var(--input-backgroundColor);
-            word-wrap: break-word;
-            &-vertical {
-                min-width: 180px;
-                max-width: 180px;
-                height: 350px;
-                .cabecalho {
-                    height: 80px;
-                    display: flex;
-                    justify-content: space-between;
-                    .titulo {
-                        margin-bottom: 0;
-                        line-height: 24px;
-                        font-size: calc(var(--tamanhoFonte) - 4pt);
-                    }
-                    .pontos {
-                        background-color: black;
-                        min-width: 1.7em;
-                        min-height: 1.7em;
-                        max-width: 1.7em;
-                        max-height: 1.7em;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        color: white;
-                        font-size: 20px;
-                        border-radius: 50%;
-                        .pt {
-                            margin-top: 15px;
-                            font-size: calc(var(--tamanhoFonte) - 3pt);
-                            font-weight: bold;
-                        }
-                    }
-                }
-                .corpo {
-                    margin-top: 16px;
-                    .definicao {
-                        margin-bottom: 0;
-                        padding-right: 8px;
-                        min-height: 130px;
-                        max-height: 130px;
-                        overflow-y: hidden;
-                        text-overflow: ellipsis;
-                        font-size: calc(var(--tamanhoFonte) - 4pt);
-                    }
-                    .icones {
-                        min-height: 35px;
-                        margin-top: 16px;
-                        font-size: var(--tamanhoFonte);
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        .coracoes {
-                            display: flex;
-                            align-items: center;
-                            .coracao:not(:first-child) {
-                                margin-left: 8px;
-                            }
-                            .coracao-pequeno {
-                                width: 0.9em;
-                                height: 0.9em;
-                            }
-                            .coracao-grande {
-                                width: 1.25em;
-                                height: 1.25em;
-                            }
-                        }
-                        .presentes {
-                            position: relative;
-                            .presente {
-                                width: 1.75em;
-                                height: 1.75em;
-                            }
-                            .presenteInfoAcoes {
-                                width: 1em;
-                                position: absolute;
-                                bottom: 0px;
-                                right: -5px;
-                            }
-                        }
-                    }
-                }
-                .rodape {
-                    margin-top: 32px;
-                    .fonte {
-                        max-height: 40px;
-                        overflow-y: auto;
-                        display: block;
-                        font-size: calc(var(--tamanhoFonte) - 6pt);
-                    }
-                }
-            }
-            &-horizontal {
-                min-width: 200px;
-                max-width: 200px;
-                height: 110px;
-                &.carta-sem-titulo {
-                    display: flex;
-                    align-items: center;
-                    .corpo .definicao {
-                        min-height: unset;
-                        max-height: unset;
-                        margin: 0;
-                    }
-                }
-                .cabecalho {
-                    .titulo {
-                        color: #38761d;
-                        font-size: calc(var(--tamanhoFonte) - 6pt);
-                        line-height: 20px;
-                    }
-                }
-                .corpo {
-                    .definicao {
-                        min-height: 50px;
-                        max-height: 60px;
-                        width: 200px;
-                        font-size: calc(var(--tamanhoFonte) - 7pt);
-                        line-height: 20px;
-                        overflow-y: auto;
-                    }
-                }
-            }
-        }
-    }
-    .carta-inicio {
-        border: 2px solid black;
-        width: 330px;
-        height: min-content;
-        padding: 16px;
-        background: var(--input-backgroundColor);
-    }
-    .carta,
-    .carta-objetivo,
-    .carta-inicio {
-        &:not(:first-child) {
-            margin-left: 16px;
-        }
-    }
-}
+        align-items: center;
 
-.cor-texto {
-    color: #ffab40;
-}
-
-.y-scroll {
-    &::-webkit-scrollbar {
-        display: none;
-        width: 4px;
-        background-color: rgba(0, 0, 0, 0.25);
-        &-thumb {
-            background-color: black;
+        .coracao:not(:first-child) {
+          margin-left: 5px;
         }
+
+        .coracao-pequeno {
+          width: 0.6em;
+          height: 0.6em;
+        }
+
+        .coracao-grande {
+          width: 1em;
+          height: 1em;
+        }
+      }
+
+      .presentes {
+        position: relative;
+
+        .presente {
+          width: 1em;
+          height: 1em;
+        }
+
+        .presenteInfoAcoes {
+          width: 0.6em;
+          position: absolute;
+          bottom: 0px;
+          right: -5px;
+        }
+      }
     }
+  }
+
+  .rodape {
+    margin-top: 12px;
+
+    .fonte {
+      min-height: 30px;
+      max-height: 30px;
+      width: 117px;
+      white-space: nowrap;
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: calc(var(--tamanhoFonte) - 8pt);
+      line-height: 8px;
+    }
+  }
 }

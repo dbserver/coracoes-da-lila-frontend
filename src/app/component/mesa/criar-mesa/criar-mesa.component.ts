@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { PatternValidator } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Jogador } from 'src/app/model/jogador';
 import { Sala } from 'src/app/model/sala';
@@ -89,5 +88,7 @@ export class CriarMesaComponent implements OnInit {
     this.mesaJogoService.getemitSalaSubject().next(this.sala);
     this.mesaJogoService.getemitJogadorSubject().next(this.jogadorPrincipal);
   }
-
 }
+
+  
+
