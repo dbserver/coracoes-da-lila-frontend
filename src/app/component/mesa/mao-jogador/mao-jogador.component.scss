@@ -32,6 +32,7 @@
 
 .centraliza {
   text-align: center;
+  min-width: fit-content;
   color: var(--input-fontColor);
   font-size: var(--tamanhoFonte);
 }
@@ -115,7 +116,7 @@
           .definicao {
             min-height: 50px;
             max-height: 60px;
-            width: 200px;
+            width: 190px;
             font-size: calc(var(--tamanhoFonte) - 6pt);
             line-height: 15px;
             overflow-y: auto;
