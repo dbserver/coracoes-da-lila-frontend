@@ -1,17 +1,17 @@
 <div class="area-jogadores">
     <div class="box-jogador">
         <button class="jogador" *ngFor="let jogador of jogadores" (click)="abrirModal(jogador)">
-            <app-indica-jogador *ngIf="sala.status == 'JOGANDO' && jogador.status=='JOGANDO'" mensagem="Jogando">
-            </app-indica-jogador>
-            <app-indica-jogador *ngIf="sala.status == 'ULTIMA_RODADA' && jogador.status=='JOGANDO'" mensagem="Jogando">
-            </app-indica-jogador>
-            <app-indica-jogador *ngIf="sala.status == 'JOGANDO' && jogador.status=='ESPERANDO'" mensagem="Aguardando">
-            </app-indica-jogador>
-            <app-indica-jogador *ngIf="sala.status == 'ULTIMA_RODADA' && jogador.status=='ESPERANDO'" mensagem="Aguardando">
-            </app-indica-jogador>
-          <app-indica-jogador *ngIf="sala.status == 'AGUARDANDO_DEFINICAO' && jogador?.status=='DEFININDO'" mensagem="Definindo"></app-indica-jogador>
-          <app-indica-jogador *ngIf="sala.status == 'AGUARDANDO_DEFINICAO' && jogador?.status=='FINALIZADO'" mensagem="Finalizado"></app-indica-jogador>
-          <app-indica-jogador *ngIf="sala.status == 'FINALIZADO'" mensagem="Finalizado"></app-indica-jogador>
+            <div *ngIf="sala.status != 'AGUARDANDO'">
+                <app-indica-jogador *ngIf="jogador.status=='JOGANDO'" mensagem="Jogando">
+                </app-indica-jogador>
+                <app-indica-jogador *ngIf="jogador.status=='ESPERANDO'" mensagem="Aguardando">
+                </app-indica-jogador>
+                <app-indica-jogador *ngIf="jogador?.status=='DEFININDO'" mensagem="Definindo">
+                </app-indica-jogador>
+                <app-indica-jogador *ngIf="jogador?.status=='FINALIZADO'" mensagem="Finalizado">
+                </app-indica-jogador>
+            </div>
+          
           <img class="avatar" src="assets/blank-profile-picture-gb56d1b702_1280.png">
             <p class="nome-jogador">
                 <img *ngIf="(jogador?.id == sala.jogadorEscolhido?.id) && (sala.status === 'JOGANDO' || sala.status === 'ULTIMA_RODADA' || sala.status == 'AGUARDANDO_DEFINICAO' || sala.status == 'FINALIZADO')"
@@ -52,46 +52,8 @@
 
         <div class="cartas-container">
             <div class="cartas-container-scroll">
-                <div *ngFor="let cartas of jogadorModal.cartasDoJogo" class="carta carta-vertical">
-                    <div class="cabecalho">
-                        <h2 class="titulo">{{ mapTipo.get(cartas.tipo) }}</h2>
-                        <div class="pontos">
-                            <p class="pt">{{ cartas.pontos }}</p>
-                        </div>
-                    </div>
-                    <div class="corpo">
-                        <p class="definicao y-scroll">
-                            {{cartas.texto}}
-                        </p>
-                        <div class="icones">
-                            <button id="zoom1" class="zoom" (click)="abrirZoom($event, cartas)">
-                                <mat-icon class="mat-icon" alt="Ícone de zoom">search</mat-icon>
-                            </button>
-                            <div class="coracoes">
-                                <div class="coracao" *ngFor="let i of [].constructor(cartas.valorCoracaoGrande)">
-                                    <img class="coracao-grande" src="assets/svg/icone-coracao.svg" alt="Ícone coração">
-                                </div>
-                                <div class="coracao" *ngFor="let i of [].constructor(cartas.valorCoracaoPequeno)">
-                                    <img class="coracao-pequeno" src="assets/svg/icone-coracao.svg" alt="Ícone coração">
-                                </div>
-                            </div>
-                            <div class="presentes">
-                                <div class="presente-acao">
-                                  <div class="presente-info" *ngIf="cartas.tipo === 'INFORMACAO'">
-                                    <img class="presente" src="assets/svg/icone-presente.svg" alt="presente">
-                                    <img class="presenteInfoAcoes" src="assets/svg/icone-info.svg" alt="info">
-                                  </div>
-                                  <div class="presente-info" *ngIf="cartas.tipo === enumTipo.ACAO">
-                                    <img class="presente" src="assets/svg/icone-presente.svg" alt="presente">
-                                    <img class="presenteInfoAcoes" src="assets/svg/icone-usuario.svg" alt="acao">
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rodape">
-                        <span class="fonte y-scroll">Fonte: {{cartas.fonte}}</span>
-                    </div>
+                <div *ngFor="let carta of jogadorModal.cartasDoJogo">
+                    <app-montar-cartas [carta]=carta></app-montar-cartas>
                 </div>
                 <div class="carta carta-horizontal" *ngFor="let cartaObjetivo of jogadorModal.cartasObjetivo">
                     <div class="grid-zoom">

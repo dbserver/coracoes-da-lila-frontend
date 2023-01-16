@@ -1,8 +1,8 @@
 <section class="opcoes-container">
-    <h3 class="titulo" *ngIf="jogador.status == 'JOGANDO'">Opções de jogada:</h3>
+    <h3 class="titulo" *ngIf="jogador.status == 'JOGANDO' || jogador.status == 'DEFININDO'">Opções de jogada:</h3>
 
     <ul *ngIf="(sala.status == 'JOGANDO' || sala.status == 'ULTIMA_RODADA') && jogador.status == 'JOGANDO'">
-        <li *ngIf="somaCoracoes() < 5 && limpaTela()">Pegar 2 corações pequenos</li>
+        <li *ngIf="somaCoracoes() < 4 && limpaTela()">Pegar 2 corações pequenos</li>
         <li *ngIf="somaCoracoes() < 5 && limpaTela()">Pegar 1 coração grande</li>
         <li *ngIf="selecioneUmaCartaObjetivo()">Selecionar 1 de 2 objetivos</li>
         <li *ngIf="podeComprarCarta(this.sala.baralho.cartasDoJogo) && limpaTela()">Comprar 1 carta</li>
@@ -17,6 +17,7 @@
         5 a 6 = bônus
       </p>
     </ul>
+
     <ul *ngIf="podeRolarDado() == 'ACAO' && limparTelaObjetivos() && jogador.status == 'JOGANDO'">
       <li>Rolar o dado para bônus de Ação:</li>
       <p>
@@ -25,6 +26,10 @@
         4 = coração grande<br>
         5 a 6 = coração pequeno
       </p>
+    </ul>
+
+    <ul *ngIf="jogador.status == 'DEFININDO'">
+      <li>Trocar a categoria das cartas genéricas</li>
     </ul>
 </section>
 

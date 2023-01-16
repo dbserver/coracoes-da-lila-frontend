@@ -5,9 +5,10 @@
   grid-template-rows: repeat(3, auto);
 }
 
-header, nav, footer {
+header, nav {
   text-align: center
 }
+
 header, nav:first-of-type, footer {
   grid-column-start: 1;
   grid-column-end: 4;

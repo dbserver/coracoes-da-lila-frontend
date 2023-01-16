@@ -3,24 +3,13 @@
   padding: 0;
   vertical-align: baseline;
 }
-html {
-  font-family: system-ui, sans-serif;
-}
-body {
-  background: linear-gradient(#545454, #454545, #676767);
-  display: grid;
-  grid-template-columns: 1fr;
-  height: 100vh;
-  overflow: hidden;
-  width: 100%;
-}
+
 .dice {
-  align-items: center;
-  display: grid;
-  grid-gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
-  grid-template-rows: auto;
-  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1rem 1rem 0 0;
   perspective: 600px;
 }
 

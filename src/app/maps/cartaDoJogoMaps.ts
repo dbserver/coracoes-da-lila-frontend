@@ -10,15 +10,15 @@ export const mapTipoCartaDoJogo = new Map<string, string>(
 )
 
 
-export const mapCategoriaCartaDoJogo = new Map<string, string>(
-  [
-    ['AUDITIVA', 'AUDITIVA'],
-    ['FISICA', 'FÍSICA'],
-    ['GENERICA', 'GENÉRICA'],
-    ['INTELECTUAL', 'INTELECTUAL'],
-    ['TEA', 'TRANSTORNO DO ESPECTRO AUTISTA'],
-    ['VISUAL', 'VISUAL'],
-  ]
-)
+// export const mapCategoriaCartaDoJogo = new Map<string, string>(
+//   [
+//     ['AUDITIVA', 'AUDITIVA'],
+//     ['FISICA', 'FÍSICA'],
+//     ['GENERICA', 'GENÉRICA'],
+//     ['INTELECTUAL', 'INTELECTUAL'],
+//     ['TEA', 'TRANSTORNO DO ESPECTRO AUTISTA'],
+//     ['VISUAL', 'VISUAL'],
+//   ]
+// )
 
 

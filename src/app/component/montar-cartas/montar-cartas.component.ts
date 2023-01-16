@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CartaDoJogo } from '../../model/cartaDoJogo';
-import { CartaInicio } from '../../model/cartaInicio';
-import { CartaObjetivo } from '../../model/cartaObjetivo';
-import { CartaService } from '../../service/cartas-service/cartas.service';
 import { CartaDoJogoEnumTipo } from 'src/app/enum/CartaDoJogoEnumTipo';
-
+import { MatDialog } from '@angular/material/dialog';
+import { ModalZoomComponent } from '../mesa/modal-zoom/modal-zoom.component';
+import { mapTipoCartaDoJogo } from 'src/app/maps/cartaDoJogoMaps';
 
 @Component({
   selector: 'app-montar-cartas',
@@ -12,55 +11,22 @@ import { CartaDoJogoEnumTipo } from 'src/app/enum/CartaDoJogoEnumTipo';
   styleUrls: ['./montar-cartas.component.scss'],
 })
 export class MontarCartasComponent implements OnInit {
-  public listaCartas: Array<CartaDoJogo> = [];
-  public listaCartasInicio: Array<CartaInicio> = [];
-  public listaCartasObjetivo: Array<CartaObjetivo> = [];
-  public listaRandomicaCartas: Array<CartaDoJogo> = [];
+  @Input() carta: CartaDoJogo = {} as CartaDoJogo;
+  public mapTipo = mapTipoCartaDoJogo;
+  public enumTipo = CartaDoJogoEnumTipo;
 
-  enumTipo = CartaDoJogoEnumTipo;
-
-
-
-  constructor(private cartaService: CartaService) {}
+  constructor(public zoomCarta: MatDialog,) {}
 
   ngOnInit() {
-    this.getListarCartas();
-    this.getListarCartasInicio();
-    this.getListarCartasObjetivo();
   }
 
-  public setmaocartas(): void{
-
-
-  }
-
-  public setListaRandomica(): void {
-    const cartasFaltantes: number = 6 - this.listaRandomicaCartas.length;
-
-    for (let i = 0; i < cartasFaltantes; i++) {
-      const indiceRandomico: number = Math.round(Math.random() * ((this.listaCartas.length - 1) - 0) + 0);
-      this.listaRandomicaCartas.push(this.listaCartas[indiceRandomico]);
-      this.listaCartas.splice(indiceRandomico, 1);
-    }
-  }
-
-  private getListarCartas(): void {
-    this.cartaService.getListarCarta().subscribe((listaCartas: CartaDoJogo[]) => {
-      this.listaCartas = listaCartas;
+  public abrirZoom(event: Event, carta: CartaDoJogo) {
+    event.stopPropagation();
+    this.zoomCarta.open(ModalZoomComponent, {
+      data: carta,
+      height: '92%',
+      width: '35%',
+      panelClass: 'css-carta'
     });
-  }
-  private getListarCartasInicio(): void {
-    this.cartaService
-      .getListarCartaInicio()
-      .subscribe((listaCartasInicio: CartaInicio[]) => {
-        this.listaCartasInicio = listaCartasInicio;
-      });
-  }
-  private getListarCartasObjetivo(): void {
-    this.cartaService
-      .getListarCartaObjetivo()
-      .subscribe((listaCartasObjetivo: CartaObjetivo[]) => {
-        this.listaCartasObjetivo = listaCartasObjetivo;
-      });
   }
 }
