@@ -1,6 +1,5 @@
 import { HabilitaDadoComponent } from './../habilita-dado/habilita-dado.component';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Baralho } from '../../../model/baralho';
 import { CartaDoJogo } from '../../../model/cartaDoJogo';
 import { CartaObjetivo } from '../../../model/cartaObjetivo';
@@ -11,7 +10,6 @@ import { MesaJogoService } from '../../../service/mesa-jogo-service/mesa-jogo.se
 import { ModalCartasObjetivoComponent } from '../modal-cartas-objetivo/modal-cartas-objetivo.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalZoomComponent } from '../modal-zoom/modal-zoom.component';
-import { ModalZoomObjetivoComponent } from '../modal-zoom-objetivo/modal-zoom-objetivo.component';
 import { mapTipoCartaDoJogo } from 'src/app/maps/cartaDoJogoMaps';
 import { CartaDoJogoEnumTipo } from 'src/app/enum/CartaDoJogoEnumTipo';
 @Component({
@@ -62,7 +60,7 @@ export class AreaDeCompraComponent implements OnInit {
   }
 
   public verificaJogadorJogando() {
-    return this.jogador.status == 'JOGANDO'
+    return this.jogador?.status == 'JOGANDO'
   }
 
   public comprarCarta(indice: number): void {
@@ -109,8 +107,8 @@ export class AreaDeCompraComponent implements OnInit {
     let coracaoP = 0;
     let coracaoG = 0;
     this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => {
-      coracaoP = this.jogador.coracaoPequeno + this.jogador.bonusCoracaoPequeno;
-      coracaoG = this.jogador.coracaoGrande + this.jogador.bonusCoracaoGrande;
+      coracaoP = this.jogador?.coracaoPequeno + this.jogador?.bonusCoracaoPequeno;
+      coracaoG = this.jogador?.coracaoGrande + this.jogador?.bonusCoracaoGrande;
     });
     return valorCoracaoPequeno! <= coracaoP && valorCoracaoGrande! <= coracaoG;
   }
@@ -119,8 +117,8 @@ export class AreaDeCompraComponent implements OnInit {
     let coracaoP = 0;
     let coracaoG = 0;
     this.mesaJogoService.getemitJogadorObservable().subscribe((jogador) => {
-      coracaoP = this.jogador.coracaoPequeno + this.jogador.bonusCoracaoPequeno;
-      coracaoG = this.jogador.coracaoGrande + this.jogador.bonusCoracaoGrande;
+      coracaoP = this.jogador?.coracaoPequeno + this.jogador?.bonusCoracaoPequeno;
+      coracaoG = this.jogador?.coracaoGrande + this.jogador?.bonusCoracaoGrande;
     });
 
     return coracaoP + coracaoG > 0;
