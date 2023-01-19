@@ -1,35 +1,70 @@
 <section class="opcoes-container">
-    <h3 class="titulo" *ngIf="jogador.status == 'JOGANDO' || jogador.status == 'DEFININDO'">Opções de jogada:</h3>
+  <h3 class="titulo" *ngIf="jogador.status == 'JOGANDO' || jogador.status == 'DEFININDO'">Opções de jogada:</h3>
 
-    <ul *ngIf="(sala.status == 'JOGANDO' || sala.status == 'ULTIMA_RODADA') && jogador.status == 'JOGANDO'">
-        <li *ngIf="somaCoracoes() < 4 && limpaTela()">Pegar 2 corações pequenos</li>
-        <li *ngIf="somaCoracoes() < 5 && limpaTela()">Pegar 1 coração grande</li>
-        <li *ngIf="selecioneUmaCartaObjetivo()">Selecionar 1 de 2 objetivos</li>
-        <li *ngIf="podeComprarCarta(this.sala.baralho.cartasDoJogo) && limpaTela()">Comprar 1 carta</li>
-        <li *ngIf="podeComprarCarta(this.sala.baralho.cartasDoJogo) && limpaTela()">Comprar 1 objetivo</li>
-        <p *ngIf="podeComprarCarta(this.sala.baralho.cartasDoJogo) && limpaTela()">** Seus corações bônus permanecem com você</p>
-    </ul>
+  <ul *ngIf="(sala.status == 'JOGANDO' || sala.status == 'ULTIMA_RODADA') && jogador.status == 'JOGANDO'">
+    <li *ngIf="somaCoracoes() < 4 && limpaTela()">
+      <div class="container-acao">
+        Pegar
+        <img class="coracao-pequeno" src="../../../../assets/svg/icone-coracao.svg" alt="coracao pequeno" />
+        <img class="coracao-pequeno" src="../../../../assets/svg/icone-coracao.svg" alt="coracao pequeno" />
+      </div>
+    </li>
+    <li *ngIf="somaCoracoes() < 5 && limpaTela()">
+      <div class="container-acao">
+        Pegar
+        <img class="coracao-grande" src="../../../../assets/svg/icone-coracao.svg" alt="coracao grande" />
+      </div>
+    </li>
+    <li *ngIf="selecioneUmaCartaObjetivo()">Selecionar 1 de 2 objetivos</li>
+    <li *ngIf="podeComprarCarta(this.sala.baralho.cartasDoJogo) && limpaTela()">Comprar 1 carta</li>
+    <li *ngIf="podeComprarCarta(this.sala.baralho.cartasDoJogo) && limpaTela()">Comprar 1 objetivo</li>
+    <p *ngIf="podeComprarCarta(this.sala.baralho.cartasDoJogo) && limpaTela()">** Seus corações bônus permanecem com
+      você</p>
+  </ul>
 
-    <ul *ngIf="podeRolarDado() == 'INFORMACAO' && limparTelaObjetivos() && jogador.status == 'JOGANDO'">
+  <ul *ngIf="podeRolarDado() == 'INFORMACAO' && limparTelaObjetivos() && jogador.status == 'JOGANDO'"
+    class="opcoes-dado">
+    <div class="jogadas">
       <li>Rolar o dado para bônus de Informação:</li>
-      <p>
-        1 a 4 = nada<br>
-        5 a 6 = coração bônus pequeno
-      </p>
-    </ul>
+      <div class="container-acao-presente">
+        <div class="container-texto">
+          <p>1 a 4 = nada</p>
+          <div class="container-acao">
+            <p>5 a 6 = </p>
+            <img class="coracao-pequeno" src="assets/svg/icone-coracao.svg" alt="coracao pequeno">
+          </div>
+        </div>
+        <div class="presentes">
+          <img class="presente" src="../../../assets/svg/icone-presente.svg" alt="presente" />
+          <img class="presenteInfoAcoes" src="../../../assets/svg/icone-info.svg" alt="informação" />
+        </div>
+      </div>
+    </div>
+  </ul>
 
-    <ul *ngIf="podeRolarDado() == 'ACAO' && limparTelaObjetivos() && jogador.status == 'JOGANDO'">
+  <ul *ngIf="podeRolarDado() == 'ACAO' && limparTelaObjetivos() && jogador.status == 'JOGANDO'" class="opcoes-dado">
+    <div class="jogadas">
       <li>Rolar o dado para bônus de Ação:</li>
-      <p>
-        1 = perde 1 coração<br>
-        2 a 3 = nada<br>
-        4 = coração bônus grande<br>
-        5 a 6 = coração bônus pequeno
-      </p>
-    </ul>
+      <div class="container-acao-presente">
+        <div>
+          <p>1 = perde 1 coração</p>
+          <p>2 a 3 = nada</p>
+          <div class="container-acao">
+            <p>4 = </p><img class="coracao-grande" src="../../../../assets/svg/icone-coracao.svg" alt="coracao grande" />
+          </div>
+          <div class="container-acao">
+            <p>5 a 6 = </p><img class="coracao-pequeno" src="../../../../assets/svg/icone-coracao.svg" alt="coracao pequeno" />
+          </div>
+        </div>
+        <div class="presentes">
+          <img class="presente" src="../../../assets/svg/icone-presente.svg" alt="presente" />
+          <img class="presenteInfoAcoes" src="../../../../assets/svg/icone-usuario.svg" alt="informação" />
+        </div>
+      </div>
+    </div>
+  </ul>
 
-    <ul *ngIf="jogador.status == 'DEFININDO'">
-      <li>Trocar a categoria das cartas genéricas</li>
-    </ul>
+  <ul *ngIf="jogador.status == 'DEFININDO'">
+    <li>Trocar a categoria das cartas genéricas</li>
+  </ul>
 </section>
-

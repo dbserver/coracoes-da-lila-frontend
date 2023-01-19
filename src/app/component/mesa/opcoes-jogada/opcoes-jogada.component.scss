@@ -1,9 +1,63 @@
+* {
+  color: var(--input-fontColor);
+}
+
 .opcoes-container{
   max-width: 80%;
   margin-left: 15px;
   text-align: left;
 }
+
 .titulo{
   font-weight: bold;
   text-decoration: underline;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+.opcoes-dado{
+  display: flex;
+  flex-direction: row;
+}
+
+.container-acao{
+  display: flex;
+  align-items: center;
+  margin-top: 2px;
+}
+
+.coracao-grande{
+  height: 25px;
+  width: 25px;
+  margin-left: 4px;
+}
+
+.coracao-pequeno {
+  height: 15px;
+  width: 15px;
+  margin-left: 4px;
+}
+
+.container-acao-presente{
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.presentes {
+  position: relative;
+
+  .presente {
+    width: 4em;
+    height: 4em;
+  }
+
+  .presenteInfoAcoes {
+    position: relative;
+    width: 1.6em;
+    bottom: -0.3em;
+    right: 1.5em;
+  }
 }
