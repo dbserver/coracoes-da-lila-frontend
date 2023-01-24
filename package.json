@@ -28,11 +28,12 @@
     "@angular/platform-browser-dynamic": "^14.2.11",
     "@angular/router": "^14.2.11",
     "@stomp/ng2-stompjs": "^8.0.0",
+    "angular2-uuid": "^1.1.1",
     "dice-roller-3d": "^1.0.4",
     "express": "^4.17.2",
     "net": "^1.0.2",
     "rxjs": "~7.4.0",
-    "sockjs-client": "^1.5.2",
+    "sockjs-client": "^1.6.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
