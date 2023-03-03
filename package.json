@@ -10,9 +10,10 @@
     "start": "node server.js",
     "build": "ng build",
     "build:staging": "ng build --configuration staging",
+    "build:prd": "ng build --configuration prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "test-noInterface": "ng test --watch=false --browsers ChromeHeadless",
+    "test:noInterface": "ng test --watch=false --browsers ChromeHeadless",
     "heroku-postbuild": "ng build"
   },
   "private": true,
