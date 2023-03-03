@@ -65,7 +65,7 @@ stages:
               workingDir: ./
               customCommand: "run test:noInterface"
           - task: Npm@1
-            condition: or(eq(variables['isTag'], 'true'), eq(variables['Build.Reason'], 'PullRequest')))
+            condition: or(eq(variables['isTag'], 'true'), eq(variables['Build.Reason'], 'PullRequest'))
             displayName: "Building project"
             inputs:
               command: custom
@@ -77,7 +77,7 @@ stages:
 
           - task: Docker@2
             displayName: Building docker image and pushing to ACR
-            condition: and(succeeded(), or(eq(variables['Build.Reason'], 'PullRequest')), eq(variables['isTag'], 'true')))
+            condition: and(succeeded(), or(eq(variables['Build.Reason'], 'PullRequest'), eq(variables['isTag'], 'true')))
             inputs:
               containerRegistry: $(acrServiceConnection)
               repository: $(dockerRepository)
