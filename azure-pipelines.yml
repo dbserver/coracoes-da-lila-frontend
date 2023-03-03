@@ -2,18 +2,148 @@
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
+# testing trigger
 
+pr: 
+  branches:
+    include:
+      - feat/cd
 trigger:
-- azure-pipelines
+  branches:
+    include:
+      - feat/cd 
+  tags:
+    include:
+      - "*"
+
+variables:
+  - name: buildId
+    value: $(Build.BuildId)
+
+  - name: vmImage
+    value: ubuntu-latest
+
+  - name: k8sNamespace
+    value: coracoesdalila
+
+  - name: connectionType
+    value: Kubernetes Service Connection
+
+  - name: acrServiceConnection
+    value: "docker-registry"
+
+  - name: aksServiceConnection
+    value: "AKS-DBSERVER"
+
+  - name: dockerRepository
+    value: "coracoesdalila/frontend"
+
+  - name: isTag
+    value: $[startsWith(variables['Build.SourceBranch'],'refs/tags/')]
+
+  - name: branchName
+    value: $(Build.SourceBranchName)
+
+  - name: acrUrl
+    value: "dbserverregistry.azurecr.io/coracoesdalila/frontend"
+    
+  - name: isMergePR
+    value:  eq(variables['Build.Reason'], 'PullRequest')
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: $(vmImage)
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+stages:
+  - stage: CI
+    condition: eq(variables['isTag'], 'false')
+    jobs:
+      - job: CI
+        displayName: Run tests, build and push image to ACR
+        steps:
+          - task: Npm@1
+            displayName: "Installing dependencies"
+            inputs:
+              workingDir: ./
+              command: 'install'
+          - task: Npm@1
+            displayName: "Running tests"
+            inputs:
+              command: custom
+              workingDir: ./
+              customCommand: "run test"
+          - task: Npm@1
+            condition: or(eq(variables['isTag'], 'true'), eq(variables['isMergePR'], 'true'))
+            displayName: "Building project"
+            inputs:
+              command: custom
+              workingDir: ./
+              ${{ if eq(variables['isMergePR'], 'true'))}}:
+                customCommand: "run build:staging"
+              ${{ if eq(variables['isTag'], 'true') }}:
+                customCommand: "run build:prd"
+            
+          - task: Docker@2
+            displayName: Building docker image and pushing to ACR
+            condition: and(succeeded(), or(eq(variables['isMergePR'], 'true', eq(variables['isTag'], 'true'))
+            inputs:
+              containerRegistry: $(acrServiceConnection)
+              repository: $(dockerRepository)
+              command: "buildAndPush"
+              Dockerfile: "**/Dockerfile"
+              ${{ if eq(variables['isMergePR'], 'true'))}}:
+                tags: |
+                  $(buildId)
+                  latest
+              ${{ if eq(variables['isTag'], 'true') }}:
+                tags: $(branchName)
+                 
+  - stage: DeployToDevelopment
+    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+    variables:
+      - group: coracoesdalila-api-envs-dev
+      - name: enviroment
+        value: "dev"
+    jobs:
+      - job: ApplyManifests
+        displayName: Applying kubernetes manifests
+        steps:
+          - task: ShellScript@2
+            displayName: Changing yaml's variables
+            inputs:
+              scriptPath: "./kubernetes/change_variables.sh"
+          - task: KubernetesManifest@0
+            displayName: Deploy to Kubernetes
+            inputs:
+              action: deploy
+              namespace: $(k8sNamespace)
+              kubernetesServiceConnection: $(aksServiceConnection)
+              manifests: |
+                ./kubernetes/deployment.yaml
+                ./kubernetes/service.yaml
+              containers: |
+                $(acrUrl):latest
+  - stage: DeployToProduction
+    condition: eq(variables['isTag'], 'true')
+    variables:
+      - group: coracoesdalila-api-envs-prd
+      - name: enviroment
+        value: "prd"
+    jobs:
+      - job: ApplyManifests
+        displayName: Applying kubernetes manifests
+        steps:
+          - task: ShellScript@2
+            displayName: Changing yaml's variables
+            inputs:
+              scriptPath: "./kubernetes/change_variables.sh"
+          - task: KubernetesManifest@0
+            displayName: Deploy to Kubernetes
+            inputs:
+              action: deploy
+              namespace: $(k8sNamespace)
+              kubernetesServiceConnection: $(aksServiceConnection)
+              manifests: |
+                ./kubernetes/deployment.yaml
+                ./kubernetes/service.yaml
+              containers: |
+                $(acrUrl):$(branchName)
