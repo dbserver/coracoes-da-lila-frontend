@@ -114,6 +114,17 @@ stages:
                 ./kubernetes/service.yaml
               containers: |
                 $(acrUrl):latest
+          - task: Kubernetes@1
+            displayName: Apply Ingress
+            inputs:
+              connectionType: $(connectionType)
+              kubernetesServiceEndpoint: $(aksServiceConnection)
+              namespace: $(k8sNamespace)
+              command: "apply"
+              useConfigurationFile: true
+              configuration: "./kubernetes/ingress.yaml"
+              outputFormat: none
+
   - stage: DeployToProduction
     condition: eq(variables['isTag'], 'true')
     variables:
@@ -138,3 +149,13 @@ stages:
                 ./kubernetes/service.yaml
               containers: |
                 $(acrUrl):$(branchName)
+          - task: Kubernetes@1
+            displayName: Apply Ingress
+            inputs:
+              connectionType: $(connectionType)
+              kubernetesServiceEndpoint: $(aksServiceConnection)
+              namespace: $(k8sNamespace)
+              command: "apply"
+              useConfigurationFile: true
+              configuration: "./kubernetes/ingress.yaml"
+              outputFormat: none
