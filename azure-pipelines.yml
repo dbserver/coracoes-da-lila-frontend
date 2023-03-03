@@ -53,7 +53,6 @@ stages:
     jobs:
       - job: CI
         displayName: Run tests, build and push image to ACR
-        steps:
         - task: Bash@3
           inputs:
             targetType: 'inline'
@@ -62,12 +61,11 @@ stages:
           inputs:
             targetType: 'inline'
             script: echo $(isTag)
-        steps:
-          - task: Npm@1
-            displayName: "Installing dependencies"
-            inputs:
-              workingDir: ./
-              command: "install"
+        - task: Npm@1
+          displayName: "Installing dependencies"
+          inputs:
+            workingDir: ./
+            command: "install"
           - task: Npm@1
             displayName: "Running tests"
             inputs:
