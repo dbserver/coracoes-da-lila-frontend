@@ -53,14 +53,6 @@ stages:
       - job: CI
         displayName: Run tests, build and push image to ACR
         steps: 
-          - task: Bash@3
-            inputs:
-              targetType: 'inline'
-              script: echo $(isMergePR)
-          - task: Bash@3
-            inputs:
-              targetType: 'inline'
-              script: echo $(isTag)
           - task: Npm@1
             displayName: "Installing dependencies"
             inputs:
