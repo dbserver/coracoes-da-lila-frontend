@@ -77,7 +77,7 @@ stages:
             inputs:
               command: custom
               workingDir: ./
-              ${{ if eq(variables['isMergePR'], 'true'))}}:
+              ${{ if eq(variables['isMergePR'], 'true')}}:
                 customCommand: "run build:staging"
               ${{ if eq(variables['isTag'], 'true') }}:
                 customCommand: "run build:prd"
@@ -90,7 +90,7 @@ stages:
               repository: $(dockerRepository)
               command: "buildAndPush"
               Dockerfile: "**/Dockerfile"
-              ${{ if eq(variables['isMergePR'], 'true'))}}:
+              ${{ if eq(variables['isMergePR'], 'true')}}:
                 tags: |
                   $(buildId)
                   latest
