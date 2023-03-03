@@ -41,7 +41,7 @@ variables:
   - name: acrUrl
     value: "dbserverregistry.azurecr.io/coracoesdalila/frontend"
 
-  - name: isMergePR
+  - name: isMergePR 
     value: eq(variables['Build.Reason'], 'PullRequest')
 
 pool:
@@ -49,7 +49,6 @@ pool:
 
 stages:
   - stage: CI
-    condition: eq(variables['isTag'], 'false')
     jobs:
       - job: CI
         displayName: Run tests, build and push image to ACR
