@@ -98,7 +98,7 @@ stages:
                 tags: $(branchName)
 
   - stage: DeployToDevelopment
-    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+    condition: and(succeeded(), eq(variables['isMergePR'], 'true'))
     variables:
       - group: coracoesdalila-api-envs-dev
       - name: enviroment
