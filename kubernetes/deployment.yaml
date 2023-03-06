@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: coracoesdalila-app-${env}
+  name: coracoesdalila-app-${ENV}
   namespace: coracoesdalila
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: coracoesdalila-app-${env}
+      app: coracoesdalila-app-${ENV}
   template:
     metadata:
       labels:
-        app: coracoesdalila-app-${env}
+        app: coracoesdalila-app-${ENV}
     spec:
       containers:
-        - name: coracoesdalila-app-${env}
+        - name: coracoesdalila-app-${ENV}
           image: "dbserverregistry.azurecr.io/coracoesdalila/frontend"
           imagePullPolicy: Always
           ports:
