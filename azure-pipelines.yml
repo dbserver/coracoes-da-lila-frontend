@@ -124,6 +124,14 @@ stages:
               useConfigurationFile: true
               configuration: "./kubernetes/ingress.yaml"
               outputFormat: none
+          - task: Kubernetes@1
+            displayName: Restart service
+            inputs:
+              connectionType: $(connectionType)
+              kubernetesServiceEndpoint: $(aksServiceConnection)
+              namespace: $(k8sNamespace)
+              command: "rollout"
+              arguments: "restart deploy coracoesdalila-app-dev"
 
   - stage: DeployToProduction
     condition: eq(variables['isTag'], 'true')
@@ -159,3 +167,11 @@ stages:
               useConfigurationFile: true
               configuration: "./kubernetes/ingress.yaml"
               outputFormat: none
+          - task: Kubernetes@1
+            displayName: Restart service
+            inputs:
+              connectionType: $(connectionType)
+              kubernetesServiceEndpoint: $(aksServiceConnection)
+              namespace: $(k8sNamespace)
+              command: "rollout"
+              arguments: "restart deploy coracoesdalila-app-prd"
