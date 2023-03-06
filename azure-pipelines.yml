@@ -70,7 +70,7 @@ stages:
             inputs:
               command: custom
               workingDir: ./
-              ${{ if ne(variables['Build.Reason'], 'PullRequest')}}:
+              ${{ if and(ne(variables['Build.Reason'], 'PullRequest'), ne(variables['isTag'], 'true'))}}:
                 customCommand: "run build:staging"
               ${{ if eq(variables['isTag'], 'true') }}:
                 customCommand: "run build:prd"
