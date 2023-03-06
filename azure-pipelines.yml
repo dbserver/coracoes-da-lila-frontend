@@ -83,12 +83,13 @@ stages:
               repository: $(dockerRepository)
               command: "buildAndPush"
               Dockerfile: "**/Dockerfile"
-              ${{ if and(ne(variables['Build.Reason'], 'PullRequest'), eq(variables['isTag'], 'false'))}}:
+              ${{ if eq(variables['isTag'], 'true') }}:
+                tags: $(branchName)
+              ${{ if and(ne(variables['Build.Reason'], 'PullRequest'), ne(variables['isTag'], 'true'))}}:
                 tags: |
                   $(buildId)
                   latest
-              ${{ if eq(variables['isTag'], 'true') }}:
-                tags: $(branchName)
+              
 
   - stage: DeployToDevelopment
     condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'), ne(variables['isTag'], 'true'))
