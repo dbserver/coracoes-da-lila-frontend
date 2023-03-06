@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: coracoesdalila-app-service-${env}
+  name: coracoesdalila-app-service-${ENV}
   namespace: coracoesdalila
   labels:
-    app: coracoesdalila-app-${env}
+    app: coracoesdalila-app-${ENV}
 spec:
   type: ClusterIP
   ports:
@@ -12,4 +12,4 @@ spec:
       targetPort: 8080
       protocol: TCP
   selector:
-    app: coracoesdalila-app-${env}
+    app: coracoesdalila-app-${ENV}

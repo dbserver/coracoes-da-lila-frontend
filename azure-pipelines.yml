@@ -95,6 +95,8 @@ stages:
     variables:
       - name: enviroment
         value: "dev"
+      - name: ingress_domain
+        value: "coracoesdalila-dev"
     jobs:
       - job: ApplyManifests
         displayName: Applying kubernetes manifests
@@ -138,6 +140,8 @@ stages:
     variables:
       - name: enviroment
         value: "prd"
+      - name: ingress_domain
+        value: "coracoesdalila"
     jobs:
       - job: ApplyManifests
         displayName: Applying kubernetes manifests
