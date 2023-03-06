@@ -91,7 +91,7 @@ stages:
                 tags: $(branchName)
 
   - stage: DeployToDevelopment
-    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'), ne(variables['isTag'], 'true')))
     variables:
       - name: enviroment
         value: "dev"
