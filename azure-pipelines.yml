@@ -71,9 +71,9 @@ stages:
             inputs:
               command: custom
               workingDir: ./
-              ${{ if eq(variables['isTag'], true) }}:
+              ${{ if eq(variables['isTag'], 'true') }}:
                 customCommand: "run build:prd"
-              ${{ else }}:
+              ${{ if ne(variables['Build.Reason'], 'PullRequest')}}:
                 customCommand: "run build:staging"
               
           - task: Docker@2
