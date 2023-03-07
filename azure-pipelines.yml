@@ -54,6 +54,11 @@ stages:
       - job: CI
         displayName: Run tests, build and push image to ACR
         steps:
+          - task: CmdLine@2
+            condition: eq(variables['isTag'], 'true')
+            inputs:
+              script: echo "${{variables['isTag']}}"
+
           - task: Npm@1
             displayName: "Installing dependencies"
             inputs:
@@ -75,13 +80,6 @@ stages:
                 customCommand: "run build:prd"
               ${{ else }}:
                 customCommand: "run build:staging"
-
-          - task: CmdLine@2
-            condition: or(eq(variables['isTag'], 'true'), ne(variables['Build.Reason'], 'PullRequest'))
-            inputs:
-              script: echo "${{variables['isTag']}}"
-                
-
           - task: Docker@2
             displayName: Building docker image and pushing to ACR
             condition: and(succeeded(), or(ne(variables['Build.Reason'], 'PullRequest'), eq(variables['isTag'], 'true')))
