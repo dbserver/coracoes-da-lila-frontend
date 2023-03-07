@@ -45,7 +45,7 @@ variables:
     value: eq(variables['Build.Reason'], 'PullRequest')
   
   - name: buildCommand
-    ${{ if and(ne(variables['Build.Reason'], 'PullRequest'), ne(variables['isTag'], 'true'))}}:
+    ${{ if and(ne(variables['Build.Reason'], 'PullRequest'), eq(variables['isTag'], 'false'))}}:
       value: "run build:staging"
     ${{ if eq(variables['isTag'], 'true') }}:
       value: "run build:prd"
@@ -77,8 +77,6 @@ stages:
               command: custom
               workingDir: ./
               customCommand: $(buildCommand)
-              
-
           - task: Docker@2
             displayName: Building docker image and pushing to ACR
             condition: and(succeeded(), or(ne(variables['Build.Reason'], 'PullRequest'), eq(variables['isTag'], 'true')))
@@ -87,11 +85,12 @@ stages:
               repository: $(dockerRepository)
               command: "buildAndPush"
               Dockerfile: "**/Dockerfile"
-              
-              ${{ if and(ne(variables['Build.Reason'], 'PullRequest'), ne(variables['isTag'], 'true'))}}:
+              ${{ if and(ne(variables['Build.Reason'], 'PullRequest'), ne(variables['isTag'], ''))}}:
                 tags: |
                   $(buildId)
                   latest
+              ${{ if eq(variables['isTag'], 'true') }}:
+                tags: $(branchName)
               
 
   - stage: DeployToDevelopment
