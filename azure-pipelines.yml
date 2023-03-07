@@ -45,9 +45,9 @@ variables:
     value: eq(variables['Build.Reason'], 'PullRequest')
   
   - name: buildCommand
-    ${{ if and(ne(variables['Build.Reason'], 'PullRequest'), eq(variables['isTag'], 'false'))}}:
+    ${{ if and(ne(variables['Build.Reason'], 'PullRequest'), eq($[startsWith(variables['Build.SourceBranch'],'refs/tags/')], 'false'))}}:
       value: "run build:staging"
-    ${{ if eq(variables['isTag'], 'true') }}:
+    ${{ if eq($[startsWith(variables['Build.SourceBranch'],'refs/tags/')], 'true') }}:
       value: "run build:prd"
 
 pool:
