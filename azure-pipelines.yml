@@ -70,11 +70,9 @@ stages:
             displayName: "Building project"
             inputs:
               command: custom
-              workingDir: ./
-              ${{ if eq(variables['isTag'], 'True') }}:
-                customCommand: "run build:prd"
-              ${{ else }}:
-                customCommand: "run build:staging"
+              workingDir: ./              
+              customCommand: "run build:prd"
+              
               
           - task: Docker@2
             displayName: Building docker image and pushing to ACR
