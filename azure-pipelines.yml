@@ -33,7 +33,7 @@ variables:
     value: "coracoesdalila/frontend"
 
   - name: isTag
-    value: $(startsWith(variables['Build.SourceBranch'],'refs/tags/'))
+    value: $[startsWith(variables['Build.SourceBranch'],'refs/tags/')]
 
   - name: branchName
     value: $(Build.SourceBranchName)
@@ -44,7 +44,6 @@ variables:
   - name: isMergePRREMOVE
     value: eq(variables['Build.Reason'], 'PullRequest')
 
-
 pool:
   vmImage: $(vmImage)
 
@@ -54,10 +53,10 @@ stages:
       - job: CI
         displayName: Run tests, build and push image to ACR
         steps:
-          - task: CmdLine@2
-            condition: eq(variables['isTag'], 'true')
-            inputs:
-              script: echo "${{variables['isTag']}}"
+          # - task: CmdLine@2
+          #   condition: eq(variables['isTag'], 'true')
+          #   inputs:
+          #     script: echo "${{variables['isTag']}}"
 
           - task: Npm@1
             displayName: "Installing dependencies"
@@ -76,7 +75,7 @@ stages:
             inputs:
               command: custom
               workingDir: ./
-              ${{ if eq(variables['isTag'], 'true') }}:
+              ${{ if startsWith(variables['Build.SourceBranch'],'refs/tags/') }}:
                 customCommand: "run build:prd"
               ${{ else }}:
                 customCommand: "run build:staging"
@@ -94,7 +93,6 @@ stages:
                   latest
               ${{ if eq(variables['isTag'], 'true') }}:
                 tags: $(branchName)
-
 
   - stage: DeployToDevelopment
     condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'), ne(variables['isTag'], 'true'))
