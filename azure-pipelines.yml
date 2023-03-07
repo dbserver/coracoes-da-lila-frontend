@@ -43,7 +43,7 @@ variables:
 
   - name: isMergePRREMOVE
     value: eq(variables['Build.Reason'], 'PullRequest')
-  
+
 
 pool:
   vmImage: $(vmImage)
@@ -53,7 +53,7 @@ stages:
     jobs:
       - job: CI
         displayName: Run tests, build and push image to ACR
-        steps: 
+        steps:
           - task: Npm@1
             displayName: "Installing dependencies"
             inputs:
@@ -73,9 +73,9 @@ stages:
               workingDir: ./
               ${{ if eq(variables['isTag'], 'true') }}:
                 customCommand: "run build:prd"
-              ${{ if ne(variables['Build.Reason'], 'PullRequest')}}:
+              ${{ elseif ne(variables['Build.Reason'], 'PullRequest')}}:
                 customCommand: "run build:staging"
-              
+
           - task: Docker@2
             displayName: Building docker image and pushing to ACR
             condition: and(succeeded(), or(ne(variables['Build.Reason'], 'PullRequest'), eq(variables['isTag'], 'true')))
@@ -90,7 +90,7 @@ stages:
                   latest
               ${{ if eq(variables['isTag'], 'true') }}:
                 tags: $(branchName)
-              
+
 
   - stage: DeployToDevelopment
     condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'), ne(variables['isTag'], 'true'))
