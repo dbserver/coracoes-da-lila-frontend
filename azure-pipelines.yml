@@ -87,7 +87,7 @@ stages:
               repository: $(dockerRepository)
               command: "buildAndPush"
               Dockerfile: "**/Dockerfile"
-              ${{ if and(ne(variables['Build.Reason'], 'PullRequest'), ne(variables['isTag'], ''))}}:
+              ${{ if and(ne(variables['Build.Reason'], 'PullRequest'), ne(variables['isTag'], 'true'))}}:
                 tags: |
                   $(buildId)
                   latest
