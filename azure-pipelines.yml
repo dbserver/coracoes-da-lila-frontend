@@ -43,6 +43,12 @@ variables:
 
   - name: isMergePRREMOVE
     value: eq(variables['Build.Reason'], 'PullRequest')
+  
+  - name: buildCommand
+    ${{ if and(ne(variables['Build.Reason'], 'PullRequest'), ne(variables['isTag'], 'true'))}}:
+      value: "run build:staging"
+    ${{ if eq(variables['isTag'], 'true') }}:
+      value: "run build:prd"
 
 pool:
   vmImage: $(vmImage)
@@ -70,10 +76,8 @@ stages:
             inputs:
               command: custom
               workingDir: ./
-              ${{ if and(ne(variables['Build.Reason'], 'PullRequest'), ne(variables['isTag'], 'true'))}}:
-                customCommand: "run build:staging"
-              ${{ if eq(variables['isTag'], 'true') }}:
-                customCommand: "run build:prd"
+              customCommand: $(buildCommand)
+              
 
           - task: Docker@2
             displayName: Building docker image and pushing to ACR
@@ -83,8 +87,7 @@ stages:
               repository: $(dockerRepository)
               command: "buildAndPush"
               Dockerfile: "**/Dockerfile"
-              ${{ if eq(variables['isTag'], 'true') }}:
-                tags: $(branchName)
+              
               ${{ if and(ne(variables['Build.Reason'], 'PullRequest'), ne(variables['isTag'], 'true'))}}:
                 tags: |
                   $(buildId)
