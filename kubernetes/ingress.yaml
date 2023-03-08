@@ -33,7 +33,7 @@ items:
         - hosts:
             - ${INGRESS_DOMAIN}.paas.dbserver.com.br
             - ${INGRESS_DOMAIN}-api.paas.dbserver.com.br
-          secretName: coracoesdalila
+          secretName: coracoesdalila-${ENV}
 kind: List
 metadata:
   resourceVersion: ""
