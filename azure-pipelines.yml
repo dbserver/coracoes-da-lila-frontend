@@ -53,11 +53,6 @@ stages:
       - job: CI
         displayName: Run tests, build and push image to ACR
         steps:
-          - task: CmdLine@2
-            condition: eq(variables['isMergePR'], 'true')
-            inputs:
-              script: echo "${{variables['isMergePR']}}"
-
           - task: Npm@1
             displayName: "Installing dependencies"
             inputs:
@@ -70,7 +65,7 @@ stages:
               workingDir: ./
               customCommand: "run test:noInterface"
           - task: Npm@1
-            condition: or(eq(variables['isTag'], 'true'), ne(variables['Build.Reason'], 'PullRequest'))
+            condition: or(eq(variables['isTag'], 'true'), eq(variables['isMergePR'], 'true'))
             displayName: "Building project"
             inputs:
               command: custom
@@ -81,21 +76,21 @@ stages:
                 customCommand: "run build:staging"
           - task: Docker@2
             displayName: Building docker image and pushing to ACR
-            condition: and(succeeded(), or(ne(variables['Build.Reason'], 'PullRequest'), eq(variables['isTag'], 'true')))
+            condition: and(succeeded(), or(eq(variables['isMergePR'], 'true'), eq(variables['isTag'], 'true')))
             inputs:
               containerRegistry: $(acrServiceConnection)
               repository: $(dockerRepository)
               command: "buildAndPush"
               Dockerfile: "**/Dockerfile"
-              ${{ if and(ne(variables['Build.Reason'], 'PullRequest'), ne(variables['isTag'], 'true'))}}:
+              ${{ if eq(variables['isTag'], 'true') }}:
+                tags: $(branchName)
+              ${{ else }}:
                 tags: |
                   $(buildId)
                   latest
-              ${{ if eq(variables['isTag'], 'true') }}:
-                tags: $(branchName)
 
   - stage: DeployToDevelopment
-    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'), ne(variables['isTag'], 'true'))
+    condition: and(succeeded(), eq(variables['isMergePR'], 'true'), ne(variables['isTag'], 'true'))
     variables:
       - name: enviroment
         value: "dev"
