@@ -42,7 +42,7 @@ variables:
     value: ${{startsWith(variables['Build.SourceBranch'],'refs/tags/')}}
 
   - name: isMergePR
-    value: ${{eq(variables['Build.Reason'], 'PullRequest')}}
+    value: ${{ne(variables['Build.Reason'], 'PullRequest')}}
 
 pool:
   vmImage: $(vmImage)
