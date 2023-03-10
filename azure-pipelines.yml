@@ -90,6 +90,7 @@ stages:
                   latest
 
   - stage: DeployToDevelopment
+    dependsOn: CI
     condition: and(succeeded(), eq(variables['isMergePR'], 'true'), ne(variables['isTag'], 'true'))
     variables:
       - name: enviroment
@@ -135,7 +136,8 @@ stages:
               arguments: "restart deploy coracoesdalila-app-dev"
 
   - stage: DeployToProduction
-    condition: eq(variables['isTag'], 'true')
+    dependsOn: CI
+    condition: and(succeeded(), eq(variables['isTag'], 'true'))
     variables:
       - name: enviroment
         value: "prd"
