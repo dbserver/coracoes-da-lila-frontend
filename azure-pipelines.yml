@@ -1,11 +1,11 @@
 pr:
   branches:
     include:
-      - feat/cd
+      - main
 trigger:
   branches:
     include:
-      - feat/cd
+      - main
   tags:
     include:
       - "*"
