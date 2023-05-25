@@ -1,4 +1,5 @@
 import { Baralho } from './baralho';
+import { CartaDoJogo } from './cartaDoJogo';
 import { CartaObjetivo } from './cartaObjetivo';
 import { Jogador } from './jogador';
 
@@ -8,7 +9,7 @@ export interface Sala {
   cartasObjetivo: CartaObjetivo[];
   opcoesCartaObjetivo: CartaObjetivo[];
   cartaObjetivoEscolhida: CartaObjetivo;
-  baralho: Baralho;
+  cartasDoJogo: CartaDoJogo[];
   cartaInicioId: string;
   jogadores: Jogador[];
   dado: number;

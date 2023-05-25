@@ -33,7 +33,7 @@ describe('MesaCriadaComponent', () => {
   const sala: Sala = {
     id: 'id',
     hash,
-    baralho: {} as Baralho,
+    cartasDoJogo: [],    
     cartaInicioId: 'cartaInicioId',
     cartaObjetivoEscolhida: {} as CartaObjetivo,
     cartasObjetivo: [],

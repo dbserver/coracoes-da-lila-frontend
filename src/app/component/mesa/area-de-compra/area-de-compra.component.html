@@ -12,7 +12,7 @@
       </div>
     </div>
 
-    <div class="grupo-cartas">
+    <div class="grupo-cartas" *ngIf="listaCartasDisponiveis">
       <ng-container class="lista-cartas" *ngFor="
           let carta of listaCartasDisponiveis.slice(0, 6);
           let i = index">

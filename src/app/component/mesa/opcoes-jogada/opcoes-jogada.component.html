@@ -16,9 +16,9 @@
       </div>
     </li>
     <li *ngIf="selecioneUmaCartaObjetivo()">Selecionar 1 de 2 objetivos</li>
-    <li *ngIf="podeComprarCarta(this.sala.baralho.cartasDoJogo) && limpaTela()">Comprar 1 carta</li>
-    <li *ngIf="podeComprarCarta(this.sala.baralho.cartasDoJogo) && limpaTela()">Comprar 1 objetivo</li>
-    <p *ngIf="podeComprarCarta(this.sala.baralho.cartasDoJogo) && limpaTela()">** Seus corações bônus permanecem com
+    <li *ngIf="podeComprarCarta(this.sala.cartasDoJogo) && limpaTela()">Comprar 1 carta</li>
+    <li *ngIf="podeComprarCarta(this.sala.cartasDoJogo) && limpaTela()">Comprar 1 objetivo</li>
+    <p *ngIf="podeComprarCarta(this.sala.cartasDoJogo) && limpaTela()">** Seus corações bônus permanecem com
       você</p>
   </ul>
 

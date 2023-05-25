@@ -5,7 +5,6 @@ import { ActivatedRoute, Router, convertToParamMap } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { EntrarMesaComponent } from './entrar-mesa.component';
 import { Sala } from 'src/app/model/sala';
-import { Baralho } from 'src/app/model/baralho';
 import { CartaObjetivo } from 'src/app/model/cartaObjetivo';
 import { Jogador } from 'src/app/model/jogador';
 import { MesaService } from 'src/app/service/mesa-service/mesa.service';
@@ -26,10 +25,10 @@ describe('EntrarMesaComponent', () => {
   const sala: Sala = {
     id: 'id',
     hash: 'hashSala',
-    baralho: {} as Baralho,
     cartaInicioId: 'cartaInicioId',
     cartaObjetivoEscolhida: {} as CartaObjetivo,
     cartasObjetivo: [],
+    cartasDoJogo: [],
     dado: 1,
     jogadores: [],
     jogadorEscolhido: {} as Jogador,
