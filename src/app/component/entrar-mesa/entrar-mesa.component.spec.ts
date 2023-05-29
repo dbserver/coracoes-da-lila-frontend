@@ -28,7 +28,7 @@ describe('EntrarMesaComponent', () => {
     cartaInicioId: 'cartaInicioId',
     cartaObjetivoEscolhida: {} as CartaObjetivo,
     cartasObjetivo: [],
-    cartasDoJogo: [],
+    cartasDisponiveis: [],
     dado: 1,
     jogadores: [],
     jogadorEscolhido: {} as Jogador,

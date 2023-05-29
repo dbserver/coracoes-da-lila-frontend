@@ -38,7 +38,7 @@ describe('HabilitaDadoComponent', () => {
       cartasObjetivo: [],
       opcoesCartaObjetivo: [],
       cartaObjetivoEscolhida: {} as any,
-      cartasDoJogo: [],
+      cartasDisponiveis: [],
       cartaInicioId: '1',
       jogadores: [
         {

@@ -52,7 +52,7 @@ export class AreaDeCompraComponent implements OnInit {
   ngOnInit() {
     this.mesaJogoService.getemitSalaObservable().subscribe((sala) => {
       this.sala = sala;
-      this.listaCartasDisponiveis = sala.cartasDoJogo;
+      this.listaCartasDisponiveis = sala.cartasDisponiveis; 
       this.listaCartasDisponiveisObjetivo = sala.cartasObjetivo;
       this.jogador = this.mesaJogoService.getJogadorAtualNaMesa();
       this.bloqueiaAcao = false;

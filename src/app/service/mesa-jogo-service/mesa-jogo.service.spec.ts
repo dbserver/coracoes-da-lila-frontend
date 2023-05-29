@@ -44,7 +44,7 @@ describe('MesaJogoService', () => {
         cartasObjetivo: [],
         opcoesCartaObjetivo: [],
         cartaObjetivoEscolhida: {} as CartaObjetivo,
-        cartasDoJogo: [],
+        cartasDisponiveis: [],
         cartaInicioId: 'cartaInicioId',
         jogadores: [],
         dado: 0,

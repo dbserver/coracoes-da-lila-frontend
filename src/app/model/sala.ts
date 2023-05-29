@@ -9,7 +9,7 @@ export interface Sala {
   cartasObjetivo: CartaObjetivo[];
   opcoesCartaObjetivo: CartaObjetivo[];
   cartaObjetivoEscolhida: CartaObjetivo;
-  cartasDoJogo: CartaDoJogo[];
+  cartasDisponiveis: CartaDoJogo[];
   cartaInicioId: string;
   jogadores: Jogador[];
   dado: number;

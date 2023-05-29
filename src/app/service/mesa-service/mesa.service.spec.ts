@@ -44,7 +44,7 @@ describe('MesaService', () => {
       const resposta: Sala = {
         id: 'id',
         hash,
-        cartasDoJogo: [],
+        cartasDisponiveis: [],
         cartaInicioId: 'cartaInicioId',
         cartaObjetivoEscolhida: {} as CartaObjetivo,
         cartasObjetivo: [],
